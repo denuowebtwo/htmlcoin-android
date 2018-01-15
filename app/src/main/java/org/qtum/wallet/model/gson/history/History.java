@@ -9,19 +9,19 @@ import java.util.List;
 
 public class History {
 
-    @SerializedName("block_time")
+    @SerializedName("blocktime")
     @Expose
     private Long blockTime;
-    @SerializedName("block_height")
+    @SerializedName("blockheight")
     @Expose
     private Integer blockHeight;
-    @SerializedName("block_hash")
+    @SerializedName("blockhash")
     @Expose
     private String blockHash;
-    @SerializedName("tx_hash")
+    @SerializedName("txid")
     @Expose
     private String txHash;
-    @SerializedName("amount")
+    @SerializedName("valueIn")
     @Expose
     private BigDecimal amount;
     @SerializedName("contract_has_been_created")

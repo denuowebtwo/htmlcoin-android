@@ -33,13 +33,15 @@ import rx.Observable;
 
 interface QtumRestService {
 
-    @GET("/outputs/unspent/{address}")
+//    @GET("/outputs/unspent/{address}")
+    @GET("/htmlcoin-api/addrs/{address}/unspent")
     Observable<List<UnspentOutput>> getOutputsUnspent(@Path("address") String address);
 
-    @GET("/history/{address}/{limit}/{offset}")
-    Observable<List<History>> getHistoryList(@Path("address") String address, @Path("limit") int limit, @Path("offset") int offset);
+//    @GET("/history/{address}/{limit}/{offset}")
+    @GET("/htmlcoin-api/addrs/{address}/txs")
+    Observable<List<History>> getHistoryList(@Path("address") String address);
 
-    @GET("/blockchain/info")
+    @GET("/htmlcoin-api/status")
     Observable<BlockChainInfo> getBlockChainInfo();
 
     @POST("/send-raw-transaction")
@@ -48,13 +50,16 @@ interface QtumRestService {
     @POST("/contracts/{addressContract}/call")
     Observable<CallSmartContractResponse> callSmartContract(@Path("addressContract") String addressContract, @Body CallSmartContractRequest callSmartContractRequest);
 
-    @GET("/outputs/unspent")
-    Observable<List<UnspentOutput>> getUnspentOutputsForSeveralAddresses(@Query("addresses[]") List<String> addresses);
+//    @GET("/outputs/unspent")
+    @GET("/htmlcoin-api/addrs/{addresses}/unspent")
+    Observable<List<UnspentOutput>> getUnspentOutputsForSeveralAddresses(@Path("addresses") String addresses);
 
-    @GET("/history/{limit}/{offset}")
-    Observable<HistoryResponse> getHistoryListForSeveralAddresses(@Path("limit") int limit, @Path("offset") int offset, @Query("addresses[]") List<String> addresses);
+//    @GET("/history/{limit}/{offset}")
+    @GET("/htmlcoin-api/addrs/{addresses}/txs")
+    Observable<HistoryResponse> getHistoryListForSeveralAddresses(@Path("addresses") String addresses);
 
-    @GET("/transactions/{tx_hash}")
+//    @GET("/transactions/{tx_hash}")
+    @GET("/htmlcoin-api/tx/{tx_hash}")
     Observable<History> getTransaction(@Path("tx_hash") String txHash);
 
     @GET("/contracts/trending-now")
@@ -88,13 +93,13 @@ interface QtumRestService {
     @GET("/contracts/{contract_id}/is-paid/by-request-id")
     Observable<ContractPurchase> isPaidByRequestId(@Path("contract_id") String contractId, @Query("request_id") String requestId);
 
-    @GET("/estimate-fee-per-kb")
+    @GET("/htmlcoin-api/utils/minestimatefee")
     Observable<FeePerKb> getEstimateFeePerKb(@Query("nBlocks") int nBlocks);
 
     @GET("/contracts/types")
     Observable<List<QstoreContractType>> getContractTypes();
 
-    @GET("/blockchain/dgpinfo")
+    @GET("/htmlcoin-api/dgpinfo")
     Observable<DGPInfo> getDGPInfo();
 
 }

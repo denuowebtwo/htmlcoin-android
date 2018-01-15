@@ -1,6 +1,7 @@
 package org.qtum.wallet.dataprovider.rest_api;
 
 
+import com.google.common.base.Joiner;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -26,10 +27,12 @@ import org.qtum.wallet.model.gson.qstore.QstoreSourceCodeResponse;
 import org.qtum.wallet.utils.CurrentNetParams;
 
 
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.security.KeyStore;
 import java.security.SecureRandom;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -42,7 +45,10 @@ import javax.net.ssl.TrustManager;
 import javax.net.ssl.TrustManagerFactory;
 import javax.net.ssl.X509TrustManager;
 
+import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
@@ -90,6 +96,19 @@ public class QtumService {
             client.interceptors().add(httpLoggingInterceptor);
             client.readTimeout(180, TimeUnit.SECONDS);
             client.connectTimeout(180, TimeUnit.SECONDS);
+            client.addInterceptor(new Interceptor() {
+                @Override
+                public Response intercept(Chain chain) throws IOException {
+                    Request original = chain.request();
+
+                    Request request = original.newBuilder()
+                            .header("Runscope-Request-Port", "3001")
+                            .method(original.method(), original.body())
+                            .build();
+
+                    return chain.proceed(request);
+                }
+            });
 
             KeyStore keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
             keyStore.load(null, null);
@@ -114,12 +133,6 @@ public class QtumService {
             HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
             interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
-            final OkHttpClient okHttpClient = new OkHttpClient.Builder()
-                    .addInterceptor(interceptor)
-                    .readTimeout(10, TimeUnit.SECONDS)
-                    .connectTimeout(10, TimeUnit.SECONDS)
-                    .build();
-
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl(CurrentNetParams.getUrl())
                     .addConverterFactory(GsonConverterFactory.create(gson))
@@ -134,19 +147,21 @@ public class QtumService {
     }
 
     public Observable<List<UnspentOutput>> getUnspentOutputs(final String address) {
-        return mServiceApi.getOutputsUnspent(address);
+        return mServiceApi.getOutputsUnspent("HX3UYkH8PvM5HwgkKJd6grUDmFBzZFf8up");
     }
 
     public Observable<List<UnspentOutput>> getUnspentOutputsForSeveralAddresses(final List<String> addresses) {
-        return mServiceApi.getUnspentOutputsForSeveralAddresses(addresses);
+        String addressString = Joiner.on(",").join(addresses);
+        return mServiceApi.getUnspentOutputsForSeveralAddresses("HX3UYkH8PvM5HwgkKJd6grUDmFBzZFf8up");
     }
 
     public Observable<HistoryResponse> getHistoryListForSeveralAddresses(final List<String> addresses, final int limit, final int offset) {
-        return mServiceApi.getHistoryListForSeveralAddresses(limit, offset, addresses);
+        String addressString = Joiner.on(",").join(addresses);
+        return mServiceApi.getHistoryListForSeveralAddresses("HX3UYkH8PvM5HwgkKJd6grUDmFBzZFf8up");
     }
 
     public Observable<List<History>> getHistoryList(final String address, final int limit, final int offset) {
-        return mServiceApi.getHistoryList(address, limit, offset);
+        return mServiceApi.getHistoryList(address);
     }
 
     public Observable<BlockChainInfo> getBlockChainInfo() {

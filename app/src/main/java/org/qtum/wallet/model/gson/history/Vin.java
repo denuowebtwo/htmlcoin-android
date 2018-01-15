@@ -11,7 +11,7 @@ public class Vin extends TransactionInfo {
     @SerializedName("value")
     @Expose
     private BigDecimal value;
-    @SerializedName("address")
+    @SerializedName("addr")
     @Expose
     private String address;
     private boolean isOwnAddress = false;

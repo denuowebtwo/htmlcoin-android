@@ -12,7 +12,7 @@
 
     <string name="my_wallet">My Wallet</string>
     <string name="public_key">Public Key</string>
-    <string name="qtum">QTUM</string>
+    <string name="qtum">HTML</string>
     <string name="receive">Receive</string>
     <string name="send">Send</string>
     <string name="activity">Activity</string>
