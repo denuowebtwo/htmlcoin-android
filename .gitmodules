@@ -1,0 +1,4 @@
+[submodule "submodules/android-fork-bitcoinj"]
+	path = submodules/android-fork-bitcoinj
+	url = https://github.com/ananse-im/android-fork-bitcoinj
+	branch = htmlcoin
