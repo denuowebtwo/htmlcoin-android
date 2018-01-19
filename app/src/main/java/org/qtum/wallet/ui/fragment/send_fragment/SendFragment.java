@@ -706,9 +706,9 @@ public abstract class SendFragment extends BaseFragment implements SendView {
     public void handleBalanceUpdating(String balanceString, BigDecimal unconfirmedBalance) {
         String unconfirmedBalanceString = unconfirmedBalance.toString();
         if (!TextUtils.isEmpty(unconfirmedBalanceString) && !unconfirmedBalanceString.equals("0")) {
-            updateBalance(String.format("%S QTUM", balanceString), String.format("%S QTUM", String.valueOf(unconfirmedBalance.floatValue())));
+            updateBalance(String.format("%S HTML", balanceString), String.format("%S HTML", String.valueOf(unconfirmedBalance.floatValue())));
         } else {
-            updateBalance(String.format("%S QTUM", balanceString), null);
+            updateBalance(String.format("%S HTML", balanceString), null);
         }
     }
 

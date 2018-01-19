@@ -32,7 +32,7 @@
             android:layout_alignParentRight="true"
             android:id="@+id/tv_placeholder_balance_value"
             app:typefaceAsset="@string/simplonMonoRegular"
-            android:text="0.0 QTUM"
+            android:text="0.0 HTML"
             android:layout_width="wrap_content"
             android:gravity="center"
             android:layout_height="match_parent" />
@@ -64,7 +64,7 @@
             android:layout_alignParentRight="true"
             android:id="@+id/tv_placeholder_not_confirmed_balance_value"
             app:typefaceAsset="@string/simplonMonoRegular"
-            android:text="0.0 QTUM"
+            android:text="0.0 HTML"
             android:layout_width="wrap_content"
             android:gravity="center"
             android:layout_height="match_parent" />

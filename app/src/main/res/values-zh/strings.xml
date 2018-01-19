@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <resources>
-    <string name="app_name">QTUM</string>
+    <string name="app_name">HTML</string>
     <string name="create_new">新建</string>
     <string name="import_wallet">导入钱包</string>
     <string name="create_the_first_one_or_restore_n_the_previous_wallet_key">新建一个钱包 \n 或者导入已有钱包</string>

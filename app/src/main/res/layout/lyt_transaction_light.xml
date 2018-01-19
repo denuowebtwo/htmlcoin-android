@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
                 android:gravity="right"
-                android:text="-7,450 QTUM"
+                android:text="-7,450 HTML"
                 android:textColor="@color/bottom_nav_bar_text_color_light"
                 android:textSize="18sp"
                 app:typefaceAsset="@string/proximaNovaSemibold" />

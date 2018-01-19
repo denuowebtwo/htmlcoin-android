@@ -80,7 +80,7 @@ public class ReceivePresenterImpl extends BaseFragmentPresenterImpl implements R
     }
 
     private String getadditionalInfo() {
-        return "label=QTUM Mobile Wallet&message=Payment Request";
+        return "label=HTML Mobile Wallet&message=Payment Request";
     }
 
     private String getFormattedTokenAddr(String addr) {

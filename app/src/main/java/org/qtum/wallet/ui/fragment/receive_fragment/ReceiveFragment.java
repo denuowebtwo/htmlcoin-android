@@ -132,7 +132,7 @@ public abstract class ReceiveFragment extends BaseFragment implements ReceiveVie
 
     private void chooseShareMethod() {
         if (getQrCode() != null) {
-            String pathofBmp = MediaStore.Images.Media.insertImage(getContext().getContentResolver(), getQrCode(), "QTUM QRCode", "Share");
+            String pathofBmp = MediaStore.Images.Media.insertImage(getContext().getContentResolver(), getQrCode(), "HTML QRCode", "Share");
             if (TextUtils.isEmpty(pathofBmp)) {
                 fixMediaDir();
                 return;
@@ -141,9 +141,9 @@ public abstract class ReceiveFragment extends BaseFragment implements ReceiveVie
             Intent intentShareFile = new Intent(Intent.ACTION_SEND);
             intentShareFile.setType("image/png");
             intentShareFile.putExtra(Intent.EXTRA_SUBJECT,
-                    "Qtum QR-Code");
+                    "HTML QR-Code");
             intentShareFile.putExtra(Intent.EXTRA_STREAM, bmpUri);
-            getMainActivity().startActivity(Intent.createChooser(intentShareFile, "Qtum QR-Code"));
+            getMainActivity().startActivity(Intent.createChooser(intentShareFile, "HTML QR-Code"));
         }
     }
 

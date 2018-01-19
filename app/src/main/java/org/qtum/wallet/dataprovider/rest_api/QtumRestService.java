@@ -34,14 +34,14 @@ import rx.Observable;
 interface QtumRestService {
 
 //    @GET("/outputs/unspent/{address}")
-    @GET("/htmlcoin-api/addrs/{address}/unspent")
+    @GET("/api/addrs/{address}/unspent")
     Observable<List<UnspentOutput>> getOutputsUnspent(@Path("address") String address);
 
 //    @GET("/history/{address}/{limit}/{offset}")
-    @GET("/htmlcoin-api/addrs/{address}/txs")
+    @GET("/api/addrs/{address}/txs")
     Observable<List<History>> getHistoryList(@Path("address") String address);
 
-    @GET("/htmlcoin-api/status")
+    @GET("/api/status")
     Observable<BlockChainInfo> getBlockChainInfo();
 
     @POST("/send-raw-transaction")
@@ -51,15 +51,15 @@ interface QtumRestService {
     Observable<CallSmartContractResponse> callSmartContract(@Path("addressContract") String addressContract, @Body CallSmartContractRequest callSmartContractRequest);
 
 //    @GET("/outputs/unspent")
-    @GET("/htmlcoin-api/addrs/{addresses}/unspent")
+    @GET("/api/addrs/{addresses}/unspent")
     Observable<List<UnspentOutput>> getUnspentOutputsForSeveralAddresses(@Path("addresses") String addresses);
 
 //    @GET("/history/{limit}/{offset}")
-    @GET("/htmlcoin-api/addrs/{addresses}/txs")
+    @GET("/api/addrs/{addresses}/txs")
     Observable<HistoryResponse> getHistoryListForSeveralAddresses(@Path("addresses") String addresses);
 
 //    @GET("/transactions/{tx_hash}")
-    @GET("/htmlcoin-api/tx/{tx_hash}")
+    @GET("/api/tx/{tx_hash}")
     Observable<History> getTransaction(@Path("tx_hash") String txHash);
 
     @GET("/contracts/trending-now")
@@ -93,13 +93,13 @@ interface QtumRestService {
     @GET("/contracts/{contract_id}/is-paid/by-request-id")
     Observable<ContractPurchase> isPaidByRequestId(@Path("contract_id") String contractId, @Query("request_id") String requestId);
 
-    @GET("/htmlcoin-api/utils/minestimatefee")
+    @GET("/api/utils/minestimatefee")
     Observable<FeePerKb> getEstimateFeePerKb(@Query("nBlocks") int nBlocks);
 
     @GET("/contracts/types")
     Observable<List<QstoreContractType>> getContractTypes();
 
-    @GET("/htmlcoin-api/dgpinfo")
+    @GET("/api/dgpinfo")
     Observable<DGPInfo> getDGPInfo();
 
 }

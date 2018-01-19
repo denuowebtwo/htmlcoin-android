@@ -37,11 +37,11 @@ class ReceiveInteractorImpl implements ReceiveInteractor {
 
     @Override
     public String formatBalance(String balanceString) {
-        return String.format("%S QTUM", balanceString);
+        return String.format("%S HTML", balanceString);
     }
 
     @Override
     public String formatUnconfirmedBalance(BigDecimal unconfirmedBalance) {
-        return String.format("%S QTUM", String.valueOf(unconfirmedBalance.floatValue()));
+        return String.format("%S HTML", String.valueOf(unconfirmedBalance.floatValue()));
     }
 }

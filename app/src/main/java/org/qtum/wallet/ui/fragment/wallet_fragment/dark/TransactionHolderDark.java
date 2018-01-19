@@ -74,6 +74,6 @@ public class TransactionHolderDark extends RecyclerView.ViewHolder {
             mTextViewID.setText(history.getTxHash());
             mImageViewIcon.setImageResource(R.drawable.ic_sent);
         }
-        mTextViewValue.setText(history.getChangeInBalance().toString() + " QTUM");
+        mTextViewValue.setText(history.getChangeInBalance().toString() + " HTML");
     }
 }

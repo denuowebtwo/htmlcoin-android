@@ -1,8 +1,8 @@
 package org.qtum.wallet.utils;
 
 import org.bitcoinj.core.NetworkParameters;
+import org.bitcoinj.params.RegTestParams;
 import org.bitcoinj.params.HtmlCoinMainNetParams;
-import org.bitcoinj.params.QtumTestNetParams;
 
 
 public class CurrentNetParams {
@@ -15,7 +15,8 @@ public class CurrentNetParams {
 
     public static String getUrl(){
 //        return "https://walletapi-qtum-org-j21yg29m6l2i.runscope.net/";
-        return "http://api-htmlcoin-com-j21yg29m6l2i.runscope.net";
+        return "http://explorer-htmlcoin-com-j21yg29m6l2i.runscope.net";
+//        return "http://192.168.1.14:3001";
     }
 
 }

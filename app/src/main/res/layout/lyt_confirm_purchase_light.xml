@@ -115,7 +115,7 @@
                     android:gravity="center"
                     style="@style/confirm_purchase_subtitle_dialog_start"
                     android:layout_width="match_parent"
-                    android:text="0.100 QTUM"
+                    android:text="0.100 HTML"
                     app:typefaceAsset="@string/proximaNovaBold"
                     android:layout_height="wrap_content" />
 

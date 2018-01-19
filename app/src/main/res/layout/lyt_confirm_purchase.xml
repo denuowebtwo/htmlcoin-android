@@ -90,7 +90,7 @@
             android:id="@+id/fee"
             style="@style/confirm_purchase_subtitle_dialog"
             android:layout_width="match_parent"
-            android:text="0.100 QTUM"
+            android:text="0.100 HTML"
             app:typefaceAsset="@string/simplonMonoRegular"
             android:layout_height="wrap_content" />
 

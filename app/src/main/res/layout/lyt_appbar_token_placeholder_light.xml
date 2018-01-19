@@ -44,7 +44,7 @@
             android:layout_alignParentEnd="true"
             android:id="@+id/tv_placeholder_currency_value"
             app:typefaceAsset="@string/proximaNovaRegular"
-            android:text="QTUM"
+            android:text="HTML"
             android:layout_width="wrap_content"
             android:gravity="center"
             android:layout_height="match_parent" />

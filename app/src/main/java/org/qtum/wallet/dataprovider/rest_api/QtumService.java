@@ -96,19 +96,6 @@ public class QtumService {
             client.interceptors().add(httpLoggingInterceptor);
             client.readTimeout(180, TimeUnit.SECONDS);
             client.connectTimeout(180, TimeUnit.SECONDS);
-            client.addInterceptor(new Interceptor() {
-                @Override
-                public Response intercept(Chain chain) throws IOException {
-                    Request original = chain.request();
-
-                    Request request = original.newBuilder()
-                            .header("Runscope-Request-Port", "3001")
-                            .method(original.method(), original.body())
-                            .build();
-
-                    return chain.proceed(request);
-                }
-            });
 
             KeyStore keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
             keyStore.load(null, null);
@@ -147,17 +134,17 @@ public class QtumService {
     }
 
     public Observable<List<UnspentOutput>> getUnspentOutputs(final String address) {
-        return mServiceApi.getOutputsUnspent("HX3UYkH8PvM5HwgkKJd6grUDmFBzZFf8up");
+        return mServiceApi.getOutputsUnspent(address);
     }
 
     public Observable<List<UnspentOutput>> getUnspentOutputsForSeveralAddresses(final List<String> addresses) {
         String addressString = Joiner.on(",").join(addresses);
-        return mServiceApi.getUnspentOutputsForSeveralAddresses("HX3UYkH8PvM5HwgkKJd6grUDmFBzZFf8up");
+        return mServiceApi.getUnspentOutputsForSeveralAddresses(addressString);
     }
 
     public Observable<HistoryResponse> getHistoryListForSeveralAddresses(final List<String> addresses, final int limit, final int offset) {
         String addressString = Joiner.on(",").join(addresses);
-        return mServiceApi.getHistoryListForSeveralAddresses("HX3UYkH8PvM5HwgkKJd6grUDmFBzZFf8up");
+        return mServiceApi.getHistoryListForSeveralAddresses(addressString);
     }
 
     public Observable<List<History>> getHistoryList(final String address, final int limit, final int offset) {

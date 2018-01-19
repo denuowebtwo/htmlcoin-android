@@ -54,7 +54,7 @@
                 app:typefaceAsset="@string/simplonMonoMedium"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorPrimary"
-                android:text="-7,450 QTUM"
+                android:text="-7,450 HTML"
                 android:textSize="18sp"
                 android:textStyle="bold"/>
 
