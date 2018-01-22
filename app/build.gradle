@@ -119,8 +119,8 @@ dependencies {
 
     compile 'com.android.support:support-v4:25.4.0'
     compile 'com.android.support:design:25.4.0'
-//    compile 'com.github.designsters:android-fork-bitcoinj:1.0.11'
-    compile (files('../submodules/android-fork-bitcoinj/core/target/bitcoinj-core-0.14.5.jar'))
+    compile 'com.github.designsters:android-fork-bitcoinj:1.0.11'
+//    compile (files('../submodules/android-fork-bitcoinj/core/target/bitcoinj-core-0.14.5.jar'))
 
     compile 'com.android.support:multidex:1.0.2'
     compile 'com.google.guava:guava:23.6-android'
