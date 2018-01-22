@@ -44,7 +44,7 @@ interface QtumRestService {
     @GET("/api/status")
     Observable<BlockChainInfo> getBlockChainInfo();
 
-    @POST("/send-raw-transaction")
+    @POST("/api/tx/send")
     Observable<SendRawTransactionResponse> sendRawTransaction(@Body SendRawTransactionRequest sendRawTransactionRequest);
 
     @POST("/contracts/{addressContract}/call")

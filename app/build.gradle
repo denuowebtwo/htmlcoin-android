@@ -78,7 +78,7 @@ android {
     productFlavors {
         regtest {
             applicationId "com.htmlcoin.wallet.app.staging"
-            buildConfigField 'String', 'SERVER_URL', '\"http://regtest-htmlcoin.ananse.im\"'
+            buildConfigField 'String', 'SERVER_URL', '\"http://35.198.235.246:3001\"'
         }
         mainnet {
             applicationId "com.htmlcoin.wallet.app"

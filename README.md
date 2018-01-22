@@ -53,8 +53,10 @@ com.android.tools.build:gradle:2.3.3
 cd submodules\android-fork-bitcoinj
 mvn package -Dmaven.test.skip=true
 
-# build application
+# build application on regtest
 ./gradlew :app:assembleRegtestDebug
+
+./gradlew :app:assembleMainnetDebug
 
 ```
 

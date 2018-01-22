@@ -96,6 +96,19 @@ public class QtumService {
             client.interceptors().add(httpLoggingInterceptor);
             client.readTimeout(180, TimeUnit.SECONDS);
             client.connectTimeout(180, TimeUnit.SECONDS);
+//            client.addInterceptor(new Interceptor() {
+//                @Override
+//                public Response intercept(Chain chain) throws IOException {
+//                    Request original = chain.request();
+//
+//                    Request request = original.newBuilder()
+//                            .header("Runscope-Request-Port", "3001")
+//                            .method(original.method(), original.body())
+//                            .build();
+//
+//                    return chain.proceed(request);
+//                }
+//            });
 
             KeyStore keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
             keyStore.load(null, null);
