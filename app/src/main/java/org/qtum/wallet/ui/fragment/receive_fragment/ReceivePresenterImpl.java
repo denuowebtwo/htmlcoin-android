@@ -1,10 +1,18 @@
 package org.qtum.wallet.ui.fragment.receive_fragment;
 
+import org.qtum.wallet.model.AddressWithBalance;
+import org.qtum.wallet.ui.base.AddressInteractor;
+import org.qtum.wallet.ui.base.AddressInteractorImpl;
 import org.qtum.wallet.ui.base.base_fragment.BaseFragmentPresenterImpl;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
+import rx.Subscriber;
 import rx.Subscription;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 public class ReceivePresenterImpl extends BaseFragmentPresenterImpl implements ReceivePresenter {
 
@@ -14,9 +22,13 @@ public class ReceivePresenterImpl extends BaseFragmentPresenterImpl implements R
     private String mTokenAddress;
     private Subscription subscription;
 
+    private AddressInteractor mAddressInteractor;
+
     public ReceivePresenterImpl(ReceiveView view, ReceiveInteractor interactor) {
         mReceiveView = view;
         mReceiveInteractor = interactor;
+
+        mAddressInteractor = new AddressInteractorImpl(view.getContext());
     }
 
     @Override
@@ -93,6 +105,35 @@ public class ReceivePresenterImpl extends BaseFragmentPresenterImpl implements R
 
     private String buildFullQrCodeData(String receiveAddr, String amount, String mTokenAddress) {
         return getFormattedReceiveAddr(receiveAddr) + getFormattedAmount(amount) + getadditionalInfo() + getFormattedTokenAddr(mTokenAddress);
+    }
+
+    public void loadAndUpdateBalance() {
+        final List<String> addresses = new ArrayList<>();
+        addresses.add(getInteractor().getCurrentReceiveAddress());
+        mAddressInteractor.getAddressBalances(addresses)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<List<AddressWithBalance>>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onNext(List<AddressWithBalance> addressWithBalances) {
+                        BigDecimal balance = BigDecimal.ZERO;
+                        for (AddressWithBalance addressWithBalance: addressWithBalances) {
+                            balance = balance.add(addressWithBalance.getBalance());
+                        }
+
+                        getView().updateBalance(balance.toString());
+                    }
+                });
     }
 
     @Override

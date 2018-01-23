@@ -390,6 +390,8 @@ public abstract class ReceiveFragment extends BaseFragment implements ReceiveVie
         if (getTargetFragment() != null) {
             ((WalletFragment) getTargetFragment()).updatePubKey(s);
         }
+
+        getPresenter().loadAndUpdateBalance();
     }
 
     @Override

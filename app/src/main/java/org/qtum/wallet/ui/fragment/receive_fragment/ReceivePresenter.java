@@ -24,5 +24,7 @@ public interface ReceivePresenter extends BaseFragmentPresenter {
 
     CharSequence getCurrentReceiveAddress();
 
+    void loadAndUpdateBalance();
+
     void onBalanceChanged(BigDecimal unconfirmedBalance, BigDecimal balance);
 }
