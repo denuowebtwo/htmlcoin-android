@@ -41,7 +41,7 @@ public class HtmlCoinRegTestParams extends AbstractBitcoinNetParams {
         subsidyDecreaseBlockCount = 210000;
         spendableCoinbaseDepth = 100;
         String genesisHash = genesisBlock.getHashAsString();
-        Log.i("HtmlCoinTestNetParams", genesisHash);
+        Log.i("HtmlCoinRegTestParams", genesisHash);
 //        checkState(genesisHash.equals("000013694772f8aeb88efeb2829fe5d71fbca3e23d5043baa770726f204f528c"), genesisHash);
 
         checkpoints.put(0, Sha256Hash.wrap("000013694772f8aeb88efeb2829fe5d71fbca3e23d5043baa770726f204f528c"));

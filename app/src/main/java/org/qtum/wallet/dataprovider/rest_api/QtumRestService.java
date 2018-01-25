@@ -1,5 +1,6 @@
 package org.qtum.wallet.dataprovider.rest_api;
 
+import org.qtum.wallet.model.gson.AddressBalance;
 import org.qtum.wallet.model.gson.BlockChainInfo;
 
 import org.qtum.wallet.model.gson.CallSmartContractRequest;
@@ -102,4 +103,6 @@ interface QtumRestService {
     @GET("/api/dgpinfo")
     Observable<DGPInfo> getDGPInfo();
 
+    @GET("/api/addrs/{addresses}/balance")
+    Observable<AddressBalance> getAddressBalance(@Path("addresses") String addresses);
 }

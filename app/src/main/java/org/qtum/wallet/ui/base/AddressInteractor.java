@@ -2,6 +2,7 @@ package org.qtum.wallet.ui.base;
 
 
 import org.qtum.wallet.model.AddressWithBalance;
+import org.qtum.wallet.model.gson.AddressBalance;
 import org.qtum.wallet.model.gson.UnspentOutput;
 
 import java.math.BigDecimal;
@@ -16,5 +17,5 @@ public interface AddressInteractor {
 
     Observable<List<AddressWithBalance>> getAddressBalances(List<String> addresses);
 
-    Observable<BigDecimal> getAddressBalance(List<String> addresses);
+    Observable<AddressBalance> getAddressBalance(List<String> addresses);
 }

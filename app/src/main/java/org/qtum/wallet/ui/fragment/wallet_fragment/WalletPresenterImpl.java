@@ -1,6 +1,7 @@
 package org.qtum.wallet.ui.fragment.wallet_fragment;
 
 import org.qtum.wallet.model.AddressWithBalance;
+import org.qtum.wallet.model.gson.AddressBalance;
 import org.qtum.wallet.model.gson.history.History;
 import org.qtum.wallet.ui.base.AddressInteractor;
 import org.qtum.wallet.ui.base.AddressInteractorImpl;
@@ -139,10 +140,10 @@ public class WalletPresenterImpl extends BaseFragmentPresenterImpl implements Wa
 
     private void loadAndUpdateBalance() {
         final List<String> addresses = mAddressInteractor.getAddresses();
-        mAddressInteractor.getAddressBalances(addresses)
+        mAddressInteractor.getAddressBalance(addresses)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<List<AddressWithBalance>>() {
+                .subscribe(new Subscriber<AddressBalance>() {
                     @Override
                     public void onCompleted() {
 
@@ -154,14 +155,8 @@ public class WalletPresenterImpl extends BaseFragmentPresenterImpl implements Wa
                     }
 
                     @Override
-                    public void onNext(List<AddressWithBalance> addressWithBalances) {
-                        BigDecimal balance = BigDecimal.ZERO;
-                        BigDecimal unconfirmedBalance = BigDecimal.ZERO;
-                        for (AddressWithBalance addressWithBalance: addressWithBalances) {
-                            balance = balance.add(addressWithBalance.getBalance());
-                        }
-
-                        getView().updateBalance(balance.toString(), unconfirmedBalance.toString());
+                    public void onNext(AddressBalance addressBalance) {
+                        getView().updateBalance(addressBalance.getBalance().toString(), addressBalance.getUnconfirmedBalance().toString());
                     }
                 });
     }

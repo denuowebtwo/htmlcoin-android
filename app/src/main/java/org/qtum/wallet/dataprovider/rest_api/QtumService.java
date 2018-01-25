@@ -5,6 +5,7 @@ import com.google.common.base.Joiner;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import org.qtum.wallet.model.gson.AddressBalance;
 import org.qtum.wallet.model.gson.BlockChainInfo;
 
 import org.qtum.wallet.model.gson.CallSmartContractRequest;
@@ -162,6 +163,11 @@ public class QtumService {
 
     public Observable<List<History>> getHistoryList(final String address, final int limit, final int offset) {
         return mServiceApi.getHistoryList(address);
+    }
+
+    public Observable<AddressBalance> getAddressBalance(final List<String> addresses) {
+        String addressString = Joiner.on(",").join(addresses);
+        return mServiceApi.getAddressBalance(addressString);
     }
 
     public Observable<BlockChainInfo> getBlockChainInfo() {

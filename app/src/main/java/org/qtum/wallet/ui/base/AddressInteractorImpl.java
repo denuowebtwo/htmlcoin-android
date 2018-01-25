@@ -5,6 +5,7 @@ import android.content.Context;
 import org.qtum.wallet.dataprovider.rest_api.QtumService;
 import org.qtum.wallet.datastorage.KeyStorage;
 import org.qtum.wallet.model.AddressWithBalance;
+import org.qtum.wallet.model.gson.AddressBalance;
 import org.qtum.wallet.model.gson.UnspentOutput;
 
 import java.lang.ref.WeakReference;
@@ -80,45 +81,7 @@ public class AddressInteractorImpl implements AddressInteractor {
     }
 
     @Override
-    public Observable<BigDecimal> getAddressBalance(final List<String> addresses) {
-        return Observable.create(new Observable.OnSubscribe<BigDecimal>() {
-            @Override
-            public void call(final Subscriber<? super BigDecimal> subscriber) {
-                try {
-                    if (!subscriber.isUnsubscribed()) {
-                        QtumService.newInstance().getUnspentOutputsForSeveralAddresses(addresses)
-                                .subscribeOn(Schedulers.io())
-                                .subscribe(new Subscriber<List<UnspentOutput>>() {
-                                    @Override
-                                    public void onCompleted() {
-                                    }
-
-                                    @Override
-                                    public void onError(Throwable e) {
-                                    }
-
-                                    @Override
-                                    public void onNext(List<UnspentOutput> unspentOutputs) {
-                                        BigDecimal balance = BigDecimal.ZERO;
-
-                                        for(UnspentOutput unspentOutput : unspentOutputs) {
-                                            for (String address : addresses) {
-                                                if(unspentOutput.getAddress().equals(address)){
-                                                    balance = balance.add(unspentOutput.getAmount());
-                                                    break;
-                                                }
-                                            }
-                                        }
-
-                                        subscriber.onNext(balance);
-                                        subscriber.onCompleted();
-                                    }
-                                });
-                    }
-                }catch (Exception e) {
-                    subscriber.onError(e);
-                }
-            }
-        });
+    public Observable<AddressBalance> getAddressBalance(final List<String> addresses) {
+        return QtumService.newInstance().getAddressBalance(addresses);
     }
 }

@@ -1,10 +1,10 @@
 package org.qtum.wallet.ui.fragment.send_fragment;
 
 import org.qtum.wallet.R;
-import org.qtum.wallet.model.AddressWithBalance;
 import org.qtum.wallet.model.Currency;
 import org.qtum.wallet.model.CurrencyToken;
 import org.qtum.wallet.model.contract.Token;
+import org.qtum.wallet.model.gson.AddressBalance;
 import org.qtum.wallet.model.gson.UnspentOutput;
 import org.qtum.wallet.model.gson.call_smart_contract_response.CallSmartContractResponse;
 import org.qtum.wallet.model.gson.token_balance.Balance;
@@ -313,10 +313,10 @@ public class SendPresenterImpl extends BaseFragmentPresenterImpl implements Send
         } else {
             addresses.addAll(mAddressInteractor.getAddresses());
         }
-        mAddressInteractor.getAddressBalances(addresses)
+        mAddressInteractor.getAddressBalance(addresses)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<List<AddressWithBalance>>() {
+                .subscribe(new Subscriber<AddressBalance>() {
                     @Override
                     public void onCompleted() {
 
@@ -328,14 +328,8 @@ public class SendPresenterImpl extends BaseFragmentPresenterImpl implements Send
                     }
 
                     @Override
-                    public void onNext(List<AddressWithBalance> addressWithBalances) {
-                        BigDecimal balance = BigDecimal.ZERO;
-                        BigDecimal unconfirmedBalance = BigDecimal.ZERO;
-                        for (AddressWithBalance addressWithBalance: addressWithBalances) {
-                            balance = balance.add(addressWithBalance.getBalance());
-                        }
-
-                        getView().updateBalance(balance.toString(), unconfirmedBalance.toString());
+                    public void onNext(AddressBalance addressBalance) {
+                        getView().updateBalance(addressBalance.getBalance().toString(), addressBalance.getUnconfirmedBalance().toString());
                     }
                 });
     }

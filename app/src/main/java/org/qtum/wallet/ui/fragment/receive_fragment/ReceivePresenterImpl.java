@@ -1,6 +1,6 @@
 package org.qtum.wallet.ui.fragment.receive_fragment;
 
-import org.qtum.wallet.model.AddressWithBalance;
+import org.qtum.wallet.model.gson.AddressBalance;
 import org.qtum.wallet.ui.base.AddressInteractor;
 import org.qtum.wallet.ui.base.AddressInteractorImpl;
 import org.qtum.wallet.ui.base.base_fragment.BaseFragmentPresenterImpl;
@@ -110,10 +110,11 @@ public class ReceivePresenterImpl extends BaseFragmentPresenterImpl implements R
     public void loadAndUpdateBalance() {
         final List<String> addresses = new ArrayList<>();
         addresses.add(getInteractor().getCurrentReceiveAddress());
-        mAddressInteractor.getAddressBalances(addresses)
+
+        mAddressInteractor.getAddressBalance(addresses)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<List<AddressWithBalance>>() {
+                .subscribe(new Subscriber<AddressBalance>() {
                     @Override
                     public void onCompleted() {
 
@@ -125,13 +126,8 @@ public class ReceivePresenterImpl extends BaseFragmentPresenterImpl implements R
                     }
 
                     @Override
-                    public void onNext(List<AddressWithBalance> addressWithBalances) {
-                        BigDecimal balance = BigDecimal.ZERO;
-                        for (AddressWithBalance addressWithBalance: addressWithBalances) {
-                            balance = balance.add(addressWithBalance.getBalance());
-                        }
-
-                        getView().updateBalance(balance.toString());
+                    public void onNext(AddressBalance addressBalance) {
+                        getView().updateBalance(addressBalance.getBalance().toString());
                     }
                 });
     }
