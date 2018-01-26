@@ -102,7 +102,7 @@ android {
             buildConfigField 'String', 'SERVER_URL', '\"http://explorer.htmlcoin.com\"' // TBC
         }
         stagingTestnet {
-            applicationId "com.htmlcoin.wallet.app.staging-testnet"
+            applicationId "com.htmlcoin.wallet.app.staging.testnet"
             buildConfigField 'String', 'SERVER_URL', '\"http://35.198.235.246:3001\"'
         }
         stagingRegtest {
