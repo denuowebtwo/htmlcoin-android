@@ -182,8 +182,8 @@ public abstract class SendFragment extends BaseFragment implements SendView {
             public void onServiceConnectionChange(boolean isConnecting) {
                 if (isConnecting) {
                     mUpdateService = getUpdateService();
-
-                    mUpdateService.addBalanceChangeListener(mBalanceChangeListener);
+                    if (mUpdateService != null)
+                        mUpdateService.addBalanceChangeListener(mBalanceChangeListener);
                 }
             }
         });
@@ -230,7 +230,9 @@ public abstract class SendFragment extends BaseFragment implements SendView {
     public void onDestroyView() {
         super.onDestroyView();
         mNetworkStateReceiver.removeNetworkStateListener(mNetworkStateListener);
-        mUpdateService.removeBalanceChangeListener(mBalanceChangeListener);
+        if (mUpdateService != null) {
+            mUpdateService.removeBalanceChangeListener(mBalanceChangeListener);
+        }
     }
 
     private void isQrCodeRecognition(boolean isQrCodeRecognition) {

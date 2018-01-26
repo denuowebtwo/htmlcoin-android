@@ -93,9 +93,13 @@ android {
     }
     flavorDimensions "applicationId"
     productFlavors {
+        dev {
+            applicationId "com.htmlcoin.wallet.app.dev"
+            buildConfigField 'String', 'SERVER_URL', '\"http://192.168.1.13:3001\"'
+        }
         mainnet {
             applicationId "com.htmlcoin.wallet.app"
-            buildConfigField 'String', 'SERVER_URL', '\"http://http://35.198.235.246:3001\"' // TBC
+            buildConfigField 'String', 'SERVER_URL', '\"http://explorer.htmlcoin.com\"' // TBC
         }
         stagingTestnet {
             applicationId "com.htmlcoin.wallet.app.staging-testnet"
