@@ -99,7 +99,7 @@ android {
         }
         mainnet {
             applicationId "com.htmlcoin.wallet.app"
-            buildConfigField 'String', 'SERVER_URL', '\"http://http://35.198.235.246:3001\"' // TBC
+            buildConfigField 'String', 'SERVER_URL', '\"http://explorer.htmlcoin.com\"' // TBC
         }
     }
 //    gradle.taskGraph.whenReady {taskGraph ->
