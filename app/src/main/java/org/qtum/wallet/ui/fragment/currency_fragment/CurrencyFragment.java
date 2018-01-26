@@ -167,7 +167,9 @@ public abstract class CurrencyFragment extends BaseFragment implements CurrencyV
         void bindCurrency(Currency currency) {
 
             if (this.mCurrency != null && mCurrency instanceof CurrencyToken) {
-                mUpdateService.removeTokenBalanceChangeListener(((CurrencyToken) mCurrency).getToken().getContractAddress());
+                if (mUpdateService != null) {
+                    mUpdateService.removeTokenBalanceChangeListener(((CurrencyToken) mCurrency).getToken().getContractAddress());
+                }
             }
 
             mCurrency = currency;

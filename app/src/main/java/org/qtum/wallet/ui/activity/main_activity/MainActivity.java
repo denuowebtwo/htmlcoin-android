@@ -120,8 +120,10 @@ public class MainActivity extends BaseActivity implements MainActivityView {
             @Override
             public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
                 mUpdateService = ((UpdateService.UpdateBinder) iBinder).getService();
-                mUpdateService.clearNotification();
-                mUpdateService.startMonitoring();
+                if (mUpdateService != null) {
+                    mUpdateService.clearNotification();
+                    mUpdateService.startMonitoring();
+                }
                 for (MainActivity.OnServiceConnectionChangeListener listener : mServiceConnectionChangeListeners) {
                     listener.onServiceConnectionChange(true);
                 }

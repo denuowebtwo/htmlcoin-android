@@ -109,17 +109,19 @@ public abstract class WalletFragment extends BaseFragment implements WalletView,
             public void onServiceConnectionChange(boolean isConnecting) {
                 if (isConnecting) {
                     mUpdateService = getMainActivity().getUpdateService();
-                    mUpdateService.addTransactionListener(new TransactionListener() {
-                        @Override
-                        public void onNewHistory(History history) {
-                            getPresenter().onNewHistory(history);
-                        }
+                    if (mUpdateService != null) {
+                        mUpdateService.addTransactionListener(new TransactionListener() {
+                            @Override
+                            public void onNewHistory(History history) {
+                                getPresenter().onNewHistory(history);
+                            }
 
-                        @Override
-                        public boolean getVisibility() {
-                            return getPresenter().getVisibility();
-                        }
-                    });
+                            @Override
+                            public boolean getVisibility() {
+                                return getPresenter().getVisibility();
+                            }
+                        });
+                    }
 
                     initBalanceListener();
                 }
@@ -148,7 +150,9 @@ public abstract class WalletFragment extends BaseFragment implements WalletView,
     }
 
     public void initBalanceListener() {
-        mUpdateService.addBalanceChangeListener(balanceListener);
+        if (mUpdateService != null) {
+            mUpdateService.addBalanceChangeListener(balanceListener);
+        }
     }
 
     @Override
