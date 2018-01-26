@@ -9,7 +9,9 @@ public class CurrentNetParams {
     public  CurrentNetParams(){}
 
     public static NetworkParameters getNetParams(){
-        if(BuildConfig.FLAVOR.equalsIgnoreCase("regtest")) {
+        if(BuildConfig.FLAVOR.equalsIgnoreCase("dev")) {
+            return HtmlCoinRegTestParams.get();
+        } else if(BuildConfig.FLAVOR.equalsIgnoreCase("regtest")) {
             return HtmlCoinRegTestParams.get();
         } else {
             return HtmlCoinMainNetParams.get();
