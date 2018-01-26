@@ -253,7 +253,9 @@ public class MainActivity extends BaseActivity implements MainActivityView {
 
     @Override
     public void setIconChecked(int position) {
-        mBottomNavigationView.getMenu().getItem(position).setChecked(true);
+        if (mBottomNavigationView != null) {
+            mBottomNavigationView.getMenu().getItem(position).setChecked(true);
+        }
     }
 
     @Override

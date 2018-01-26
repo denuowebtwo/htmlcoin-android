@@ -11,7 +11,9 @@ public class CurrentNetParams {
     public static NetworkParameters getNetParams(){
         if(BuildConfig.FLAVOR.equalsIgnoreCase("dev")) {
             return HtmlCoinRegTestParams.get();
-        } else if(BuildConfig.FLAVOR.equalsIgnoreCase("regtest")) {
+        } else if(BuildConfig.FLAVOR.equalsIgnoreCase("stagingTestnet")) {
+            return HtmlCoinTestNetParams.get();
+        } else if(BuildConfig.FLAVOR.equalsIgnoreCase("stagingRegtest")) {
             return HtmlCoinRegTestParams.get();
         } else {
             return HtmlCoinMainNetParams.get();
