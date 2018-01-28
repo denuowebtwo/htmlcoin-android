@@ -99,7 +99,7 @@ android {
         }
         mainnet {
             applicationId "com.htmlcoin.wallet.app"
-            buildConfigField 'String', 'SERVER_URL', '\"http://explorer.htmlcoin.com\"' // TBC
+            buildConfigField 'String', 'SERVER_URL', '\"http://api.htmlcoin.com\"' // TODO TLS
         }
         stagingTestnet {
             applicationId "com.htmlcoin.wallet.app.staging.testnet"
