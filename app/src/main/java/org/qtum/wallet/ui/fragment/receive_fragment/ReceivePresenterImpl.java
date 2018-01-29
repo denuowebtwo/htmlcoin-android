@@ -127,7 +127,7 @@ public class ReceivePresenterImpl extends BaseFragmentPresenterImpl implements R
 
                     @Override
                     public void onNext(AddressBalance addressBalance) {
-                        getView().updateBalance(addressBalance.getBalance().toString());
+                        getView().updateBalance(addressBalance.getBalance().toPlainString(), addressBalance.getUnconfirmedBalance().toPlainString());
                     }
                 });
     }

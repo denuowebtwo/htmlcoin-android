@@ -20,7 +20,7 @@ public class AddressBalance {
     }
 
     public BigDecimal getUnconfirmedBalance() {
-        if (unconfirmedBalance.compareTo(BigDecimal.ZERO) > 0 )
+        if (unconfirmedBalance.compareTo(BigDecimal.ZERO) != 0 )
             return unconfirmedBalance.movePointLeft(8);
         return unconfirmedBalance;
     }
@@ -30,7 +30,7 @@ public class AddressBalance {
     }
 
     public BigDecimal getBalance() {
-        if (balance.compareTo(BigDecimal.ZERO) > 0 )
+        if (balance.compareTo(BigDecimal.ZERO) != 0 )
             return balance.movePointLeft(8);
         return balance;
     }

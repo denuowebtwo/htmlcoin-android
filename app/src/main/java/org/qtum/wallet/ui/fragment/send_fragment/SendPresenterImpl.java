@@ -189,7 +189,7 @@ public class SendPresenterImpl extends BaseFragmentPresenterImpl implements Send
         int gasLimit = getView().getGasLimitInput();
         int gasPrice = getView().getGasPriceInput();
 
-        if (currency.getName().equals("Qtum " + getView().getStringValue(org.qtum.wallet.R.string.default_currency))) {
+        if (currency.getName().equals("Html " + getView().getStringValue(org.qtum.wallet.R.string.default_currency))) {
             if(isAmountValid(amount)) {
                 getInteractor().sendTx(from, address, amount, fee, getView().getSendTransactionCallback());
             } else {
@@ -329,7 +329,7 @@ public class SendPresenterImpl extends BaseFragmentPresenterImpl implements Send
 
                     @Override
                     public void onNext(AddressBalance addressBalance) {
-                        getView().updateBalance(addressBalance.getBalance().toString(), addressBalance.getUnconfirmedBalance().toString());
+                        getView().updateBalance(addressBalance.getBalance().toPlainString(), addressBalance.getUnconfirmedBalance().toPlainString());
                     }
                 });
     }

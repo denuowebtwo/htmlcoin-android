@@ -24,7 +24,7 @@ class CurrencyInteractorImpl implements CurrencyInteractor {
     public List<Currency> getCurrencies() {
         List<Currency> currencies = new ArrayList<>();
         List<Token> tokens = (new TinyDB(mContext)).getTokenList();
-        Currency currency = new Currency("Qtum " + mContext.getString(R.string.default_currency));
+        Currency currency = new Currency("Html " + mContext.getString(R.string.default_currency));
         currencies.add(currency);
         for(Token token : tokens){
             if(token.isHasBeenCreated() && token.isSubscribe()){

@@ -46,7 +46,7 @@ public class TransactionDetailHolder extends RecyclerView.ViewHolder{
 
     void bindTransactionDetail(TransactionInfo transactionInfo){
         mTextViewAddress.setText(transactionInfo.getAddress());
-        mTextViewValue.setText(getSpannedBalance(String.format("%s HTML",transactionInfo.getValue().toString())));
+        mTextViewValue.setText(getSpannedBalance(String.format("%s HTML",transactionInfo.getValue().toPlainString())));
     }
 
     private SpannableString getSpannedBalance(String balance){

@@ -422,7 +422,7 @@ public abstract class SendFragment extends BaseFragment implements SendView {
             public void onButton2Click() {
                 mTextInputEditTextAddress.setText("");
                 mTextInputEditTextAmount.setText("");
-                mCurrency = new Currency("Qtum " + getContext().getString(R.string.default_currency));
+                mCurrency = new Currency("Html " + getContext().getString(R.string.default_currency));
                 mTextViewCurrency.setText(mCurrency.getName());
                 sendFrom = false;
                 getArguments().putString(ADDRESS_FROM, "");
@@ -438,7 +438,7 @@ public abstract class SendFragment extends BaseFragment implements SendView {
                 return false;
             }
         };
-        mCurrency = new Currency("Qtum " + getContext().getString(R.string.default_currency));
+        mCurrency = new Currency("Html " + getContext().getString(R.string.default_currency));
         showBottomNavView(true);
         ((MainActivity) getActivity()).setIconChecked(3);
         mImageButtonBack.setVisibility(View.GONE);
@@ -614,7 +614,7 @@ public abstract class SendFragment extends BaseFragment implements SendView {
         mLinearLayoutCurrency.setVisibility(View.VISIBLE);
         mTextViewCurrency.setText(currency.getName());
         mCurrency = currency;
-        if(mCurrency.getName().equals("Qtum " + getString(R.string.default_currency))){
+        if(mCurrency.getName().equals("Html " + getString(R.string.default_currency))){
             mRelativeLayoutGasManagementContainer.setVisibility(View.GONE);
         }else{
             mRelativeLayoutGasManagementContainer.setVisibility(View.VISIBLE);
@@ -623,7 +623,7 @@ public abstract class SendFragment extends BaseFragment implements SendView {
 
     @Override
     public void setUpCurrencyField(@StringRes int defaultCurrId) {
-        Currency currency = new Currency("Qtum " + getContext().getString(defaultCurrId));
+        Currency currency = new Currency("Html " + getContext().getString(defaultCurrId));
         setUpCurrencyField(currency);
     }
 

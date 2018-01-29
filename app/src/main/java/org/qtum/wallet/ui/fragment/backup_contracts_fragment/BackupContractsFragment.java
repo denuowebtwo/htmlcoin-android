@@ -96,8 +96,8 @@ public abstract class BackupContractsFragment extends BaseFragment implements Ba
         intentShareFile.putExtra(Intent.EXTRA_STREAM, Uri.parse("file://"+absolutePath));
 
         intentShareFile.putExtra(Intent.EXTRA_SUBJECT,
-                "Qtum Backup File");
-        intentShareFile.putExtra(Intent.EXTRA_TEXT, "Qtum Backup File");
+                "Html Backup File");
+        intentShareFile.putExtra(Intent.EXTRA_TEXT, "Html Backup File");
         getMainActivity().startActivity(Intent.createChooser(intentShareFile, "Share File"));
     }
 
