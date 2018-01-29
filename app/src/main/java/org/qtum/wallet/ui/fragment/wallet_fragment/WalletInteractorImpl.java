@@ -103,7 +103,7 @@ public class WalletInteractorImpl implements WalletInteractor {
         BigDecimal totalVout = new BigDecimal("0.0");
         for (Vout vout : history.getVout()) {
             for (String address : addresses) {
-                if (vout.getAddress().equals(address)) {
+                if (address.equals(vout.getAddress())) {
                     vout.setOwnAddress(true);
                     totalVout = totalVout.add(vout.getValue());
                 }

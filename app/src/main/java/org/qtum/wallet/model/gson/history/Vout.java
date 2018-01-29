@@ -52,7 +52,7 @@ public class Vout extends TransactionInfo {
     }
 
     public String getAddress() {
-        if (scriptPubKey != null && scriptPubKey.getAddresses().length > 0)
+        if (scriptPubKey != null && scriptPubKey.getAddresses() != null && scriptPubKey.getAddresses().length > 0)
             return scriptPubKey.getAddresses()[0];
         return address;
     }
