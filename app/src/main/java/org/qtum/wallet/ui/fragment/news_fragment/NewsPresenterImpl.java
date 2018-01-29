@@ -18,7 +18,7 @@ public class NewsPresenterImpl extends BaseFragmentPresenterImpl implements News
 
     private NewsView mNewsFragmentView;
     private NewsInteractor mNewsFragmentInteractor;
-    private final String MEDIUM_QTUM_CHANEL = "@qtum";
+    private final String MEDIUM_QTUM_CHANEL = "@HTMLCOIN";
     private boolean mNetworkConnectedFlag = false;
 
     public NewsPresenterImpl(NewsView newsFragmentView, NewsInteractor newsInteractor) {
