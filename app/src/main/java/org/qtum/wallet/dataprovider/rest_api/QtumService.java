@@ -158,11 +158,11 @@ public class QtumService {
 
     public Observable<HistoryResponse> getHistoryListForSeveralAddresses(final List<String> addresses, final int limit, final int offset) {
         String addressString = Joiner.on(",").join(addresses);
-        return mServiceApi.getHistoryListForSeveralAddresses(addressString);
+        return mServiceApi.getHistoryListForSeveralAddresses(addressString, offset);
     }
 
     public Observable<List<History>> getHistoryList(final String address, final int limit, final int offset) {
-        return mServiceApi.getHistoryList(address);
+        return mServiceApi.getHistoryList(address, offset);
     }
 
     public Observable<AddressBalance> getAddressBalance(final List<String> addresses) {

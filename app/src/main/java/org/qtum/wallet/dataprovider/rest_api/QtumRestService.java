@@ -40,7 +40,7 @@ interface QtumRestService {
 
 //    @GET("/history/{address}/{limit}/{offset}")
     @GET("/api/addrs/{address}/txs")
-    Observable<List<History>> getHistoryList(@Path("address") String address);
+    Observable<List<History>> getHistoryList(@Path("address") String address, @Query("from") int from);
 
     @GET("/api/status")
     Observable<BlockChainInfo> getBlockChainInfo();
@@ -57,7 +57,7 @@ interface QtumRestService {
 
 //    @GET("/history/{limit}/{offset}")
     @GET("/api/addrs/{addresses}/txs")
-    Observable<HistoryResponse> getHistoryListForSeveralAddresses(@Path("addresses") String addresses);
+    Observable<HistoryResponse> getHistoryListForSeveralAddresses(@Path("addresses") String addresses, @Query("from") int from);
 
 //    @GET("/transactions/{tx_hash}")
     @GET("/api/tx/{tx_hash}")
