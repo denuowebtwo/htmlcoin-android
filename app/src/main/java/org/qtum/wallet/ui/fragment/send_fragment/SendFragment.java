@@ -633,6 +633,14 @@ public abstract class SendFragment extends BaseFragment implements SendView {
     }
 
     @Override
+    public void clearInputs() {
+        mTextInputEditTextAddress.setText("");
+        mTextInputEditTextAmount.setText("");
+        sendFrom = false;
+        getArguments().putString(ADDRESS_FROM, "");
+    }
+
+    @Override
     public void hideCurrencyField() {
         mLinearLayoutCurrency.setVisibility(View.GONE);
         mRelativeLayoutGasManagementContainer.setVisibility(View.GONE);
@@ -768,6 +776,7 @@ public abstract class SendFragment extends BaseFragment implements SendView {
         @Override
         public void onSuccess() {
             setAlertDialog(org.qtum.wallet.R.string.payment_completed_successfully, "Ok", BaseFragment.PopUpType.confirm);
+            clearInputs();
         }
 
         @Override

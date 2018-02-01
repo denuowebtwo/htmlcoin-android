@@ -71,4 +71,6 @@ public interface SendView extends BaseFragmentView {
     void updateGasLimit(int minGasLimit, int maxGasLimit);
     int getGasPriceInput();
     int getGasLimitInput();
+
+    void clearInputs();
 }
