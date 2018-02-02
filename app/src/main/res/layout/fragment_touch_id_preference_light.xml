@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="@string/touch_id"
-                app:typefaceAsset="@string/proximaNovaSemibold"
+                android:fontFamily="@font/stymie_bold"
                 android:textColor="@color/white"
                 android:textSize="20sp"/>
         </android.support.v7.widget.Toolbar>
@@ -60,7 +60,7 @@
             android:text="@string/login_to_qtum_using_touch_id"
             android:textColor="@color/white"
             android:textSize="16sp"
-            app:typefaceAsset="@string/proximaNovaLight"/>
+            android:fontFamily="@font/stymie_light"/>
 
         <RelativeLayout
             android:id="@+id/rl_button_container"
@@ -78,8 +78,8 @@
                 android:background="@drawable/btn_gray_corner_background_light_alpha_30"
                 android:text="@string/enable_touch_id"
                 android:textAllCaps="true"
-                app:typeface="@string/proximaNovaSemibold"
-                android:textColor="@color/white"
+                android:fontFamily="@font/stymie_bold"
+                android:textColor="@color/color_custom_dark"
                 android:textSize="@dimen/button_text" />
 
             <org.qtum.wallet.utils.FontButton
@@ -91,11 +91,11 @@
                 android:layout_marginTop="8dp"
                 android:gravity="center"
                 android:padding="16dp"
-                app:typeface="@string/proximaNovaSemibold"
+                android:fontFamily="@font/stymie_bold"
                 android:background="@drawable/btn_gray_corner_background_light_alpha_30"
                 android:text="@string/not_now"
                 android:textAllCaps="true"
-                android:textColor="@color/white"
+                android:textColor="@color/color_custom_dark"
                 android:textSize="@dimen/button_text" />
         </RelativeLayout>
 
