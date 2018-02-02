@@ -21,7 +21,7 @@ public class ProfilePresenterImpl extends BaseFragmentPresenterImpl implements P
     private void initSettingsData() {
         if (settingsData == null) {
             settingsData = new ArrayList<>();
-            settingsData.add(new SettingObject(org.qtum.wallet.R.string.language, org.qtum.wallet.R.drawable.ic_language, 0));
+            settingsData.add(new SettingObject(org.qtum.wallet.R.string.language, org.qtum.wallet.R.drawable.icon_language, 0));
             settingsData.add(new SettingObject(org.qtum.wallet.R.string.change_pin, org.qtum.wallet.R.drawable.ic_changepin, 1));
             settingsData.add(new SettingObject(org.qtum.wallet.R.string.wallet_backup, org.qtum.wallet.R.drawable.ic_backup, 1));
             if (getView().checkAvailabilityTouchId()) {
