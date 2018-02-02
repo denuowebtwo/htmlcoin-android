@@ -29,14 +29,14 @@ public class SplashActivity extends BaseActivity implements SplashActivityView {
     private SplashActivityPresenter presenter;
     private static final int LAYOUT = R.layout.lyt_splash;
 
-    @BindView(R.id.ic_app_logo)
-    AppCompatImageView appLogo;
-
-    @BindView(R.id.ic_app_logo_red)
-    AppCompatImageView appLogoRed;
-
-    @BindView(R.id.ic_app_logo_white)
-    AppCompatImageView appLogoWhite;
+//    @BindView(R.id.ic_app_logo)
+//    AppCompatImageView appLogo;
+//
+//    @BindView(R.id.ic_app_logo_red)
+//    AppCompatImageView appLogoRed;
+//
+//    @BindView(R.id.ic_app_logo_white)
+//    AppCompatImageView appLogoWhite;
 
     @BindView(R.id.root_layout)
     RelativeLayout rootLayout;
@@ -59,51 +59,51 @@ public class SplashActivity extends BaseActivity implements SplashActivityView {
 
     @Override
     public void initializeViews() {
-        if(ThemeUtils.getCurrentTheme(this).equals(ThemeUtils.THEME_DARK)) {
-            appLogoWhite.setVisibility(View.INVISIBLE);
-            recolorStatusBar(R.color.background);
-            waitText.setTextColor(ContextCompat.getColor(this, R.color.colorPrimary));
-        } else {
-            appLogoRed.setVisibility(View.INVISIBLE);
-            recolorStatusBar(R.color.title_color_light);
-        }
-
-        if (appLogo.getHeight() == 0) {
-            appLogo.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-                @Override
-                public void onGlobalLayout() {
-                    appLogo.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-                    appLogoHeight = (appLogoHeight == 0) ? appLogo.getHeight() : appLogoHeight;
-                    DoTransition();
-                }
-            });
-        } else {
-            appLogoHeight = (appLogoHeight == 0) ? appLogo.getHeight() : appLogoHeight;
-            DoTransition();
-        }
+//        if(ThemeUtils.getCurrentTheme(this).equals(ThemeUtils.THEME_DARK)) {
+//            appLogoWhite.setVisibility(View.INVISIBLE);
+//            recolorStatusBar(R.color.background);
+//            waitText.setTextColor(ContextCompat.getColor(this, R.color.colorPrimary));
+//        } else {
+//            appLogoRed.setVisibility(View.INVISIBLE);
+//            recolorStatusBar(R.color.title_color_light);
+//        }
+//
+//        if (appLogo.getHeight() == 0) {
+//            appLogo.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+//                @Override
+//                public void onGlobalLayout() {
+//                    appLogo.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+//                    appLogoHeight = (appLogoHeight == 0) ? appLogo.getHeight() : appLogoHeight;
+//                    DoTransition();
+//                }
+//            });
+//        } else {
+//            appLogoHeight = (appLogoHeight == 0) ? appLogo.getHeight() : appLogoHeight;
+//            DoTransition();
+//        }
 
         startHandler = new Handler();
         startHandler.postDelayed(startRunnable,2000);
     }
 
-    private void DoTransition(){
-        TransitionManager.endTransitions(rootLayout);
-        appLogo.setClipBounds(new Rect(0,0,appLogoHeight,appLogoHeight));
-
-        if(ThemeUtils.getCurrentTheme(this).equals(ThemeUtils.THEME_LIGHT)){
-            appName.setClipBounds(new Rect(0,0,appName.getWidth(),appName.getHeight()));
-            lytLight.setClipBounds(new Rect(0,0,getResources().getDisplayMetrics().widthPixels,0));
-        }
-
-        TransitionManager.beginDelayedTransition(rootLayout, clip);
-        appLogo.setClipBounds(new Rect(0,0,appLogoHeight,0));
-
-        if(ThemeUtils.getCurrentTheme(this).equals(ThemeUtils.THEME_LIGHT)){
-            lytLight.setVisibility(View.VISIBLE);
-            appName.setClipBounds(new Rect(0,0,appName.getWidth(),0));
-            lytLight.setClipBounds(new Rect(0,0,getResources().getDisplayMetrics().widthPixels,getResources().getDisplayMetrics().heightPixels));
-        }
-    }
+//    private void DoTransition(){
+//        TransitionManager.endTransitions(rootLayout);
+//        appLogo.setClipBounds(new Rect(0,0,appLogoHeight,appLogoHeight));
+//
+//        if(ThemeUtils.getCurrentTheme(this).equals(ThemeUtils.THEME_LIGHT)){
+//            appName.setClipBounds(new Rect(0,0,appName.getWidth(),appName.getHeight()));
+//            lytLight.setClipBounds(new Rect(0,0,getResources().getDisplayMetrics().widthPixels,0));
+//        }
+//
+//        TransitionManager.beginDelayedTransition(rootLayout, clip);
+//        appLogo.setClipBounds(new Rect(0,0,appLogoHeight,0));
+//
+//        if(ThemeUtils.getCurrentTheme(this).equals(ThemeUtils.THEME_LIGHT)){
+//            lytLight.setVisibility(View.VISIBLE);
+//            appName.setClipBounds(new Rect(0,0,appName.getWidth(),0));
+//            lytLight.setClipBounds(new Rect(0,0,getResources().getDisplayMetrics().widthPixels,getResources().getDisplayMetrics().heightPixels));
+//        }
+//    }
 
     @Override
     protected void updateTheme() {
@@ -134,13 +134,13 @@ public class SplashActivity extends BaseActivity implements SplashActivityView {
     @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        clip = new ChangeClipBounds();
-        clip.addTarget(appLogo);
-        if(ThemeUtils.getCurrentTheme(this).equals(ThemeUtils.THEME_LIGHT)){
-            clip.addTarget(appName);
-            clip.addTarget(lytLight);
-        }
-        clip.setDuration(2000);
+//        clip = new ChangeClipBounds();
+//        clip.addTarget(appLogo);
+//        if(ThemeUtils.getCurrentTheme(this).equals(ThemeUtils.THEME_LIGHT)){
+//            clip.addTarget(appName);
+//            clip.addTarget(lytLight);
+//        }
+//        clip.setDuration(2000);
     }
 
     public void recolorStatusBar(int color){

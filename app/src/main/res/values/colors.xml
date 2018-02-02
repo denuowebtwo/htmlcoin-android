@@ -50,4 +50,11 @@
     <color name="chip_normal">#5cb6e5</color>
     <color name="qstore_background">#edf6f8</color>
 
+    <color name="color_custom_dark">#231f20</color>
+    <color name="color_custom_yellow_dark">#efc825</color>
+    <color name="color_custom_yellow">#f9e034</color>
+    <color name="color_custom_grey">#cccccc</color>
+    <color name="color_custom_blue">#369cd6</color>
+    <color name="color_custom_blue_dark">#2162af</color>
+
 </resources>
