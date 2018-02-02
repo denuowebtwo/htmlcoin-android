@@ -38,7 +38,7 @@
                 android:fontFamily="@font/stymie_bold"
                 android:background="@drawable/btn_gray_corner_background_light_alpha_30"
                 android:textAllCaps="true"
-                android:textColor="@color/black"
+                android:textColor="@color/color_custom_dark"
                 android:textSize="@dimen/button_text" />
 
 
@@ -63,7 +63,6 @@
                 android:layout_marginTop="8dp"
                 android:gravity="center"
                 android:padding="16dp"
-                app:typeface="@string/proximaNovaBold"
                 android:fontFamily="@font/stymie_bold"
                 android:text="@string/import_wallet"
                 android:textAllCaps="true"
@@ -93,7 +92,7 @@
             android:gravity="center"
             android:text="@string/create_the_first_one_or_restore_n_the_previous_wallet_key"
             android:textColor="@color/white"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:fontFamily="@font/stymie_light"
             />
 

@@ -27,7 +27,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="@string/import_wallet"
-                app:typefaceAsset="@string/proximaNovaSemibold"
+                android:fontFamily="@font/stymie_bold"
                 android:textColor="@color/white"
                 android:textSize="20sp"/>
         </android.support.v7.widget.Toolbar>
@@ -44,7 +44,7 @@
         <org.qtum.wallet.utils.FontEditText
             android:id="@+id/et_your_brain_code"
             android:layout_width="match_parent"
-            app:editTextTypeface="@string/proximaNovaRegular"
+            android:fontFamily="@font/stymie_light"
             android:layout_height="128dp"
             android:background="@drawable/background_et_import_wallet_light"
             android:gravity="left|top"
@@ -71,7 +71,7 @@
         android:layout_margin="8dp"
         android:background="@drawable/btn_gray_corner_background_light"
         android:text="@string/cancel"
-        app:typeface="@string/proximaNovaSemibold"
+        android:fontFamily="@font/stymie_bold"
         android:textAllCaps="true"
         android:textColor="@color/bottom_nav_bar_text_color_light"
         android:textSize="@dimen/button_text"/>
@@ -84,7 +84,7 @@
         android:layout_margin="8dp"
         android:gravity="center"
         android:layout_height="wrap_content"
-        app:typeface="@string/proximaNovaSemibold"
+        android:fontFamily="@font/stymie_bold"
         android:background="@drawable/btn_sea_corner_background_light_selector"
         android:text="@string/import_button"
         android:textAllCaps="true"
