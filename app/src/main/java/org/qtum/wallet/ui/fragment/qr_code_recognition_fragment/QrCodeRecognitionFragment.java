@@ -84,12 +84,12 @@ public class QrCodeRecognitionFragment extends Fragment implements ZXingScannerV
     public void handleResult(Result result) {
         String receiveAddr = "", tokenAddr = "", amount = "0.0";
 
-        Pattern pattern = Pattern.compile("qtum:(.*?)\\?");
+        Pattern pattern = Pattern.compile("htmlcoin:(.*?)\\?");
         Matcher matcher = pattern.matcher(result.getText());
         if (matcher.find()) {
             receiveAddr = matcher.group(1);
         } else {
-            pattern = Pattern.compile("qtum:(.*?)$");
+            pattern = Pattern.compile("htmlcoin:(.*?)$");
             matcher = pattern.matcher(result.getText());
             if (matcher.find()) {
                 receiveAddr = matcher.group(1);

@@ -147,6 +147,6 @@ public abstract class BackUpWalletFragment extends BaseFragment implements BackU
         intentShareFile.putExtra(Intent.EXTRA_SUBJECT,
                 "Html Wallet Backup");
         intentShareFile.putExtra(Intent.EXTRA_TEXT, text);
-        getMainActivity().startActivity(Intent.createChooser(intentShareFile, "Qtum Wallet Backup"));
+        getMainActivity().startActivity(Intent.createChooser(intentShareFile, "Html Wallet Backup"));
     }
 }

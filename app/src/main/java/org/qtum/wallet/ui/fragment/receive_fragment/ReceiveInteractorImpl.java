@@ -22,7 +22,7 @@ class ReceiveInteractorImpl implements ReceiveInteractor {
 
     @Override
     public String formatReceiveAddress(String addr) {
-        return String.format("qtum:%s?", addr);
+        return String.format("htmlcoin:%s?", addr);
     }
 
     @Override
