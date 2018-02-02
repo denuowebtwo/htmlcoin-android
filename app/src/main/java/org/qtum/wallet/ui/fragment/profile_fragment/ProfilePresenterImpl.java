@@ -28,10 +28,10 @@ public class ProfilePresenterImpl extends BaseFragmentPresenterImpl implements P
                 settingsData.add(new SettingSwitchObject(org.qtum.wallet.R.string.touch_id, org.qtum.wallet.R.drawable.ic_touchid, 1,
                         getInteractor().isTouchIdEnable()));
             }
-            settingsData.add(new SettingObject(org.qtum.wallet.R.string.smart_contracts, org.qtum.wallet.R.drawable.ic_prof_smartcontr, 2));
-            settingsData.add(new SettingObject(org.qtum.wallet.R.string.subscribe_tokens, org.qtum.wallet.R.drawable.ic_tokensubscribe, 2));
+//            settingsData.add(new SettingObject(org.qtum.wallet.R.string.smart_contracts, org.qtum.wallet.R.drawable.ic_prof_smartcontr, 2));
+//            settingsData.add(new SettingObject(org.qtum.wallet.R.string.subscribe_tokens, org.qtum.wallet.R.drawable.ic_tokensubscribe, 2));
             settingsData.add(new SettingObject(org.qtum.wallet.R.string.about, org.qtum.wallet.R.drawable.ic_about, 4));
-            settingsData.add(new SettingObject(org.qtum.wallet.R.string.switch_theme, org.qtum.wallet.R.drawable.ic_prof_theme, 4));
+//            settingsData.add(new SettingObject(org.qtum.wallet.R.string.switch_theme, org.qtum.wallet.R.drawable.ic_prof_theme, 4));
             settingsData.add(new SettingObject(org.qtum.wallet.R.string.log_out, org.qtum.wallet.R.drawable.ic_logout, 4));
         }
     }
