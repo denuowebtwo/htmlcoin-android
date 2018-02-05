@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:contentInsetStart="0dp"
-            android:background="@color/title_color_light"
+            android:background="@drawable/background_main"
             app:popupTheme="@style/AppTheme.PopupOverlay">
 
             <ImageButton

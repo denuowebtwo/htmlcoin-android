@@ -2,73 +2,82 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:weightSum="2"
     android:id="@+id/lyt_appbar_root"
     android:gravity="center"
     android:padding="8dp"
     android:orientation="vertical"
-    android:layout_height="56dp">
+    >
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/available_balance_view"
-        android:layout_weight="1"
+        android:orientation="vertical"
         android:padding="2dp"
         android:layout_width="match_parent"
-        android:layout_height="0dp">
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_gravity="center">
 
         <org.qtum.wallet.utils.FontTextView
             android:textColor="@color/white"
-            android:textSize="12sp"
+            android:textSize="18sp"
             android:id="@+id/tv_placeholder_balance_title"
             android:text="@string/available_balance"
+            android:textAllCaps="true"
             android:layout_width="wrap_content"
-            app:typefaceAsset="@string/proximaNovaRegular"
+            android:fontFamily="@font/stymie_bold"
             android:gravity="center"
-            android:layout_height="match_parent" />
+            android:textAlignment="center"
+            android:layout_height="wrap_content" />
 
         <org.qtum.wallet.utils.FontTextView
-            android:textColor="@color/white"
-            android:textSize="12sp"
-            android:layout_alignParentRight="true"
+            android:textColor="@color/color_custom_yellow"
+            android:textSize="14sp"
             android:id="@+id/tv_placeholder_balance_value"
-            app:typefaceAsset="@string/proximaNovaRegular"
+            android:fontFamily="@font/stymie_bold"
             android:text="0.0 HTML"
             android:layout_width="wrap_content"
             android:gravity="center"
-            android:layout_height="match_parent" />
+            android:textAlignment="center"
+            android:layout_height="wrap_content" />
 
-    </RelativeLayout>
+    </LinearLayout>
 
-    <RelativeLayout
-        android:visibility="gone"
+    <LinearLayout
+        android:orientation="vertical"
+        android:visibility="visible"
         android:id="@+id/not_confirmed_balance_view"
-        android:layout_weight="1"
         android:padding="2dp"
-        android:alpha=".6"
+        android:alpha=".8"
         android:layout_width="match_parent"
-        android:layout_height="0dp">
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center">
 
         <org.qtum.wallet.utils.FontTextView
             android:textColor="@color/white"
-            android:textSize="12sp"
+            android:textSize="16sp"
             android:id="@+id/tv_placeholder_not_confirmed_balance_title"
-            app:typefaceAsset="@string/proximaNovaRegular"
+            android:fontFamily="@font/stymie_bold"
             android:text="@string/not_confirmed_balance"
+            android:textAllCaps="true"
+            android:textAlignment="center"
             android:layout_width="wrap_content"
-            android:gravity="center"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content"
+            android:gravity="center"/>
 
         <org.qtum.wallet.utils.FontTextView
-            android:textColor="@color/white"
+            android:textColor="@color/color_custom_yellow"
             android:textSize="12sp"
-            android:layout_alignParentRight="true"
             android:id="@+id/tv_placeholder_not_confirmed_balance_value"
-            app:typefaceAsset="@string/proximaNovaRegular"
+            android:fontFamily="@font/stymie_bold"
             android:text="0.0 HTML"
+            android:textAlignment="center"
             android:layout_width="wrap_content"
-            android:gravity="center"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content"
+            android:gravity="center"/>
 
-    </RelativeLayout>
+    </LinearLayout>
 
 </LinearLayout>
