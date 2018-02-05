@@ -114,7 +114,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@+id/til_amount"
-                android:background="@color/qr_code_background">
+                android:background="@drawable/qr_code_background">
 
                 <FrameLayout
                     android:id="@+id/qr_code_boarder"
