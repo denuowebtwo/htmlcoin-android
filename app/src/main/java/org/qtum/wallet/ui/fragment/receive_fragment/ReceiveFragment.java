@@ -45,11 +45,11 @@ import com.google.zxing.common.BitMatrix;
 import org.qtum.wallet.R;
 import org.qtum.wallet.dataprovider.services.update_service.UpdateService;
 import org.qtum.wallet.dataprovider.services.update_service.listeners.BalanceChangeListener;
-import org.qtum.wallet.ui.fragment.addresses_fragment.AddressesFragment;
-import org.qtum.wallet.ui.fragment_factory.Factory;
 import org.qtum.wallet.ui.activity.main_activity.MainActivity;
 import org.qtum.wallet.ui.base.base_fragment.BaseFragment;
+import org.qtum.wallet.ui.fragment.addresses_fragment.AddressesFragment;
 import org.qtum.wallet.ui.fragment.wallet_fragment.WalletFragment;
+import org.qtum.wallet.ui.fragment_factory.Factory;
 import org.qtum.wallet.utils.FontManager;
 
 import java.io.File;
@@ -316,8 +316,8 @@ public abstract class ReceiveFragment extends BaseFragment implements ReceiveVie
             }
         });
 
-        mTextInputEditTextAmount.setTypeface(FontManager.getInstance().getFont(getString(org.qtum.wallet.R.string.simplonMonoRegular)));
-        mTextInputLayoutAmount.setTypeface(FontManager.getInstance().getFont(getString(org.qtum.wallet.R.string.simplonMonoRegular)));
+        mTextInputEditTextAmount.setTypeface(FontManager.getInstance().getFont(getString(R.string.simplonMonoRegular)));
+        mTextInputLayoutAmount.setTypeface(FontManager.getInstance().getFont(getString(R.string.simplonMonoRegular)));
 
         if (getArguments() != null) {
             String tokenAddr = getArguments().getString(TOKEN_ADDRESS, null);
