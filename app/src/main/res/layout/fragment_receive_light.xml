@@ -13,7 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay"
-        app:elevation="0dp">
+        app:elevation="0dp"
+        android:background="@drawable/background_main">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
@@ -23,7 +24,6 @@
             app:contentInsetStart="0dp"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:background="@color/title_color_light"
             app:popupTheme="@style/AppTheme.PopupOverlay">
 
             <LinearLayout
@@ -69,7 +69,13 @@
 
         </android.support.v7.widget.Toolbar>
 
+        <FrameLayout
+            android:id="@+id/balance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
+            <include layout="@layout/lyt_appbar_wallet_placeholder_light" />
+        </FrameLayout>
     </android.support.design.widget.AppBarLayout>
 
     <RelativeLayout
@@ -77,27 +83,11 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <View
-            android:id="@+id/divider"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/background" />
-
-        <FrameLayout
-            android:id="@+id/balance"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/title_color_light">
-
-            <include layout="@layout/lyt_appbar_wallet_placeholder_light" />
-        </FrameLayout>
-
         <RelativeLayout
             android:id="@+id/rl_receive"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_above="@+id/buttons"
-            android:layout_below="@+id/balance"
             android:clickable="true"
             android:focusable="true"
             android:focusableInTouchMode="true"

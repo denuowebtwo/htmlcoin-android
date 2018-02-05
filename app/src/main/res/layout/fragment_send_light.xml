@@ -12,13 +12,14 @@
         android:id="@+id/app_bar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:elevation="0dp">
+        app:elevation="0dp"
+        android:background="@drawable/background_main">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:background="@color/title_color_light"
+            android:background="@android:color/transparent"
             app:contentInsetEnd="0dp"
             app:contentInsetLeft="0dp"
             app:contentInsetRight="0dp"
@@ -69,7 +70,14 @@
             </RelativeLayout>
 
         </android.support.v7.widget.Toolbar>
+        <FrameLayout
+            android:id="@+id/balance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
+            <include
+                layout="@layout/lyt_appbar_wallet_placeholder_light"/>
+        </FrameLayout>
     </android.support.design.widget.AppBarLayout>
 
     <RelativeLayout
@@ -78,20 +86,11 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <FrameLayout
-            android:id="@+id/balance"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/title_color_light">
 
-            <include
-                layout="@layout/lyt_appbar_wallet_placeholder_light"/>
-        </FrameLayout>
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/balance"
             android:clickable="true"
             android:fillViewport="true"
             android:focusable="true"

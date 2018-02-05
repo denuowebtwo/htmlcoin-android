@@ -412,10 +412,10 @@ public abstract class ReceiveFragment extends BaseFragment implements ReceiveVie
 
     @Override
     public void updateBalance(String balance, String unconfirmedBalance) {
-        placeHolderBalance.setText(balance);
-        if (!TextUtils.isEmpty(unconfirmedBalance)) {
+        placeHolderBalance.setText(String.format("%s %s",balance, getContext().getString(R.string.currency_html)));
+        if (!TextUtils.isEmpty(unconfirmedBalance) && !"0".equals(unconfirmedBalance)) {
             notConfirmedBalancePlaceholder.setVisibility(View.VISIBLE);
-            placeHolderBalanceNotConfirmed.setText(unconfirmedBalance);
+            placeHolderBalanceNotConfirmed.setText(String.format("%s %s", unconfirmedBalance, getContext().getString(R.string.currency_html)));
         } else {
             notConfirmedBalancePlaceholder.setVisibility(View.GONE);
         }
