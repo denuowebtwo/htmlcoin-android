@@ -144,6 +144,8 @@
                     android:gravity="center"
                     android:maxLines="1"
                     android:padding="8dp"
+                    android:fontFamily="@font/stymie_bold"
+                    android:autoSizeTextType="uniform"
                     android:textColor="@color/qr_code_tint_color" />
 
                 <ProgressBar
