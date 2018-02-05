@@ -1,25 +1,21 @@
 package org.qtum.wallet.ui.activity.splash_activity;
 
 import android.content.Intent;
-import android.graphics.Rect;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.AppCompatImageView;
 import android.view.View;
-import android.view.ViewTreeObserver;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import org.qtum.wallet.R;
-import org.qtum.wallet.ui.base.base_activity.BaseActivity;
-import org.qtum.wallet.ui.activity.main_activity.MainActivity;
-import org.qtum.wallet.utils.QtumIntent;
-import org.qtum.wallet.utils.ThemeUtils;
 import com.transitionseverywhere.ChangeClipBounds;
-import com.transitionseverywhere.TransitionManager;
+
+import org.qtum.wallet.R;
+import org.qtum.wallet.ui.activity.main_activity.MainActivity;
+import org.qtum.wallet.ui.base.base_activity.BaseActivity;
+import org.qtum.wallet.utils.QtumIntent;
 
 import butterknife.BindView;
 
@@ -121,6 +117,11 @@ public class SplashActivity extends BaseActivity implements SplashActivityView {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(LAYOUT);
+
+        View decorView = getWindow().getDecorView();
+        // Hide the status bar.
+        int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
+        decorView.setSystemUiVisibility(uiOptions);
     }
 
     @Override
