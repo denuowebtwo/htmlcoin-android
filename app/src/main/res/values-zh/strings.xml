@@ -8,7 +8,8 @@
     <string name="wallet_name">钱包名称</string>
     <string name="my_wallet">我的钱包</string>
     <string name="public_key">公钥</string>
-    <string name="qtum">QTUM</string>
+    <string name="currency_html">HTML</string>
+    <string name="qtum">HTML</string>
     <string name="receive">接收</string>
     <string name="send">发送</string>
     <string name="activity">活动</string>
@@ -138,7 +139,7 @@
     <string name="smart_contract_parameters">智能合约参数</string>
     <string name="switch_theme">切换应用主题</string>
     <string name="confirmation">确认…</string>
-    <string name="qtum_address">QTUM地址</string>
+    <string name="qtum_address">HTMLCOIN地址</string>
     <string name="not_confirmed_yet">还未确认…</string>
     <string name="confirmed">已确认</string>
     <string name="preview">预览</string>
