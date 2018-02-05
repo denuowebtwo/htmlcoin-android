@@ -110,6 +110,9 @@
     <string name="proximaNovaRegular" translatable="false">fonts/proximanovaregular.ttf</string>
     <string name="proximaNovaSemibold" translatable="false">fonts/proximanovasemibold.ttf</string>
 
+
+    <string name="font_stymie_bold">fonts/stymie_bold.ttf</string>
+
     <string name="retry">RETRY</string>
 
     <string name="smart_contracts">Smart Contracts</string>

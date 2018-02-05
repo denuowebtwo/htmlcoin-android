@@ -25,7 +25,7 @@
     <color name="file_size_color">#4d2e9ad0</color>
     <color name="switch_non_checked">#656569</color>
 
-    <color name="bottom_nav_bar_color_light">#edf6f8</color>
+    <color name="bottom_nav_bar_color_light">#f5f5f5</color>
     <color name="unsubscribe_background">#919da8</color>
     <color name="bottom_nav_bar_text_color_light">#4e5d6f</color>
     <color name="bottom_nav_bar_text_color_light_alpha_60">#994e5d6f</color>

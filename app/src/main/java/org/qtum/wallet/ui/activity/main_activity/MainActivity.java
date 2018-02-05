@@ -359,7 +359,7 @@ public class MainActivity extends BaseActivity implements MainActivityView {
     @Override
     public void initializeViews() {
 
-        initBottomNavViewWithFont((ThemeUtils.getCurrentTheme(this).equals(ThemeUtils.THEME_DARK) ? R.string.simplonMonoRegular : R.string.proximaNovaRegular));
+        initBottomNavViewWithFont((ThemeUtils.getCurrentTheme(this).equals(ThemeUtils.THEME_DARK) ? R.string.font_stymie_bold : R.string.font_stymie_bold));
 
         mBottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
