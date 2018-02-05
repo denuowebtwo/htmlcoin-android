@@ -166,7 +166,7 @@
 
     <string name="switch_theme">Switch Application Theme</string>
     <string name="confirmation">Confirmation…</string>
-    <string name="qtum_address">HTML Address</string>
+    <string name="qtum_address">HTMLCOIN Address</string>
     <string name="not_confirmed_yet">Not Confirmed Yet…</string>
     <string name="confirmed">Confirmed</string>
     <string name="preview">Preview</string>

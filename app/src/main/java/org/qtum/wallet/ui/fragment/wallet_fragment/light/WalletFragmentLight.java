@@ -110,14 +110,14 @@ public class WalletFragmentLight extends WalletFragment {
     public void updateBalance(String balance, String unconfirmedBalance) {
         try {
 
-        balanceValue.setText(getSpannedBalance(String.format("%s HTML",balance)));
-        placeHolderBalance.setText(getSpannedBalance(String.format("%s HTML",balance)));
-        if(unconfirmedBalance != null) {
+        balanceValue.setText(String.format("%s HTML",balance));
+        placeHolderBalance.setText(String.format("%s HTML",balance));
+        if(unconfirmedBalance != null && !"0".equals(unconfirmedBalance)) {
             notConfirmedBalancePlaceholder.setVisibility(View.VISIBLE);
             uncomfirmedBalanceValue.setVisibility(View.VISIBLE);
             uncomfirmedBalanceTitle.setVisibility(View.VISIBLE);
-            uncomfirmedBalanceValue.setText(getSpannedBalance(String.format("%s HTML", unconfirmedBalance)));
-            placeHolderBalanceNotConfirmed.setText(getSpannedBalance(String.format("%s HTML", unconfirmedBalance)));
+            uncomfirmedBalanceValue.setText(String.format("%s HTML", unconfirmedBalance));
+            placeHolderBalanceNotConfirmed.setText(String.format("%s HTML", unconfirmedBalance));
         } else {
             notConfirmedBalancePlaceholder.setVisibility(View.GONE);
             uncomfirmedBalanceValue.setVisibility(View.GONE);
