@@ -53,7 +53,7 @@
                     android:text="@string/send"
                     android:textColor="@color/white"
                     android:textSize="@dimen/toolbar_text_size"
-                    app:typefaceAsset="@string/proximaNovaSemibold"/>
+                    android:fontFamily="@font/stymie_bold"/>
 
                 <ImageButton
                     android:id="@+id/bt_qr_code"
@@ -118,6 +118,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="left"
                         android:hint="@string/receiver_s_address"
+                        android:fontFamily="@font/stymie_light"
                         android:inputType="textPersonName"/>
                 </android.support.design.widget.TextInputLayout>
 
@@ -136,6 +137,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="left"
                         android:hint="@string/_fee"
+                        android:fontFamily="@font/stymie_light"
                         android:inputType="numberDecimal"/>
                 </android.support.design.widget.TextInputLayout>
 
@@ -157,7 +159,7 @@
                         android:text="@string/currency"
                         android:textColor="@color/bottom_nav_bar_text_color_light_alpha_60"
                         android:textSize="12sp"
-                        app:typefaceAsset="@string/proximaNovaRegular"/>
+                        android:fontFamily="@font/stymie_light"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -171,7 +173,7 @@
                             android:layout_weight="1"
                             android:gravity="left"
                             android:textSize="16sp"
-                            app:typefaceAsset="@string/proximaNovaSemibold"/>
+                            android:fontFamily="@font/stymie_bold"/>
 
                         <ImageView
                             android:layout_width="wrap_content"
@@ -202,6 +204,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="left"
                         android:hint="@string/amount"
+                        android:fontFamily="@font/stymie_light"
                         android:inputType="numberDecimal"/>
                 </android.support.design.widget.TextInputLayout>
 
@@ -220,7 +223,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:textColor="@color/black"
-                        app:typefaceAsset="@string/proximaNovaRegular"/>
+                        android:fontFamily="@font/stymie_light"/>
 
                     <org.qtum.wallet.utils.FontTextView
                         android:id="@+id/tv_max_fee"
@@ -228,7 +231,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:textColor="@color/black"
-                        app:typefaceAsset="@string/proximaNovaRegular"/>
+                        android:fontFamily="@font/stymie_light"/>
 
                 </LinearLayout>
 
@@ -274,7 +277,7 @@
                                     android:layout_gravity="center"
                                     android:text="Gas Price: "
                                     android:textColor="@color/black"
-                                    app:typefaceAsset="@string/proximaNovaRegular"/>
+                                    android:fontFamily="@font/stymie_light"/>
 
                                 <org.qtum.wallet.utils.FontTextView
                                     android:id="@+id/tv_gas_price"
@@ -282,7 +285,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
                                     android:textColor="@color/light_blue"
-                                    app:typefaceAsset="@string/proximaNovaRegular"/>
+                                    android:fontFamily="@font/stymie_light"/>
                             </LinearLayout>
 
                             <LinearLayout
@@ -298,7 +301,7 @@
                                     android:layout_gravity="center"
                                     android:text="Gas Limit: "
                                     android:textColor="@color/black"
-                                    app:typefaceAsset="@string/proximaNovaRegular"/>
+                                    android:fontFamily="@font/stymie_light"/>
 
                                 <org.qtum.wallet.utils.FontTextView
                                     android:id="@+id/tv_gas_limit"
@@ -306,7 +309,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
                                     android:textColor="@color/light_blue"
-                                    app:typefaceAsset="@string/proximaNovaRegular"/>
+                                    android:fontFamily="@font/stymie_light"/>
                             </LinearLayout>
 
                         </LinearLayout>
@@ -331,7 +334,7 @@
                                     android:layout_weight="1"
                                     android:layout_gravity="center"
                                     android:textColor="@color/black"
-                                    app:typefaceAsset="@string/proximaNovaRegular"/>
+                                    android:fontFamily="@font/stymie_light"/>
 
                                 <org.qtum.wallet.utils.FontTextView
                                     android:id="@+id/tv_max_gas_price"
@@ -339,7 +342,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
                                     android:textColor="@color/black"
-                                    app:typefaceAsset="@string/proximaNovaRegular"/>
+                                    android:fontFamily="@font/stymie_light"/>
 
                             </LinearLayout>
 
@@ -365,7 +368,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
                                     android:textColor="@color/black"
-                                    app:typefaceAsset="@string/proximaNovaRegular"/>
+                                    android:fontFamily="@font/stymie_light"/>
 
                                 <org.qtum.wallet.utils.FontTextView
                                     android:id="@+id/tv_max_gas_limit"
@@ -373,7 +376,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
                                     android:textColor="@color/black"
-                                    app:typefaceAsset="@string/proximaNovaRegular"/>
+                                    android:fontFamily="@font/stymie_light"/>
 
                             </LinearLayout>
 
@@ -402,9 +405,9 @@
                             android:padding="16dp"
                             android:text="@string/edit"
                             android:textAllCaps="true"
-                            android:textColor="@color/bt_grey_text_color"
+                            android:textColor="@color/color_custom_dark"
                             android:textSize="16sp"
-                            app:typeface="@string/proximaNovaSemibold"/>
+                            android:fontFamily="@font/stymie_bold"/>
 
                     </RelativeLayout>
 
@@ -422,9 +425,9 @@
                         android:stateListAnimator="@null"
                         android:text="@string/send"
                         android:textAllCaps="true"
-                        android:textColor="@color/white"
+                        android:textColor="@color/color_custom_dark"
                         android:textSize="@dimen/button_text"
-                        app:typeface="@string/proximaNovaSemibold"/>
+                        android:fontFamily="@font/stymie_bold"/>
 
                 </LinearLayout>
 
