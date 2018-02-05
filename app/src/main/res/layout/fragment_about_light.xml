@@ -43,7 +43,7 @@
                 android:text="@string/about"
                 android:textColor="@color/white"
                 android:textSize="20sp"
-                app:typefaceAsset="@string/proximaNovaSemibold"/>
+                android:fontFamily="@font/stymie_bold"/>
         </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>
@@ -57,8 +57,8 @@
 
         <android.support.v7.widget.AppCompatImageView
             android:layout_width="300dp"
-            android:layout_height="82dp"
-            app:srcCompat="@drawable/ic_qtum_logo_with_text"
+            android:layout_height="150dp"
+            app:srcCompat="@mipmap/logo"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="135dp"/>
@@ -71,7 +71,7 @@
             android:text="@string/_2017_qtum_n_skynet_testnet_version"
             android:textColor="@color/grey"
             android:textSize="18sp"
-            app:typefaceAsset="@string/avenir"
+            android:fontFamily="@font/stymie_bold"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="64dp"/>
