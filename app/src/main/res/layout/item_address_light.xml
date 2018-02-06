@@ -93,7 +93,7 @@
             android:paddingStart="16dp"
             android:text="@string/token_name"
             android:textColor="@color/color_custom_dark"
-            android:autoSizeTextType="uniform" />
+            android:textSize="@dimen/button_text" />
 
     </RelativeLayout>
 
