@@ -52,6 +52,7 @@
         android:id="@+id/rl_back_up_file"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:onClick="hideKeyBoard"
         android:background="@color/select_file_background"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
