@@ -2,14 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:id="@+id/root_layout"
-    android:clickable="true"
     android:layout_width="match_parent"
+    android:layout_height="64dp"
     android:background="?attr/selectableItemBackground"
-    android:weightSum="2"
+    android:clickable="true"
+    android:orientation="vertical"
     android:paddingTop="4dp"
-    android:layout_height="54dp">
+    android:weightSum="2">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -17,56 +17,58 @@
         android:layout_weight="1">
 
         <ImageView
+            android:id="@+id/iv_transfer"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
             android:layout_marginStart="16dp"
-            android:id="@+id/iv_transfer"
-            app:srcCompat="@drawable/ic_transfer_light"
-            android:layout_alignParentStart="true"
-            android:layout_width="24dp"
-            android:layout_height="24dp" />
+            app:srcCompat="@drawable/icon_transfer_light" />
 
         <TextView
             android:id="@+id/txt_transfer"
-            android:textSize="12sp"
-            android:textColor="@color/bottom_nav_bar_text_color_light"
-            android:layout_toEndOf="@+id/iv_transfer"
-            android:text="@string/transfer"
             android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toEndOf="@+id/iv_transfer"
+            android:fontFamily="@font/stymie_bold"
             android:gravity="center_vertical"
-            android:layout_height="match_parent" />
+            android:layout_marginLeft="4dp"
+            android:text="@string/transfer"
+            android:textColor="@color/color_custom_blue_dark"
+            android:textSize="16sp" />
 
         <RelativeLayout
             android:id="@+id/ll_balance"
-            android:layout_toEndOf="@+id/txt_transfer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginEnd="16dp"
+            android:layout_toEndOf="@+id/txt_transfer"
             android:minWidth="30dp"
             android:orientation="horizontal">
 
             <org.qtum.wallet.utils.FontTextView
-                android:layout_marginStart="8dp"
                 android:id="@+id/address_balance"
                 android:layout_width="match_parent"
-                android:gravity="end"
+                android:layout_height="match_parent"
+                android:layout_marginStart="8dp"
                 android:layout_toStartOf="@+id/address_symbol"
-                android:layout_height="wrap_content"
-                android:textColor="@color/bottom_nav_bar_text_color_light"
-                android:textSize="18sp"
-                app:typefaceAsset="@string/proximaNovaSemibold"
+                android:fontFamily="@font/stymie_bold"
+                android:gravity="end|center"
+                android:textColor="@color/color_custom_blue_dark"
+                android:textSize="14sp"
                 tools:text="15.0" />
 
             <org.qtum.wallet.utils.FontTextView
                 android:id="@+id/address_symbol"
-                android:gravity="center"
-                android:layout_alignParentEnd="true"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:textColor="@color/bottom_nav_bar_text_color_light_alpha_60"
+                android:layout_alignParentEnd="true"
+                android:fontFamily="@font/stymie_bold"
+                android:gravity="center"
+                android:textColor="@color/color_custom_blue_dark"
                 android:textSize="14sp"
-                app:typefaceAsset="@string/proximaNovaRegular"
                 tools:text="@string/qtum" />
 
         </RelativeLayout>
@@ -84,22 +86,22 @@
             android:layout_height="match_parent"
             android:layout_marginEnd="16dp"
             android:ellipsize="end"
+            android:fontFamily="@font/stymie_light"
             android:gravity="center_vertical"
             android:maxLines="1"
-            android:paddingStart="16dp"
             android:paddingEnd="16dp"
+            android:paddingStart="16dp"
             android:text="@string/token_name"
-            android:textColor="@color/bottom_nav_bar_text_color_light_alpha_60"
-            android:textSize="16sp"
-            app:typefaceAsset="@string/proximaNovaRegular" />
+            android:textColor="@color/color_custom_dark"
+            android:autoSizeTextType="uniform" />
 
     </RelativeLayout>
 
     <View
-        android:layout_marginTop="4dp"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="4dp"
         android:alpha=".1"
         android:background="@color/bottom_nav_bar_text_color_light" />
 
