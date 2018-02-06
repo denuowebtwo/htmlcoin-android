@@ -27,6 +27,7 @@ public class QtumSharedPreference {
     private final String FAILED_ATTEMPTS_COUNT = "failed_attempts_count";
     private final String MIN_GAS_PRICE = "min_gas_price";
     private final String FEE_PER_KB = "fee_per_kb";
+    private final String HTMLCOIN_IS_REFRESH_NEEDED = "qtum_is_refresh_needed";
 
     private List<LanguageChangeListener> mLanguageChangeListeners;
 
@@ -185,4 +186,14 @@ public class QtumSharedPreference {
         return context.getSharedPreferences(QTUM_DATA_STORAGE, Context.MODE_PRIVATE).getString(FEE_PER_KB, "0.00001");
     }
 
+    public void setIsRefreshNeeded(Context context, Boolean isRefresh) {
+        SharedPreferences mSharedPreferences = context.getSharedPreferences(QTUM_DATA_STORAGE, Context.MODE_PRIVATE);
+        SharedPreferences.Editor mEditor = mSharedPreferences.edit();
+        mEditor.putBoolean(HTMLCOIN_IS_REFRESH_NEEDED, isRefresh);
+        mEditor.apply();
+    }
+
+    public Boolean getIsRefreshNeeded(Context context) {
+        return context.getSharedPreferences(QTUM_DATA_STORAGE, Context.MODE_PRIVATE).getBoolean(HTMLCOIN_IS_REFRESH_NEEDED, false);
+    }
 }

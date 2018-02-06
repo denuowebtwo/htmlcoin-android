@@ -190,4 +190,4 @@ dependencies {
 
     compile "com.daimajia.swipelayout:library:1.2.0@aar"
 }
-//apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.gms.google-services'

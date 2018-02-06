@@ -30,6 +30,7 @@ import org.qtum.wallet.dataprovider.receivers.network_state_receiver.listeners.N
 import org.qtum.wallet.dataprovider.services.update_service.UpdateService;
 import org.qtum.wallet.dataprovider.services.update_service.listeners.BalanceChangeListener;
 import org.qtum.wallet.dataprovider.services.update_service.listeners.TransactionListener;
+import org.qtum.wallet.datastorage.QtumSharedPreference;
 import org.qtum.wallet.model.gson.history.History;
 import org.qtum.wallet.ui.activity.main_activity.MainActivity;
 import org.qtum.wallet.ui.fragment.qtum_cash_management_fragment.AddressListFragment;
@@ -164,6 +165,12 @@ public abstract class WalletFragment extends BaseFragment implements WalletView,
         }
         if (OPEN_QR_CODE_FRAGMENT_FLAG) {
             openQrCodeFragment();
+        }
+
+        // check refresh need
+        if(QtumSharedPreference.getInstance().getIsRefreshNeeded(getContext())) {
+            getPresenter().onRefresh();
+            QtumSharedPreference.getInstance().setIsRefreshNeeded(getContext(), false);
         }
     }
 
