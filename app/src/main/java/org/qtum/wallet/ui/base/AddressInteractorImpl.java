@@ -1,15 +1,17 @@
 package org.qtum.wallet.ui.base;
 
 import android.content.Context;
+import android.util.Log;
 
 import org.qtum.wallet.dataprovider.rest_api.QtumService;
 import org.qtum.wallet.datastorage.KeyStorage;
 import org.qtum.wallet.model.AddressWithBalance;
 import org.qtum.wallet.model.gson.AddressBalance;
+import org.qtum.wallet.model.gson.AddressDeviceTokenRequest;
+import org.qtum.wallet.model.gson.AddressDeviceTokenResponse;
 import org.qtum.wallet.model.gson.UnspentOutput;
 
 import java.lang.ref.WeakReference;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +20,7 @@ import rx.Subscriber;
 import rx.schedulers.Schedulers;
 
 public class AddressInteractorImpl implements AddressInteractor {
-
+    private static final String LOG_TAG = "AddressInteractor";
     private WeakReference<Context> mContext;
 
     public AddressInteractorImpl(Context context) {
@@ -83,5 +85,31 @@ public class AddressInteractorImpl implements AddressInteractor {
     @Override
     public Observable<AddressBalance> getAddressBalance(final List<String> addresses) {
         return QtumService.newInstance().getAddressBalance(addresses);
+    }
+
+    @Override
+    public Boolean updateAddressDeviceToken(String[] addresses, String token) {
+        AddressDeviceTokenRequest addressDeviceToken = new AddressDeviceTokenRequest(addresses, token);
+
+        QtumService.newInstance().updateDeviceToken(addressDeviceToken)
+                .subscribeOn(Schedulers.io())
+                .subscribe(new Subscriber<AddressDeviceTokenResponse>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.e(LOG_TAG, e.getMessage(), e);
+                    }
+
+                    @Override
+                    public void onNext(AddressDeviceTokenResponse addressDeviceTokenResponse) {
+                        Log.i(LOG_TAG, "Success");
+                    }
+                });
+
+        return true;
     }
 }
