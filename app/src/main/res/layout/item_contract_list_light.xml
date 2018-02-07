@@ -33,7 +33,7 @@
                 android:text="Unsubscribe"
                 android:textColor="@color/white"
                 android:textSize="18sp"
-                app:typefaceAsset="@string/proximaNovaRegular"/>
+                android:fontFamily="@font/stymie_light"/>
 
         </LinearLayout>
 
@@ -58,7 +58,7 @@
             android:text="@string/about"
             android:textColor="@color/bottom_nav_view_item_color"
             android:textSize="18sp"
-            app:typefaceAsset="@string/proximaNovaRegular"/>
+            android:fontFamily="@font/stymie_light"/>
 
         <android.support.v7.widget.AppCompatImageView
             android:id="@+id/arrow"
@@ -83,7 +83,7 @@
             android:text="@string/about"
             android:textColor="@color/bottom_nav_view_item_color"
             android:textSize="16sp"
-            app:typefaceAsset="@string/proximaNovaLight"/>
+            android:fontFamily="@font/stymie_light"/>
 
         <org.qtum.wallet.utils.FontTextView
             android:id="@+id/contract_type"
@@ -102,7 +102,7 @@
             android:text="@string/about"
             android:textColor="@color/white"
             android:textSize="12sp"
-            app:typefaceAsset="@string/proximaNovaRegular"/>
+            android:fontFamily="@font/stymie_light"/>
 
         <View
             android:layout_width="match_parent"

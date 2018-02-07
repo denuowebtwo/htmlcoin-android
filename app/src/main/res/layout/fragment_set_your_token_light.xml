@@ -47,7 +47,7 @@
                     android:text="@string/smart_contract_parameters"
                     android:textColor="@color/white"
                     android:textSize="18sp"
-                    app:typefaceAsset="@string/proximaNovaSemibold" />
+                    android:fontFamily="@font/stymie_bold" />
 
                 <org.qtum.wallet.utils.FontButton
                     android:id="@+id/confirm"
@@ -81,7 +81,7 @@
             android:text="@string/step_2_2"
             android:textSize="12sp"
             android:gravity="center"
-            app:typefaceAsset="@string/proximaNovaRegular"
+            android:fontFamily="@font/stymie_light"
             android:padding="4dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />

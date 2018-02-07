@@ -43,7 +43,7 @@
             android:text="Restore Contracts"
             android:textColor="@color/background"
             android:textSize="@dimen/toolbar_text_size"
-            app:typefaceAsset="@string/euclidFlexMedium" />
+            android:fontFamily="@font/stymie_bold" />
     </android.support.v7.widget.Toolbar>
 
 </android.support.design.widget.AppBarLayout>
@@ -80,7 +80,7 @@
                 android:paddingTop="14dp"
                 android:text="@string/select_back_up_file"
                 android:textSize="18sp"
-                app:typefaceAsset="@string/simplonMonoRegular"
+                android:fontFamily="@font/stymie_light"
                 android:textColor="@color/colorPrimary"/>
 
             <org.qtum.wallet.utils.FontTextView
@@ -93,7 +93,7 @@
                 android:visibility="gone"
                 android:text="15 Kb"
                 android:textSize="18sp"
-                app:typefaceAsset="@string/simplonMonoRegular"
+                android:fontFamily="@font/stymie_light"
                 android:textColor="@color/file_size_color"/>
 
         </LinearLayout>

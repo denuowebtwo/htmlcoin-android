@@ -21,7 +21,7 @@
             android:gravity="center"
             android:text="@string/copy_to_share"
             android:textSize="18sp"
-            app:typefaceAsset="@string/simplonMonoMedium" />
+            android:fontFamily="@font/stymie_bold" />
 
         <org.qtum.wallet.utils.FontTextView
             android:layout_width="wrap_content"
@@ -30,7 +30,7 @@
             android:ellipsize="end"
             android:maxLines="1"
             android:text="@string/contract_address"
-            app:typefaceAsset="@string/simplonMonoRegular" />
+            android:fontFamily="@font/stymie_light" />
 
         <org.qtum.wallet.utils.FontTextView
             android:id="@+id/tv_address"
@@ -41,7 +41,7 @@
             android:maxLines="1"
             android:text="N/A"
             android:textSize="16sp"
-            app:typefaceAsset="@string/simplonMonoRegular" />
+            android:fontFamily="@font/stymie_light" />
 
         <org.qtum.wallet.utils.FontButton
             android:id="@+id/copy_addr_btn"
@@ -67,7 +67,7 @@
             android:ellipsize="end"
             android:maxLines="1"
             android:text="@string/abi_interface"
-            app:typefaceAsset="@string/simplonMonoRegular" />
+            android:fontFamily="@font/stymie_light" />
 
         <org.qtum.wallet.utils.FontTextView
             android:id="@+id/tv_abi"
@@ -79,7 +79,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:textSize="16sp"
-            app:typefaceAsset="@string/simplonMonoRegular" />
+            android:fontFamily="@font/stymie_light" />
 
         <org.qtum.wallet.utils.FontButton
             android:id="@+id/copy_abi_btn"

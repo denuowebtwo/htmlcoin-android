@@ -49,7 +49,7 @@
                     android:text="@string/copy_brain_code"
                     android:textColor="@color/background"
                     android:textSize="@dimen/toolbar_text_size"
-                    app:typefaceAsset="@string/euclidFlexMedium" />
+                    android:fontFamily="@font/stymie_bold" />
 
                 <ImageButton
                     android:id="@+id/bt_share"
@@ -98,7 +98,7 @@
             android:text="@string/copy_brain_code_n_to_use_it_in_another_app"
             android:textColor="@color/colorPrimary"
             android:textSize="16sp"
-            app:typefaceAsset="@string/simplonMonoMedium"/>
+            android:fontFamily="@font/stymie_bold"/>
 
         <org.qtum.wallet.utils.FontTextView
             android:id="@+id/tv_you_can_skip"
@@ -111,7 +111,7 @@
             android:text="@string/you_can_skip_this_step_and_export_your_brain_code_at_any_time_you_want"
             android:textColor="@color/colorPrimary"
             android:textSize="16sp"
-            app:typefaceAsset="@string/simplonMonoMedium"/>
+            android:fontFamily="@font/stymie_bold"/>
 
     </RelativeLayout>
 

@@ -55,7 +55,7 @@
                     android:text="@string/store_categories"
                     android:textColor="@color/background"
                     android:textSize="@dimen/toolbar_text_size"
-                    app:typefaceAsset="@string/euclidFlexMedium" />
+                    android:fontFamily="@font/stymie_bold" />
 
                 <View
                     android:layout_alignParentBottom="true"

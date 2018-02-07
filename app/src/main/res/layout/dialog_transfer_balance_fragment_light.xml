@@ -18,7 +18,7 @@
         android:text="@string/transfer_balance"
         android:textColor="@color/background"
         android:textSize="18sp"
-        app:typefaceAsset="@string/proximaNovaSemibold"/>
+        android:fontFamily="@font/stymie_bold"/>
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/til_amount"
@@ -45,7 +45,7 @@
         android:layout_height="wrap_content"
         android:textSize="12dp"
         android:paddingBottom="4dp"
-        app:typefaceAsset="@string/proximaNovaRegular"
+        android:fontFamily="@font/stymie_light"
         android:textColor="@color/bottom_nav_bar_text_color_light_alpha_50"
         android:text="@string/to"/>
 
@@ -56,7 +56,7 @@
 
         <org.qtum.wallet.utils.FontTextView
             android:paddingBottom="4dp"
-            app:typefaceAsset="@string/proximaNovaSemibold"
+            android:fontFamily="@font/stymie_bold"
             android:id="@+id/tv_address_to"
             android:layout_width="0dp"
             android:maxLines="1"

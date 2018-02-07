@@ -22,7 +22,7 @@
         android:maxLines="1"
         android:gravity="left"
         android:ellipsize="end"
-        app:typefaceAsset="@string/proximaNovaRegular"
+        android:fontFamily="@font/stymie_light"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
@@ -39,7 +39,7 @@
         android:maxLines="1"
         android:gravity="left"
         android:ellipsize="end"
-        app:typefaceAsset="@string/proximaNovaSemibold"
+        android:fontFamily="@font/stymie_bold"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

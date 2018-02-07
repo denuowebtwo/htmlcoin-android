@@ -29,6 +29,6 @@
         android:text="@string/swipe_left_to_unsubscribe_or_delete_contract"
         android:textColor="@color/white"
         android:textSize="18sp"
-        app:typefaceAsset="@string/proximaNovaSemibold" />
+        android:fontFamily="@font/stymie_bold" />
 
 </RelativeLayout>

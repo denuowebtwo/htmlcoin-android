@@ -15,7 +15,7 @@
         android:textColor="@color/colorPrimary"
         android:autoLink="web"
         android:linksClickable="true"
-        app:typefaceAsset="@string/simplonMonoRegular"
+        android:fontFamily="@font/stymie_light"
         android:id="@+id/tv_tag_p"/>
 
 </LinearLayout>

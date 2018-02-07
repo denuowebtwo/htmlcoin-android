@@ -59,14 +59,14 @@
             app:pinCharacterMask="●"
             app:pinTextBottomPadding="8dp"
             app:pinLineStroke="1dp"
-            app:pinLineStrokeSelected="4dp"
+            app:pinLineStrokeSelected="1dp"
             app:pinBackgroundIsSquare="false"
             app:pinLineColors="@color/white"
             android:textColor="@color/white"/>
 
         <org.qtum.wallet.utils.FontTextView
             android:id="@+id/tooltip"
-            android:text="error"
+            android:text="Error"
             android:paddingTop="4dp"
             android:layout_marginTop="8dp"
             android:paddingBottom="4dp"

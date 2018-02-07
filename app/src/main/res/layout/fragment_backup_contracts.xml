@@ -43,7 +43,7 @@
                 android:text="@string/backup_contracts"
                 android:textColor="@color/background"
                 android:textSize="@dimen/toolbar_text_size"
-                app:typefaceAsset="@string/euclidFlexMedium"/>
+                android:fontFamily="@font/stymie_bold"/>
         </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>
@@ -78,7 +78,7 @@
                 android:text="@string/tap_to_save_the_file"
                 android:textColor="@color/colorPrimary"
                 android:textSize="18sp"
-                app:typefaceAsset="@string/simplonMonoRegular"/>
+                android:fontFamily="@font/stymie_light"/>
 
             <org.qtum.wallet.utils.FontTextView
                 android:id="@+id/tv_file_size"
@@ -89,7 +89,7 @@
                 android:paddingTop="14dp"
                 android:textColor="@color/file_size_color"
                 android:textSize="18sp"
-                app:typefaceAsset="@string/simplonMonoRegular"/>
+                android:fontFamily="@font/stymie_light"/>
 
         </LinearLayout>
 

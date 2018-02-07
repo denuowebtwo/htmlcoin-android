@@ -16,7 +16,7 @@
             android:id="@+id/tv_balance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:typefaceAsset="@string/simplonMonoMedium"
+            android:fontFamily="@font/stymie_bold"
             android:textColor="@color/background"
             android:textSize="24sp" />
 
@@ -24,7 +24,7 @@
             android:id="@+id/tv_currency"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:typefaceAsset="@string/simplonMonoMedium"
+            android:fontFamily="@font/stymie_bold"
             android:textColor="@color/background"
             android:textSize="24sp" />
 
@@ -35,7 +35,7 @@
     <org.qtum.wallet.utils.FontTextView
         android:id="@+id/available_balance_title"
         android:gravity="center"
-        app:typefaceAsset="@string/simplonMonoRegular"
+        android:fontFamily="@font/stymie_light"
         android:textColor="@color/background"
         android:padding="4dp"
         android:text="@string/available_balance"
@@ -45,7 +45,7 @@
         <org.qtum.wallet.utils.FontTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:typefaceAsset="@string/simplonMonoRegular"
+            android:fontFamily="@font/stymie_light"
             android:text="0.0000000003 HTML"
             android:textSize="24sp"
             android:textColor="@color/background"
@@ -54,7 +54,7 @@
     <org.qtum.wallet.utils.FontTextView
         android:id="@+id/unconfirmed_balance_title"
         android:gravity="center"
-        app:typefaceAsset="@string/simplonMonoRegular"
+        android:fontFamily="@font/stymie_light"
         android:textColor="@color/background"
         android:padding="4dp"
         android:text="@string/not_confirmed_balance"

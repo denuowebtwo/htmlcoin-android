@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:autoLink="web"
         android:linksClickable="true"
-        app:typefaceAsset="@string/proximaNovaRegular"
+        android:fontFamily="@font/stymie_light"
         android:textColor="@color/bottom_nav_view_item_color"
         android:id="@+id/tv_tag_p"/>
 

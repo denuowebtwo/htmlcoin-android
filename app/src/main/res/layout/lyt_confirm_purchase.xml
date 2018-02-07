@@ -19,14 +19,14 @@
             android:gravity="center"
             android:textSize="18sp"
             android:layout_marginBottom="16dp"
-            app:typefaceAsset="@string/simplonMonoMedium"
+            android:fontFamily="@font/stymie_bold"
             android:layout_height="wrap_content" />
 
         <org.qtum.wallet.utils.FontTextView
             style="@style/confirm_purchase_title_dialog"
             android:layout_width="match_parent"
             android:text="@string/contract_name"
-            app:typefaceAsset="@string/euclidFlexMedium"
+            android:fontFamily="@font/stymie_bold"
             android:layout_height="wrap_content" />
 
         <org.qtum.wallet.utils.FontTextView
@@ -34,27 +34,27 @@
             style="@style/confirm_purchase_subtitle_dialog"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:typefaceAsset="@string/simplonMonoRegular" />
+            android:fontFamily="@font/stymie_light" />
 
         <org.qtum.wallet.utils.FontTextView
             style="@style/confirm_purchase_title_dialog"
             android:layout_width="match_parent"
             android:text="@string/contract_type"
-            app:typefaceAsset="@string/euclidFlexMedium"
+            android:fontFamily="@font/stymie_bold"
             android:layout_height="wrap_content" />
 
         <org.qtum.wallet.utils.FontTextView
             android:id="@+id/contract_type"
             style="@style/confirm_purchase_subtitle_dialog"
             android:layout_width="match_parent"
-            app:typefaceAsset="@string/simplonMonoRegular"
+            android:fontFamily="@font/stymie_light"
             android:layout_height="wrap_content" />
 
         <org.qtum.wallet.utils.FontTextView
             style="@style/confirm_purchase_title_dialog"
             android:layout_width="match_parent"
             android:text="@string/price"
-            app:typefaceAsset="@string/euclidFlexMedium"
+            android:fontFamily="@font/stymie_bold"
             android:layout_height="wrap_content" />
 
         <org.qtum.wallet.utils.FontTextView
@@ -62,13 +62,13 @@
             style="@style/confirm_purchase_subtitle_dialog"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:typefaceAsset="@string/simplonMonoRegular" />
+            android:fontFamily="@font/stymie_light" />
 
         <org.qtum.wallet.utils.FontTextView
             style="@style/confirm_purchase_title_dialog"
             android:layout_width="match_parent"
             android:text="@string/miner_address"
-            app:typefaceAsset="@string/euclidFlexMedium"
+            android:fontFamily="@font/stymie_bold"
             android:layout_height="wrap_content" />
 
         <org.qtum.wallet.utils.FontTextView
@@ -76,14 +76,14 @@
             style="@style/confirm_purchase_subtitle_dialog"
             android:text="sd34nf439u4fn38uc34mc03xm3434092-ck330cc943cc03"
             android:layout_width="match_parent"
-            app:typefaceAsset="@string/simplonMonoRegular"
+            android:fontFamily="@font/stymie_light"
             android:layout_height="wrap_content" />
 
         <org.qtum.wallet.utils.FontTextView
             style="@style/confirm_purchase_title_dialog"
             android:layout_width="match_parent"
             android:text="@string/Fee"
-            app:typefaceAsset="@string/euclidFlexMedium"
+            android:fontFamily="@font/stymie_bold"
             android:layout_height="wrap_content" />
 
         <org.qtum.wallet.utils.FontTextView
@@ -91,7 +91,7 @@
             style="@style/confirm_purchase_subtitle_dialog"
             android:layout_width="match_parent"
             android:text="0.100 HTML"
-            app:typefaceAsset="@string/simplonMonoRegular"
+            android:fontFamily="@font/stymie_light"
             android:layout_height="wrap_content" />
 
         <RelativeLayout

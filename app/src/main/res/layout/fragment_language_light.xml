@@ -43,7 +43,7 @@
                 android:text="@string/language"
                 android:textColor="@color/white"
                 android:textSize="@dimen/toolbar_text_size"
-                app:typefaceAsset="@string/proximaNovaSemibold" />
+                android:fontFamily="@font/stymie_bold" />
         </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>

@@ -46,7 +46,7 @@
                 android:text="@string/smart_contract_parameters"
                 android:textColor="@color/background"
                 android:textSize="20dp"
-                app:typefaceAsset="@string/euclidFlexMedium" />
+                    android:fontFamily="@font/stymie_bold" />
 
             </RelativeLayout>
         </android.support.v7.widget.Toolbar>
@@ -65,7 +65,7 @@
             android:text="@string/step_2_2"
             android:textSize="12sp"
             android:gravity="center"
-            app:typefaceAsset="@string/euclidFlexMedium"
+            android:fontFamily="@font/stymie_bold"
             android:padding="4dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />

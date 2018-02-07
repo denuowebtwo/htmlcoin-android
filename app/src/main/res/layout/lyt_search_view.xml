@@ -78,7 +78,7 @@
             android:textColor="@color/colorPrimary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:typefaceAsset="@string/simplonMonoRegular"/>
+            android:fontFamily="@font/stymie_light"/>
     </LinearLayout>
 
 </RelativeLayout>
