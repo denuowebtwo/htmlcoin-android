@@ -10,9 +10,8 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.content.pm.PackageManager;
-
-import android.content.res.Configuration;
 import android.content.res.ColorStateList;
+import android.content.res.Configuration;
 import android.hardware.fingerprint.FingerprintManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -20,14 +19,12 @@ import android.nfc.NfcAdapter;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
-import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.internal.BottomNavigationItemView;
 import android.support.design.internal.BottomNavigationMenuView;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
@@ -51,26 +48,21 @@ import org.qtum.wallet.ui.base.base_fragment.BaseFragment;
 import org.qtum.wallet.ui.fragment.news_fragment.NewsFragment;
 import org.qtum.wallet.ui.fragment.pin_fragment.PinAction;
 import org.qtum.wallet.ui.fragment.pin_fragment.PinFragment;
+import org.qtum.wallet.ui.fragment.profile_fragment.ProfileFragment;
+import org.qtum.wallet.ui.fragment.send_fragment.SendFragment;
 import org.qtum.wallet.ui.fragment.start_page_fragment.StartPageFragment;
 import org.qtum.wallet.ui.fragment.wallet_fragment.WalletFragment;
 import org.qtum.wallet.ui.fragment.wallet_main_fragment.WalletMainFragment;
 import org.qtum.wallet.utils.CustomContextWrapper;
 import org.qtum.wallet.utils.FontManager;
-
-import org.qtum.wallet.ui.fragment.profile_fragment.ProfileFragment;
-import org.qtum.wallet.ui.fragment.send_fragment.SendFragment;
 import org.qtum.wallet.utils.QtumIntent;
 import org.qtum.wallet.utils.ThemeUtils;
-import org.qtum.wallet.utils.crypto.KeyStoreHelper;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Timer;
 
 import butterknife.BindView;
-
-import static org.qtum.wallet.ui.fragment.pin_fragment.PinAction.AUTHENTICATION_AND_SEND;
 
 public class MainActivity extends BaseActivity implements MainActivityView {
 
@@ -112,6 +104,8 @@ public class MainActivity extends BaseActivity implements MainActivityView {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView((ThemeUtils.THEME_DARK.equals(ThemeUtils.currentTheme)) ? LAYOUT : LAYOUT_LIGHT);
+
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
         mNetworkReceiver = new NetworkStateReceiver(getNetworkConnectedFlag());
         registerReceiver(mNetworkReceiver,
                 new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
