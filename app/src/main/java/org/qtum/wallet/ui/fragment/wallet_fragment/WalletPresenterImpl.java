@@ -19,7 +19,7 @@ public class WalletPresenterImpl extends BaseFragmentPresenterImpl implements Wa
     private WalletInteractor mWalletFragmentInteractor;
     private WalletView mWalletView;
     private boolean mVisibility = false;
-    private boolean mNetworkConnectedFlag = false;
+    private Boolean mNetworkConnectedFlag = null;
 
     private final int ONE_PAGE_COUNT = 25;
 
@@ -101,10 +101,10 @@ public class WalletPresenterImpl extends BaseFragmentPresenterImpl implements Wa
 
     @Override
     public void onNetworkStateChanged(boolean networkConnectedFlag) {
-        mNetworkConnectedFlag = networkConnectedFlag;
-        if (networkConnectedFlag) {
+        if (networkConnectedFlag && mNetworkConnectedFlag != null && !mNetworkConnectedFlag) {
             loadAndUpdateData();
         }
+        mNetworkConnectedFlag = networkConnectedFlag;
     }
 
     @Override

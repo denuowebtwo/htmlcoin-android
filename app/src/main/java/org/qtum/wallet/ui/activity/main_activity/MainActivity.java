@@ -134,7 +134,9 @@ public class MainActivity extends BaseActivity implements MainActivityView {
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         switch (intent.getAction()) {
-
+            case QtumIntent.USER_START_APP:
+                QtumSharedPreference.getInstance().setIsRefreshNeeded(getApplicationContext(), true);
+                break;
             case QtumIntent.OPEN_FROM_NOTIFICATION:
                 mRootFragment = WalletMainFragment.newInstance(getContext());
                 openRootFragment(mRootFragment);
@@ -169,6 +171,7 @@ public class MainActivity extends BaseActivity implements MainActivityView {
             default:
                 break;
         }
+
     }
 
     @Override

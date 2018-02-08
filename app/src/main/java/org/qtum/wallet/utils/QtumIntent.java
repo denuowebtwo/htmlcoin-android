@@ -9,4 +9,5 @@ public class QtumIntent {
     public static final String SEND_TOKEN = "qtum.intent.extra.SEND_TOKEN";
     public static final String USER_START_APP = "qtum.intent.extra.USER_START_APP";
     public static final String CHANGE_THEME = "qtum.intent.action.CHANGE_THEME";
+    public static final String NEW_TRANSACTION = "qtum.intent.action.NEW_TRANSACTION";
 }
