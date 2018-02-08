@@ -44,7 +44,7 @@
                 android:layout_gravity="right"
                 android:gravity="right"
                 android:text="-7,450 HTML"
-                android:textColor="@color/bottom_nav_bar_text_color_light"
+                android:textColor="@color/title_lt_green_color"
                 android:textSize="18sp"
                 android:fontFamily="@font/stymie_bold" />
 
@@ -60,7 +60,7 @@
             android:ellipsize="end"
             android:maxLines="1"
             android:text="1mase88dascasd12312nfsa33"
-            android:textColor="@color/bottom_nav_bar_text_color_light"
+            android:textColor="@color/color_custom_dark"
             android:fontFamily="@font/stymie_light" />
 
     </LinearLayout>
@@ -69,7 +69,7 @@
         android:layout_marginTop="8dp"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="0dp"
         android:alpha=".1"
         android:background="@color/bottom_nav_bar_text_color_light"/>
 
