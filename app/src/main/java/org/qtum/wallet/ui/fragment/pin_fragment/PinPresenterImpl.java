@@ -151,6 +151,9 @@ public class PinPresenterImpl extends BaseFragmentPresenterImpl implements PinPr
                                                 getView().dismissProgressDialog();
                                                 isDataLoaded = false;
                                             }
+
+                                            // update address, device token to server
+                                            updateAddressDeviceToken();
                                         }
                                     });
 
