@@ -20,7 +20,7 @@
             android:textColor="@color/background"
             android:textSize="18sp"
             android:layout_marginBottom="16dp"
-            app:typefaceAsset="@string/proximaNovaSemibold"
+            android:fontFamily="@font/stymie_bold"
             android:layout_height="wrap_content" />
 
         <ScrollView
@@ -33,7 +33,7 @@
             android:layout_height="280dp">
 
             <org.qtum.wallet.utils.FontTextView
-                app:typefaceAsset="@string/proximaNovaRegular"
+                android:fontFamily="@font/stymie_light"
                 android:id="@+id/source_code_tv"
                 android:padding="8dp"
                 android:textColor="@color/background"

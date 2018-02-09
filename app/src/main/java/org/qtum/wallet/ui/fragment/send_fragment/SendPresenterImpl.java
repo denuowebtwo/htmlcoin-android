@@ -4,20 +4,23 @@ import org.qtum.wallet.R;
 import org.qtum.wallet.model.Currency;
 import org.qtum.wallet.model.CurrencyToken;
 import org.qtum.wallet.model.contract.Token;
+import org.qtum.wallet.model.gson.AddressBalance;
 import org.qtum.wallet.model.gson.UnspentOutput;
 import org.qtum.wallet.model.gson.call_smart_contract_response.CallSmartContractResponse;
 import org.qtum.wallet.model.gson.token_balance.Balance;
 import org.qtum.wallet.model.gson.token_balance.TokenBalance;
+import org.qtum.wallet.ui.base.AddressInteractor;
+import org.qtum.wallet.ui.base.AddressInteractorImpl;
 import org.qtum.wallet.ui.base.base_fragment.BaseFragment;
 import org.qtum.wallet.ui.base.base_fragment.BaseFragmentPresenterImpl;
 
 import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
 import rx.Observable;
 import rx.Observer;
+import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 import rx.functions.Func0;
@@ -39,9 +42,13 @@ public class SendPresenterImpl extends BaseFragmentPresenterImpl implements Send
     private int minGasLimit = 100000;
     private int maxGasLimit = 5000000;
 
+    private AddressInteractor mAddressInteractor;
+
     public SendPresenterImpl(SendView sendFragmentView, SendInteractor interactor) {
         mSendFragmentView = sendFragmentView;
         mSendBaseFragmentInteractor = interactor;
+
+        mAddressInteractor = new AddressInteractorImpl(sendFragmentView.getContext());
     }
 
     @Override
@@ -64,6 +71,7 @@ public class SendPresenterImpl extends BaseFragmentPresenterImpl implements Send
         getView().updateGasPrice(minGasPrice, maxGasPrice);
         getView().updateGasLimit(minGasLimit, maxGasLimit);
 
+        loadAndUpdateBalance();
     }
 
     @Override
@@ -181,7 +189,7 @@ public class SendPresenterImpl extends BaseFragmentPresenterImpl implements Send
         int gasLimit = getView().getGasLimitInput();
         int gasPrice = getView().getGasPriceInput();
 
-        if (currency.getName().equals("Qtum " + getView().getStringValue(org.qtum.wallet.R.string.default_currency))) {
+        if (currency.getName().equals("Html " + getView().getStringValue(org.qtum.wallet.R.string.default_currency))) {
             if(isAmountValid(amount)) {
                 getInteractor().sendTx(from, address, amount, fee, getView().getSendTransactionCallback());
             } else {
@@ -296,6 +304,34 @@ public class SendPresenterImpl extends BaseFragmentPresenterImpl implements Send
                 getView().setAlertDialog(org.qtum.wallet.R.string.error, error, "Ok", BaseFragment.PopUpType.error);
             }
         });
+    }
+
+    private void loadAndUpdateBalance() {
+        final List<String> addresses = new ArrayList<>();
+        if (!"".equals(getView().getFromAddress())) {
+            addresses.add(getView().getFromAddress());
+        } else {
+            addresses.addAll(mAddressInteractor.getAddresses());
+        }
+        mAddressInteractor.getAddressBalance(addresses)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<AddressBalance>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onNext(AddressBalance addressBalance) {
+                        getView().updateBalance(addressBalance.getBalance().toPlainString(), addressBalance.getUnconfirmedBalance().toPlainString());
+                    }
+                });
     }
 
     @Override

@@ -43,7 +43,7 @@
                 android:text="@string/contracts"
                 android:textColor="@color/background"
                 android:textSize="@dimen/toolbar_text_size"
-                app:typefaceAsset="@string/euclidFlexMedium" />
+                android:fontFamily="@font/stymie_bold" />
         </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>
@@ -66,7 +66,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorPrimary"
-                app:typefaceAsset="@string/euclidFlexMedium"
+                android:fontFamily="@font/stymie_light"
                 android:layout_weight="1"
                 android:gravity="left"
                 android:text="Address"/>
@@ -75,7 +75,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorPrimary"
-                app:typefaceAsset="@string/euclidFlexMedium"
+                android:fontFamily="@font/stymie_light"
                 android:layout_gravity="end"
                 android:text="Publish Date"/>
 
@@ -104,7 +104,7 @@
             android:text="@string/no_contracts_found"
             android:textColor="@color/colorPrimary"
             android:textSize="18sp"
-            app:typefaceAsset="@string/simplonMonoRegular"
+            android:fontFamily="@font/stymie_light"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"/>
 

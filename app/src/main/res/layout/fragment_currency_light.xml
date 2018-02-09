@@ -32,7 +32,7 @@
                 android:tint="@color/white"
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
-                app:srcCompat="@drawable/ic_back_indicator"/>
+                app:srcCompat="@drawable/icon_back_indicator"/>
 
             <org.qtum.wallet.utils.FontTextView
                 android:id="@+id/tv_currency_title"
@@ -43,7 +43,7 @@
                 android:text="@string/chose_to_subscribe"
                 android:textColor="@color/white"
                 android:textSize="20sp"
-                app:typefaceAsset="@string/proximaNovaSemibold" />
+                android:fontFamily="@font/stymie_bold" />
         </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>
@@ -81,7 +81,7 @@
 
         <org.qtum.wallet.utils.FontTextView
             android:id="@+id/place_holder"
-            app:typefaceAsset="@string/proximaNovaRegular"
+            android:fontFamily="@font/stymie_light"
             android:textColor="@color/grey70"
             android:gravity="center"
             android:visibility="gone"

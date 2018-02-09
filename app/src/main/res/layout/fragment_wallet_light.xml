@@ -20,7 +20,7 @@
             android:background="@color/bottom_nav_bar_color_light"
             android:gravity="left|center_vertical"
             android:padding="8dp"
-            app:typefaceAsset="@string/proximaNovaSemibold"
+            android:fontFamily="@font/stymie_bold"
             android:text="@string/activity"
             android:textColor="@color/bottom_nav_bar_text_color_light" />
 
@@ -50,7 +50,7 @@
             android:id="@+id/toolbar_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/title_color_light"
+            android:background="@drawable/background_actionbar_light"
             android:fitsSystemWindows="true"
             app:contentScrim="@android:color/transparent"
             app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
@@ -108,7 +108,7 @@
                             android:layout_height="match_parent"
                             android:gravity="center"
                             android:text="@string/my_wallet"
-                            app:typefaceAsset="@string/proximaNovaSemibold" />
+                            android:fontFamily="@font/stymie_bold" />
 
                         <ImageButton
                             android:id="@+id/bt_qr_code"
@@ -120,7 +120,7 @@
                             android:padding="4dp"
                             android:scaleType="centerInside"
                             android:tint="@color/white"
-                            app:srcCompat="@drawable/ic_qrcode_light" />
+                            app:srcCompat="@drawable/icon_qrcode_light" />
 
                         <ImageView
                             android:layout_toStartOf="@+id/bt_qr_code"
@@ -131,7 +131,7 @@
                             android:layout_height="36dp"
                             android:id="@+id/iv_choose_address"
                             android:tint="@color/white"
-                            app:srcCompat="@drawable/ic_address_book" />
+                            app:srcCompat="@drawable/icon_address_book" />
 
                         <include
                             android:id="@+id/app_bar_placeholder"

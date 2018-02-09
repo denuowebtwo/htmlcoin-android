@@ -1,7 +1,10 @@
 package org.qtum.wallet.ui.fragment.wallet_fragment;
 
 import android.Manifest;
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -11,6 +14,7 @@ import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -30,6 +34,7 @@ import org.qtum.wallet.dataprovider.receivers.network_state_receiver.listeners.N
 import org.qtum.wallet.dataprovider.services.update_service.UpdateService;
 import org.qtum.wallet.dataprovider.services.update_service.listeners.BalanceChangeListener;
 import org.qtum.wallet.dataprovider.services.update_service.listeners.TransactionListener;
+import org.qtum.wallet.datastorage.QtumSharedPreference;
 import org.qtum.wallet.model.gson.history.History;
 import org.qtum.wallet.ui.activity.main_activity.MainActivity;
 import org.qtum.wallet.ui.fragment.qtum_cash_management_fragment.AddressListFragment;
@@ -40,6 +45,7 @@ import org.qtum.wallet.ui.fragment_factory.Factory;
 import org.qtum.wallet.ui.base.base_fragment.BaseFragment;
 import org.qtum.wallet.utils.ClipboardUtils;
 import org.qtum.wallet.utils.FontTextView;
+import org.qtum.wallet.utils.QtumIntent;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -94,6 +100,8 @@ public abstract class WalletFragment extends BaseFragment implements WalletView,
     private NetworkStateReceiver mNetworkStateReceiver;
     private UpdateService mUpdateService;
 
+    private BroadcastReceiver broadcastReceiver;
+
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -109,17 +117,19 @@ public abstract class WalletFragment extends BaseFragment implements WalletView,
             public void onServiceConnectionChange(boolean isConnecting) {
                 if (isConnecting) {
                     mUpdateService = getMainActivity().getUpdateService();
-                    mUpdateService.addTransactionListener(new TransactionListener() {
-                        @Override
-                        public void onNewHistory(History history) {
-                            getPresenter().onNewHistory(history);
-                        }
+                    if (mUpdateService != null) {
+                        mUpdateService.addTransactionListener(new TransactionListener() {
+                            @Override
+                            public void onNewHistory(History history) {
+                                getPresenter().onNewHistory(history);
+                            }
 
-                        @Override
-                        public boolean getVisibility() {
-                            return getPresenter().getVisibility();
-                        }
-                    });
+                            @Override
+                            public boolean getVisibility() {
+                                return getPresenter().getVisibility();
+                            }
+                        });
+                    }
 
                     initBalanceListener();
                 }
@@ -145,10 +155,39 @@ public abstract class WalletFragment extends BaseFragment implements WalletView,
             }
         };
         mNetworkStateReceiver.addNetworkStateListener(mNetworkStateListener);
+
+        broadcastReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                String action = intent.getAction();
+                if (QtumIntent.NEW_TRANSACTION.equals(action)) {
+                    getPresenter().onRefresh();
+                }
+            }
+        };
     }
 
     public void initBalanceListener() {
-        mUpdateService.addBalanceChangeListener(balanceListener);
+        if (mUpdateService != null) {
+            mUpdateService.addBalanceChangeListener(balanceListener);
+        }
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        LocalBroadcastManager localBroadcastManager = LocalBroadcastManager.getInstance(getContext());
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(QtumIntent.NEW_TRANSACTION);
+        localBroadcastManager.registerReceiver(broadcastReceiver, intentFilter);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        LocalBroadcastManager localBroadcastManager = LocalBroadcastManager.getInstance(getContext());
+        localBroadcastManager.unregisterReceiver(broadcastReceiver);
     }
 
     @Override
@@ -161,6 +200,12 @@ public abstract class WalletFragment extends BaseFragment implements WalletView,
         if (OPEN_QR_CODE_FRAGMENT_FLAG) {
             openQrCodeFragment();
         }
+
+        // check refresh need
+        if(QtumSharedPreference.getInstance().getIsRefreshNeeded(getContext())) {
+            getPresenter().onRefresh();
+            QtumSharedPreference.getInstance().setIsRefreshNeeded(getContext(), false);
+        }
     }
 
     @Override
@@ -172,9 +217,13 @@ public abstract class WalletFragment extends BaseFragment implements WalletView,
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        mNetworkStateReceiver.removeNetworkStateListener(mNetworkStateListener);
-        mUpdateService.removeTransactionListener();
-        mUpdateService.removeBalanceChangeListener(balanceListener);
+        if (mNetworkStateReceiver != null)
+            mNetworkStateReceiver.removeNetworkStateListener(mNetworkStateListener);
+
+        if (mUpdateService != null) {
+            mUpdateService.removeTransactionListener();
+            mUpdateService.removeBalanceChangeListener(balanceListener);
+        }
         getMainActivity().removePermissionResultListener();
         setAdapterNull();
     }

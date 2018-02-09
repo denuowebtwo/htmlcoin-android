@@ -11,7 +11,7 @@ import android.net.Uri;
 import android.os.Binder;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
-import android.support.v7.app.NotificationCompat;
+import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -20,27 +20,26 @@ import com.google.gson.Gson;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.qtum.wallet.R;
 import org.qtum.wallet.dataprovider.firebase.FirebaseSharedPreferences;
 import org.qtum.wallet.dataprovider.firebase.listeners.FireBaseTokenRefreshListener;
 import org.qtum.wallet.dataprovider.rest_api.QtumService;
 import org.qtum.wallet.dataprovider.services.update_service.listeners.BalanceChangeListener;
+import org.qtum.wallet.dataprovider.services.update_service.listeners.ContractPurchaseListener;
+import org.qtum.wallet.dataprovider.services.update_service.listeners.TokenBalanceChangeListener;
+import org.qtum.wallet.dataprovider.services.update_service.listeners.TokenListener;
+import org.qtum.wallet.dataprovider.services.update_service.listeners.TransactionListener;
+import org.qtum.wallet.datastorage.KeyStorage;
 import org.qtum.wallet.datastorage.QStoreStorage;
 import org.qtum.wallet.datastorage.TinyDB;
+import org.qtum.wallet.model.contract.Contract;
+import org.qtum.wallet.model.contract.Token;
+import org.qtum.wallet.model.gson.history.History;
+import org.qtum.wallet.model.gson.qstore.ContractPurchase;
 import org.qtum.wallet.model.gson.qstore.PurchaseItem;
 import org.qtum.wallet.model.gson.token_balance.TokenBalance;
 import org.qtum.wallet.ui.activity.main_activity.MainActivity;
 import org.qtum.wallet.utils.BoughtContractBuilder;
-
-import org.qtum.wallet.R;
-import org.qtum.wallet.dataprovider.services.update_service.listeners.ContractPurchaseListener;
-import org.qtum.wallet.dataprovider.services.update_service.listeners.TokenListener;
-import org.qtum.wallet.dataprovider.services.update_service.listeners.TransactionListener;
-import org.qtum.wallet.model.contract.Contract;
-import org.qtum.wallet.model.contract.Token;
-import org.qtum.wallet.dataprovider.services.update_service.listeners.TokenBalanceChangeListener;
-import org.qtum.wallet.model.gson.history.History;
-import org.qtum.wallet.model.gson.qstore.ContractPurchase;
-import org.qtum.wallet.datastorage.KeyStorage;
 import org.qtum.wallet.utils.ContractBuilder;
 import org.qtum.wallet.utils.CurrentNetParams;
 import org.qtum.wallet.utils.DateCalculator;
@@ -65,11 +64,11 @@ import io.socket.client.IO;
 import io.socket.client.Socket;
 import io.socket.emitter.Emitter;
 import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 
 public class UpdateService extends Service {
+    private final static String LOG_TAG = "UpdateService";
 
     private final int DEFAULT_NOTIFICATION_ID = 101;
     private NotificationManager notificationManager;
@@ -158,13 +157,14 @@ public class UpdateService extends Service {
             subscribeSocket();
 
             }
-        }).on("balance_changed", new Emitter.Listener() {
+        }).on("htmlcoind/addressbalance", new Emitter.Listener() {
             @Override
             public void call(Object... args) {
                 try {
                     JSONObject data = (JSONObject) args[0];
 
                     try {
+                        Log.d(LOG_TAG, data.toString());
                         unconfirmedBalance = (new BigDecimal(data.getString("unconfirmedBalance"))).divide(new BigDecimal("100000000"), MathContext.DECIMAL128);
                         balance = (new BigDecimal(data.getString("balance"))).divide(new BigDecimal("100000000"), MathContext.DECIMAL128);
                     } catch (JSONException e) {
@@ -447,7 +447,7 @@ public class UpdateService extends Service {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        socket.emit("subscribe", "balance_subscribe", mAddresses, jsonObject);
+        socket.emit("subscribe", "htmlcoind/addressbalance", mAddresses, jsonObject);
     }
 
     @Override
@@ -474,7 +474,7 @@ public class UpdateService extends Service {
             e.printStackTrace();
         }
         socket.emit("unsubscribe", "token_balance_change", null, obj);
-        socket.emit("unsubscribe", "balance_subscribe", null, obj);
+        socket.emit("unsubscribe", "addressbalance", null, obj);
         socket.disconnect();
         monitoringFlag = false;
         mAddresses = null;

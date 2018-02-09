@@ -15,7 +15,7 @@
         android:gravity="left"
         tools:text = "Tranding Now"
         android:textColor="@color/colorPrimary"
-        app:typefaceAsset="@string/euclidFlexMedium"
+        android:fontFamily="@font/stymie_bold"
         android:ellipsize="end"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

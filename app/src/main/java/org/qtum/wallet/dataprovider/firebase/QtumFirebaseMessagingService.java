@@ -5,12 +5,15 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.NotificationCompat;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.content.LocalBroadcastManager;
+import android.util.Log;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import org.qtum.wallet.QtumApplication;
 import org.qtum.wallet.R;
+import org.qtum.wallet.datastorage.QtumSharedPreference;
 import org.qtum.wallet.ui.activity.main_activity.MainActivity;
 import org.qtum.wallet.utils.QtumIntent;
 
@@ -19,9 +22,18 @@ public class QtumFirebaseMessagingService extends FirebaseMessagingService {
     private static final String TAG = "FCM Service";
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
-        if(QtumApplication.instance == null) {
-            sendNotification("", "QTUM", remoteMessage.getNotification().getBody());
-        }
+        QtumSharedPreference.getInstance().setIsRefreshNeeded(getApplicationContext(), true);
+
+        Intent intent = new Intent();
+        intent.setAction(QtumIntent.NEW_TRANSACTION);
+        LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(intent);
+
+//        if(QtumApplication.instance == null) {
+            sendNotification("", "HTMLCOIN", remoteMessage.getNotification().getBody());
+//        }
+
+
+
     }
 
     private void sendNotification(String Ticker, String Title, String Text) {

@@ -17,7 +17,7 @@
         android:maxLines="1"
         android:gravity="left"
         android:ellipsize="end"
-        app:typefaceAsset="@string/simplonMonoRegular"
+        android:fontFamily="@font/stymie_light"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
@@ -31,7 +31,7 @@
         android:maxLines="1"
         android:gravity="left"
         android:ellipsize="end"
-        app:typefaceAsset="@string/simplonMonoRegular"
+        android:fontFamily="@font/stymie_light"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

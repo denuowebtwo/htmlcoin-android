@@ -44,7 +44,7 @@
                     android:paddingLeft="16dp"
                     android:paddingRight="16dp"
                     android:paddingTop="10dp"
-                    app:srcCompat="@drawable/ic_back_indicator"/>
+                    app:srcCompat="@drawable/icon_back_indicator"/>
 
                 <ImageButton
                     android:tint="@color/white"
@@ -77,7 +77,7 @@
                     android:text="@string/qstore"
                     android:textColor="@color/white"
                     android:textSize="22sp"
-                    app:typefaceAsset="@string/proximaNovaRegular" />
+                    android:fontFamily="@font/stymie_light" />
 
             </RelativeLayout>
 

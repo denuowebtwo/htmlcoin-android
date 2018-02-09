@@ -42,7 +42,7 @@
                     android:paddingRight="16dp"
                     android:paddingTop="10dp"
                     android:tint="@color/white"
-                    app:srcCompat="@drawable/ic_back_indicator" />
+                    app:srcCompat="@drawable/icon_back_indicator" />
 
                 <org.qtum.wallet.utils.FontTextView
                     android:id="@+id/tv_toolbar_title"
@@ -55,7 +55,7 @@
                     android:text="Qstore Super Contract"
                     android:textColor="@color/white"
                     android:textSize="20sp"
-                    app:typefaceAsset="@string/proximaNovaRegular" />
+                    android:fontFamily="@font/stymie_light" />
 
                 <ImageButton
                     android:id="@+id/ibt_view_abi"
@@ -110,7 +110,7 @@
                     android:text="0.0"
                     android:textColor="@color/white"
                     android:textSize="24sp"
-                    app:typefaceAsset="@string/proximaNovaBold" />
+                    android:fontFamily="@font/stymie_bold" />
 
                 <org.qtum.wallet.utils.FontTextView
                     android:id="@+id/tv_qtum"
@@ -121,7 +121,7 @@
                     android:text="@string/qtum"
                     android:textColor="@color/white"
                     android:textSize="14sp"
-                    app:typefaceAsset="@string/proximaNovaRegular" />
+                    android:fontFamily="@font/stymie_light" />
 
             </LinearLayout>
 
@@ -135,7 +135,7 @@
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="16sp"
-                app:typefaceAsset="@string/proximaNovaRegular" />
+                android:fontFamily="@font/stymie_light" />
 
         </LinearLayout>
         </RelativeLayout>
@@ -163,14 +163,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Smart Contract creates lottery tickets"
-                app:typefaceAsset="@string/proximaNovaRegular" />
+                android:fontFamily="@font/stymie_light" />
 
             <org.qtum.wallet.utils.FontTextView
                 style="@style/qstore_text_title_style_light"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/description"
-                app:typefaceAsset="@string/proximaNovaRegular" />
+                android:fontFamily="@font/stymie_light" />
 
             <View
                 android:layout_width="match_parent"
@@ -189,7 +189,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/tags"
-                app:typefaceAsset="@string/proximaNovaRegular" />
+                android:fontFamily="@font/stymie_light" />
 
             <View
                 android:layout_width="match_parent"
@@ -203,7 +203,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="12-Jun-2017"
-                app:typefaceAsset="@string/proximaNovaRegular" />
+                android:fontFamily="@font/stymie_light" />
 
 
             <org.qtum.wallet.utils.FontTextView
@@ -211,7 +211,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/published_date"
-                app:typefaceAsset="@string/proximaNovaRegular" />
+                android:fontFamily="@font/stymie_light" />
 
             <View
                 android:layout_width="match_parent"
@@ -225,14 +225,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="54Mb"
-                app:typefaceAsset="@string/proximaNovaRegular" />
+                android:fontFamily="@font/stymie_light" />
 
             <org.qtum.wallet.utils.FontTextView
                 style="@style/qstore_text_oneline_title_style_light"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/size"
-                app:typefaceAsset="@string/proximaNovaRegular" />
+                android:fontFamily="@font/stymie_light" />
 
             <View
                 android:layout_width="match_parent"
@@ -246,14 +246,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="1/0/5"
-                app:typefaceAsset="@string/proximaNovaRegular" />
+                android:fontFamily="@font/stymie_light" />
 
             <org.qtum.wallet.utils.FontTextView
                 style="@style/qstore_text_oneline_title_style_light"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/compiled_on"
-                app:typefaceAsset="@string/proximaNovaRegular" />
+                android:fontFamily="@font/stymie_light" />
 
             <View
                 android:layout_width="match_parent"
@@ -267,14 +267,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Yes"
-                app:typefaceAsset="@string/proximaNovaRegular" />
+                android:fontFamily="@font/stymie_light" />
 
                 <org.qtum.wallet.utils.FontTextView
                     style="@style/qstore_text_oneline_title_style_light"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/source_code"
-                    app:typefaceAsset="@string/proximaNovaRegular" />
+                    android:fontFamily="@font/stymie_light" />
 
             <View
                 android:layout_width="match_parent"
@@ -289,7 +289,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="end"
                 android:text="kwf90weckw0vwkvw0vjw0vwjvw0vsq6"
-                app:typefaceAsset="@string/proximaNovaRegular" />
+                android:fontFamily="@font/stymie_light" />
 
                 <org.qtum.wallet.utils.FontTextView
                     android:id="@+id/tv_pub_by_title"
@@ -297,7 +297,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/published_by"
-                    app:typefaceAsset="@string/proximaNovaRegular" />
+                    android:fontFamily="@font/stymie_light" />
 
             <View
                 android:layout_width="match_parent"
@@ -311,14 +311,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="346"
-                app:typefaceAsset="@string/proximaNovaRegular" />
+                android:fontFamily="@font/stymie_light" />
 
                 <org.qtum.wallet.utils.FontTextView
                     style="@style/qstore_text_oneline_title_style_light"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/downloads"
-                    app:typefaceAsset="@string/proximaNovaRegular" />
+                    android:fontFamily="@font/stymie_light" />
 
             <View
                 android:layout_width="match_parent"

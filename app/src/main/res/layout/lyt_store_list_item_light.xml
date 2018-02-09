@@ -14,7 +14,7 @@
         android:layout_marginTop="8dp"
         tools:text = "Tranding Now"
         android:textColor="@color/black"
-        app:typefaceAsset="@string/proximaNovaBold"
+        android:fontFamily="@font/stymie_bold"
         android:ellipsize="end"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

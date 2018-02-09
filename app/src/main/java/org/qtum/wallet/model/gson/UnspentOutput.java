@@ -17,10 +17,10 @@ public class UnspentOutput {
     @SerializedName("vout")
     @Expose
     private Integer vout;
-    @SerializedName("txout_scriptPubKey")
+    @SerializedName("scriptPubKey")
     @Expose
     private String txoutScriptPubKey;
-    @SerializedName("tx_hash")
+    @SerializedName("txid")
     @Expose
     private String txHash;
     @SerializedName("pubkey_hash")
@@ -29,7 +29,7 @@ public class UnspentOutput {
     @SerializedName("confirmations")
     @Expose
     private Integer confirmations;
-    @SerializedName("is_stake")
+    @SerializedName("isStake")
     private boolean isStake;
 
     public boolean isOutputAvailableToPay() {

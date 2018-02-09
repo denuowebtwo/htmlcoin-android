@@ -32,7 +32,7 @@
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
                 android:paddingTop="10dp"
-                app:srcCompat="@drawable/ic_back_indicator"/>
+                app:srcCompat="@drawable/icon_back_indicator"/>
 
             <org.qtum.wallet.utils.FontTextView
                 android:id="@+id/tv_toolbar_restore_contracts"
@@ -43,7 +43,7 @@
                 android:text="Restore Contracts"
                 android:textColor="@color/white"
                 android:textSize="20sp"
-                app:typefaceAsset="@string/proximaNovaSemibold" />
+                android:fontFamily="@font/stymie_bold" />
         </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>
@@ -83,7 +83,7 @@
                     android:layout_margin="16dp"
                     android:text="@string/select_back_up_file"
                     android:textSize="18sp"
-                    app:typefaceAsset="@string/proximaNovaSemibold"
+                    android:fontFamily="@font/stymie_bold"
                     android:textColor="@color/bottom_nav_bar_text_color_light"/>
 
                 <org.qtum.wallet.utils.FontTextView
@@ -95,7 +95,7 @@
                     android:visibility="gone"
                     android:text="15 Kb"
                     android:textSize="18sp"
-                    app:typefaceAsset="@string/proximaNovaLight"
+                    android:fontFamily="@font/stymie_light"
                     android:textColor="@color/bottom_nav_bar_text_color_light_alpha_50"/>
 
             </LinearLayout>

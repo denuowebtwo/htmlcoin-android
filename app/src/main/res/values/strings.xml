@@ -1,10 +1,11 @@
 <resources>
-    <string name="app_name">QTUM</string>
-
+    <string name="app_name">HTMLCOIN</string>
+    <string name="blockchain_we_trust">IN BLOCKCHAIN WE TRUST</string>
     <string name="create_new">Create New</string>
     <string name="import_wallet">Import Wallet</string>
     <string name="create_the_first_one_or_restore_n_the_previous_wallet_key">Create the first one or restore \n the previous wallet key.</string>
     <string name="you_don_t_have_a_wallet_yet">You don\'t have a wallet, yet.</string>
+    <string name="currency_html">HTML</string>
 
     <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
 
@@ -12,7 +13,7 @@
 
     <string name="my_wallet">My Wallet</string>
     <string name="public_key">Public Key</string>
-    <string name="qtum">QTUM</string>
+    <string name="qtum">HTML</string>
     <string name="receive">Receive</string>
     <string name="send">Send</string>
     <string name="activity">Activity</string>
@@ -110,6 +111,9 @@
     <string name="proximaNovaRegular" translatable="false">fonts/proximanovaregular.ttf</string>
     <string name="proximaNovaSemibold" translatable="false">fonts/proximanovasemibold.ttf</string>
 
+
+    <string name="font_stymie_bold">fonts/stymie_bold.ttf</string>
+
     <string name="retry">RETRY</string>
 
     <string name="smart_contracts">Smart Contracts</string>
@@ -134,7 +138,7 @@
     <string name="contract_created_successfully">Contract created successfully</string>
     <string name="restored_successfully">Restored successfully</string>
 
-    <string name="login_to_qtum_using_touch_id">Login to QTUM\nusing Touch ID</string>
+    <string name="login_to_qtum_using_touch_id">Login to HTML\nusing Touch ID</string>
     <string name="touch_id">Touch ID</string>
     <string name="enable_touch_id">Enable touch id</string>
     <string name="not_now">Not now</string>
@@ -162,7 +166,7 @@
 
     <string name="switch_theme">Switch Application Theme</string>
     <string name="confirmation">Confirmation…</string>
-    <string name="qtum_address">QTUM Address</string>
+    <string name="qtum_address">HTMLCOIN Address</string>
     <string name="not_confirmed_yet">Not Confirmed Yet…</string>
     <string name="confirmed">Confirmed</string>
     <string name="preview">Preview</string>
@@ -184,7 +188,7 @@
     <string name="contract_details">Contract Details</string>
     <string name="sent_time">Sent time</string>
     <string name="you_have_insufficient_funds_for_this_transaction">You have insufficient funds for this transaction</string>
-    <string name="invalid_qtum_address">Invalid QTUM Address</string>
+    <string name="invalid_qtum_address">Invalid HTML Address</string>
     <string name="fail_to_get_contract_methods">Fail to get contract methods</string>
     <string name="fail_to_get_contracts">Fail to get contracts</string>
     <string name="trending_now">Trending Now</string>
@@ -194,7 +198,7 @@
     <string name="token_not_found">Token not found</string>
     <string name="copied">Copied</string>
     <string name="new_confirmed_transaction">New confirmed transaction</string>
-    <string name="_2017_qtum_n_skynet_testnet_version">© 2017 QTUM \n </string>
+    <string name="_2017_qtum_n_skynet_testnet_version">© 2018 HTMLCOIN \n </string>
     <string name="touch_to_open_transaction_history">Touch to open transaction history</string>
     <string name="functions">Functions</string>
     <string name="wallet_backup">Wallet Backup</string>

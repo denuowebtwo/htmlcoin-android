@@ -56,7 +56,7 @@
                     android:text="Qstore Super Contract"
                     android:textColor="@color/background"
                     android:textSize="20sp"
-                    app:typefaceAsset="@string/euclidFlexMedium" />
+                    android:fontFamily="@font/stymie_bold" />
 
             </RelativeLayout>
 
@@ -85,7 +85,7 @@
                 android:text="0.0"
                 android:textColor="@color/background"
                 android:textSize="24sp"
-                app:typefaceAsset="@string/simplonMonoMedium" />
+                android:fontFamily="@font/stymie_bold" />
 
             <org.qtum.wallet.utils.FontTextView
                 android:id="@+id/tv_qtum"
@@ -97,7 +97,7 @@
                 android:layout_marginTop="3dp"
                 android:textColor="@color/background"
                 android:textSize="14sp"
-                app:typefaceAsset="@string/simplonMonoMedium" />
+                android:fontFamily="@font/stymie_bold" />
 
         </LinearLayout>
 
@@ -119,7 +119,7 @@
                 android:textAllCaps="true"
                 android:textColor="@color/background"
                 android:textSize="16sp"
-                app:typefaceAsset="@string/simplonMonoRegular" />
+                android:fontFamily="@font/stymie_light" />
 
 
             <org.qtum.wallet.utils.FontTextView
@@ -132,7 +132,7 @@
                 android:textAllCaps="true"
                 android:textColor="@color/background"
                 android:textSize="16sp"
-                app:typefaceAsset="@string/simplonMonoRegular" />
+                android:fontFamily="@font/stymie_light" />
 
         </LinearLayout>
 
@@ -149,7 +149,7 @@
 
                 <org.qtum.wallet.utils.FontTextView
                     style="@style/qstore_text_title_style"
-                    app:typefaceAsset="@string/euclidFlexMedium"
+                    android:fontFamily="@font/stymie_bold"
                     android:text="@string/description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
@@ -157,14 +157,14 @@
                 <org.qtum.wallet.utils.FontTextView
                     android:id="@+id/tv_description"
                     style="@style/qstore_text_subtitle_style"
-                    app:typefaceAsset="@string/simplonMonoRegular"
+                    android:fontFamily="@font/stymie_light"
                     android:text="Smart Contract creates lottery tickets"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
                 <org.qtum.wallet.utils.FontTextView
                     style="@style/qstore_text_title_style"
-                    app:typefaceAsset="@string/euclidFlexMedium"
+                    android:fontFamily="@font/stymie_bold"
                     android:text="@string/tags"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
@@ -181,7 +181,7 @@
 
                     <org.qtum.wallet.utils.FontTextView
                         style="@style/qstore_text_oneline_title_style"
-                        app:typefaceAsset="@string/euclidFlexMedium"
+                        android:fontFamily="@font/stymie_bold"
                         android:text="@string/published_date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -189,7 +189,7 @@
                     <org.qtum.wallet.utils.FontTextView
                         android:id="@+id/tv_pub_date"
                         style="@style/qstore_text_oneline_subtitle_style"
-                        app:typefaceAsset="@string/simplonMonoRegular"
+                        android:fontFamily="@font/stymie_light"
                         android:text="12-Jun-2017"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -203,7 +203,7 @@
 
                     <org.qtum.wallet.utils.FontTextView
                         style="@style/qstore_text_oneline_title_style"
-                        app:typefaceAsset="@string/euclidFlexMedium"
+                        android:fontFamily="@font/stymie_bold"
                         android:text="@string/size"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -211,7 +211,7 @@
                     <org.qtum.wallet.utils.FontTextView
                         android:id="@+id/tv_size"
                         style="@style/qstore_text_oneline_subtitle_style"
-                        app:typefaceAsset="@string/simplonMonoRegular"
+                        android:fontFamily="@font/stymie_light"
                         android:text="54Mb"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -225,7 +225,7 @@
 
                     <org.qtum.wallet.utils.FontTextView
                         style="@style/qstore_text_oneline_title_style"
-                        app:typefaceAsset="@string/euclidFlexMedium"
+                        android:fontFamily="@font/stymie_bold"
                         android:text="@string/compiled_on"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -233,7 +233,7 @@
                     <org.qtum.wallet.utils.FontTextView
                         android:id="@+id/tv_compiled_on"
                         style="@style/qstore_text_oneline_subtitle_style"
-                        app:typefaceAsset="@string/simplonMonoRegular"
+                        android:fontFamily="@font/stymie_light"
                         android:text="1/0/5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -247,7 +247,7 @@
 
                     <org.qtum.wallet.utils.FontTextView
                         style="@style/qstore_text_oneline_title_style"
-                        app:typefaceAsset="@string/euclidFlexMedium"
+                        android:fontFamily="@font/stymie_bold"
                         android:text="@string/source_code"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -255,7 +255,7 @@
                     <org.qtum.wallet.utils.FontTextView
                         android:id="@+id/tv_source_code"
                         style="@style/qstore_text_oneline_subtitle_style"
-                        app:typefaceAsset="@string/simplonMonoRegular"
+                        android:fontFamily="@font/stymie_light"
                         android:text="Yes"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -270,7 +270,7 @@
                     <org.qtum.wallet.utils.FontTextView
                         android:id="@+id/tv_pub_by_title"
                         style="@style/qstore_text_oneline_title_style"
-                        app:typefaceAsset="@string/euclidFlexMedium"
+                        android:fontFamily="@font/stymie_bold"
                         android:text="@string/published_by"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -281,7 +281,7 @@
                         android:layout_marginStart="16dp"
                         android:layout_toEndOf="@+id/tv_pub_by_title"
                         style="@style/qstore_text_oneline_subtitle_style"
-                        app:typefaceAsset="@string/simplonMonoRegular"
+                        android:fontFamily="@font/stymie_light"
                         android:text="kwf90weckw0vwkvw0vjw0vwjvw0vsq6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -295,7 +295,7 @@
 
                     <org.qtum.wallet.utils.FontTextView
                         style="@style/qstore_text_oneline_title_style"
-                        app:typefaceAsset="@string/euclidFlexMedium"
+                        android:fontFamily="@font/stymie_bold"
                         android:text="@string/downloads"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -303,7 +303,7 @@
                     <org.qtum.wallet.utils.FontTextView
                         android:id="@+id/tv_downloads"
                         style="@style/qstore_text_oneline_subtitle_style"
-                        app:typefaceAsset="@string/simplonMonoRegular"
+                        android:fontFamily="@font/stymie_light"
                         android:text="346"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

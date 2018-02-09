@@ -32,7 +32,7 @@
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
                 android:paddingTop="10dp"
-                app:srcCompat="@drawable/ic_back_indicator"/>
+                app:srcCompat="@drawable/icon_back_indicator"/>
 
             <org.qtum.wallet.utils.FontTextView
                 android:id="@+id/tv_toolbar_profile"
@@ -43,7 +43,7 @@
                 android:text="@string/smart_contracts"
                 android:textColor="@color/white"
                 android:textSize="@dimen/toolbar_text_size"
-                app:typefaceAsset="@string/proximaNovaSemibold" />
+                android:fontFamily="@font/stymie_bold" />
 
         </android.support.v7.widget.Toolbar>
 

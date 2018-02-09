@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="@string/touch_id"
-                app:typefaceAsset="@string/euclidFlexMedium"
+                android:fontFamily="@font/stymie_bold"
                 android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/toolbar_text_size"/>
         </android.support.v7.widget.Toolbar>
@@ -61,7 +61,7 @@
             android:text="@string/login_to_qtum_using_touch_id"
             android:textColor="@color/colorPrimary"
             android:textSize="16sp"
-            app:typefaceAsset="@string/simplonMonoMedium"/>
+            android:fontFamily="@font/stymie_bold"/>
 
         <RelativeLayout
             android:id="@+id/rl_button_container"

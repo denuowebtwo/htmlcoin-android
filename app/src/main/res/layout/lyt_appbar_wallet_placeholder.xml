@@ -22,7 +22,7 @@
             android:id="@+id/tv_placeholder_balance_title"
             android:text="@string/available_balance"
             android:layout_width="wrap_content"
-            app:typefaceAsset="@string/simplonMonoRegular"
+            android:fontFamily="@font/stymie_light"
             android:gravity="center"
             android:layout_height="match_parent" />
 
@@ -31,8 +31,8 @@
             android:textSize="12sp"
             android:layout_alignParentRight="true"
             android:id="@+id/tv_placeholder_balance_value"
-            app:typefaceAsset="@string/simplonMonoRegular"
-            android:text="0.0 QTUM"
+            android:fontFamily="@font/stymie_light"
+            android:text="0.0 HTML"
             android:layout_width="wrap_content"
             android:gravity="center"
             android:layout_height="match_parent" />
@@ -52,7 +52,7 @@
             android:textColor="@color/background"
             android:textSize="12sp"
             android:id="@+id/tv_placeholder_not_confirmed_balance_title"
-            app:typefaceAsset="@string/simplonMonoRegular"
+            android:fontFamily="@font/stymie_light"
             android:text="@string/not_confirmed_balance"
             android:layout_width="wrap_content"
             android:gravity="center"
@@ -63,8 +63,8 @@
             android:textSize="12sp"
             android:layout_alignParentRight="true"
             android:id="@+id/tv_placeholder_not_confirmed_balance_value"
-            app:typefaceAsset="@string/simplonMonoRegular"
-            android:text="0.0 QTUM"
+            android:fontFamily="@font/stymie_light"
+            android:text="0.0 HTML"
             android:layout_width="wrap_content"
             android:gravity="center"
             android:layout_height="match_parent" />

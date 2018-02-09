@@ -231,7 +231,9 @@ public abstract class WatchContractFragment extends BaseFragment implements Watc
 
     @Override
     public void subscribeTokenBalanceChanges(String contractAddress) {
-        mUpdateService.subscribeTokenBalanceChange(contractAddress);
+        if (mUpdateService != null) {
+            mUpdateService.subscribeTokenBalanceChange(contractAddress);
+        }
     }
 
     @Override

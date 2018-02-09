@@ -35,7 +35,7 @@
                 android:alpha=".5"
                 android:text="Send"
                 android:textColor="@color/bottom_nav_bar_text_color_light"
-                app:typefaceAsset="@string/proximaNovaRegular" />
+                android:fontFamily="@font/stymie_light" />
 
             <org.qtum.wallet.utils.FontTextView
                 android:id="@+id/tv_value"
@@ -43,10 +43,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
                 android:gravity="right"
-                android:text="-7,450 QTUM"
-                android:textColor="@color/bottom_nav_bar_text_color_light"
+                android:text="-7,450 HTML"
+                android:textColor="@color/title_lt_green_color"
                 android:textSize="18sp"
-                app:typefaceAsset="@string/proximaNovaSemibold" />
+                android:fontFamily="@font/stymie_bold" />
 
         </LinearLayout>
 
@@ -60,8 +60,8 @@
             android:ellipsize="end"
             android:maxLines="1"
             android:text="1mase88dascasd12312nfsa33"
-            android:textColor="@color/bottom_nav_bar_text_color_light"
-            app:typefaceAsset="@string/proximaNovaRegular" />
+            android:textColor="@color/color_custom_dark"
+            android:fontFamily="@font/stymie_light" />
 
     </LinearLayout>
 
@@ -69,7 +69,7 @@
         android:layout_marginTop="8dp"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="0dp"
         android:alpha=".1"
         android:background="@color/bottom_nav_bar_text_color_light"/>
 

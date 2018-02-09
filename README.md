@@ -46,6 +46,29 @@ com.android.tools.build:gradle:2.3.3
 - ``` 'io.socket:socket.io-client:0.8.3'```  - Socket IO Client
 - ``` 'com.squareup.retrofit2:retrofit:2.1.0'```  HTTP Client
 
+
+<b>Build the application</b><br/>
+```bash
+# build bitcoinj library
+cd submodules\android-fork-bitcoinj
+mvn package -Dmaven.test.skip=true
+
+# build application on regtest
+./gradlew :app:assembleRegtestDebug
+
+# build application on mainnet
+./gradlew :app:assembleMainnetDebug
+
+```
+
+Requires Properties in a gradle properties file (DO NOT COMMIT)
+- HTMLCOIN_RELEASE_STORE_FILE
+- HTMLCOIN_RELEASE_STORE_PASSWORD
+
+<b>Release the application</b><br/>
+1. Tag with the version number
+1. build application on mainnet `./gradlew :app:assembleMainnetRelease`
+
 <b>Android Fork BitcoinJ</b><br/>
 The android fork bitcoinj library is a Java implementation of the Bitcoin protocol, which allows it to maintain a QTUM wallet and send/receive transactions without needing a local copy of Bitcoin Core. It comes with full documentation and some example apps showing how to use it<br/>
 Link: https://github.com/bitcoinj/bitcoinj

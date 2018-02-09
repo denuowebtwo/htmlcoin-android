@@ -22,7 +22,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true">
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="40dp">
 
             <org.qtum.wallet.utils.FontButton
 
@@ -34,10 +35,10 @@
                 android:gravity="center"
                 android:padding="16dp"
                 android:text="@string/create_new"
-                app:typeface="@string/proximaNovaBold"
+                android:fontFamily="@font/stymie_bold"
                 android:background="@drawable/btn_gray_corner_background_light_alpha_30"
                 android:textAllCaps="true"
-                android:textColor="@color/white"
+                android:textColor="@color/color_custom_dark"
                 android:textSize="@dimen/button_text" />
 
 
@@ -50,8 +51,8 @@
                 android:background="@drawable/btn_gray_corner_background_light_alpha_30"
                 android:text="@string/login"
                 android:textAllCaps="true"
-                app:typeface="@string/proximaNovaBold"
-                android:textColor="@color/white"
+                android:fontFamily="@font/stymie_bold"
+                android:textColor="@color/black"
                 android:textSize="@dimen/button_text" />
 
             <org.qtum.wallet.utils.FontButton
@@ -62,15 +63,24 @@
                 android:layout_marginTop="8dp"
                 android:gravity="center"
                 android:padding="16dp"
-                app:typeface="@string/proximaNovaBold"
-                android:background="@drawable/btn_gray_corner_background_light_alpha_30"
+                android:fontFamily="@font/stymie_bold"
                 android:text="@string/import_wallet"
                 android:textAllCaps="true"
-                android:textColor="@color/white"
+                android:textColor="@color/color_custom_yellow_dark"
                 android:textSize="@dimen/button_text" />
 
 
         </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/logo_view"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="40dp"
+            android:tint="@android:color/transparent"
+            android:layout_centerHorizontal="true"
+            app:srcCompat="@mipmap/logo" />
 
         <org.qtum.wallet.utils.FontTextView
             android:id="@+id/tv_start_page_create"
@@ -82,17 +92,9 @@
             android:gravity="center"
             android:text="@string/create_the_first_one_or_restore_n_the_previous_wallet_key"
             android:textColor="@color/white"
-            android:textSize="16sp"
-            app:typefaceAsset="@string/proximaNovaLight" />
-
-        <ImageView
-            android:id="@+id/logo_view"
-            android:layout_width="140dp"
-            android:layout_height="140dp"
-            android:layout_alignParentTop="true"
-            android:tint="@color/white"
-            android:layout_centerHorizontal="true"
-            app:srcCompat="@drawable/qtum_logo" />
+            android:textSize="18sp"
+            android:fontFamily="@font/stymie_light"
+            />
 
         <org.qtum.wallet.utils.FontTextView
             android:id="@+id/tv_start_page_you_dont_have"
@@ -104,7 +106,8 @@
             android:text="@string/you_don_t_have_a_wallet_yet"
             android:textColor="@color/white"
             android:textSize="20sp"
-            app:typefaceAsset="@string/proximaNovaSemibold" />
+            android:fontFamily="@font/stymie_bold"
+             />
 
     </RelativeLayout>
 

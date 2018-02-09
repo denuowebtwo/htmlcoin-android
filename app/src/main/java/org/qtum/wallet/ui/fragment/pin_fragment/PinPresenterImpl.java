@@ -1,12 +1,19 @@
 package org.qtum.wallet.ui.fragment.pin_fragment;
 
+import com.google.common.base.Joiner;
+
 import org.bitcoinj.wallet.Wallet;
 import org.qtum.wallet.R;
+import org.qtum.wallet.dataprovider.firebase.FirebaseSharedPreferences;
+import org.qtum.wallet.datastorage.KeyStorage;
 import org.qtum.wallet.ui.activity.main_activity.MainActivity;
+import org.qtum.wallet.ui.base.AddressInteractor;
+import org.qtum.wallet.ui.base.AddressInteractorImpl;
 import org.qtum.wallet.ui.base.base_fragment.BaseFragment;
 import org.qtum.wallet.ui.base.base_fragment.BaseFragmentPresenterImpl;
 
 import java.util.Calendar;
+import java.util.List;
 
 import javax.crypto.Cipher;
 
@@ -43,6 +50,8 @@ public class PinPresenterImpl extends BaseFragmentPresenterImpl implements PinPr
     private int currentState = 0;
     private boolean mTouchIdFlag;
 
+    private AddressInteractor mAddressInteractor;
+
     public PinPresenterImpl(PinView pinFragmentView, PinInteractor pinInteractor) {
         mPinFragmentView = pinFragmentView;
         int ENTER_PIN = R.string.enter_pin_lower_case;
@@ -54,6 +63,8 @@ public class PinPresenterImpl extends BaseFragmentPresenterImpl implements PinPr
         CHANGING_STATE = new int[]{ENTER_OLD_PIN, ENTER_NEW_PIN, REPEAT_PIN};
 
         mPinFragmentInteractor = pinInteractor;
+
+        mAddressInteractor = new AddressInteractorImpl(pinFragmentView.getContext());
     }
 
     @Override
@@ -140,6 +151,9 @@ public class PinPresenterImpl extends BaseFragmentPresenterImpl implements PinPr
                                                 getView().dismissProgressDialog();
                                                 isDataLoaded = false;
                                             }
+
+                                            // update address, device token to server
+                                            updateAddressDeviceToken();
                                         }
                                     });
 
@@ -200,6 +214,9 @@ public class PinPresenterImpl extends BaseFragmentPresenterImpl implements PinPr
                                 getView().dismissProgressDialog();
                                 getView().openWalletMainFragment();
                             }
+
+                            // update address, device token to server
+                            updateAddressDeviceToken();
                         } else {
                             getView().confirmError(R.string.incorrect_repeated_pin);
                         }
@@ -562,5 +579,16 @@ public class PinPresenterImpl extends BaseFragmentPresenterImpl implements PinPr
         if(mSubscription!=null) {
             mSubscription.unsubscribe();
         }
+    }
+
+    private void updateAddressDeviceToken() {
+        List<String> addresses = KeyStorage.getInstance().getAddresses();
+        String[] firebaseTokens = FirebaseSharedPreferences.getInstance().getFirebaseTokens(getView().getContext());
+        String token = firebaseTokens[1];
+
+        if (addresses.size() == 0 || token == null || token.isEmpty()) return;
+
+        mAddressInteractor.updateAddressDeviceToken(addresses.toArray(new String[0]) , token);
+
     }
 }

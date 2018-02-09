@@ -71,12 +71,14 @@ public abstract class WalletMainFragment extends BaseFragment implements WalletM
             public void onServiceConnectionChange(boolean isConnecting) {
                 if (isConnecting) {
                     mUpdateService = getMainActivity().getUpdateService();
-                    mUpdateService.addTokenListener(new TokenListener() {
-                        @Override
-                        public void newToken() {
-                            getPresenter().checkOtherTokens();
-                        }
-                    });
+                    if (mUpdateService != null) {
+                        mUpdateService.addTokenListener(new TokenListener() {
+                            @Override
+                            public void newToken() {
+                                getPresenter().checkOtherTokens();
+                            }
+                        });
+                    }
                 }
             }
         });

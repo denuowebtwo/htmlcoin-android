@@ -27,7 +27,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                app:typefaceAsset="@string/proximaNovaSemibold"
+                android:fontFamily="@font/stymie_bold"
                 android:textColor="@color/white"
                 android:textSize="@dimen/toolbar_text_size"/>
         </android.support.v7.widget.Toolbar>
@@ -37,6 +37,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:onClick="hideKeyBoard"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <org.qtum.wallet.utils.PinEntryEditText
@@ -58,14 +59,14 @@
             app:pinCharacterMask="●"
             app:pinTextBottomPadding="8dp"
             app:pinLineStroke="1dp"
-            app:pinLineStrokeSelected="4dp"
+            app:pinLineStrokeSelected="1dp"
             app:pinBackgroundIsSquare="false"
             app:pinLineColors="@color/white"
             android:textColor="@color/white"/>
 
         <org.qtum.wallet.utils.FontTextView
             android:id="@+id/tooltip"
-            android:text="error"
+            android:text="Error"
             android:paddingTop="4dp"
             android:layout_marginTop="8dp"
             android:paddingBottom="4dp"
@@ -74,7 +75,7 @@
             android:background="@drawable/background_bt_alpha"
             android:textColor="@android:color/white"
             android:layout_centerHorizontal = "true"
-            app:typefaceAsset="@string/proximaNovaLight"
+            android:fontFamily="@font/stymie_light"
             android:layout_below="@+id/til_wallet_pin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -95,11 +96,11 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:padding="16dp"
-            app:typeface="@string/proximaNovaBold"
+            android:fontFamily="@font/stymie_bold"
             android:background="@drawable/btn_gray_corner_background_light_alpha_30"
             android:text="@string/cancel"
             android:textAllCaps="true"
-            android:textColor="@color/white"
+            android:textColor="@color/color_custom_dark"
             android:textSize="@dimen/button_text"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"

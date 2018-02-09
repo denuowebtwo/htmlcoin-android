@@ -69,6 +69,6 @@ public class AddressWithBalanceHolder extends RecyclerView.ViewHolder {
             mTextViewAddressBalance.setLongNumberText(balance);
         }
 
-        mTextViewSymbol.setText(" QTUM");
+        mTextViewSymbol.setText(" HTML");
     }
 }

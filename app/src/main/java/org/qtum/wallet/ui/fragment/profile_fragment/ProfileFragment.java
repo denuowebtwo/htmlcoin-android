@@ -143,7 +143,9 @@ public abstract class ProfileFragment extends BaseFragment implements ProfileVie
         getPresenter().clearWallet();
         getMainActivity().onLogout();
         mUpdateService = getMainActivity().getUpdateService();
-        mUpdateService.stopMonitoring();
+        if (mUpdateService != null) {
+            mUpdateService.stopMonitoring();
+        }
         BaseFragment startPageFragment = StartPageFragment.newInstance(false, getContext());
         getMainActivity().openRootFragment(startPageFragment);
     }

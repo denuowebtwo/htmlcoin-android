@@ -26,7 +26,7 @@
 
 
             <org.qtum.wallet.utils.FontTextView
-                app:typefaceAsset="@string/proximaNovaSemibold"
+                android:fontFamily="@font/stymie_bold"
                 android:background="@color/bottom_nav_bar_color_light"
                 android:layout_width="match_parent"
                 android:layout_height="32dp"
@@ -47,7 +47,7 @@
                     <!--android:layout_height="wrap_content" />-->
 
                 <org.qtum.wallet.utils.FontTextView
-                    app:typefaceAsset="@string/proximaNovaRegular"
+                    android:fontFamily="@font/stymie_light"
                     android:textColor="@color/grey70"
                     android:gravity="center"
                     android:textSize="18sp"
@@ -106,7 +106,7 @@
                             android:text="@string/token_name"
                             android:textColor="@color/white"
                             android:textSize="20sp"
-                            app:typefaceAsset="@string/proximaNovaSemibold" />
+                            android:fontFamily="@font/stymie_bold" />
 
                         <ImageButton
                             android:id="@+id/bt_back"
@@ -120,7 +120,7 @@
                             android:paddingRight="16dp"
                             android:paddingTop="10dp"
                             android:tint="@color/white"
-                            app:srcCompat="@drawable/ic_back_indicator" />
+                            app:srcCompat="@drawable/icon_back_indicator" />
 
                         <ImageView
                             android:layout_toStartOf="@+id/bt_share"

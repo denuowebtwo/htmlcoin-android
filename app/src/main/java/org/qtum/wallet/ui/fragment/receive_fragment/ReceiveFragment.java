@@ -45,11 +45,11 @@ import com.google.zxing.common.BitMatrix;
 import org.qtum.wallet.R;
 import org.qtum.wallet.dataprovider.services.update_service.UpdateService;
 import org.qtum.wallet.dataprovider.services.update_service.listeners.BalanceChangeListener;
-import org.qtum.wallet.ui.fragment.addresses_fragment.AddressesFragment;
-import org.qtum.wallet.ui.fragment_factory.Factory;
 import org.qtum.wallet.ui.activity.main_activity.MainActivity;
 import org.qtum.wallet.ui.base.base_fragment.BaseFragment;
+import org.qtum.wallet.ui.fragment.addresses_fragment.AddressesFragment;
 import org.qtum.wallet.ui.fragment.wallet_fragment.WalletFragment;
+import org.qtum.wallet.ui.fragment_factory.Factory;
 import org.qtum.wallet.utils.FontManager;
 
 import java.io.File;
@@ -132,7 +132,7 @@ public abstract class ReceiveFragment extends BaseFragment implements ReceiveVie
 
     private void chooseShareMethod() {
         if (getQrCode() != null) {
-            String pathofBmp = MediaStore.Images.Media.insertImage(getContext().getContentResolver(), getQrCode(), "QTUM QRCode", "Share");
+            String pathofBmp = MediaStore.Images.Media.insertImage(getContext().getContentResolver(), getQrCode(), "HTML QRCode", "Share");
             if (TextUtils.isEmpty(pathofBmp)) {
                 fixMediaDir();
                 return;
@@ -141,9 +141,9 @@ public abstract class ReceiveFragment extends BaseFragment implements ReceiveVie
             Intent intentShareFile = new Intent(Intent.ACTION_SEND);
             intentShareFile.setType("image/png");
             intentShareFile.putExtra(Intent.EXTRA_SUBJECT,
-                    "Qtum QR-Code");
+                    "HTML QR-Code");
             intentShareFile.putExtra(Intent.EXTRA_STREAM, bmpUri);
-            getMainActivity().startActivity(Intent.createChooser(intentShareFile, "Qtum QR-Code"));
+            getMainActivity().startActivity(Intent.createChooser(intentShareFile, "HTML QR-Code"));
         }
     }
 
@@ -161,8 +161,10 @@ public abstract class ReceiveFragment extends BaseFragment implements ReceiveVie
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         if (getTokenBalance() == null) {
-            mUpdateService = getMainActivity().getUpdateService();
-            mUpdateService.addBalanceChangeListener(mBalanceChangeListener);
+            if (mUpdateService != null) {
+                mUpdateService = getMainActivity().getUpdateService();
+                mUpdateService.addBalanceChangeListener(mBalanceChangeListener);
+            }
         } else {
             updateBalance(getTokenBalance(), null);
         }
@@ -314,8 +316,8 @@ public abstract class ReceiveFragment extends BaseFragment implements ReceiveVie
             }
         });
 
-        mTextInputEditTextAmount.setTypeface(FontManager.getInstance().getFont(getString(org.qtum.wallet.R.string.simplonMonoRegular)));
-        mTextInputLayoutAmount.setTypeface(FontManager.getInstance().getFont(getString(org.qtum.wallet.R.string.simplonMonoRegular)));
+        mTextInputEditTextAmount.setTypeface(FontManager.getInstance().getFont(getString(R.string.simplonMonoRegular)));
+        mTextInputLayoutAmount.setTypeface(FontManager.getInstance().getFont(getString(R.string.simplonMonoRegular)));
 
         if (getArguments() != null) {
             String tokenAddr = getArguments().getString(TOKEN_ADDRESS, null);
@@ -390,6 +392,8 @@ public abstract class ReceiveFragment extends BaseFragment implements ReceiveVie
         if (getTargetFragment() != null) {
             ((WalletFragment) getTargetFragment()).updatePubKey(s);
         }
+
+        getPresenter().loadAndUpdateBalance();
     }
 
     @Override
@@ -408,10 +412,10 @@ public abstract class ReceiveFragment extends BaseFragment implements ReceiveVie
 
     @Override
     public void updateBalance(String balance, String unconfirmedBalance) {
-        placeHolderBalance.setText(balance);
-        if (!TextUtils.isEmpty(unconfirmedBalance)) {
+        placeHolderBalance.setText(String.format("%s %s",balance, getContext().getString(R.string.currency_html)));
+        if (!TextUtils.isEmpty(unconfirmedBalance) && !"0".equals(unconfirmedBalance)) {
             notConfirmedBalancePlaceholder.setVisibility(View.VISIBLE);
-            placeHolderBalanceNotConfirmed.setText(unconfirmedBalance);
+            placeHolderBalanceNotConfirmed.setText(String.format("%s %s", unconfirmedBalance, getContext().getString(R.string.currency_html)));
         } else {
             notConfirmedBalancePlaceholder.setVisibility(View.GONE);
         }

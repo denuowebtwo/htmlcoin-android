@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#2e9ad0</color>
-    <color name="colorPrimaryDark">#232328</color>
-    <color name="colorAccent">#e75647</color>
+    <color name="colorPrimary">#369cd6</color>
+    <color name="colorPrimaryDark">#2162af</color>
+    <color name="colorAccent">#f9e034</color>
     <color name="grey">#4e5d6f</color>
     <color name="grey70">#b24e5d6f</color>
     <color name="grey20">#334e5d6f</color>
@@ -25,12 +25,12 @@
     <color name="file_size_color">#4d2e9ad0</color>
     <color name="switch_non_checked">#656569</color>
 
-    <color name="bottom_nav_bar_color_light">#edf6f8</color>
+    <color name="bottom_nav_bar_color_light">#f5f5f5</color>
     <color name="unsubscribe_background">#919da8</color>
     <color name="bottom_nav_bar_text_color_light">#4e5d6f</color>
     <color name="bottom_nav_bar_text_color_light_alpha_60">#994e5d6f</color>
     <color name="bottom_nav_bar_text_color_light_alpha_50">#804e5d6f</color>
-    <color name="title_color_light">#3f38c4</color>
+    <color name="title_color_light">#369cd6</color>
 
     <color name="light_blue">#38b0c5</color>
     <color name="title_red_color">#ff7967</color>
@@ -41,13 +41,22 @@
 
     <color name="selected_paginator_light">#99536173</color>
     <color name="default_paginator_light">#4d536173</color>
-    <color name="switch_on">#36b9c8</color>
-    <color name="switch_on_alpha5">#8036b9c8</color>
+    <color name="switch_on">#efc825</color>
+    <color name="switch_on_alpha5">#80efc825</color>
     <color name="qr_code_background">#edf6f8</color>
-    <color name="qr_code_tint_color">#3c87b9</color>
+    <!--<color name="qr_code_tint_color">#3c87b9</color>-->
+    <color name="qr_code_tint_color">#231f20</color>
 
     <color name="chip_selected">#3696c8</color>
     <color name="chip_normal">#5cb6e5</color>
     <color name="qstore_background">#edf6f8</color>
+
+    <color name="color_custom_dark">#231f20</color>
+    <color name="color_custom_dark_alpha20">#33231f20</color>
+    <color name="color_custom_yellow_dark">#efc825</color>
+    <color name="color_custom_yellow">#f9e034</color>
+    <color name="color_custom_grey">#cccccc</color>
+    <color name="color_custom_blue">#369cd6</color>
+    <color name="color_custom_blue_dark">#2162af</color>
 
 </resources>

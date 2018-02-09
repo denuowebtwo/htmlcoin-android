@@ -19,7 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/colorPrimary"
-        app:typefaceAsset="@string/simplonMonoRegular"
+        android:fontFamily="@font/stymie_light"
         android:layout_marginTop="8dp"
         android:layout_gravity="center"
         android:id="@+id/tv_figcaption"/>

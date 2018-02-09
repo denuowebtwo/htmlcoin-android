@@ -1,5 +1,6 @@
 package org.qtum.wallet.ui.fragment.wallet_fragment.light;
 
+import android.os.Build;
 import android.support.v7.widget.RecyclerView;
 import android.text.SpannableString;
 import android.text.style.RelativeSizeSpan;
@@ -64,8 +65,14 @@ public class TransactionHolderLight extends RecyclerView.ViewHolder {
 
         if (history.getChangeInBalance().doubleValue() > 0) {
             mImageViewIcon.setImageResource(R.drawable.ic_received_light);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                mTextViewValue.setTextColor(mTextViewValue.getContext().getColor(R.color.title_lt_green_color));
+            }
         } else {
             mImageViewIcon.setImageResource(R.drawable.ic_sended_light);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                mTextViewValue.setTextColor(mTextViewValue.getContext().getColor(R.color.title_red_color));
+            }
         }
 
         if(history.getBlockTime() != null) {
@@ -77,7 +84,7 @@ public class TransactionHolderLight extends RecyclerView.ViewHolder {
         }
 
         mTextViewID.setText(history.getTxHash());
-        mTextViewValue.setText(getSpannedBalance(history.getChangeInBalance().toString() + " QTUM"));
+        mTextViewValue.setText(getSpannedBalance(history.getChangeInBalance().toString() + " HTML"));
     }
 
     private SpannableString getSpannedBalance(String balance){

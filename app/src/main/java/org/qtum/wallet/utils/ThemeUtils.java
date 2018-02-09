@@ -21,7 +21,7 @@ public class ThemeUtils {
 
     public static String getCurrentTheme(Context context){
         if(currentTheme == null){
-           currentTheme = PreferenceManager.getDefaultSharedPreferences(context).getString(THEME_KEY, THEME_DARK);
+           currentTheme = PreferenceManager.getDefaultSharedPreferences(context).getString(THEME_KEY, THEME_LIGHT);
         }
         return currentTheme;
     }

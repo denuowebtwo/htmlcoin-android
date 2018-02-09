@@ -1,10 +1,18 @@
 package org.qtum.wallet.ui.fragment.receive_fragment;
 
+import org.qtum.wallet.model.gson.AddressBalance;
+import org.qtum.wallet.ui.base.AddressInteractor;
+import org.qtum.wallet.ui.base.AddressInteractorImpl;
 import org.qtum.wallet.ui.base.base_fragment.BaseFragmentPresenterImpl;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
+import rx.Subscriber;
 import rx.Subscription;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 public class ReceivePresenterImpl extends BaseFragmentPresenterImpl implements ReceivePresenter {
 
@@ -14,9 +22,13 @@ public class ReceivePresenterImpl extends BaseFragmentPresenterImpl implements R
     private String mTokenAddress;
     private Subscription subscription;
 
+    private AddressInteractor mAddressInteractor;
+
     public ReceivePresenterImpl(ReceiveView view, ReceiveInteractor interactor) {
         mReceiveView = view;
         mReceiveInteractor = interactor;
+
+        mAddressInteractor = new AddressInteractorImpl(view.getContext());
     }
 
     @Override
@@ -80,7 +92,7 @@ public class ReceivePresenterImpl extends BaseFragmentPresenterImpl implements R
     }
 
     private String getadditionalInfo() {
-        return "label=QTUM Mobile Wallet&message=Payment Request";
+        return "label=HTML Mobile Wallet&message=Payment Request";
     }
 
     private String getFormattedTokenAddr(String addr) {
@@ -93,6 +105,31 @@ public class ReceivePresenterImpl extends BaseFragmentPresenterImpl implements R
 
     private String buildFullQrCodeData(String receiveAddr, String amount, String mTokenAddress) {
         return getFormattedReceiveAddr(receiveAddr) + getFormattedAmount(amount) + getadditionalInfo() + getFormattedTokenAddr(mTokenAddress);
+    }
+
+    public void loadAndUpdateBalance() {
+        final List<String> addresses = new ArrayList<>();
+        addresses.add(getInteractor().getCurrentReceiveAddress());
+
+        mAddressInteractor.getAddressBalance(addresses)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<AddressBalance>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onNext(AddressBalance addressBalance) {
+                        getView().updateBalance(addressBalance.getBalance().toPlainString(), addressBalance.getUnconfirmedBalance().toPlainString());
+                    }
+                });
     }
 
     @Override

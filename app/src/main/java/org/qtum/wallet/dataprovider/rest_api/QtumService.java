@@ -1,9 +1,13 @@
 package org.qtum.wallet.dataprovider.rest_api;
 
 
+import com.google.common.base.Joiner;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import org.qtum.wallet.model.gson.AddressBalance;
+import org.qtum.wallet.model.gson.AddressDeviceTokenRequest;
+import org.qtum.wallet.model.gson.AddressDeviceTokenResponse;
 import org.qtum.wallet.model.gson.BlockChainInfo;
 
 import org.qtum.wallet.model.gson.CallSmartContractRequest;
@@ -26,7 +30,6 @@ import org.qtum.wallet.model.gson.qstore.QstoreSourceCodeResponse;
 import org.qtum.wallet.utils.CurrentNetParams;
 
 
-import java.math.BigDecimal;
 import java.security.KeyStore;
 import java.security.SecureRandom;
 
@@ -90,6 +93,19 @@ public class QtumService {
             client.interceptors().add(httpLoggingInterceptor);
             client.readTimeout(180, TimeUnit.SECONDS);
             client.connectTimeout(180, TimeUnit.SECONDS);
+//            client.addInterceptor(new Interceptor() {
+//                @Override
+//                public Response intercept(Chain chain) throws IOException {
+//                    Request original = chain.request();
+//
+//                    Request request = original.newBuilder()
+//                            .header("Runscope-Request-Port", "3001")
+//                            .method(original.method(), original.body())
+//                            .build();
+//
+//                    return chain.proceed(request);
+//                }
+//            });
 
             KeyStore keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
             keyStore.load(null, null);
@@ -114,12 +130,6 @@ public class QtumService {
             HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
             interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
-            final OkHttpClient okHttpClient = new OkHttpClient.Builder()
-                    .addInterceptor(interceptor)
-                    .readTimeout(10, TimeUnit.SECONDS)
-                    .connectTimeout(10, TimeUnit.SECONDS)
-                    .build();
-
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl(CurrentNetParams.getUrl())
                     .addConverterFactory(GsonConverterFactory.create(gson))
@@ -138,15 +148,22 @@ public class QtumService {
     }
 
     public Observable<List<UnspentOutput>> getUnspentOutputsForSeveralAddresses(final List<String> addresses) {
-        return mServiceApi.getUnspentOutputsForSeveralAddresses(addresses);
+        String addressString = Joiner.on(",").join(addresses);
+        return mServiceApi.getUnspentOutputsForSeveralAddresses(addressString);
     }
 
     public Observable<HistoryResponse> getHistoryListForSeveralAddresses(final List<String> addresses, final int limit, final int offset) {
-        return mServiceApi.getHistoryListForSeveralAddresses(limit, offset, addresses);
+        String addressString = Joiner.on(",").join(addresses);
+        return mServiceApi.getHistoryListForSeveralAddresses(addressString, offset);
     }
 
     public Observable<List<History>> getHistoryList(final String address, final int limit, final int offset) {
-        return mServiceApi.getHistoryList(address, limit, offset);
+        return mServiceApi.getHistoryList(address, offset);
+    }
+
+    public Observable<AddressBalance> getAddressBalance(final List<String> addresses) {
+        String addressString = Joiner.on(",").join(addresses);
+        return mServiceApi.getAddressBalance(addressString);
     }
 
     public Observable<BlockChainInfo> getBlockChainInfo() {
@@ -222,6 +239,10 @@ public class QtumService {
 
     public Observable<List<QstoreContractType>> getContractTypes() {
         return mServiceApi.getContractTypes();
+    }
+
+    public Observable<AddressDeviceTokenResponse> updateDeviceToken(AddressDeviceTokenRequest addressDeviceToken) {
+        return mServiceApi.updateDeviceToken(addressDeviceToken);
     }
 
 }

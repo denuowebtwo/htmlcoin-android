@@ -1,5 +1,8 @@
 package org.qtum.wallet.dataprovider.rest_api;
 
+import org.qtum.wallet.model.gson.AddressBalance;
+import org.qtum.wallet.model.gson.AddressDeviceTokenRequest;
+import org.qtum.wallet.model.gson.AddressDeviceTokenResponse;
 import org.qtum.wallet.model.gson.BlockChainInfo;
 
 import org.qtum.wallet.model.gson.CallSmartContractRequest;
@@ -33,28 +36,33 @@ import rx.Observable;
 
 interface QtumRestService {
 
-    @GET("/outputs/unspent/{address}")
+//    @GET("/outputs/unspent/{address}")
+    @GET("/api/addrs/{address}/unspent")
     Observable<List<UnspentOutput>> getOutputsUnspent(@Path("address") String address);
 
-    @GET("/history/{address}/{limit}/{offset}")
-    Observable<List<History>> getHistoryList(@Path("address") String address, @Path("limit") int limit, @Path("offset") int offset);
+//    @GET("/history/{address}/{limit}/{offset}")
+    @GET("/api/addrs/{address}/txs")
+    Observable<List<History>> getHistoryList(@Path("address") String address, @Query("from") int from);
 
-    @GET("/blockchain/info")
+    @GET("/api/status")
     Observable<BlockChainInfo> getBlockChainInfo();
 
-    @POST("/send-raw-transaction")
+    @POST("/api/tx/send")
     Observable<SendRawTransactionResponse> sendRawTransaction(@Body SendRawTransactionRequest sendRawTransactionRequest);
 
     @POST("/contracts/{addressContract}/call")
     Observable<CallSmartContractResponse> callSmartContract(@Path("addressContract") String addressContract, @Body CallSmartContractRequest callSmartContractRequest);
 
-    @GET("/outputs/unspent")
-    Observable<List<UnspentOutput>> getUnspentOutputsForSeveralAddresses(@Query("addresses[]") List<String> addresses);
+//    @GET("/outputs/unspent")
+    @GET("/api/addrs/{addresses}/unspent")
+    Observable<List<UnspentOutput>> getUnspentOutputsForSeveralAddresses(@Path("addresses") String addresses);
 
-    @GET("/history/{limit}/{offset}")
-    Observable<HistoryResponse> getHistoryListForSeveralAddresses(@Path("limit") int limit, @Path("offset") int offset, @Query("addresses[]") List<String> addresses);
+//    @GET("/history/{limit}/{offset}")
+    @GET("/api/addrs/{addresses}/txs")
+    Observable<HistoryResponse> getHistoryListForSeveralAddresses(@Path("addresses") String addresses, @Query("from") int from);
 
-    @GET("/transactions/{tx_hash}")
+//    @GET("/transactions/{tx_hash}")
+    @GET("/api/tx/{tx_hash}")
     Observable<History> getTransaction(@Path("tx_hash") String txHash);
 
     @GET("/contracts/trending-now")
@@ -88,13 +96,19 @@ interface QtumRestService {
     @GET("/contracts/{contract_id}/is-paid/by-request-id")
     Observable<ContractPurchase> isPaidByRequestId(@Path("contract_id") String contractId, @Query("request_id") String requestId);
 
-    @GET("/estimate-fee-per-kb")
+    @GET("/api/utils/minestimatefee")
     Observable<FeePerKb> getEstimateFeePerKb(@Query("nBlocks") int nBlocks);
 
     @GET("/contracts/types")
     Observable<List<QstoreContractType>> getContractTypes();
 
-    @GET("/blockchain/dgpinfo")
+    @GET("/api/dgpinfo")
     Observable<DGPInfo> getDGPInfo();
+
+    @GET("/api/addrs/{addresses}/balance")
+    Observable<AddressBalance> getAddressBalance(@Path("addresses") String addresses);
+
+    @POST("/api/devicetoken/create")
+    Observable<AddressDeviceTokenResponse> updateDeviceToken(@Body AddressDeviceTokenRequest addressDeviceToken);
 
 }

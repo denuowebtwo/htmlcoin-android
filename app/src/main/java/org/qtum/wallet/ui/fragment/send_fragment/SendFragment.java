@@ -182,8 +182,8 @@ public abstract class SendFragment extends BaseFragment implements SendView {
             public void onServiceConnectionChange(boolean isConnecting) {
                 if (isConnecting) {
                     mUpdateService = getUpdateService();
-
-                    mUpdateService.addBalanceChangeListener(mBalanceChangeListener);
+                    if (mUpdateService != null)
+                        mUpdateService.addBalanceChangeListener(mBalanceChangeListener);
                 }
             }
         });
@@ -230,7 +230,9 @@ public abstract class SendFragment extends BaseFragment implements SendView {
     public void onDestroyView() {
         super.onDestroyView();
         mNetworkStateReceiver.removeNetworkStateListener(mNetworkStateListener);
-        mUpdateService.removeBalanceChangeListener(mBalanceChangeListener);
+        if (mUpdateService != null) {
+            mUpdateService.removeBalanceChangeListener(mBalanceChangeListener);
+        }
     }
 
     private void isQrCodeRecognition(boolean isQrCodeRecognition) {
@@ -420,7 +422,7 @@ public abstract class SendFragment extends BaseFragment implements SendView {
             public void onButton2Click() {
                 mTextInputEditTextAddress.setText("");
                 mTextInputEditTextAmount.setText("");
-                mCurrency = new Currency("Qtum " + getContext().getString(R.string.default_currency));
+                mCurrency = new Currency("Html " + getContext().getString(R.string.default_currency));
                 mTextViewCurrency.setText(mCurrency.getName());
                 sendFrom = false;
                 getArguments().putString(ADDRESS_FROM, "");
@@ -436,7 +438,7 @@ public abstract class SendFragment extends BaseFragment implements SendView {
                 return false;
             }
         };
-        mCurrency = new Currency("Qtum " + getContext().getString(R.string.default_currency));
+        mCurrency = new Currency("Html " + getContext().getString(R.string.default_currency));
         showBottomNavView(true);
         ((MainActivity) getActivity()).setIconChecked(3);
         mImageButtonBack.setVisibility(View.GONE);
@@ -612,7 +614,7 @@ public abstract class SendFragment extends BaseFragment implements SendView {
         mLinearLayoutCurrency.setVisibility(View.VISIBLE);
         mTextViewCurrency.setText(currency.getName());
         mCurrency = currency;
-        if(mCurrency.getName().equals("Qtum " + getString(R.string.default_currency))){
+        if(mCurrency.getName().equals("Html " + getString(R.string.default_currency))){
             mRelativeLayoutGasManagementContainer.setVisibility(View.GONE);
         }else{
             mRelativeLayoutGasManagementContainer.setVisibility(View.VISIBLE);
@@ -621,13 +623,21 @@ public abstract class SendFragment extends BaseFragment implements SendView {
 
     @Override
     public void setUpCurrencyField(@StringRes int defaultCurrId) {
-        Currency currency = new Currency("Qtum " + getContext().getString(defaultCurrId));
+        Currency currency = new Currency("Html " + getContext().getString(defaultCurrId));
         setUpCurrencyField(currency);
     }
 
     @Override
     public Fragment getFragment() {
         return this;
+    }
+
+    @Override
+    public void clearInputs() {
+        mTextInputEditTextAddress.setText("");
+        mTextInputEditTextAmount.setText("");
+        sendFrom = false;
+        getArguments().putString(ADDRESS_FROM, "");
     }
 
     @Override
@@ -682,10 +692,10 @@ public abstract class SendFragment extends BaseFragment implements SendView {
 
     @Override
     public void updateBalance(String balance, String unconfirmedBalance) {
-        placeHolderBalance.setText(balance);
-        if (!TextUtils.isEmpty(unconfirmedBalance)) {
+        placeHolderBalance.setText(String.format("%s %s",balance, getContext().getString(R.string.currency_html)));
+        if (!TextUtils.isEmpty(unconfirmedBalance) && !"0".equals(unconfirmedBalance)) {
             notConfirmedBalancePlaceholder.setVisibility(View.VISIBLE);
-            placeHolderBalanceNotConfirmed.setText(unconfirmedBalance);
+            placeHolderBalanceNotConfirmed.setText(String.format("%s %s", unconfirmedBalance, getContext().getString(R.string.currency_html)));
         } else {
             notConfirmedBalancePlaceholder.setVisibility(View.GONE);
         }
@@ -706,9 +716,9 @@ public abstract class SendFragment extends BaseFragment implements SendView {
     public void handleBalanceUpdating(String balanceString, BigDecimal unconfirmedBalance) {
         String unconfirmedBalanceString = unconfirmedBalance.toString();
         if (!TextUtils.isEmpty(unconfirmedBalanceString) && !unconfirmedBalanceString.equals("0")) {
-            updateBalance(String.format("%S QTUM", balanceString), String.format("%S QTUM", String.valueOf(unconfirmedBalance.floatValue())));
+            updateBalance(String.format("%S HTML", balanceString), String.format("%S HTML", String.valueOf(unconfirmedBalance.floatValue())));
         } else {
-            updateBalance(String.format("%S QTUM", balanceString), null);
+            updateBalance(String.format("%S HTML", balanceString), null);
         }
     }
 
@@ -766,6 +776,7 @@ public abstract class SendFragment extends BaseFragment implements SendView {
         @Override
         public void onSuccess() {
             setAlertDialog(org.qtum.wallet.R.string.payment_completed_successfully, "Ok", BaseFragment.PopUpType.confirm);
+            clearInputs();
         }
 
         @Override
