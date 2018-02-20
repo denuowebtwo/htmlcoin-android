@@ -7,7 +7,7 @@
     <string name="you_don_t_have_a_wallet_yet">Du har ikke en wallet endnu</string>
     <string name="currency_html">HTML</string>
 
-    <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
+    <!--<string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>-->
 
     <string name="wallet_name">Wallet navn</string>
 
