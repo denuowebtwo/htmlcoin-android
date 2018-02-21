@@ -52,7 +52,6 @@ public class KeyStoreHelper {
         }
     }
 
-
     @TargetApi(Build.VERSION_CODES.KITKAT)
     static void createKeysJBMR2(Context context, String alias) throws NoSuchProviderException,
             NoSuchAlgorithmException, InvalidAlgorithmParameterException {
@@ -62,13 +61,11 @@ public class KeyStoreHelper {
         end.add(Calendar.YEAR, 30);
 
         KeyPairGeneratorSpec spec = new KeyPairGeneratorSpec.Builder(context)
-                // You'll use the alias later to retrieve the key. It's a key
-                // for the key!
                 .setAlias(alias)
                 .setSubject(new X500Principal("CN=" + alias))
                 .setSerialNumber(BigInteger.valueOf(Math.abs(alias.hashCode())))
-                // Date range of validity for the generated pair.
-                .setStartDate(start.getTime()).setEndDate(end.getTime())
+                .setStartDate(start.getTime())
+                .setEndDate(end.getTime())
                 .build();
 
         KeyPairGenerator kpGenerator = KeyPairGenerator.getInstance(
@@ -77,7 +74,6 @@ public class KeyStoreHelper {
         kpGenerator.initialize(spec);
         KeyPair kp = kpGenerator.generateKeyPair();
         Log.d(TAG, "Public Key is: " + kp.getPublic().toString());
-
     }
 
     @TargetApi(Build.VERSION_CODES.M)
@@ -95,8 +91,6 @@ public class KeyStoreHelper {
                             .setDigests(KeyProperties.DIGEST_SHA256,
                                     KeyProperties.DIGEST_SHA384,
                                     KeyProperties.DIGEST_SHA512)
-                            // Only permit the private key to be used if the user authenticated
-                            // within the last five minutes.
                             .setUserAuthenticationRequired(requireAuth)
                             .build());
             KeyPair keyPair = keyPairGenerator.generateKeyPair();
@@ -228,17 +222,15 @@ public class KeyStoreHelper {
         String TYPE_RSA = "RSA";
         String PADDING_TYPE = "PKCS1Padding";
         String BLOCKING_MODE = "NONE";
-
         String SIGNATURE_SHA256withRSA = "SHA256withRSA";
         String SIGNATURE_SHA512withRSA = "SHA512withRSA";
     }
 
     private final static String QTUM_PIN_ALIAS = "qtum_alias";
 
-    public static String getSeed(Context context,@NonNull String pin){
+    public static String getSeed(Context context, @NonNull String pin) {
         String cryptoSaltPassphrase = QtumSharedPreference.getInstance().getSeed(context);
-        byte[] saltPassphrase = KeyStoreHelper.decryptToBytes(QTUM_PIN_ALIAS,cryptoSaltPassphrase);
-        return AESUtil.decryptBytes(pin,saltPassphrase);
+        byte[] saltPassphrase = KeyStoreHelper.decryptToBytes(QTUM_PIN_ALIAS, cryptoSaltPassphrase);
+        return AESUtil.decryptBytes(pin, saltPassphrase);
     }
-
 }
