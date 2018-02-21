@@ -586,7 +586,7 @@ public class PinPresenterImpl extends BaseFragmentPresenterImpl implements PinPr
         String[] firebaseTokens = FirebaseSharedPreferences.getInstance().getFirebaseTokens(getView().getContext());
         String token = firebaseTokens[1];
 
-        if (addresses.size() == 0 || token == null || token.isEmpty()) return;
+        if (addresses == null || addresses.size() == 0 || token == null || token.isEmpty()) return;
 
         mAddressInteractor.updateAddressDeviceToken(addresses.toArray(new String[0]) , token);
 
