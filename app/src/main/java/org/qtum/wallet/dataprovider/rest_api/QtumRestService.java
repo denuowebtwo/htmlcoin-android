@@ -108,7 +108,7 @@ interface QtumRestService {
     @GET("/api/addrs/{addresses}/balance")
     Observable<AddressBalance> getAddressBalance(@Path("addresses") String addresses);
 
-    @POST("/api/devicetoken/create")
+    @POST("/notification/devicetoken/create")
     Observable<AddressDeviceTokenResponse> updateDeviceToken(@Body AddressDeviceTokenRequest addressDeviceToken);
 
 }

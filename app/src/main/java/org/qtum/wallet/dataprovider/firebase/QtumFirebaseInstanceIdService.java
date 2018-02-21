@@ -47,7 +47,7 @@ public class QtumFirebaseInstanceIdService extends FirebaseInstanceIdService {
         String[] firebaseTokens = FirebaseSharedPreferences.getInstance().getFirebaseTokens(getApplicationContext());
         String token = firebaseTokens[1];
 
-        if (addresses.size() == 0 || token == null || token.isEmpty()) return;
+        if (addresses == null || addresses.size() == 0 || token == null || token.isEmpty()) return;
 
         AddressDeviceTokenRequest addressDeviceToken = new AddressDeviceTokenRequest(addresses.toArray(new String[0]), token);
 

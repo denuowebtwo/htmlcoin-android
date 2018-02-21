@@ -37,6 +37,7 @@ import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.qtum.wallet.BuildConfig;
 import org.qtum.wallet.QtumApplication;
 import org.qtum.wallet.R;
 import org.qtum.wallet.dataprovider.receivers.network_state_receiver.NetworkStateReceiver;
@@ -105,7 +106,9 @@ public class MainActivity extends BaseActivity implements MainActivityView {
         super.onCreate(savedInstanceState);
         setContentView((ThemeUtils.THEME_DARK.equals(ThemeUtils.currentTheme)) ? LAYOUT : LAYOUT_LIGHT);
 
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
+        if (!BuildConfig.DEBUG) {
+            getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
+        }
         mNetworkReceiver = new NetworkStateReceiver(getNetworkConnectedFlag());
         registerReceiver(mNetworkReceiver,
                 new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
