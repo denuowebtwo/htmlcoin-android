@@ -153,6 +153,8 @@ dependencies {
     compile 'com.github.designsters:android-fork-bitcoinj:1.0.11'
 //    compile (files('../submodules/android-fork-bitcoinj/core/target/bitcoinj-core-0.14.5.jar'))
 
+    compile "com.google.android.gms:play-services-base:11.8.0"
+
     compile 'com.android.support:multidex:1.0.2'
     compile 'com.google.guava:guava:23.6-android'
     compile 'com.google.zxing:core:3.3.0'

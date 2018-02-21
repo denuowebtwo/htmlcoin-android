@@ -2,17 +2,29 @@ package org.qtum.wallet.ui.base.base_activity;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Toast;
+
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GoogleApiAvailability;
+
+import org.qtum.wallet.R;
 import org.qtum.wallet.utils.ThemeUtils;
 
 import butterknife.ButterKnife;
 
 public abstract class BaseActivity extends AppCompatActivity implements BaseContextView {
+    private static final String LOG_TAG = "BaseActivity";
+
+    private GoogleApiAvailability googleApiAvailability;
+    private static final int REQUEST_CODE = 1;
 
     protected abstract void createPresenter();
 
@@ -26,6 +38,9 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
         super.onCreate(savedInstanceState);
         createPresenter();
         getPresenter().onCreate();
+
+        // Verifying or install Play Services
+        verifyOrInstallPlayServices();
     }
 
     @Override
@@ -138,5 +153,59 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
 
     public void reloadActivity(){
         updateTheme();
+    }
+
+    public void verifyOrInstallPlayServices() {
+
+        googleApiAvailability = GoogleApiAvailability.getInstance();
+        int googleApAvailabilityResult = googleApiAvailability.isGooglePlayServicesAvailable(this);
+        boolean dialogRequired = false;
+
+        switch (googleApAvailabilityResult) {
+
+            case ConnectionResult.SERVICE_DISABLED:
+                Log.w(LOG_TAG, "Google Play Services Disabled");
+                dialogRequired = true;
+                break;
+
+            case ConnectionResult.SERVICE_MISSING:
+                Log.w(LOG_TAG, "Google Play Services Missing");
+                dialogRequired = true;
+                break;
+
+            case ConnectionResult.SERVICE_INVALID:
+                Log.w(LOG_TAG, "Google Play Services Disabled");
+                dialogRequired = true;
+                break;
+
+            case ConnectionResult.SERVICE_MISSING_PERMISSION:
+                Log.w(LOG_TAG, "Google Play Services Missing Permission");
+                dialogRequired = true;
+                break;
+
+            case ConnectionResult.SERVICE_UPDATING:
+                Log.w(LOG_TAG, "Google Play Services Updating");
+                dialogRequired = true;
+                break;
+
+            case ConnectionResult.SERVICE_VERSION_UPDATE_REQUIRED:
+                Log.w(LOG_TAG, "Google Play Services Version Update Required");
+                dialogRequired = true;
+                break;
+
+            default:
+                Log.w(LOG_TAG, "Google Play Services Available version code: " + googleApAvailabilityResult);
+                break;
+        }
+
+        if (dialogRequired) {
+            googleApiAvailability.getErrorDialog(this, googleApAvailabilityResult, REQUEST_CODE, new DialogInterface.OnCancelListener() {
+                @Override
+                public void onCancel(DialogInterface dialog) {
+                    Toast.makeText(BaseActivity.this, R.string.warning_play_services_required_user_cancelled, Toast.LENGTH_LONG).show();
+                    System.exit(0);
+                }
+            });
+        }
     }
 }
