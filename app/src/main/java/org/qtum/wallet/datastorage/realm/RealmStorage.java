@@ -18,6 +18,7 @@ import io.realm.RealmConfiguration;
 import io.realm.RealmList;
 import io.realm.RealmQuery;
 import io.realm.RealmResults;
+import io.realm.Sort;
 
 public class RealmStorage {
     private final static String LOG_TAG = "RealmStorage";
@@ -176,6 +177,7 @@ public class RealmStorage {
         try {
             realm = Realm.getInstance(config);
             RealmResults<RealmHistory> realmQuery = realm.where(RealmHistory.class)
+                    .sort("blockTime", Sort.DESCENDING)
                     .findAll();
             for(RealmHistory realmHistory: realmQuery) {
                 historyList.add(toHistory(realmHistory));
@@ -192,4 +194,24 @@ public class RealmStorage {
         return historyList;
     }
 
+    public void clearHistory() {
+        Realm realm = null;
+        try {
+            realm = Realm.getInstance(config);
+            realm.beginTransaction();
+
+            realm.where(RealmVin.class).findAll().deleteAllFromRealm();
+            realm.where(RealmScriptPubKey.class).findAll().deleteAllFromRealm();
+            realm.where(RealmVout.class).findAll().deleteAllFromRealm();
+            realm.where(RealmHistory.class).findAll().deleteAllFromRealm();
+
+            realm.commitTransaction();
+        } catch (Exception ex) {
+            Log.e(LOG_TAG, ex.getMessage());
+            Log.e(LOG_TAG, Log.getStackTraceString(ex));
+        } finally {
+            if (realm != null)
+                realm.close();
+        }
+    }
 }

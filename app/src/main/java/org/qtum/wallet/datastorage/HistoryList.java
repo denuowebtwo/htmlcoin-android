@@ -29,6 +29,7 @@ public class HistoryList {
 
     public void clearHistoryList() {
         sHistoryList = null;
+        realmStorage.clearHistory();
     }
 
     public List<History> getHistoryList() {
