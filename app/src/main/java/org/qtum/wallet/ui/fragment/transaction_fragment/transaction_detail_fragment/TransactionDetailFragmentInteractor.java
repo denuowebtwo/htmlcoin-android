@@ -13,7 +13,7 @@ class TransactionDetailFragmentInteractor {
     }
 
     public History getHistory(int position) {
-        List<History> historyList = HistoryList.getInstance().getHistoryList();
+        List<History> historyList = HistoryList.getInstance(null).getHistoryList();
         if (historyList != null && historyList.size() > position) {
             return historyList.get(position);
         } else {

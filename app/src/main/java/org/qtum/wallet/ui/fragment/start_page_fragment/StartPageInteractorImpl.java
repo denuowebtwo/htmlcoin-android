@@ -30,7 +30,7 @@ public class StartPageInteractorImpl implements StartPageInteractor {
     public void clearWallet() {
         QtumSharedPreference.getInstance().clear(mContext.get());
         KeyStorage.getInstance().clearKeyStorage();
-        HistoryList.getInstance().clearHistoryList();
+        HistoryList.getInstance(mContext.get()).clearHistoryList();
         TinyDB db = new TinyDB(mContext.get());
         db.clearTokenList();
         db.clearContractList();

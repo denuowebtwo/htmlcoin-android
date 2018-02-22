@@ -32,7 +32,7 @@ class MainActivityInteractorImpl implements MainActivityInteractor {
     @Override
     public void clearStatic(){
         KeyStorage.getInstance().clearKeyStorage();
-        HistoryList.getInstance().clearHistoryList();
+        HistoryList.getInstance(mContext).clearHistoryList();
     }
 
     @Override

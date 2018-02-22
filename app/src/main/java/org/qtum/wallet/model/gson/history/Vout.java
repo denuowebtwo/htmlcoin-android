@@ -61,4 +61,11 @@ public class Vout extends TransactionInfo {
         this.address = address;
     }
 
+    public ScriptPubKey getScriptPubKey() {
+        return scriptPubKey;
+    }
+
+    public void setScriptPubKey(ScriptPubKey scriptPubKey) {
+        this.scriptPubKey = scriptPubKey;
+    }
 }

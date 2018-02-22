@@ -11,6 +11,7 @@ import io.realm.RealmObject;
 public class RealmVin extends RealmObject {
     private String value;
     private String address;
+    private boolean isOwnAddress;
 
     public String getValue() {
         return value;
@@ -26,5 +27,13 @@ public class RealmVin extends RealmObject {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public boolean isOwnAddress() {
+        return isOwnAddress;
+    }
+
+    public void setOwnAddress(boolean ownAddress) {
+        isOwnAddress = ownAddress;
     }
 }

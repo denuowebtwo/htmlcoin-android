@@ -1,5 +1,8 @@
 package org.qtum.wallet.datastorage;
 
+import android.content.Context;
+
+import org.qtum.wallet.datastorage.realm.RealmStorage;
 import org.qtum.wallet.model.gson.history.History;
 
 import java.util.ArrayList;
@@ -10,14 +13,16 @@ public class HistoryList {
 
     private List<History> mHistoryList;
     private int mTotalItem = 0;
+    private RealmStorage realmStorage;
 
-    private HistoryList() {
+    private HistoryList(Context context) {
         mHistoryList = new ArrayList<>();
+        realmStorage = RealmStorage.getInstance(context);
     }
 
-    public static HistoryList getInstance() {
+    public static HistoryList getInstance(Context context) {
         if (sHistoryList == null) {
-            sHistoryList = new HistoryList();
+            sHistoryList = new HistoryList(context);
         }
         return sHistoryList;
     }
@@ -27,14 +32,23 @@ public class HistoryList {
     }
 
     public List<History> getHistoryList() {
+        if (mHistoryList.size() == 0)
+            mHistoryList = realmStorage.getHistories();
         return mHistoryList;
     }
 
     public void setHistoryList(List<History> historyList) {
         mHistoryList = historyList;
+
+        for (History history: historyList) {
+            realmStorage.upsertHistory(history);
+        }
     }
 
     public int getTotalItem() {
+        if (mTotalItem == 0 )
+            mTotalItem = realmStorage.getHistoryCount();
+
         return mTotalItem;
     }
 

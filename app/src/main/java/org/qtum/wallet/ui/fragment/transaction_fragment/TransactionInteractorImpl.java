@@ -19,7 +19,7 @@ class TransactionInteractorImpl implements TransactionInteractor {
 
     @Override
     public History getHistory(int position) {
-        return HistoryList.getInstance().getHistoryList().get(position);
+        return HistoryList.getInstance(mContext.get()).getHistoryList().get(position);
     }
 
     @Override

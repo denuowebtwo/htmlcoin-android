@@ -1,6 +1,8 @@
 package org.qtum.wallet.ui.fragment.wallet_fragment;
 
 
+import android.content.Context;
+
 import org.qtum.wallet.dataprovider.rest_api.QtumService;
 import org.qtum.wallet.model.gson.history.History;
 import org.qtum.wallet.model.gson.history.HistoryResponse;
@@ -23,13 +25,15 @@ public class WalletInteractorImpl implements WalletInteractor {
     static final int UPDATE_STATE = 0;
     static final int LOAD_STATE = 1;
     private final List<String> addresses = KeyStorage.getInstance().getAddresses();
+    private Context mContext;
 
-    public WalletInteractorImpl() {
+    public WalletInteractorImpl(Context context) {
+        mContext = context;
     }
 
     @Override
     public List<History> getHistoryList() {
-        return HistoryList.getInstance().getHistoryList();
+        return HistoryList.getInstance(mContext).getHistoryList();
     }
 
 
@@ -60,13 +64,13 @@ public class WalletInteractorImpl implements WalletInteractor {
 
                         switch (STATE) {
                             case UPDATE_STATE: {
-                                HistoryList.getInstance().setHistoryList(historyResponse.getItems());
-                                HistoryList.getInstance().setTotalItem(historyResponse.getTotalItems());
+                                HistoryList.getInstance(mContext).setHistoryList(historyResponse.getItems());
+                                HistoryList.getInstance(mContext).setTotalItem(historyResponse.getTotalItems());
                                 callBack.onSuccess();
                                 break;
                             }
                             case LOAD_STATE: {
-                                HistoryList.getInstance().getHistoryList().addAll(historyResponse.getItems());
+                                HistoryList.getInstance(mContext).getHistoryList().addAll(historyResponse.getItems());
                                 callBack.onSuccess();
                                 break;
                             }
@@ -114,13 +118,13 @@ public class WalletInteractorImpl implements WalletInteractor {
 
     @Override
     public int getTotalHistoryItem() {
-        return HistoryList.getInstance().getTotalItem();
+        return HistoryList.getInstance(mContext).getTotalItem();
     }
 
     @Override
     public void addToHistoryList(History history) {
         calculateChangeInBalance(history, addresses);
-        HistoryList.getInstance().getHistoryList().add(0, history);
+        HistoryList.getInstance(mContext).getHistoryList().add(0, history);
     }
 
     @Override

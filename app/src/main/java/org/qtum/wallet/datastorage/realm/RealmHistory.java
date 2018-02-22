@@ -1,21 +1,14 @@
 package org.qtum.wallet.datastorage.realm;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-
-import org.qtum.wallet.model.gson.history.Vin;
-import org.qtum.wallet.model.gson.history.Vout;
-
-import java.math.BigDecimal;
-import java.util.List;
-
 import io.realm.RealmList;
 import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
 public class RealmHistory extends RealmObject {
     private Long blockTime;
     private Integer blockHeight;
     private String blockHash;
+    @PrimaryKey
     private String txHash;
     private String amount;
     private Boolean contractHasBeenCreated;

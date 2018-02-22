@@ -1,10 +1,6 @@
 package org.qtum.wallet.datastorage.realm;
 
 
-import org.qtum.wallet.model.gson.history.ScriptPubKey;
-
-import java.math.BigDecimal;
-
 import io.realm.RealmObject;
 
 public class RealmVout extends RealmObject {
