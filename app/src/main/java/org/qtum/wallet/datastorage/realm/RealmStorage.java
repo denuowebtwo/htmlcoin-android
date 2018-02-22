@@ -4,6 +4,7 @@ package org.qtum.wallet.datastorage.realm;
 import android.content.Context;
 import android.util.Log;
 
+import org.qtum.wallet.model.gson.AddressBalance;
 import org.qtum.wallet.model.gson.history.History;
 import org.qtum.wallet.model.gson.history.ScriptPubKey;
 import org.qtum.wallet.model.gson.history.Vin;
@@ -192,6 +193,56 @@ public class RealmStorage {
         }
 
         return historyList;
+    }
+
+    // Balance
+    public AddressBalance getAddressBalance() {
+        Realm realm = null;
+        AddressBalance addressBalance = new AddressBalance();
+        try {
+            realm = Realm.getInstance(config);
+            RealmBalance realmBalance = realm.where(RealmBalance.class)
+                    .findFirst();
+            if (realmBalance != null) {
+                addressBalance.setBalance(new BigDecimal(realmBalance.getBalance()));
+                addressBalance.setUnconfirmedBalance(new BigDecimal(realmBalance.getUnconfirmedBalance()));
+                addressBalance.setImmature(new BigDecimal(realmBalance.getImmature()));
+            }
+        } catch (Exception ex) {
+            Log.e(LOG_TAG, ex.getMessage());
+            Log.e(LOG_TAG, Log.getStackTraceString(ex));
+        } finally {
+            if (realm != null)
+                realm.close();
+        }
+
+        return addressBalance;
+    }
+
+    public void updateAddressBalance(AddressBalance addressBalance) {
+        Realm realm = null;
+        try {
+            realm = Realm.getInstance(config);
+            realm.beginTransaction();
+
+            RealmBalance realmBalance = realm.where(RealmBalance.class)
+                    .findFirst();
+            if (realmBalance == null)
+                realmBalance = realm.createObject(RealmBalance.class);
+
+            realmBalance.setBalance(addressBalance.getBalance().toString());
+            realmBalance.setUnconfirmedBalance(addressBalance.getUnconfirmedBalance().toString());
+            realmBalance.setImmature(addressBalance.getImmature().toString());
+
+            realm.commitTransaction();
+
+        } catch (Exception ex) {
+            Log.e(LOG_TAG, ex.getMessage());
+            Log.e(LOG_TAG, Log.getStackTraceString(ex));
+        } finally {
+            if (realm != null)
+                realm.close();
+        }
     }
 
     public void clearHistory() {

@@ -5,6 +5,7 @@ import android.util.Log;
 
 import org.qtum.wallet.dataprovider.rest_api.QtumService;
 import org.qtum.wallet.datastorage.KeyStorage;
+import org.qtum.wallet.datastorage.realm.RealmStorage;
 import org.qtum.wallet.model.AddressWithBalance;
 import org.qtum.wallet.model.gson.AddressBalance;
 import org.qtum.wallet.model.gson.AddressDeviceTokenRequest;
@@ -17,6 +18,7 @@ import java.util.List;
 
 import rx.Observable;
 import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 public class AddressInteractorImpl implements AddressInteractor {
@@ -84,7 +86,41 @@ public class AddressInteractorImpl implements AddressInteractor {
 
     @Override
     public Observable<AddressBalance> getAddressBalance(final List<String> addresses) {
-        return QtumService.newInstance().getAddressBalance(addresses);
+//        return QtumService.newInstance().getAddressBalance(addresses);
+
+        return Observable.create(new Observable.OnSubscribe<AddressBalance>(){
+            @Override
+            public void call(final Subscriber<? super AddressBalance> subscriber) {
+                try {
+                    if (!subscriber.isUnsubscribed()) {
+                        QtumService.newInstance().getAddressBalance(addresses)
+                                .subscribeOn(Schedulers.io())
+                                .subscribe(new Subscriber<AddressBalance>() {
+                                    @Override
+                                    public void onCompleted() {
+
+                                    }
+
+                                    @Override
+                                    public void onError(Throwable e) {
+
+                                    }
+
+                                    @Override
+                                    public void onNext(AddressBalance addressBalance) {
+                                        RealmStorage realmStorage = RealmStorage.getInstance(mContext.get());
+                                        realmStorage.updateAddressBalance(addressBalance);
+
+                                        subscriber.onNext(addressBalance);
+                                        subscriber.onCompleted();
+                                    }
+                                });
+                    }
+                } catch (Exception e) {
+                    subscriber.onError(e);
+                }
+            }
+        });
     }
 
     @Override
