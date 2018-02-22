@@ -45,7 +45,7 @@ public class WalletFragmentLight extends WalletFragment {
     public void initializeViews() {
         super.initializeViews();
 
-        updateBalance("0","0");
+//        updateBalance("0","0");
 
         showBottomNavView(R.color.title_color_light);
 

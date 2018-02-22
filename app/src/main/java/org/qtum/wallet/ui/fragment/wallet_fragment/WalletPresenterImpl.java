@@ -1,5 +1,6 @@
 package org.qtum.wallet.ui.fragment.wallet_fragment;
 
+import org.qtum.wallet.datastorage.realm.RealmStorage;
 import org.qtum.wallet.model.AddressWithBalance;
 import org.qtum.wallet.model.gson.AddressBalance;
 import org.qtum.wallet.model.gson.history.History;
@@ -36,7 +37,13 @@ public class WalletPresenterImpl extends BaseFragmentPresenterImpl implements Wa
     public void notifyHeader() {
         String pubKey = getInteractor().getAddress();
         getView().updatePubKey(pubKey);
-        loadAndUpdateData();
+
+        AddressBalance addressBalance = RealmStorage.getInstance(mWalletView.getContext()).getAddressBalance();
+        if (addressBalance != null){
+            getView().updateBalance(addressBalance.getFormattedBalance().stripTrailingZeros().toPlainString(), addressBalance.getFormattedUnconfirmedBalance().stripTrailingZeros().toPlainString());
+        } else {
+            loadAndUpdateData();
+        }
     }
 
     @Override
@@ -156,7 +163,7 @@ public class WalletPresenterImpl extends BaseFragmentPresenterImpl implements Wa
 
                     @Override
                     public void onNext(AddressBalance addressBalance) {
-                        getView().updateBalance(addressBalance.getBalance().toPlainString(), addressBalance.getUnconfirmedBalance().toPlainString());
+                        getView().updateBalance(addressBalance.getFormattedBalance().stripTrailingZeros().toPlainString(), addressBalance.getFormattedUnconfirmedBalance().stripTrailingZeros().toPlainString());
                     }
                 });
     }

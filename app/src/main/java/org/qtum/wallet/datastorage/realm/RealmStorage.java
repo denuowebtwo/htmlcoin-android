@@ -17,7 +17,6 @@ import java.util.List;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 import io.realm.RealmList;
-import io.realm.RealmQuery;
 import io.realm.RealmResults;
 import io.realm.Sort;
 
@@ -198,12 +197,13 @@ public class RealmStorage {
     // Balance
     public AddressBalance getAddressBalance() {
         Realm realm = null;
-        AddressBalance addressBalance = new AddressBalance();
+        AddressBalance addressBalance = null;
         try {
             realm = Realm.getInstance(config);
             RealmBalance realmBalance = realm.where(RealmBalance.class)
                     .findFirst();
             if (realmBalance != null) {
+                addressBalance = new AddressBalance();
                 addressBalance.setBalance(new BigDecimal(realmBalance.getBalance()));
                 addressBalance.setUnconfirmedBalance(new BigDecimal(realmBalance.getUnconfirmedBalance()));
                 addressBalance.setImmature(new BigDecimal(realmBalance.getImmature()));

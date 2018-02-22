@@ -329,7 +329,7 @@ public class SendPresenterImpl extends BaseFragmentPresenterImpl implements Send
 
                     @Override
                     public void onNext(AddressBalance addressBalance) {
-                        getView().updateBalance(addressBalance.getBalance().toPlainString(), addressBalance.getUnconfirmedBalance().toPlainString());
+                        getView().updateBalance(addressBalance.getFormattedBalance().stripTrailingZeros().toPlainString(), addressBalance.getFormattedUnconfirmedBalance().stripTrailingZeros().toPlainString());
                     }
                 });
     }

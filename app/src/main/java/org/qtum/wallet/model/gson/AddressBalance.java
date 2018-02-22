@@ -20,6 +20,10 @@ public class AddressBalance {
     }
 
     public BigDecimal getUnconfirmedBalance() {
+        return unconfirmedBalance;
+    }
+
+    public BigDecimal getFormattedUnconfirmedBalance() {
         if (unconfirmedBalance.compareTo(BigDecimal.ZERO) != 0 )
             return unconfirmedBalance.movePointLeft(8);
         return unconfirmedBalance;
@@ -30,6 +34,10 @@ public class AddressBalance {
     }
 
     public BigDecimal getBalance() {
+        return balance;
+    }
+
+    public BigDecimal getFormattedBalance() {
         if (balance.compareTo(BigDecimal.ZERO) != 0 )
             return balance.movePointLeft(8);
         return balance;
@@ -40,6 +48,10 @@ public class AddressBalance {
     }
 
     public BigDecimal getImmature() {
+        return immature;
+    }
+
+    public BigDecimal getFormattedImmature() {
         if (immature.compareTo(BigDecimal.ZERO) > 0 )
             return immature.movePointLeft(8);
         return immature;
