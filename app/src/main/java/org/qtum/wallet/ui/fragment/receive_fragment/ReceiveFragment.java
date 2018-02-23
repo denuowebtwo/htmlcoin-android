@@ -45,6 +45,8 @@ import com.google.zxing.common.BitMatrix;
 import org.qtum.wallet.R;
 import org.qtum.wallet.dataprovider.services.update_service.UpdateService;
 import org.qtum.wallet.dataprovider.services.update_service.listeners.BalanceChangeListener;
+import org.qtum.wallet.datastorage.realm.RealmStorage;
+import org.qtum.wallet.model.gson.AddressBalance;
 import org.qtum.wallet.ui.activity.main_activity.MainActivity;
 import org.qtum.wallet.ui.base.base_fragment.BaseFragment;
 import org.qtum.wallet.ui.fragment.addresses_fragment.AddressesFragment;
@@ -393,7 +395,13 @@ public abstract class ReceiveFragment extends BaseFragment implements ReceiveVie
             ((WalletFragment) getTargetFragment()).updatePubKey(s);
         }
 
-        getPresenter().loadAndUpdateBalance();
+        AddressBalance addressBalance = RealmStorage.getInstance(getContext()).getAddressBalance();
+        if (addressBalance != null){
+            updateBalance(addressBalance.getFormattedBalance().stripTrailingZeros().toPlainString(), addressBalance.getFormattedUnconfirmedBalance().stripTrailingZeros().toPlainString());
+        } else {
+            getPresenter().loadAndUpdateBalance();
+        }
+
     }
 
     @Override

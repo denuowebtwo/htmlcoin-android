@@ -99,7 +99,7 @@
 
             <org.qtum.wallet.utils.FontTextView
                 android:id="@+id/tv_public_key"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:padding="2dp"
@@ -108,7 +108,8 @@
                 android:gravity="top"
                 android:paddingEnd="16dp"
                 android:textColor="@color/white"
-                android:fontFamily="@font/stymie_bold"/>
+                android:fontFamily="@font/stymie_bold"
+                app:autoSizeTextType="uniform"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

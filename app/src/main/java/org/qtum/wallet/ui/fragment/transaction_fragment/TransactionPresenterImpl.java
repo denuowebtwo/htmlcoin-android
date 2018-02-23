@@ -47,7 +47,7 @@ public class TransactionPresenterImpl extends BaseFragmentPresenterImpl implemen
             listFrom.add(vin.getAddress());
         }
 
-        getView().setUpTransactionData(history.getChangeInBalance().toString(), dateString,
+        getView().setUpTransactionData(history.getChangeInBalance().stripTrailingZeros().toPlainString(), dateString,
                 listFrom, listTo, history.getBlockHeight() > 0);
     }
 }

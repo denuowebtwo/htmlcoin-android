@@ -84,7 +84,7 @@ public class TransactionHolderLight extends RecyclerView.ViewHolder {
         }
 
         mTextViewID.setText(history.getTxHash());
-        mTextViewValue.setText(getSpannedBalance(history.getChangeInBalance().toString() + " HTML"));
+        mTextViewValue.setText(getSpannedBalance(history.getChangeInBalance().stripTrailingZeros().toPlainString() + " HTML"));
     }
 
     private SpannableString getSpannedBalance(String balance){

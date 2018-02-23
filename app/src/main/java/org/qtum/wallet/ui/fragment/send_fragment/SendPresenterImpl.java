@@ -1,6 +1,7 @@
 package org.qtum.wallet.ui.fragment.send_fragment;
 
 import org.qtum.wallet.R;
+import org.qtum.wallet.datastorage.realm.RealmStorage;
 import org.qtum.wallet.model.Currency;
 import org.qtum.wallet.model.CurrencyToken;
 import org.qtum.wallet.model.contract.Token;
@@ -71,7 +72,12 @@ public class SendPresenterImpl extends BaseFragmentPresenterImpl implements Send
         getView().updateGasPrice(minGasPrice, maxGasPrice);
         getView().updateGasLimit(minGasLimit, maxGasLimit);
 
-        loadAndUpdateBalance();
+        AddressBalance addressBalance = RealmStorage.getInstance(mSendFragmentView.getContext()).getAddressBalance();
+        if (addressBalance != null){
+            getView().updateBalance(addressBalance.getFormattedBalance().stripTrailingZeros().toPlainString(), addressBalance.getFormattedUnconfirmedBalance().stripTrailingZeros().toPlainString());
+        } else {
+            loadAndUpdateBalance();
+        }
     }
 
     @Override
