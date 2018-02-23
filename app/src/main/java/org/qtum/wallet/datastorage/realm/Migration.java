@@ -13,5 +13,10 @@ public class Migration implements RealmMigration{
         RealmSchema schema = realm.getSchema();
         Log.i("RealmMigration", "Migration: oldVersion=" + oldVersion + " - newVersion=" + newVersion);
 
+        if (oldVersion == 1) {
+            schema.get("RealmVout")
+                    .addField("spentTxId", String.class);
+            oldVersion++;
+        }
     }
 }

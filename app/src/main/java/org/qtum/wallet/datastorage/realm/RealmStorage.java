@@ -38,7 +38,7 @@ public class RealmStorage {
         Realm.init(context);
         config = new RealmConfiguration.Builder()
                 .name("htmlcoin.realm")
-                .schemaVersion(1)
+                .schemaVersion(2)
                 .migration(new Migration())
                 .build();
         Realm.setDefaultConfiguration(config);
@@ -67,6 +67,7 @@ public class RealmStorage {
             scriptPubKey.setAddresses(addressArray);
 
             vout.setScriptPubKey(scriptPubKey);
+            vout.setSpentTxId(realmVout.getSpentTxId());
 
             voutList.add(vout);
         }
@@ -90,12 +91,12 @@ public class RealmStorage {
         Realm realm = null;
         try {
             realm = Realm.getInstance(config);
+            realm.beginTransaction();
             RealmHistory realmHistory = realm.where(RealmHistory.class)
                     .equalTo("txHash", history.getTxHash())
                     .findFirst();
 
             if (realmHistory == null) {
-                realm.beginTransaction();
                 realmHistory = realm.createObject(RealmHistory.class, history.getTxHash());
                 realmHistory.setAmount(history.getAmount().toString());
                 realmHistory.setBlockHash(history.getBlockHash());
@@ -122,6 +123,8 @@ public class RealmStorage {
                     realmScriptPubKey.setAddresses(realmList);
 
                     realmVout.setScriptPubKey(realmScriptPubKey);
+                    if (vout.getSpentTxId() != null)
+                        realmVout.setSpentTxId(vout.getSpentTxId());
 
                     realmVoutRealmList.add(realmVout);
                 }
@@ -141,9 +144,17 @@ public class RealmStorage {
                 }
                 realmHistory.setVin(realmVinRealmList);
 
-                realm.commitTransaction();
-            }
+            } else {
+                for (Vout vout : history.getVout()) {
+                    for(RealmVout realmVout: realmHistory.getVout()){
+                        if (vout.getAddress().equals(realmVout.getAddress()) && vout.getSpentTxId() != null) {
+                            realmVout.setSpentTxId(vout.getSpentTxId());
+                        }
+                    }
 
+                }
+            }
+            realm.commitTransaction();
         } catch (Exception ex) {
             Log.e(LOG_TAG, ex.getMessage());
             Log.e(LOG_TAG, Log.getStackTraceString(ex));
@@ -192,6 +203,33 @@ public class RealmStorage {
         }
 
         return historyList;
+    }
+
+    public Boolean checkSpentOutput(String txHash, String address) {
+        Realm realm = null;
+        try {
+            realm = Realm.getInstance(config);
+
+            RealmResults<RealmHistory> realmQuery = realm.where(RealmHistory.class)
+                    .equalTo("txHash", txHash)
+                    .findAll();
+
+            for (RealmHistory realmHistory: realmQuery) {
+                for(RealmVout vout: realmHistory.getVout()){
+                    if(address.equals(vout.getAddress()) && vout.getSpentTxId() != null){
+                        return true;
+                    }
+                }
+            }
+        } catch (Exception ex) {
+            Log.e(LOG_TAG, ex.getMessage());
+            Log.e(LOG_TAG, Log.getStackTraceString(ex));
+        } finally {
+            if (realm != null)
+                realm.close();
+        }
+
+        return false;
     }
 
     // Balance
@@ -255,6 +293,7 @@ public class RealmStorage {
             realm.where(RealmScriptPubKey.class).findAll().deleteAllFromRealm();
             realm.where(RealmVout.class).findAll().deleteAllFromRealm();
             realm.where(RealmHistory.class).findAll().deleteAllFromRealm();
+            realm.where(RealmBalance.class).findAll().deleteAllFromRealm();
 
             realm.commitTransaction();
         } catch (Exception ex) {

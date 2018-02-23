@@ -7,6 +7,7 @@ public class RealmVout extends RealmObject {
     private String value;
     private String address;
     private RealmScriptPubKey scriptPubKey;
+    private String spentTxId;
 
     public String getValue() {
         return value;
@@ -30,5 +31,13 @@ public class RealmVout extends RealmObject {
 
     public void setScriptPubKey(RealmScriptPubKey scriptPubKey) {
         this.scriptPubKey = scriptPubKey;
+    }
+
+    public String getSpentTxId() {
+        return spentTxId;
+    }
+
+    public void setSpentTxId(String spentTxId) {
+        this.spentTxId = spentTxId;
     }
 }

@@ -19,6 +19,10 @@ public class Vout extends TransactionInfo {
     @Expose
     private ScriptPubKey scriptPubKey;
 
+    @SerializedName("spentTxId")
+    @Expose
+    private String spentTxId;
+
     private boolean isOwnAddress = false;
 
     /**
@@ -67,5 +71,13 @@ public class Vout extends TransactionInfo {
 
     public void setScriptPubKey(ScriptPubKey scriptPubKey) {
         this.scriptPubKey = scriptPubKey;
+    }
+
+    public String getSpentTxId() {
+        return spentTxId;
+    }
+
+    public void setSpentTxId(String spentTxId) {
+        this.spentTxId = spentTxId;
     }
 }

@@ -18,10 +18,10 @@ import org.qtum.wallet.dataprovider.rest_api.QtumService;
 import org.qtum.wallet.datastorage.KeyStorage;
 import org.qtum.wallet.datastorage.QtumSharedPreference;
 import org.qtum.wallet.datastorage.TinyDB;
+import org.qtum.wallet.datastorage.realm.RealmStorage;
 import org.qtum.wallet.model.contract.ContractMethodParameter;
 import org.qtum.wallet.model.contract.Token;
 import org.qtum.wallet.model.gson.CallSmartContractRequest;
-import org.qtum.wallet.model.gson.DGPInfo;
 import org.qtum.wallet.model.gson.SendRawTransactionRequest;
 import org.qtum.wallet.model.gson.SendRawTransactionResponse;
 import org.qtum.wallet.model.gson.UnspentOutput;
@@ -74,10 +74,15 @@ public class SendInteractorImpl implements SendInteractor {
 
                     @Override
                     public void onNext(List<UnspentOutput> unspentOutputs) {
+                        RealmStorage realmStorage = RealmStorage.getInstance(mContext);
 
                         for (Iterator<UnspentOutput> iterator = unspentOutputs.iterator(); iterator.hasNext(); ) {
                             UnspentOutput unspentOutput = iterator.next();
                             if (!unspentOutput.isOutputAvailableToPay()/* || unspentOutput.getConfirmations()==0*/) {
+                                iterator.remove();
+                            }
+
+                            if(realmStorage.checkSpentOutput(unspentOutput.getTxHash(), unspentOutput.getAddress())) {
                                 iterator.remove();
                             }
                         }
@@ -114,9 +119,15 @@ public class SendInteractorImpl implements SendInteractor {
                     @Override
                     public void onNext(List<UnspentOutput> unspentOutputs) {
 
+                        // check unspent outputs against spent outputs
+                        RealmStorage realmStorage = RealmStorage.getInstance(mContext);
                         for (Iterator<UnspentOutput> iterator = unspentOutputs.iterator(); iterator.hasNext(); ) {
                             UnspentOutput unspentOutput = iterator.next();
                             if (!unspentOutput.isOutputAvailableToPay()) {
+                                iterator.remove();
+                            }
+
+                            if(realmStorage.checkSpentOutput(unspentOutput.getTxHash(), unspentOutput.getAddress())) {
                                 iterator.remove();
                             }
                         }
