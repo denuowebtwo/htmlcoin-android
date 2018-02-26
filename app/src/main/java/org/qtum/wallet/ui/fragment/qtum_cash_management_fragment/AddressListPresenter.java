@@ -16,4 +16,6 @@ public interface AddressListPresenter extends BaseFragmentPresenter {
     void setKeyWithBalanceFrom(AddressWithBalance keyWithBalanceFrom);
 
     List<AddressWithBalance> getAddressWithBalanceList();
+
+    void onNetworkStateChanged(boolean networkConnectedFlag);
 }

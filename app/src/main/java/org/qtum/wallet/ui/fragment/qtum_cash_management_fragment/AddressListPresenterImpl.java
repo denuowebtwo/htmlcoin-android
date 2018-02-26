@@ -2,6 +2,7 @@ package org.qtum.wallet.ui.fragment.qtum_cash_management_fragment;
 
 import org.qtum.wallet.model.AddressWithBalance;
 import org.qtum.wallet.model.gson.UnspentOutput;
+import org.qtum.wallet.ui.base.base_fragment.BaseFragment;
 import org.qtum.wallet.ui.base.base_fragment.BaseFragmentPresenterImpl;
 
 import java.util.ArrayList;
@@ -17,6 +18,8 @@ public class AddressListPresenterImpl extends BaseFragmentPresenterImpl implemen
     private AddressListInteractor mAddressListInteractor;
     private List<AddressWithBalance> mAddressWithBalanceList = new ArrayList<>();
     private AddressWithBalance keyWithBalanceFrom;
+
+    private Boolean mNetworkConnectedFlag = null;
 
     public AddressListPresenterImpl(AddressListView view, AddressListInteractor interactor) {
         mAddressListFragmentView = view;
@@ -45,7 +48,14 @@ public class AddressListPresenterImpl extends BaseFragmentPresenterImpl implemen
 
                     @Override
                     public void onError(Throwable e) {
+                        if (!mNetworkConnectedFlag) {
+                            getView().setAlertDialog(org.qtum.wallet.R.string.no_internet_connection,
+                                    org.qtum.wallet.R.string.please_check_your_network_settings,
+                                    org.qtum.wallet.R.string.ok,
+                                    BaseFragment.PopUpType.error);
+                        }
 
+                        getView().dismissProgressDialog();
                     }
 
                     @Override
@@ -88,5 +98,10 @@ public class AddressListPresenterImpl extends BaseFragmentPresenterImpl implemen
     @Override
     public List<AddressWithBalance> getAddressWithBalanceList() {
         return mAddressWithBalanceList;
+    }
+
+    @Override
+    public void onNetworkStateChanged(boolean networkConnectedFlag) {
+        mNetworkConnectedFlag = networkConnectedFlag;
     }
 }

@@ -2,6 +2,7 @@ package org.qtum.wallet.ui.fragment.qtum_cash_management_fragment;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,6 +11,8 @@ import android.text.TextUtils;
 import android.view.View;
 
 import org.qtum.wallet.R;
+import org.qtum.wallet.dataprovider.receivers.network_state_receiver.NetworkStateReceiver;
+import org.qtum.wallet.dataprovider.receivers.network_state_receiver.listeners.NetworkStateListener;
 import org.qtum.wallet.model.AddressWithBalance;
 import org.qtum.wallet.ui.fragment.send_fragment.SendFragment;
 import org.qtum.wallet.ui.fragment_factory.Factory;
@@ -31,6 +34,9 @@ public abstract class AddressListFragment extends BaseFragment implements Addres
 
     AddressListPresenter mAddressListPresenter;
     protected AddressesWithBalanceAdapter mAddressesWithBalanceAdapter;
+
+    private NetworkStateReceiver mNetworkStateReceiver;
+    private NetworkStateListener mNetworkStateListener;
 
     @OnClick({R.id.ibt_back})
     public void onClick(View view) {
@@ -56,6 +62,20 @@ public abstract class AddressListFragment extends BaseFragment implements Addres
     @Override
     protected AddressListPresenter getPresenter() {
         return mAddressListPresenter;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        mNetworkStateReceiver = getMainActivity().getNetworkReceiver();
+        mNetworkStateListener = new NetworkStateListener() {
+            @Override
+            public void onNetworkStateChanged(boolean networkConnectedFlag) {
+                getPresenter().onNetworkStateChanged(networkConnectedFlag);
+            }
+        };
+        mNetworkStateReceiver.addNetworkStateListener(mNetworkStateListener);
     }
 
     @Override

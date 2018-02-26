@@ -114,6 +114,10 @@ public class WalletPresenterImpl extends BaseFragmentPresenterImpl implements Wa
         mNetworkConnectedFlag = networkConnectedFlag;
     }
 
+    public Boolean getNetworkConnectedFlag() {
+        return mNetworkConnectedFlag;
+    }
+
     @Override
     public void onNewHistory(History history) {
         if (history.getBlockTime() != null) {

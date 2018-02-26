@@ -18,6 +18,8 @@ public interface WalletPresenter extends BaseFragmentPresenter {
 
     void onNetworkStateChanged(boolean networkConnectedFlag);
 
+    Boolean getNetworkConnectedFlag();
+
     void onNewHistory(History history);
 
     boolean getVisibility();
