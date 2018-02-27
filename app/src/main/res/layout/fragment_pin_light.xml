@@ -78,7 +78,8 @@
             android:fontFamily="@font/stymie_light"
             android:layout_below="@+id/til_wallet_pin"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:clickable="false" />
     </RelativeLayout>
 
     <RelativeLayout
