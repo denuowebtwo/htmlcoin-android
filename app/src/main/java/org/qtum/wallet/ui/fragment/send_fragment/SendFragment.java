@@ -740,11 +740,21 @@ public abstract class SendFragment extends BaseFragment implements SendView {
     @Override
     public boolean isValidAmount() {
         String amount = getAmountInput();
+        String fee = getFeeInput();
         if ((TextUtils.isEmpty(amount)) || Float.valueOf(amount) <= 0) {
             dismissProgressDialog();
             setAlertDialog(org.qtum.wallet.R.string.error, org.qtum.wallet.R.string.transaction_amount_cant_be_zero, "Ok", BaseFragment.PopUpType.error);
             return false;
-        } else {
+        } else if(new BigDecimal(amount).compareTo(new BigDecimal(getStringValue(R.string.amount_dust_value))) == -1) {
+            dismissProgressDialog();
+            setAlertDialog(org.qtum.wallet.R.string.error, org.qtum.wallet.R.string.transaction_amount_can_be_dust, "Ok", BaseFragment.PopUpType.error);
+            return false;
+        } else if(new BigDecimal(amount).compareTo(new BigDecimal(fee).multiply(new BigDecimal(3))) == -1) {
+            dismissProgressDialog();
+            setAlertDialog(org.qtum.wallet.R.string.error, org.qtum.wallet.R.string.transaction_fee_cant_be_large, "Ok", BaseFragment.PopUpType.error);
+            return false;
+        }
+        else {
             return true;
         }
     }
