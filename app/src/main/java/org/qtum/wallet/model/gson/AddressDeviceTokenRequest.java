@@ -7,10 +7,16 @@ public class AddressDeviceTokenRequest {
     private String[] addresses;
     @SerializedName("deviceToken")
     private String deviceToken;
+    @SerializedName("pushyDeviceToken")
+    private String pushyDeviceToken;
+    @SerializedName("platform")
+    private String platform;
 
-    public AddressDeviceTokenRequest(String[] addr, String token){
+    public AddressDeviceTokenRequest(String[] addr, String token, String pushyDeviceToken){
         this.addresses = addr;
         this.deviceToken = token;
+        this.pushyDeviceToken = pushyDeviceToken;
+        this.platform = "android";
     }
 
 }

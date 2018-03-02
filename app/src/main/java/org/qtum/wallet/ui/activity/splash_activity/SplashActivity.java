@@ -1,10 +1,13 @@
 package org.qtum.wallet.ui.activity.splash_activity;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -18,6 +21,7 @@ import org.qtum.wallet.ui.base.base_activity.BaseActivity;
 import org.qtum.wallet.utils.QtumIntent;
 
 import butterknife.BindView;
+import me.pushy.sdk.Pushy;
 
 
 public class SplashActivity extends BaseActivity implements SplashActivityView {
@@ -116,6 +120,15 @@ public class SplashActivity extends BaseActivity implements SplashActivityView {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Pushy.listen(this);
+        // Check whether the user has granted us the READ/WRITE_EXTERNAL_STORAGE permissions
+        if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            // Request both READ_EXTERNAL_STORAGE and WRITE_EXTERNAL_STORAGE so that the
+            // Pushy SDK will be able to persist the device token in the external storage
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
+        }
+
         setContentView(LAYOUT);
 
         View decorView = getWindow().getDecorView();

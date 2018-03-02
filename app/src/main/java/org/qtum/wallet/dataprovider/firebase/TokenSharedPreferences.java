@@ -5,22 +5,23 @@ import android.content.SharedPreferences;
 
 import org.qtum.wallet.dataprovider.firebase.listeners.FireBaseTokenRefreshListener;
 
-public class FirebaseSharedPreferences {
+public class TokenSharedPreferences {
 
     private final String FIREBASE_DATA_STORAGE = "firebase_data_storage";
-    private static FirebaseSharedPreferences sInstance;
+    private static TokenSharedPreferences sInstance;
 
     private final String PREV_TOKEN = "prev_token";
     private final String CURRENT_TOKEN = "current_token";
+    private final String PUSHY_TOKEN = "pushy_token";
 
     private FireBaseTokenRefreshListener mFireBaseTokenRefreshListener;
 
-    private FirebaseSharedPreferences(){
+    private TokenSharedPreferences(){
     }
 
-    public static FirebaseSharedPreferences getInstance() {
+    public static TokenSharedPreferences getInstance() {
         if (sInstance == null) {
-            sInstance = new FirebaseSharedPreferences();
+            sInstance = new TokenSharedPreferences();
         }
         return sInstance;
     }
@@ -53,4 +54,15 @@ public class FirebaseSharedPreferences {
         mFireBaseTokenRefreshListener = null;
     }
 
+    public void savePushyToken(Context context, String token){
+        SharedPreferences mSharedPreferences = context.getSharedPreferences(FIREBASE_DATA_STORAGE, Context.MODE_PRIVATE);
+        SharedPreferences.Editor mEditor = mSharedPreferences.edit();
+        mEditor.putString(PUSHY_TOKEN, token);
+        mEditor.apply();
+    }
+
+    public String getPushyToken(Context context){
+        SharedPreferences mSharedPreferences = context.getSharedPreferences(FIREBASE_DATA_STORAGE, Context.MODE_PRIVATE);
+        return mSharedPreferences.getString(PUSHY_TOKEN,null);
+    }
 }

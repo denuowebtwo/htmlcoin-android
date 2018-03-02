@@ -125,7 +125,7 @@ public class AddressInteractorImpl implements AddressInteractor {
 
     @Override
     public Boolean updateAddressDeviceToken(String[] addresses, String token) {
-        AddressDeviceTokenRequest addressDeviceToken = new AddressDeviceTokenRequest(addresses, token);
+        AddressDeviceTokenRequest addressDeviceToken = new AddressDeviceTokenRequest(addresses, token, null);
 
         QtumService.newInstance().updateDeviceToken(addressDeviceToken)
                 .subscribeOn(Schedulers.io())
@@ -142,7 +142,33 @@ public class AddressInteractorImpl implements AddressInteractor {
 
                     @Override
                     public void onNext(AddressDeviceTokenResponse addressDeviceTokenResponse) {
-                        Log.i(LOG_TAG, "Success");
+                        Log.i(LOG_TAG, "Update firebase token success");
+                    }
+                });
+
+        return true;
+    }
+
+    @Override
+    public Boolean updatePushyDeviceToken(String[] addresses, String token) {
+        AddressDeviceTokenRequest addressDeviceToken = new AddressDeviceTokenRequest(addresses, null, token);
+
+        QtumService.newInstance().updatePushyDeviceToken(addressDeviceToken)
+                .subscribeOn(Schedulers.io())
+                .subscribe(new Subscriber<AddressDeviceTokenResponse>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.e(LOG_TAG, e.getMessage(), e);
+                    }
+
+                    @Override
+                    public void onNext(AddressDeviceTokenResponse addressDeviceTokenResponse) {
+                        Log.i(LOG_TAG, "Update pushy token success");
                     }
                 });
 

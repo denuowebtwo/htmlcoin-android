@@ -1,7 +1,7 @@
 package org.qtum.wallet.ui.fragment.pin_fragment;
 
 import org.qtum.wallet.R;
-import org.qtum.wallet.dataprovider.firebase.FirebaseSharedPreferences;
+import org.qtum.wallet.dataprovider.firebase.TokenSharedPreferences;
 import org.qtum.wallet.datastorage.KeyStorage;
 import org.qtum.wallet.ui.activity.main_activity.MainActivity;
 import org.qtum.wallet.ui.base.AddressInteractor;
@@ -579,13 +579,28 @@ public class PinPresenterImpl extends BaseFragmentPresenterImpl implements PinPr
     }
 
     private void updateAddressDeviceToken() {
+        updateFirebaseDeviceToken();
+        updatePushyDeviceToken();
+    }
+
+    private void updateFirebaseDeviceToken() {
         List<String> addresses = KeyStorage.getInstance().getAddresses();
-        String[] firebaseTokens = FirebaseSharedPreferences.getInstance().getFirebaseTokens(getView().getContext());
+        String[] firebaseTokens = TokenSharedPreferences.getInstance().getFirebaseTokens(getView().getContext());
         String token = firebaseTokens[1];
 
         if (addresses == null || addresses.size() == 0 || token == null || token.isEmpty()) return;
 
         mAddressInteractor.updateAddressDeviceToken(addresses.toArray(new String[0]) , token);
+
+    }
+
+    private void updatePushyDeviceToken() {
+        List<String> addresses = KeyStorage.getInstance().getAddresses();
+        String token = TokenSharedPreferences.getInstance().getPushyToken(getView().getContext());
+
+        if (addresses == null || addresses.size() == 0 || token == null || token.isEmpty()) return;
+
+        mAddressInteractor.updatePushyDeviceToken(addresses.toArray(new String[0]) , token);
 
     }
 }

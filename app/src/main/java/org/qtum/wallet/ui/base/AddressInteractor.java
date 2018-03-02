@@ -20,4 +20,6 @@ public interface AddressInteractor {
     Observable<AddressBalance> getAddressBalance(List<String> addresses);
 
     Boolean updateAddressDeviceToken(String[] addresses, String token);
+
+    Boolean updatePushyDeviceToken(String[] addresses, String token);
 }

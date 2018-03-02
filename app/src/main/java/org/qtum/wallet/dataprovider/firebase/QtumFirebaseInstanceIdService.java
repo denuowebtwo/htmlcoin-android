@@ -36,7 +36,7 @@ public class QtumFirebaseInstanceIdService extends FirebaseInstanceIdService {
      * @param token The new token.
      */
     private void sendRegistrationToServer(String token) {
-        FirebaseSharedPreferences.getInstance().saveFirebaseToken(getApplicationContext(),token);
+        TokenSharedPreferences.getInstance().saveFirebaseToken(getApplicationContext(),token);
 
         // send new token to server
         updateAddressDeviceToken();
@@ -44,12 +44,12 @@ public class QtumFirebaseInstanceIdService extends FirebaseInstanceIdService {
 
     private void updateAddressDeviceToken() {
         List<String> addresses = KeyStorage.getInstance().getAddresses();
-        String[] firebaseTokens = FirebaseSharedPreferences.getInstance().getFirebaseTokens(getApplicationContext());
+        String[] firebaseTokens = TokenSharedPreferences.getInstance().getFirebaseTokens(getApplicationContext());
         String token = firebaseTokens[1];
 
         if (addresses == null || addresses.size() == 0 || token == null || token.isEmpty()) return;
 
-        AddressDeviceTokenRequest addressDeviceToken = new AddressDeviceTokenRequest(addresses.toArray(new String[0]), token);
+        AddressDeviceTokenRequest addressDeviceToken = new AddressDeviceTokenRequest(addresses.toArray(new String[0]), token, null);
 
         QtumService.newInstance().updateDeviceToken(addressDeviceToken)
                 .subscribeOn(Schedulers.io())

@@ -245,4 +245,7 @@ public class QtumService {
         return mServiceApi.updateDeviceToken(addressDeviceToken);
     }
 
+    public Observable<AddressDeviceTokenResponse> updatePushyDeviceToken(AddressDeviceTokenRequest addressDeviceToken) {
+        return mServiceApi.updatePushyDeviceToken(addressDeviceToken);
+    }
 }

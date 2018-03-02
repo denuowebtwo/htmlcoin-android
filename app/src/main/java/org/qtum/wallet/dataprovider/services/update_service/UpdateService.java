@@ -21,7 +21,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.qtum.wallet.R;
-import org.qtum.wallet.dataprovider.firebase.FirebaseSharedPreferences;
+import org.qtum.wallet.dataprovider.firebase.TokenSharedPreferences;
 import org.qtum.wallet.dataprovider.firebase.listeners.FireBaseTokenRefreshListener;
 import org.qtum.wallet.dataprovider.rest_api.QtumService;
 import org.qtum.wallet.dataprovider.services.update_service.listeners.BalanceChangeListener;
@@ -137,11 +137,11 @@ public class UpdateService extends Service {
         checkConfirmContract();
         checkPurchaseContract();
 
-        firebaseTokens = FirebaseSharedPreferences.getInstance().getFirebaseTokens(getApplicationContext());
+        firebaseTokens = TokenSharedPreferences.getInstance().getFirebaseTokens(getApplicationContext());
         mFirebasePrevToken = firebaseTokens[0];
         mFirebaseCurrentToken = firebaseTokens[1];
 
-        FirebaseSharedPreferences.getInstance().addFirebaseTokenRefreshListener(new FireBaseTokenRefreshListener() {
+        TokenSharedPreferences.getInstance().addFirebaseTokenRefreshListener(new FireBaseTokenRefreshListener() {
             @Override
             public void onRefresh(String prevToken, String currentToken) {
                 mFirebasePrevToken = prevToken;
