@@ -65,4 +65,11 @@ public class TokenSharedPreferences {
         SharedPreferences mSharedPreferences = context.getSharedPreferences(FIREBASE_DATA_STORAGE, Context.MODE_PRIVATE);
         return mSharedPreferences.getString(PUSHY_TOKEN,null);
     }
+
+    public void deletePushyToken(Context context){
+        SharedPreferences mSharedPreferences = context.getSharedPreferences(FIREBASE_DATA_STORAGE, Context.MODE_PRIVATE);
+        SharedPreferences.Editor mEditor = mSharedPreferences.edit();
+        mEditor.remove(PUSHY_TOKEN);
+        mEditor.apply();
+    }
 }

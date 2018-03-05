@@ -113,4 +113,7 @@ interface QtumRestService {
 
     @POST("/notification/devicetoken/pushy/create")
     Observable<AddressDeviceTokenResponse> updatePushyDeviceToken(@Body AddressDeviceTokenRequest addressDeviceToken);
+
+    @POST("/notification/devicetoken/pushy/delete")
+    Observable<AddressDeviceTokenResponse> deletePushyDeviceToken(@Body AddressDeviceTokenRequest addressDeviceToken);
 }

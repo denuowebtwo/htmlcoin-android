@@ -248,4 +248,8 @@ public class QtumService {
     public Observable<AddressDeviceTokenResponse> updatePushyDeviceToken(AddressDeviceTokenRequest addressDeviceToken) {
         return mServiceApi.updatePushyDeviceToken(addressDeviceToken);
     }
+
+    public Observable<AddressDeviceTokenResponse> deletePushyDeviceToken(AddressDeviceTokenRequest addressDeviceToken) {
+        return mServiceApi.deletePushyDeviceToken(addressDeviceToken);
+    }
 }

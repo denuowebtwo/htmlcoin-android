@@ -40,6 +40,7 @@ import android.widget.Toast;
 import org.qtum.wallet.BuildConfig;
 import org.qtum.wallet.QtumApplication;
 import org.qtum.wallet.R;
+import org.qtum.wallet.dataprovider.firebase.PushyRegistration;
 import org.qtum.wallet.dataprovider.receivers.network_state_receiver.NetworkStateReceiver;
 import org.qtum.wallet.dataprovider.receivers.network_state_receiver.listeners.NetworkStateListener;
 import org.qtum.wallet.dataprovider.services.update_service.UpdateService;
