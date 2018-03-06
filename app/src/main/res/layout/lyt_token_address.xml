@@ -33,7 +33,7 @@
             android:gravity="bottom"
             android:text="@string/qtum_address"
             android:textColor="@color/background"
-            android:fontFamily="@font/stymie_light" />
+            android:fontFamily="@font/worksans_regular" />
 
         <org.qtum.wallet.utils.FontTextView
             android:id="@+id/tv_token_address"
@@ -46,7 +46,7 @@
             android:gravity="top"
             android:paddingEnd="16dp"
             android:textColor="@color/background"
-            android:fontFamily="@font/stymie_bold" />
+            android:fontFamily="@font/worksans_bold" />
     </LinearLayout>
 
     <ImageView

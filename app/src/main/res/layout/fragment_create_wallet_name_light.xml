@@ -27,7 +27,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/wallet_name"
                 android:layout_gravity="center"
-                android:fontFamily="@font/stymie_bold"
+                android:fontFamily="@font/worksans_bold"
                 android:textColor="@color/white"
                 android:textSize="20sp"/>
 

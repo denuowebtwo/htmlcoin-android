@@ -27,7 +27,7 @@
             android:gravity="center"
             android:text="@string/copy_to_share"
             android:textSize="18sp"
-            android:fontFamily="@font/stymie_bold" />
+            android:fontFamily="@font/worksans_bold" />
 
         <org.qtum.wallet.utils.FontTextView
             android:layout_width="wrap_content"
@@ -36,7 +36,7 @@
             android:ellipsize="end"
             android:maxLines="1"
             android:text="@string/contract_address"
-            android:fontFamily="@font/stymie_light" />
+            android:fontFamily="@font/worksans_regular" />
 
         <org.qtum.wallet.utils.FontTextView
             android:id="@+id/tv_address"
@@ -48,7 +48,7 @@
             android:textColor="@color/grey"
             android:text="N/A"
             android:textSize="16sp"
-            android:fontFamily="@font/stymie_bold" />
+            android:fontFamily="@font/worksans_bold" />
 
         <org.qtum.wallet.utils.FontButton
             app:typeface="@string/proximaNovaSemibold"
@@ -75,7 +75,7 @@
             android:ellipsize="end"
             android:maxLines="1"
             android:text="@string/abi_interface"
-            android:fontFamily="@font/stymie_light" />
+            android:fontFamily="@font/worksans_regular" />
 
         <org.qtum.wallet.utils.FontTextView
             android:id="@+id/tv_abi"
@@ -89,7 +89,7 @@
             android:background="@drawable/ic_checkbox_empty_light"
             android:layout_marginTop="4dp"
             android:textSize="16sp"
-            android:fontFamily="@font/stymie_light" />
+            android:fontFamily="@font/worksans_regular" />
 
         <org.qtum.wallet.utils.FontButton
             app:typeface="@string/proximaNovaSemibold"

@@ -25,7 +25,7 @@
         android:layout_marginTop="16dp"
         android:text = "My Super Token"
         android:textColor="@color/colorPrimary"
-        android:fontFamily="@font/stymie_light"
+        android:fontFamily="@font/worksans_regular"
         android:gravity="left"
         android:ellipsize="end"
         android:layout_width="match_parent"
@@ -40,7 +40,7 @@
         android:gravity="left"
         android:alpha=".3"
         android:textColor="@color/colorPrimary"
-        android:fontFamily="@font/stymie_light"
+        android:fontFamily="@font/worksans_regular"
         android:ellipsize="end"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -53,7 +53,7 @@
         android:text = "100 000 000"
         android:gravity="left"
         android:textColor="@color/colorPrimary"
-        android:fontFamily="@font/stymie_bold"
+        android:fontFamily="@font/worksans_bold"
         android:ellipsize="end"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -65,7 +65,7 @@
         android:text="@string/qtum"
         android:gravity="left"
         android:textColor="@color/colorPrimary"
-        android:fontFamily="@font/stymie_light"
+        android:fontFamily="@font/worksans_regular"
         android:ellipsize="end"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

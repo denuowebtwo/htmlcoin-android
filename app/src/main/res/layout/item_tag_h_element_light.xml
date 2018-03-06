@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:textSize="18sp"
         android:textColor="@color/color_custom_dark"
-        android:fontFamily="@font/stymie_bold"
+        android:fontFamily="@font/worksans_bold"
         android:id="@+id/tv_tag_p"/>
 
 </LinearLayout>

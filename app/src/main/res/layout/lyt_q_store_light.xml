@@ -77,7 +77,7 @@
                     android:text="@string/qstore"
                     android:textColor="@color/white"
                     android:textSize="22sp"
-                    android:fontFamily="@font/stymie_light" />
+                    android:fontFamily="@font/worksans_regular" />
 
             </RelativeLayout>
 

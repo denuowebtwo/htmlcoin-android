@@ -14,7 +14,7 @@
         android:gravity="center_vertical"
         android:layout_marginStart="16dp"
         android:textSize="18sp"
-        android:fontFamily="@font/stymie_light"
+        android:fontFamily="@font/worksans_regular"
         android:textColor="@color/bottom_nav_view_item_color"
         android:ellipsize="end"
         android:layout_height="match_parent" />
@@ -39,7 +39,7 @@
         android:maxLines="1"
         android:text="@string/about"
         android:textSize="16sp"
-        android:fontFamily="@font/stymie_light"
+        android:fontFamily="@font/worksans_regular"
         android:textColor="@color/bottom_nav_view_item_color"
         android:layout_centerVertical="true"
         android:layout_toStartOf="@+id/arrow"/>
@@ -57,7 +57,7 @@
         android:paddingEnd="4dp"
         android:text="@string/about"
         android:background="@drawable/btn_sea_corner_background_light"
-        android:fontFamily="@font/stymie_light"
+        android:fontFamily="@font/worksans_regular"
         android:textColor="@color/white"
         android:textSize="12sp"
         android:layout_above="@+id/arrow"

@@ -22,7 +22,7 @@
         android:maxLines="1"
         android:gravity="left"
         android:ellipsize="end"
-        android:fontFamily="@font/stymie_light"
+        android:fontFamily="@font/worksans_regular"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
@@ -39,7 +39,7 @@
         android:maxLines="1"
         android:gravity="left"
         android:ellipsize="end"
-        android:fontFamily="@font/stymie_bold"
+        android:fontFamily="@font/worksans_bold"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

@@ -43,7 +43,7 @@
                 android:text="Watch Contract"
                 android:textColor="@color/white"
                 android:textSize="20sp"
-                android:fontFamily="@font/stymie_bold" />
+                android:fontFamily="@font/worksans_bold" />
         </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>

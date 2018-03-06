@@ -35,7 +35,7 @@
                 android:text="@string/preview"
                 android:textColor="@color/white"
                 android:textSize="20sp"
-                android:fontFamily="@font/stymie_bold" />
+                android:fontFamily="@font/worksans_bold" />
 
                 <ImageButton
                     android:id="@+id/ibt_back"
@@ -115,7 +115,7 @@
                 android:layout_weight="1"
                 android:layout_gravity="center"
                 android:id="@+id/tv_min_fee"
-                android:fontFamily="@font/stymie_light"
+                android:fontFamily="@font/worksans_regular"
                 android:textColor="@color/black"/>
 
             <org.qtum.wallet.utils.FontTextView
@@ -123,7 +123,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:id="@+id/tv_max_fee"
-                android:fontFamily="@font/stymie_light"
+                android:fontFamily="@font/worksans_regular"
                 android:textColor="@color/black"/>
 
         </LinearLayout>
@@ -194,7 +194,7 @@
                             android:layout_gravity="center"
                             android:text="Gas Price: "
                             android:textColor="@color/black"
-                            android:fontFamily="@font/stymie_light"/>
+                            android:fontFamily="@font/worksans_regular"/>
 
                         <org.qtum.wallet.utils.FontTextView
                             android:id="@+id/tv_gas_price"
@@ -202,7 +202,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:textColor="@color/light_blue"
-                            android:fontFamily="@font/stymie_light"/>
+                            android:fontFamily="@font/worksans_regular"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -218,7 +218,7 @@
                             android:layout_gravity="center"
                             android:text="Gas Limit: "
                             android:textColor="@color/black"
-                            android:fontFamily="@font/stymie_light"/>
+                            android:fontFamily="@font/worksans_regular"/>
 
                         <org.qtum.wallet.utils.FontTextView
                             android:id="@+id/tv_gas_limit"
@@ -226,7 +226,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:textColor="@color/light_blue"
-                            android:fontFamily="@font/stymie_light"/>
+                            android:fontFamily="@font/worksans_regular"/>
                     </LinearLayout>
 
                 </LinearLayout>
@@ -251,7 +251,7 @@
                             android:layout_weight="1"
                             android:layout_gravity="center"
                             android:textColor="@color/black"
-                            android:fontFamily="@font/stymie_light"/>
+                            android:fontFamily="@font/worksans_regular"/>
 
                         <org.qtum.wallet.utils.FontTextView
                             android:id="@+id/tv_max_gas_price"
@@ -259,7 +259,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:textColor="@color/black"
-                            android:fontFamily="@font/stymie_light"/>
+                            android:fontFamily="@font/worksans_regular"/>
 
                     </LinearLayout>
 
@@ -284,7 +284,7 @@
                             android:layout_weight="1"
                             android:layout_gravity="center"
                             android:textColor="@color/black"
-                            android:fontFamily="@font/stymie_light"/>
+                            android:fontFamily="@font/worksans_regular"/>
 
                         <org.qtum.wallet.utils.FontTextView
                             android:id="@+id/tv_max_gas_limit"
@@ -292,7 +292,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:textColor="@color/black"
-                            android:fontFamily="@font/stymie_light"/>
+                            android:fontFamily="@font/worksans_regular"/>
 
                     </LinearLayout>
 

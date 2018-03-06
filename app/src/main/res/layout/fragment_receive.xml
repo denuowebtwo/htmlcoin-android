@@ -36,7 +36,7 @@
                     android:text="@string/receive"
                     android:textColor="@color/background"
                     android:textSize="@dimen/toolbar_text_size"
-                    android:fontFamily="@font/stymie_bold"/>
+                    android:fontFamily="@font/worksans_bold"/>
 
                 <ImageButton
                     android:id="@+id/ibt_back"

@@ -54,7 +54,7 @@
                         android:text="23.000.000.097"
                         android:textColor="@color/background"
                         android:textSize="30sp"
-                        android:fontFamily="@font/stymie_light" />
+                        android:fontFamily="@font/worksans_regular" />
 
                     <org.qtum.wallet.utils.FontTextView
                         android:layout_width="wrap_content"
@@ -64,7 +64,7 @@
                         android:layout_marginStart="4dp"
                         android:text="@string/qtum"
                         android:textColor="@color/background"
-                        android:fontFamily="@font/stymie_bold" />
+                        android:fontFamily="@font/worksans_bold" />
                 </LinearLayout>
 
                 <org.qtum.wallet.utils.FontTextView
@@ -82,7 +82,7 @@
                     android:text="@string/not_confirmed_transaction"
                     android:textColor="@color/colorPrimary"
                     android:textSize="20sp"
-                    android:fontFamily="@font/stymie_bold" />
+                    android:fontFamily="@font/worksans_bold" />
 
             </RelativeLayout>
 
@@ -102,7 +102,7 @@
                     android:id="@+id/tv_time_type"
                     android:text="@string/received_time"
                     android:textColor="@color/background"
-                    android:fontFamily="@font/stymie_light" />
+                    android:fontFamily="@font/worksans_regular" />
 
                 <org.qtum.wallet.utils.FontTextView
                     android:id="@+id/tv_received_time"
@@ -112,7 +112,7 @@
                     android:gravity="right"
                     android:text="Dec 18"
                     android:textColor="@color/background"
-                    android:fontFamily="@font/stymie_light" />
+                    android:fontFamily="@font/worksans_regular" />
 
             </LinearLayout>
 
@@ -131,7 +131,7 @@
                     android:layout_marginStart="16dp"
                     android:text="@string/from"
                     android:textColor="@color/colorPrimary"
-                    android:fontFamily="@font/stymie_bold" />
+                    android:fontFamily="@font/worksans_bold" />
 
                 <android.support.design.widget.TabLayout
                     android:id="@+id/tab_indicator"
@@ -173,7 +173,7 @@
                     android:text="@string/transactionQTUM"
                     android:textColor="@color/background"
                     android:textSize="@dimen/toolbar_text_size"
-                    android:fontFamily="@font/stymie_bold" />
+                    android:fontFamily="@font/worksans_bold" />
 
             </android.support.v7.widget.Toolbar>
 

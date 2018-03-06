@@ -12,7 +12,7 @@
     <org.qtum.wallet.utils.FontTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/stymie_light"
+        android:fontFamily="@font/worksans_regular"
         android:textColor="@color/bottom_nav_view_item_color"
         android:id="@+id/tv_tag_p"
         android:linksClickable="true"

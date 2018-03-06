@@ -19,7 +19,7 @@
             android:gravity="center"
             android:textSize="18sp"
             android:layout_marginBottom="16dp"
-            android:fontFamily="@font/stymie_bold"
+            android:fontFamily="@font/worksans_bold"
             android:layout_height="wrap_content" />
 
         <org.qtum.wallet.utils.FontTextView
@@ -28,13 +28,13 @@
             android:text="savfsv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/stymie_light" />
+            android:fontFamily="@font/worksans_regular" />
 
         <org.qtum.wallet.utils.FontTextView
             style="@style/confirm_purchase_subtitle_dialog_light"
             android:layout_width="match_parent"
             android:text="@string/contract_name"
-            android:fontFamily="@font/stymie_light"
+            android:fontFamily="@font/worksans_regular"
             android:layout_height="wrap_content" />
 
         <org.qtum.wallet.utils.FontTextView
@@ -42,14 +42,14 @@
             android:id="@+id/contract_type"
 
             android:layout_width="match_parent"
-            android:fontFamily="@font/stymie_light"
+            android:fontFamily="@font/worksans_regular"
             android:layout_height="wrap_content" />
 
         <org.qtum.wallet.utils.FontTextView
             style="@style/confirm_purchase_subtitle_dialog_light"
             android:layout_width="match_parent"
             android:text="@string/contract_type"
-            android:fontFamily="@font/stymie_light"
+            android:fontFamily="@font/worksans_regular"
             android:layout_height="wrap_content" />
 
         <org.qtum.wallet.utils.FontTextView
@@ -59,14 +59,14 @@
             android:ellipsize="end"
             android:text="sd34nf439u4fn38uc34mc03xm3434092-ck330cc943cc03"
             android:layout_width="match_parent"
-            android:fontFamily="@font/stymie_light"
+            android:fontFamily="@font/worksans_regular"
             android:layout_height="wrap_content" />
 
         <org.qtum.wallet.utils.FontTextView
             style="@style/confirm_purchase_subtitle_dialog_light"
             android:layout_width="match_parent"
             android:text="@string/miner_address"
-            android:fontFamily="@font/stymie_light"
+            android:fontFamily="@font/worksans_regular"
             android:layout_height="wrap_content" />
 
         <LinearLayout
@@ -89,7 +89,7 @@
                     style="@style/confirm_purchase_subtitle_dialog_start"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/stymie_bold" />
+                    android:fontFamily="@font/worksans_bold" />
 
 
                 <org.qtum.wallet.utils.FontTextView
@@ -97,7 +97,7 @@
                     android:layout_width="match_parent"
                     android:gravity="center"
                     android:text="@string/price"
-                    android:fontFamily="@font/stymie_light"
+                    android:fontFamily="@font/worksans_regular"
                     android:layout_height="wrap_content" />
 
             </LinearLayout>
@@ -116,7 +116,7 @@
                     style="@style/confirm_purchase_subtitle_dialog_start"
                     android:layout_width="match_parent"
                     android:text="0.100 HTML"
-                    android:fontFamily="@font/stymie_bold"
+                    android:fontFamily="@font/worksans_bold"
                     android:layout_height="wrap_content" />
 
                 <org.qtum.wallet.utils.FontTextView
@@ -124,7 +124,7 @@
                     style="@style/confirm_purchase_subtitle_dialog_light_start"
                     android:layout_width="match_parent"
                     android:text="@string/Fee"
-                    android:fontFamily="@font/stymie_light"
+                    android:fontFamily="@font/worksans_regular"
                     android:layout_height="wrap_content" />
 
 

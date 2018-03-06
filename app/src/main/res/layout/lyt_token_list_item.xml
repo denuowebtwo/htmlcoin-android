@@ -18,7 +18,7 @@
         android:layout_toStartOf="@+id/ll_balance"
         android:maxLines="1"
         android:ellipsize="end"
-        android:fontFamily="@font/stymie_light"
+        android:fontFamily="@font/worksans_regular"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="32dp"
         android:layout_width="match_parent"
@@ -50,7 +50,7 @@
             android:gravity="center"
             android:textSize="14sp"
             android:textColor="@color/colorPrimary"
-            android:fontFamily="@font/stymie_bold"
+            android:fontFamily="@font/worksans_bold"
             android:layout_width="wrap_content"
             android:layout_height="match_parent" />
 
@@ -62,7 +62,7 @@
             android:maxLines="1"
             android:ellipsize="end"
             android:textColor="@color/colorPrimary"
-            android:fontFamily="@font/stymie_bold"
+            android:fontFamily="@font/worksans_bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 

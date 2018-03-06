@@ -112,7 +112,7 @@
     <!--<string name="proximaNovaSemibold" translatable="false">fonts/proximanovasemibold.ttf</string>-->
 
 
-    <string name="font_stymie_bold">fonts/stymie_bold.ttf</string>
+    <string name="font_worksans_bold">fonts/worksans_bold.ttf</string>
 
     <string name="retry">Prøv igen</string>
 

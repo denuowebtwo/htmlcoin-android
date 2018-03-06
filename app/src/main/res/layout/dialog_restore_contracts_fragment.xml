@@ -27,7 +27,7 @@
         android:orientation="horizontal">
 
         <org.qtum.wallet.utils.FontTextView
-            android:fontFamily="@font/stymie_light"
+            android:fontFamily="@font/worksans_regular"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textSize="14sp"
@@ -36,7 +36,7 @@
             android:textColor="@color/black"/>
 
         <org.qtum.wallet.utils.FontTextView
-            android:fontFamily="@font/stymie_light"
+            android:fontFamily="@font/worksans_regular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="14sp"
@@ -56,7 +56,7 @@
         android:orientation="horizontal">
 
         <org.qtum.wallet.utils.FontTextView
-            android:fontFamily="@font/stymie_light"
+            android:fontFamily="@font/worksans_regular"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textSize="14sp"
@@ -65,7 +65,7 @@
             android:textColor="@color/black"/>
 
         <org.qtum.wallet.utils.FontTextView
-            android:fontFamily="@font/stymie_light"
+            android:fontFamily="@font/worksans_regular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="14sp"
@@ -101,10 +101,10 @@
             android:text="Templates"
             android:textColor="@color/black"
             android:textSize="14sp"
-            android:fontFamily="@font/stymie_light"/>
+            android:fontFamily="@font/worksans_regular"/>
 
         <org.qtum.wallet.utils.FontTextView
-            android:fontFamily="@font/stymie_light"
+            android:fontFamily="@font/worksans_regular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="14sp"
@@ -124,7 +124,7 @@
         android:orientation="horizontal">
 
         <org.qtum.wallet.utils.FontTextView
-            android:fontFamily="@font/stymie_light"
+            android:fontFamily="@font/worksans_regular"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textSize="14sp"
@@ -133,7 +133,7 @@
             android:textColor="@color/black"/>
 
         <org.qtum.wallet.utils.FontTextView
-            android:fontFamily="@font/stymie_light"
+            android:fontFamily="@font/worksans_regular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="14sp"
@@ -153,7 +153,7 @@
         android:orientation="horizontal">
 
         <org.qtum.wallet.utils.FontTextView
-            android:fontFamily="@font/stymie_light"
+            android:fontFamily="@font/worksans_regular"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textSize="14sp"
@@ -162,7 +162,7 @@
             android:textColor="@color/black"/>
 
         <org.qtum.wallet.utils.FontTextView
-            android:fontFamily="@font/stymie_light"
+            android:fontFamily="@font/worksans_regular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="14sp"

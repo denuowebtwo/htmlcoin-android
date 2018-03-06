@@ -29,7 +29,7 @@
                 android:layout_gravity="center"
                 android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/toolbar_text_size"
-                android:fontFamily="@font/stymie_bold" />
+                android:fontFamily="@font/worksans_bold" />
         </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>
@@ -77,7 +77,7 @@
             android:paddingTop="4dp"
             android:text="error"
             android:textColor="@android:color/white"
-            android:fontFamily="@font/stymie_light" />
+            android:fontFamily="@font/worksans_regular" />
 
         <org.qtum.wallet.utils.FontButton
             android:id="@+id/bt_cancel"

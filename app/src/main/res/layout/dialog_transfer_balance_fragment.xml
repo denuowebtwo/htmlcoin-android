@@ -46,7 +46,7 @@
         android:layout_height="wrap_content"
         android:textSize="12dp"
         android:paddingBottom="4dp"
-        android:fontFamily="@font/stymie_light"
+        android:fontFamily="@font/worksans_regular"
         android:textColor="@color/background"
         android:text="@string/to"/>
 
@@ -57,7 +57,7 @@
 
         <org.qtum.wallet.utils.FontTextView
             android:paddingBottom="4dp"
-            android:fontFamily="@font/stymie_light"
+            android:fontFamily="@font/worksans_regular"
             android:id="@+id/tv_address_to"
             android:layout_width="0dp"
             android:maxLines="1"

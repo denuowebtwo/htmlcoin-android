@@ -37,7 +37,7 @@
                     android:text="@string/other_tokens"
                     android:textColor="@color/white"
                     android:textSize="@dimen/toolbar_text_size"
-                    android:fontFamily="@font/stymie_bold" />
+                    android:fontFamily="@font/worksans_bold" />
 
                 <ImageButton
                     android:visibility="invisible"

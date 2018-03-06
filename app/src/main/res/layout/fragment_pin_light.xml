@@ -27,7 +27,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:fontFamily="@font/stymie_bold"
+                android:fontFamily="@font/worksans_bold"
                 android:textColor="@color/white"
                 android:textSize="@dimen/toolbar_text_size"/>
         </android.support.v7.widget.Toolbar>
@@ -75,7 +75,7 @@
             android:background="@drawable/background_bt_alpha"
             android:textColor="@android:color/white"
             android:layout_centerHorizontal = "true"
-            android:fontFamily="@font/stymie_light"
+            android:fontFamily="@font/worksans_regular"
             android:layout_below="@+id/til_wallet_pin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -97,7 +97,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:padding="16dp"
-            android:fontFamily="@font/stymie_bold"
+            android:fontFamily="@font/worksans_bold"
             android:background="@drawable/btn_gray_corner_background_light_alpha_30"
             android:text="@string/cancel"
             android:textAllCaps="true"

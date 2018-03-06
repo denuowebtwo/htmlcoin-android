@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/available_balance"
-        android:fontFamily="@font/stymie_light" />
+        android:fontFamily="@font/worksans_regular" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,7 +26,7 @@
             android:text="0.0 HTML"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/stymie_bold"
+            android:fontFamily="@font/worksans_bold"
             android:textColor="@color/white"
             android:textSize="24sp" />
 
@@ -34,7 +34,7 @@
             android:id="@+id/tv_currency"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/stymie_bold"
+            android:fontFamily="@font/worksans_bold"
             android:textColor="@color/white"
             android:textSize="24sp" />
 
@@ -45,7 +45,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/unconfirmed_balance_title"
-        android:fontFamily="@font/stymie_light"
+        android:fontFamily="@font/worksans_regular"
         android:text="@string/not_confirmed_balance"
         style="@style/appbar_wallet_alpha_title"/>
 
@@ -54,7 +54,7 @@
         android:layout_height="wrap_content"
         android:textSize="24sp"
         android:textColor="@color/white"
-        android:fontFamily="@font/stymie_bold"
+        android:fontFamily="@font/worksans_bold"
         android:text="0.0 HTML"
         android:id="@+id/tv_unconfirmed_balance"/>
 
@@ -88,7 +88,7 @@
                 android:layout_weight="1"
                 android:gravity="bottom"
                 android:text="@string/qtum_address"
-                android:fontFamily="@font/stymie_light" />
+                android:fontFamily="@font/worksans_regular" />
 
             <org.qtum.wallet.utils.FontTextView
                 android:id="@+id/tv_token_address"
@@ -101,7 +101,7 @@
                 android:gravity="top"
                 android:paddingEnd="16dp"
                 android:textColor="@color/white"
-                android:fontFamily="@font/stymie_bold"/>
+                android:fontFamily="@font/worksans_bold"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
