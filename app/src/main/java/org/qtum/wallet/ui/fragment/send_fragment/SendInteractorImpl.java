@@ -32,11 +32,13 @@ import org.spongycastle.util.encoders.Hex;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 
 import rx.Observable;
 import rx.Subscriber;
@@ -307,8 +309,9 @@ public class SendInteractorImpl implements SendInteractor {
 
     @Override
     public String getValidatedFee(Double fee) {
-        String pattern = "##0.00000000";
-        DecimalFormat decimalFormat = new DecimalFormat(pattern);
+        NumberFormat nf = NumberFormat.getNumberInstance(Locale.ENGLISH);
+        DecimalFormat decimalFormat = (DecimalFormat)nf;
+        decimalFormat.applyPattern("##0.00000000");
         return decimalFormat.format(fee);
     }
 

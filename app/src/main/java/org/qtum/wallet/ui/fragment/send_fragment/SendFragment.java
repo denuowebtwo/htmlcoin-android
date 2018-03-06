@@ -44,6 +44,8 @@ import org.qtum.wallet.utils.ResizeHeightAnimation;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -164,6 +166,8 @@ public abstract class SendFragment extends BaseFragment implements SendView {
 
     protected SendPresenter sendBaseFragmentPresenter;
     private boolean sendFrom = false;
+
+    private DecimalFormat decimalFormat;
 
     BalanceChangeListener mBalanceChangeListener = new BalanceChangeListener() {
         @Override
@@ -302,12 +306,12 @@ public abstract class SendFragment extends BaseFragment implements SendView {
 
     @Override
     public String getAmountInput() {
-        return mTextInputEditTextAmount.getText().toString();
+        return mTextInputEditTextAmount.getText().toString().replaceAll(",", ".");
     }
 
     @Override
     public String getFeeInput() {
-        return mTextInputEditTextFee.getText().toString();
+        return mTextInputEditTextFee.getText().toString().replaceAll(",", ".");
     }
 
     @Override
@@ -412,6 +416,11 @@ public abstract class SendFragment extends BaseFragment implements SendView {
     @Override
     public void initializeViews() {
         super.initializeViews();
+
+        NumberFormat nf = NumberFormat.getNumberInstance(Locale.ENGLISH);
+        decimalFormat = (DecimalFormat)nf;
+        decimalFormat.applyPattern("#.########");
+
         mAlertDialogCallBack = new AlertDialogCallBack() {
             @Override
             public void onButtonClick() {
@@ -456,6 +465,8 @@ public abstract class SendFragment extends BaseFragment implements SendView {
         if (!getArguments().getString(ADDRESS_FROM, "").equals("")) {
             sendFrom = true;
         }
+
+        mTextInputEditTextAmount.setTextLocale(Locale.ENGLISH);
         mTextInputEditTextAmount.setText(amount);
         mTextInputEditTextAddress.setText(address);
 
@@ -469,7 +480,7 @@ public abstract class SendFragment extends BaseFragment implements SendView {
                 }
                 double value = (mMinFee + (progress * step)) / 100000000.;
                 seekBarChangeValue = true;
-                mTextInputEditTextFee.setText(new DecimalFormat("#.########").format(value));
+                mTextInputEditTextFee.setText(decimalFormat.format(value));
             }
 
             @Override
@@ -522,6 +533,7 @@ public abstract class SendFragment extends BaseFragment implements SendView {
         mTextInputEditTextAddress.setOnTouchListener(mOnTouchListener);
         mLinearLayoutCurrency.setOnTouchListener(mOnTouchListener);
 
+        mTextInputEditTextFee.setTextLocale(Locale.ENGLISH);
         mTextInputEditTextFee.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -535,7 +547,7 @@ public abstract class SendFragment extends BaseFragment implements SendView {
                     return;
                 }
                 if(!s.toString().isEmpty()) {
-                    Double fee = Double.valueOf(s.toString()) * 100000000;
+                    Double fee = Double.valueOf(s.toString().replaceAll(",", ".")) * 100000000;
                     textViewChangeValue = true;
                     int progress;
                     if (fee < mMinFee) {
@@ -563,7 +575,7 @@ public abstract class SendFragment extends BaseFragment implements SendView {
                         textViewChangeValue = true;
                         double value = (mMinFee + (mSeekBar.getProgress() * step)) / 100000000.;
                         seekBarChangeValue = true;
-                        mTextInputEditTextFee.setText(new DecimalFormat("#.########").format(value));
+                        mTextInputEditTextFee.setText(decimalFormat.format(value));
                     }
                 }
             }
@@ -664,8 +676,8 @@ public abstract class SendFragment extends BaseFragment implements SendView {
 
     @Override
     public void updateFee(double minFee, double maxFee) {
-        mFontTextViewMaxFee.setText(new DecimalFormat("#.########").format(maxFee));
-        mFontTextViewMinFee.setText(new DecimalFormat("#.########").format(minFee));
+        mFontTextViewMaxFee.setText(decimalFormat.format(maxFee));
+        mFontTextViewMinFee.setText(decimalFormat.format(minFee));
         mMinFee = Double.valueOf(minFee * 100000000).intValue();
         mMaxFee = Double.valueOf(maxFee * 100000000).intValue();
         mSeekBar.setMax((mMaxFee - mMinFee) / step);
