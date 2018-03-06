@@ -29,7 +29,7 @@
                 android:layout_gravity="center"
                 android:text="@string/touch_id"
                 android:layout_marginTop="@dimen/pin_title_marginTop"
-                style="@style/TextTitleLight"/>
+                style="@style/TextTitle.Light"/>
         </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>

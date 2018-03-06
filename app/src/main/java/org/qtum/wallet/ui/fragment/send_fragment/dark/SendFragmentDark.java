@@ -2,6 +2,7 @@ package org.qtum.wallet.ui.fragment.send_fragment.dark;
 
 import org.qtum.wallet.ui.fragment.send_fragment.SendFragment;
 import org.qtum.wallet.utils.FontManager;
+import org.qtum.wallet.R;
 
 /**
  * Created by kirillvolkov on 06.07.17.
@@ -18,6 +19,7 @@ public class SendFragmentDark extends SendFragment {
     public void initializeViews() {
         super.initializeViews();
 
+        showBottomNavView(R.color.color_custom_dark);
         mTextInputEditTextAddress.setTypeface(FontManager.getInstance().getFont(getString(org.qtum.wallet.R.string.simplonMonoRegular)));
         mTextInputEditTextAmount.setTypeface(FontManager.getInstance().getFont(getString(org.qtum.wallet.R.string.simplonMonoRegular)));
         mTextInputEditTextFee.setTypeface(FontManager.getInstance().getFont(getString(org.qtum.wallet.R.string.simplonMonoRegular)));

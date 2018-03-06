@@ -221,16 +221,24 @@
     <style name="ButtonStyle.LightBlue">
         <item name="android:background">@drawable/btn_gray_corner_background_light</item>
     </style>
-    
-    <style name="TextTitleDark">
+
+    <style name="TextTitle">
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">@dimen/textSize_Title</item>
         <item name="android:fontFamily">@font/worksans_regular</item>
     </style>
 
-    <style name="TextTitleLight">
+    <style name="TextTitle.Dark">
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">@dimen/textSize_Title</item>
         <item name="android:fontFamily">@font/worksans_regular</item>
     </style>
+
+    <style name="TextTitle.Light">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/textSize_Title</item>
+        <item name="android:fontFamily">@font/worksans_regular</item>
+    </style>
+
+
 </resources>

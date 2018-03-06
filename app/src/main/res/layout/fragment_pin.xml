@@ -28,7 +28,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                style="@style/TextTitleDark" />
+                style="@style/TextTitle.Dark" />
         </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>

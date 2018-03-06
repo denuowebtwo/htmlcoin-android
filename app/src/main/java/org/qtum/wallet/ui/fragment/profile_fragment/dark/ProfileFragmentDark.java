@@ -22,7 +22,7 @@ public class ProfileFragmentDark extends ProfileFragment {
     public void initializeViews() {
         super.initializeViews();
         dividerItemDecoration = new DividerItemDecoration(getContext(), R.drawable.color_primary_divider, R.drawable.section_setting_divider, getPresenter().getSettingsData());
-        showBottomNavView(R.color.colorPrimary);
+        showBottomNavView(R.color.color_custom_dark);
         adapter = new PrefAdapterLight(getPresenter().getSettingsData(), this, R.layout.lyt_profile_pref_list_item);
         prefList.addItemDecoration(dividerItemDecoration);
         prefList.setAdapter(adapter);

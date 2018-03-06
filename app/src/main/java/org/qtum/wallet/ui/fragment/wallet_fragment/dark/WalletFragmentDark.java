@@ -69,7 +69,7 @@ public class WalletFragmentDark extends WalletFragment {
     public void initializeViews() {
         super.initializeViews();
 
-        showBottomNavView(R.color.primary_text_color);
+        showBottomNavView(R.color.color_custom_dark);
 
         headerPAdding = convertDpToPixel(16,getContext());
 
