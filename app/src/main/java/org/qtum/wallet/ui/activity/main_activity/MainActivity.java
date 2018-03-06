@@ -582,7 +582,7 @@ public class MainActivity extends BaseActivity implements MainActivityView {
     }
 
     private int[] blackThemeIcons = {R.drawable.ic_wallet, R.drawable.ic_profile, R.drawable.ic_news, R.drawable.ic_send};
-    private int[] lightThemeIcons = {R.drawable.ic_wallet_light, R.drawable.ic_profile_light, R.drawable.ic_news_light, R.drawable.ic_send_light};
+    private int[] lightThemeIcons = {R.drawable.icon_wallet_light, R.drawable.icon_profile_light, R.drawable.icon_news_light, R.drawable.icon_send_light};
 
     @Override
     protected void updateTheme() {
@@ -606,7 +606,7 @@ public class MainActivity extends BaseActivity implements MainActivityView {
             resetNavBarIconsWithTheme(lightThemeIcons);
         }
 
-        initBottomNavViewWithFont((ThemeUtils.getCurrentTheme(this).equals(ThemeUtils.THEME_DARK) ? R.string.simplonMonoRegular : R.string.proximaNovaRegular));
+        initBottomNavViewWithFont((ThemeUtils.getCurrentTheme(this).equals(ThemeUtils.THEME_DARK) ? R.string.font_worksans_bold : R.string.font_worksans_bold));
 
     }
 
