@@ -28,9 +28,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="@string/touch_id"
-                android:fontFamily="@font/worksans_bold"
-                android:textColor="@color/white"
-                android:textSize="20sp"/>
+                android:layout_marginTop="@dimen/pin_title_marginTop"
+                style="@style/TextTitleLight"/>
         </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>
@@ -72,15 +71,11 @@
             <org.qtum.wallet.utils.FontButton
                 android:id="@+id/bt_enable_touch_id"
                 android:layout_width="202dp"
-                android:gravity="center"
                 android:padding="16dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/btn_gray_corner_background_light_alpha_30"
                 android:text="@string/enable_touch_id"
-                android:textAllCaps="true"
-                android:fontFamily="@font/worksans_bold"
-                android:textColor="@color/color_custom_dark"
-                android:textSize="@dimen/button_text" />
+                style="@style/ButtonStyle.Light" />
 
             <org.qtum.wallet.utils.FontButton
                 android:id="@+id/bt_not_now"
@@ -89,14 +84,9 @@
                 android:layout_below="@+id/bt_enable_touch_id"
                 android:layout_marginBottom="16dp"
                 android:layout_marginTop="8dp"
-                android:gravity="center"
                 android:padding="16dp"
-                android:fontFamily="@font/worksans_bold"
-                android:background="@drawable/btn_gray_corner_background_light_alpha_30"
                 android:text="@string/not_now"
-                android:textAllCaps="true"
-                android:textColor="@color/color_custom_dark"
-                android:textSize="@dimen/button_text" />
+                style="@style/ButtonStyle.Light" />
         </RelativeLayout>
 
     </RelativeLayout>

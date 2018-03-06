@@ -9,5 +9,5 @@
     <dimen name="toolbar_text_size">24sp</dimen>
 
     <dimen name="button_cancel_width">150sp</dimen>
-    <dimen name="pin_title_marginTop">36sp</dimen>
+    <dimen name="pin_title_marginTop">30sp</dimen>
 </resources>

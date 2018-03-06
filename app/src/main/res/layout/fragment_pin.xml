@@ -86,7 +86,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="16dp"
             android:text="@string/cancel"
-            style="@style/ButtonStyleDark" />
+            style="@style/ButtonStyle.Dark" />
     </RelativeLayout>
 
 </android.support.design.widget.CoordinatorLayout>

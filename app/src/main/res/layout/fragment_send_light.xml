@@ -418,15 +418,10 @@
                         android:layout_marginBottom="16dp"
                         android:layout_marginLeft="16dp"
                         android:layout_marginRight="16dp"
-                        android:background="@drawable/btn_sea_corner_background_light"
-                        android:gravity="center"
                         android:padding="16dp"
                         android:stateListAnimator="@null"
                         android:text="@string/send"
-                        android:textAllCaps="true"
-                        android:textColor="@color/color_custom_dark"
-                        android:textSize="@dimen/button_text"
-                        android:fontFamily="@font/worksans_bold"/>
+                        style="@style/ButtonStyle.Light"/>
 
                 </LinearLayout>
 

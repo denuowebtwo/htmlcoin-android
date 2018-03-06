@@ -24,7 +24,7 @@
             android:gravity="left|center_vertical"
             android:text="asdas12312kmddm7m12312mfvf6"
             android:textColor="@color/color_custom_dark"
-            android:textSize="16sp"/>
+            android:textSize="@dimen/textSize_SubTitle"/>
 
         <ImageView
             android:id="@+id/iv_check_indicator"

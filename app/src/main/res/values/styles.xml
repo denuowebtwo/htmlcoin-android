@@ -200,7 +200,7 @@
 
     <!--WHITE THEME-->
 
-    <style name="ButtonStyleDark" parent="Widget.AppCompat.Button">
+    <style name="ButtonStyle" parent="Widget.AppCompat.Button">
         <item name="android:gravity">center</item>
         <item name="android:padding">10dp</item>
         <item name="android:textSize">@dimen/button_text</item>
@@ -208,6 +208,18 @@
         <item name="android:fontFamily">@font/worksans_medium</item>
         <item name="android:textColor">@color/color_custom_dark</item>
         <item name="android:background">@drawable/btn_gray_corner_background_light_alpha_30</item>
+    </style>
+
+    <style name="ButtonStyle.Dark">
+
+    </style>
+
+    <style name="ButtonStyle.Light">
+
+    </style>
+
+    <style name="ButtonStyle.LightBlue">
+        <item name="android:background">@drawable/btn_gray_corner_background_light</item>
     </style>
     
     <style name="TextTitleDark">

@@ -131,36 +131,26 @@
         app:layout_behavior="org.qtum.wallet.utils.MoveUpwardBehavior">
 
         <org.qtum.wallet.utils.FontButton
-            android:fontFamily="@font/worksans_bold"
             android:id="@+id/bt_continue"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_margin="8dp"
             android:paddingTop="16dp"
             android:paddingBottom="16dp"
-            android:gravity="center"
             android:layout_height="wrap_content"
-            android:background="@drawable/btn_gray_corner_background_light_alpha_30"
             android:text="@string/_continue"
-            android:textAllCaps="true"
-            android:textColor="@color/color_custom_dark"
-            android:textSize="@dimen/button_text" />
+            style="@style/ButtonStyle.Light" />
 
         <org.qtum.wallet.utils.FontButton
-            android:fontFamily="@font/worksans_bold"
             android:id="@+id/bt_copy"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_margin="8dp"
-            android:gravity="center"
             android:paddingTop="16dp"
             android:paddingBottom="16dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/btn_gray_corner_background_light_alpha_30"
             android:text="@string/copy"
-            android:textAllCaps="true"
-            android:textColor="@color/color_custom_dark"
-            android:textSize="@dimen/button_text" />
+            style="@style/ButtonStyle.Light" />
 
     </LinearLayout>
 

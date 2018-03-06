@@ -45,7 +45,7 @@
         android:layout_width="wrap_content"
         android:textStyle="bold"
         android:textSize="18sp"
-        android:fontFamily="@font/worksans_bold"
+        android:fontFamily="@font/worksans_regular"
         android:textColor="@color/white"
         android:layout_height="wrap_content" />
 

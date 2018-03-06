@@ -35,11 +35,7 @@
                 android:gravity="center"
                 android:padding="16dp"
                 android:text="@string/create_new"
-                android:fontFamily="@font/worksans_bold"
-                android:background="@drawable/btn_gray_corner_background_light_alpha_30"
-                android:textAllCaps="true"
-                android:textColor="@color/color_custom_dark"
-                android:textSize="@dimen/button_text" />
+                style="@style/ButtonStyle.Light" />
 
 
             <org.qtum.wallet.utils.FontButton
@@ -50,10 +46,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/btn_gray_corner_background_light_alpha_30"
                 android:text="@string/login"
-                android:textAllCaps="true"
-                android:fontFamily="@font/worksans_bold"
-                android:textColor="@color/black"
-                android:textSize="@dimen/button_text" />
+                style="@style/ButtonStyle.Light" />
 
             <org.qtum.wallet.utils.FontButton
                 android:id="@+id/bt_import_wallet"
@@ -63,7 +56,7 @@
                 android:layout_marginTop="8dp"
                 android:gravity="center"
                 android:padding="16dp"
-                android:fontFamily="@font/worksans_bold"
+                android:fontFamily="@font/worksans_regular"
                 android:text="@string/import_wallet"
                 android:textAllCaps="true"
                 android:textColor="@color/color_custom_yellow_dark"

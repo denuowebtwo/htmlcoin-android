@@ -75,7 +75,8 @@
             android:padding="2dp"
             android:gravity="bottom"
             android:text="@string/qtum_address"
-            android:fontFamily="@font/worksans_regular" />
+            android:textSize="@dimen/textSize_Title"
+            android:fontFamily="@font/worksans_bold" />
 
         <LinearLayout
             android:layout_width="wrap_content"

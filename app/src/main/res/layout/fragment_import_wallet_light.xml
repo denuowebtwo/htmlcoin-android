@@ -71,7 +71,7 @@
         android:layout_margin="8dp"
         android:background="@drawable/btn_gray_corner_background_light"
         android:text="@string/cancel"
-        android:fontFamily="@font/worksans_bold"
+        android:fontFamily="@font/worksans_regular"
         android:textAllCaps="true"
         android:textColor="@color/bottom_nav_bar_text_color_light"
         android:textSize="@dimen/button_text"/>
@@ -84,7 +84,7 @@
         android:layout_margin="8dp"
         android:gravity="center"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/worksans_bold"
+        android:fontFamily="@font/worksans_regular"
         android:background="@drawable/btn_sea_corner_background_light_selector"
         android:text="@string/import_button"
         android:textAllCaps="true"

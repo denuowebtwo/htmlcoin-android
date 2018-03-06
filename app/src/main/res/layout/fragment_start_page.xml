@@ -27,7 +27,7 @@
             <org.qtum.wallet.utils.FontButton
                 android:id="@+id/bt_create_new"
                 android:layout_width="wrap_content"
-                style="@style/ButtonStyleDark"
+                style="@style/ButtonStyle.Dark"
                 android:padding="8dp"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
@@ -57,7 +57,7 @@
                 android:textSize="@dimen/button_text" />
 
             <org.qtum.wallet.utils.FontButton
-                style="@style/ButtonStyleDark"
+                style="@style/ButtonStyle.Dark"
                 android:id="@+id/bt_login"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

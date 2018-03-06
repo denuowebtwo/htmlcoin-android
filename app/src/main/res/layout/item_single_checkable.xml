@@ -24,8 +24,8 @@
             android:fontFamily="@font/worksans_regular"
             android:gravity="left|center_vertical"
             android:text="asdas12312kmddm7m12312mfvf6"
-            android:textColor="@color/colorPrimary"
-            android:textSize="16sp"/>
+            android:textColor="@color/white"
+            android:textSize="@dimen/textSize_SubTitle"/>
 
         <ImageView
             android:id="@+id/iv_check_indicator"
