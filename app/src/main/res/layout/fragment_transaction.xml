@@ -129,7 +129,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="16dp"
-                    android:text="From"
+                    android:text="@string/from"
                     android:textColor="@color/colorPrimary"
                     android:fontFamily="@font/stymie_bold" />
 
