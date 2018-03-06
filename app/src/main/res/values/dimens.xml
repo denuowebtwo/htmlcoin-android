@@ -3,6 +3,11 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
-    <dimen name="button_text">16sp</dimen>
+    <dimen name="textSize_Title">22sp</dimen>
+    <dimen name="textSize_SubTitle">18sp</dimen>
+    <dimen name="button_text">18sp</dimen>
     <dimen name="toolbar_text_size">24sp</dimen>
+
+    <dimen name="button_cancel_width">150sp</dimen>
+    <dimen name="pin_title_marginTop">36sp</dimen>
 </resources>

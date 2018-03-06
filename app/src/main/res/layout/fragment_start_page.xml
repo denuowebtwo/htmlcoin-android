@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/root_layout"
-        android:background="@color/background"
+        android:background="@color/color_custom_dark"
         android:paddingBottom="@dimen/activity_vertical_margin"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
@@ -27,7 +27,7 @@
             <org.qtum.wallet.utils.FontButton
                 android:id="@+id/bt_create_new"
                 android:layout_width="wrap_content"
-                android:gravity="center"
+                style="@style/ButtonStyleDark"
                 android:padding="8dp"
                 android:paddingStart="32dp"
                 android:paddingEnd="32dp"
@@ -35,12 +35,8 @@
                 android:layout_centerHorizontal="true"
                 android:layout_below="@+id/bt_login"
                 android:layout_height="wrap_content"
-                android:background="?attr/selectableItemBackground"
                 android:text="@string/create_new"
-                android:textAllCaps="true"
-                app:typeface="@string/simplonMonoRegular"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/button_text" />
+                />
 
             <org.qtum.wallet.utils.FontButton
                 android:id="@+id/bt_import_wallet"
@@ -54,13 +50,14 @@
                 android:background="?attr/selectableItemBackground"
                 android:gravity="center"
                 android:padding="10dp"
-                app:typeface="@string/simplonMonoRegular"
+                android:fontFamily="@font/worksans_regular"
                 android:text="@string/import_wallet"
                 android:textAllCaps="true"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/color_custom_yellow_dark"
                 android:textSize="@dimen/button_text" />
 
             <org.qtum.wallet.utils.FontButton
+                style="@style/ButtonStyleDark"
                 android:id="@+id/bt_login"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -68,14 +65,7 @@
                 android:layout_alignStart="@+id/bt_create_new"
                 android:layout_alignEnd="@+id/bt_create_new"
                 android:layout_centerHorizontal="true"
-                android:textColor="@color/background"
-                android:background="@color/accent_red_color"
-                android:gravity="center"
-                android:padding="10dp"
-                app:typeface="@string/simplonMonoRegular"
-                android:text="@string/login"
-                android:textAllCaps="true"
-                android:textSize="@dimen/button_text" />
+                android:text="@string/login" />
         </RelativeLayout>
 
         <ImageView
@@ -83,8 +73,10 @@
             android:layout_width="140dp"
             android:layout_height="140dp"
             android:layout_alignParentTop="true"
+            android:layout_marginTop="40dp"
+            android:tint="@android:color/transparent"
             android:layout_centerHorizontal="true"
-            app:srcCompat="@drawable/qtum_logo" />
+            app:srcCompat="@mipmap/logo" />
 
         <LinearLayout
             android:orientation="vertical"
@@ -101,8 +93,8 @@
                 android:gravity="center"
                 android:layout_height="wrap_content"
                 android:text="@string/you_don_t_have_a_wallet_yet"
-                android:textColor="@color/colorPrimary"
-                android:textSize="22sp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/textSize_Title"
                 android:fontFamily="@font/worksans_regular" />
 
             <org.qtum.wallet.utils.FontTextView
@@ -112,8 +104,8 @@
                 android:layout_marginTop="16dp"
                 android:layout_height="wrap_content"
                 android:text="@string/create_the_first_one_or_restore_n_the_previous_wallet_key"
-                android:textColor="@color/colorPrimary"
-                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/textSize_SubTitle"
                 android:fontFamily="@font/worksans_regular" />
 
         </LinearLayout>

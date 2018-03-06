@@ -23,13 +23,12 @@
             app:popupTheme="@style/AppTheme.PopupOverlay">
 
             <org.qtum.wallet.utils.FontTextView
+                android:layout_marginTop="@dimen/pin_title_marginTop"
                 android:id="@+id/tv_toolbar_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/toolbar_text_size"
-                android:fontFamily="@font/worksans_bold" />
+                style="@style/TextTitleDark" />
         </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>
@@ -52,13 +51,13 @@
             android:digits="1234567890"
             android:inputType="number"
             android:maxLength="6"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/white"
             android:textIsSelectable="false"
             android:textSize="20sp"
             app:pinAnimationType="fromBottom"
             app:pinBackgroundIsSquare="false"
             app:pinCharacterMask="■"
-            app:pinLineColors="@color/colorPrimary"
+            app:pinLineColors="@color/white"
             app:pinLineStroke="1dp"
             app:pinLineStrokeSelected="4dp"
             app:pinTextBottomPadding="8dp" />
@@ -81,19 +80,13 @@
 
         <org.qtum.wallet.utils.FontButton
             android:id="@+id/bt_cancel"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/button_cancel_width"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="16dp"
-            android:background="?attr/selectableItemBackground"
-            android:gravity="center"
-            android:padding="10dp"
             android:text="@string/cancel"
-            android:textAllCaps="true"
-            android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/button_text"
-            app:typeface="@string/simplonMonoRegular" />
+            style="@style/ButtonStyleDark" />
     </RelativeLayout>
 
 </android.support.design.widget.CoordinatorLayout>

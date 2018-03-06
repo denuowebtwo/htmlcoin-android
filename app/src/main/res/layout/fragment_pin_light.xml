@@ -24,12 +24,11 @@
 
             <org.qtum.wallet.utils.FontTextView
                 android:id="@+id/tv_toolbar_title"
+                android:layout_marginTop="@dimen/pin_title_marginTop"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:fontFamily="@font/worksans_bold"
-                android:textColor="@color/white"
-                android:textSize="@dimen/toolbar_text_size"/>
+                style="@style/TextTitleLight"/>
         </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>
