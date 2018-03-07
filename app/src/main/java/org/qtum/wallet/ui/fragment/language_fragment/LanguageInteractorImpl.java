@@ -19,7 +19,7 @@ class LanguageInteractorImpl implements LanguageInteractor{
     LanguageInteractorImpl(Context context){
         mContext = context;
         mLanguagesList = new ArrayList<>();
-        mLanguagesList.add(new Pair<>("zh", context.getString(R.string.arabic)));
+//        mLanguagesList.add(new Pair<>("ar", context.getString(R.string.arabic)));
         mLanguagesList.add(new Pair<>("zh", context.getString(R.string.chinese)));
         mLanguagesList.add(new Pair<>("da", context.getString(R.string.danish)));
         mLanguagesList.add(new Pair<>("us", context.getString(R.string.english)));
