@@ -223,4 +223,16 @@
     <string name="swipe_left_to_unsubscribe_or_delete_contract">Swipe Left to Unsubscribe or Delete Contract</string>
 
     <string name="warning_play_services_required_user_cancelled">htmlcoin requires Play Services. htmlcoin has quit. Please relaunch and resolve the issue.</string>
+
+    <string name="english">English</string>
+    <string name="french">Français</string>
+    <string name="german">Deutsch</string>
+    <string name="chinese">Chinese</string>
+    <string name="japanese">日本語</string>
+    <string name="danish">Dansk</string>
+    <string name="portuguese">Português</string>
+    <string name="arabic">العربية</string>
+    <string name="korean">한글</string>
+    <string name="spanish">Español</string>
+
 </resources>
