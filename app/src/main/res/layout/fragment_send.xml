@@ -56,7 +56,7 @@
                     android:id="@+id/bt_qr_code"
                     android:layout_width="36dp"
                     android:padding="8dp"
-                    android:tint="@color/background"
+                    android:tint="@color/white"
                     android:layout_height="36dp"
                     android:layout_alignParentRight="true"
                     android:layout_margin="9dp"
@@ -117,7 +117,7 @@
                     android:layout_marginBottom="8dp"
                     android:theme="@style/InputText"
                     android:focusable="true"
-                    android:textColorHint="@color/colorPrimary">
+                    android:textColorHint="@color/white">
 
                     <android.support.design.widget.TextInputEditText
                         android:id="@+id/et_receivers_address"
@@ -126,7 +126,7 @@
                         android:gravity="left"
                         android:hint="@string/receiver_s_address"
                         android:inputType="textPersonName"
-                        android:textColor="@color/colorPrimary"/>
+                        android:textColor="@color/white"/>
                 </android.support.design.widget.TextInputLayout>
 
                 <LinearLayout
@@ -145,7 +145,7 @@
                         android:textSize="12dp"
                         android:paddingBottom="4dp"
                         android:fontFamily="@font/worksans_regular"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="@color/white"
                         android:text="Choose Token"/>
 
                     <LinearLayout
@@ -160,7 +160,7 @@
                             android:id="@+id/tv_currency"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/colorPrimary"
+                            android:textColor="@color/white"
                             android:gravity="left"
                             android:layout_weight="1"
                             android:textSize="16sp"/>
@@ -168,7 +168,7 @@
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="12dp"
-                            android:tint="@color/colorPrimary"
+                            android:tint="@color/white"
                             android:layout_gravity="center"
                             app:srcCompat="@drawable/ic_rightarrow"/>
                     </LinearLayout>
@@ -177,7 +177,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:layout_marginTop="4dp"
-                        android:background="@color/colorPrimary"/>
+                        android:background="@color/white"/>
                 </LinearLayout>
 
 
@@ -187,7 +187,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/ll_currency"
                     android:layout_marginBottom="16dp"
-                    android:textColorHint="@color/colorPrimary">
+                    android:textColorHint="@color/white">
 
                     <android.support.design.widget.TextInputEditText
                         android:id="@+id/et_amount"
@@ -196,7 +196,7 @@
                         android:gravity="left"
                         android:hint="@string/amount"
                         android:inputType="numberDecimal"
-                        android:textColor="@color/colorPrimary"/>
+                        android:textColor="@color/white"/>
                 </android.support.design.widget.TextInputLayout>
 
                 <LinearLayout
@@ -214,7 +214,7 @@
                         android:id="@+id/tv_min_fee"
                         android:layout_gravity="center"
                         android:fontFamily="@font/worksans_regular"
-                        android:textColor="@color/colorPrimary"/>
+                        android:textColor="@color/white"/>
 
                     <org.qtum.wallet.utils.FontTextView
                         android:layout_width="wrap_content"
@@ -222,7 +222,7 @@
                         android:layout_gravity="center"
                         android:id="@+id/tv_max_fee"
                         android:fontFamily="@font/worksans_regular"
-                        android:textColor="@color/colorPrimary"/>
+                        android:textColor="@color/white"/>
 
                 </LinearLayout>
 
@@ -243,7 +243,7 @@
                     android:layout_height="wrap_content"
                     android:theme="@style/InputText"
                     android:focusable="true"
-                    android:textColorHint="@color/colorPrimary"
+                    android:textColorHint="@color/white"
                     android:layout_below="@+id/seekBar"
                     android:layout_alignParentStart="true">
 
@@ -254,7 +254,7 @@
                         android:gravity="left"
                         android:hint="@string/_fee"
                         android:inputType="numberDecimal"
-                        android:textColor="@color/colorPrimary"/>
+                        android:textColor="@color/white"/>
                 </android.support.design.widget.TextInputLayout>
 
                 <LinearLayout
@@ -288,7 +288,7 @@
                                     android:layout_gravity="center"
                                     android:text="Gas Price: "
                                     android:fontFamily="@font/worksans_regular"
-                                    android:textColor="@color/colorPrimary"/>
+                                    android:textColor="@color/white"/>
                                 <org.qtum.wallet.utils.FontTextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
@@ -310,7 +310,7 @@
                                     android:layout_gravity="center"
                                     android:text="Gas Limit: "
                                     android:fontFamily="@font/worksans_regular"
-                                    android:textColor="@color/colorPrimary"/>
+                                    android:textColor="@color/white"/>
                                 <org.qtum.wallet.utils.FontTextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
@@ -342,7 +342,7 @@
                                     android:id="@+id/tv_min_gas_price"
                                     android:layout_gravity="center"
                                     android:fontFamily="@font/worksans_regular"
-                                    android:textColor="@color/colorPrimary"/>
+                                    android:textColor="@color/white"/>
 
                                 <org.qtum.wallet.utils.FontTextView
                                     android:layout_width="wrap_content"
@@ -350,7 +350,7 @@
                                     android:layout_gravity="center"
                                     android:id="@+id/tv_max_gas_price"
                                     android:fontFamily="@font/worksans_regular"
-                                    android:textColor="@color/colorPrimary"/>
+                                    android:textColor="@color/white"/>
 
                             </LinearLayout>
 
@@ -377,7 +377,7 @@
                                     android:id="@+id/tv_min_gas_limit"
                                     android:layout_gravity="center"
                                     android:fontFamily="@font/worksans_regular"
-                                    android:textColor="@color/colorPrimary"/>
+                                    android:textColor="@color/white"/>
 
                                 <org.qtum.wallet.utils.FontTextView
                                     android:layout_width="wrap_content"
@@ -385,7 +385,7 @@
                                     android:layout_gravity="center"
                                     android:id="@+id/tv_max_gas_limit"
                                     android:fontFamily="@font/worksans_regular"
-                                    android:textColor="@color/colorPrimary"/>
+                                    android:textColor="@color/white"/>
 
                             </LinearLayout>
 
@@ -409,7 +409,7 @@
                             android:padding="16dp"
                             android:textSize="16sp"
                             android:background="?attr/selectableItemBackground"
-                            android:textColor="@color/colorPrimary"
+                            android:textColor="@color/white"
                             app:typeface="@string/simplonMonoRegular"
                             android:textAllCaps="true"
                             android:layout_width="wrap_content"
@@ -422,17 +422,11 @@
                         android:layout_width="200dp"
                         android:padding="10dp"
                         android:layout_gravity="center"
-                        android:gravity="center"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="16dp"
-                        app:typeface="@string/simplonMonoRegular"
                         android:layout_marginRight="16dp"
-                        android:background="@color/accent_red_color"
                         android:text="@string/send"
-                        android:layout_marginBottom="16dp"
-                        android:textAllCaps="true"
-                        android:textColor="@color/background"
-                        android:textSize="@dimen/button_text"/>
+                        style="@style/ButtonStyle.Dark"/>
 
                 </LinearLayout>
 

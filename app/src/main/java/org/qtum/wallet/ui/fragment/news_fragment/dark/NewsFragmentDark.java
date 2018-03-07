@@ -17,7 +17,7 @@ public class NewsFragmentDark extends NewsFragment {
 
     @Override
     public void initializeViews() {
-        ((MainActivity)getActivity()).showBottomNavigationView(org.qtum.wallet.R.color.colorPrimary);
+        ((MainActivity)getActivity()).showBottomNavigationView(org.qtum.wallet.R.color.color_custom_dark);
         super.initializeViews();
     }
 

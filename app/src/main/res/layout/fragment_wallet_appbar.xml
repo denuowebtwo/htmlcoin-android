@@ -3,6 +3,7 @@
              xmlns:app="http://schemas.android.com/apk/res-auto"
              android:orientation="vertical"
              android:gravity="center"
+             android:background="@color/color_custom_dark"
              android:layout_width="match_parent"
              android:layout_height="match_parent">
 
@@ -17,7 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/worksans_bold"
-            android:textColor="@color/background"
+            android:textColor="@color/white"
             android:textSize="24sp" />
 
         <org.qtum.wallet.utils.FontTextView
@@ -25,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/worksans_bold"
-            android:textColor="@color/background"
+            android:textColor="@color/white"
             android:textSize="24sp" />
 
     </LinearLayout>
@@ -36,7 +37,7 @@
         android:id="@+id/available_balance_title"
         android:gravity="center"
         android:fontFamily="@font/worksans_regular"
-        android:textColor="@color/background"
+        android:textColor="@color/white"
         android:padding="4dp"
         android:text="@string/available_balance"
         android:layout_width="wrap_content"
@@ -48,14 +49,14 @@
             android:fontFamily="@font/worksans_regular"
             android:text="0.0000000003 HTML"
             android:textSize="24sp"
-            android:textColor="@color/background"
+            android:textColor="@color/white"
             android:id="@+id/tv_unconfirmed_balance"/>
 
     <org.qtum.wallet.utils.FontTextView
         android:id="@+id/unconfirmed_balance_title"
         android:gravity="center"
         android:fontFamily="@font/worksans_regular"
-        android:textColor="@color/background"
+        android:textColor="@color/white"
         android:padding="4dp"
         android:text="@string/not_confirmed_balance"
         android:layout_width="wrap_content"

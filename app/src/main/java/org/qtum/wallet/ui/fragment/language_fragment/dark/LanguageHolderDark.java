@@ -22,10 +22,10 @@ public class LanguageHolderDark extends LanguageHolder {
     public void bindLanguage(Pair<String, String> language) {
         if (language.first.equals(QtumSharedPreference.getInstance().getLanguage(mTextViewLanguage.getContext()))) {
             mImageViewCheckIndicator.setVisibility(View.VISIBLE);
-            mTextViewLanguage.setTextColor(ContextCompat.getColor(mTextViewLanguage.getContext(), R.color.background));
-            mLinearLayoutAddress.setBackgroundColor(ContextCompat.getColor(mTextViewLanguage.getContext(), R.color.accent_red_color));
+            mTextViewLanguage.setTextColor(ContextCompat.getColor(mTextViewLanguage.getContext(), R.color.white));
+            mLinearLayoutAddress.setBackgroundColor(ContextCompat.getColor(mTextViewLanguage.getContext(), R.color.color_custom_blue_20));
         } else {
-            mTextViewLanguage.setTextColor(ContextCompat.getColor(mTextViewLanguage.getContext(), R.color.colorPrimary));
+            mTextViewLanguage.setTextColor(ContextCompat.getColor(mTextViewLanguage.getContext(), R.color.white));
             mImageViewCheckIndicator.setVisibility(View.GONE);
             mLinearLayoutAddress.setBackgroundColor(Color.TRANSPARENT);
         }

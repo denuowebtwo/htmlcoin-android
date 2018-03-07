@@ -58,5 +58,5 @@
     <color name="color_custom_grey">#cccccc</color>
     <color name="color_custom_blue">#369cd6</color>
     <color name="color_custom_blue_dark">#2162af</color>
-
+    <color name="color_custom_blue_20">#64369cd6</color>
 </resources>

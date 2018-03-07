@@ -21,7 +21,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@color/colorPrimary"
+            android:background="@color/color_custom_dark"
             android:clickable="true"
             android:orientation="horizontal">
 
@@ -32,7 +32,7 @@
                 android:layout_gravity="center"
                 android:layout_marginStart="8dp"
                 android:paddingEnd="6dp"
-                android:tint="@color/background"
+                android:tint="@color/white"
                 app:srcCompat="@drawable/ic_createnew" />
 
             <LinearLayout
@@ -72,7 +72,7 @@
                 android:layout_gravity="center"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
-                android:tint="@color/background"
+                android:tint="@color/white"
                 app:srcCompat="@drawable/ic_addressbook" />
 
         </LinearLayout>
@@ -80,11 +80,11 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:background="@drawable/bottom_vav_view_tab_selected_drawable"
+            android:background="@color/grey70"
             android:gravity="left|center_vertical"
             android:padding="8dp"
             android:text="@string/activity"
-            android:textColor="@color/colorPrimary" />
+            android:textColor="@color/color_custom_dark" />
 
             <android.support.v4.widget.SwipeRefreshLayout
                 android:id="@+id/swipe_refresh"
@@ -104,7 +104,7 @@
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:background="@color/colorPrimary"
+        android:background="@color/color_custom_dark"
         android:fitsSystemWindows="true"
         android:theme="@style/AppTheme.AppBarOverlay">
 
@@ -172,17 +172,14 @@
                         android:id="@+id/fade_divider_root"
                         android:layout_width="match_parent"
                         android:layout_height="56dp"
-                        android:background="@color/colorPrimary">
+                        android:background="@color/color_custom_dark">
 
                         <org.qtum.wallet.utils.FontTextView
                             android:id="@+id/tv_wallet_name"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:gravity="center"
                             android:text="@string/my_wallet"
-                            android:textColor="@color/background"
-                            android:textSize="@dimen/toolbar_text_size"
-                            android:fontFamily="@font/worksans_bold"/>
+                            style="@style/TextTitle.Dark"/>
 
                         <ImageButton
                             android:id="@+id/bt_qr_code"
@@ -193,7 +190,7 @@
                             android:background="@drawable/background_pressed_alpha_white"
                             android:padding="8dp"
                             android:scaleType="centerInside"
-                            android:tint="@color/background"
+                            android:tint="@color/white"
                             app:srcCompat="@drawable/ic_qrcode"/>
 
                         <FrameLayout
