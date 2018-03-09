@@ -34,7 +34,7 @@ public class SendPresenterImpl extends BaseFragmentPresenterImpl implements Send
     private SendInteractor mSendBaseFragmentInteractor;
     private boolean mNetworkConnectedFlag = false;
     private List<Token> mTokenList;
-    private double minFee;
+    private double minFee = 0.1;
     private double maxFee = 1;
 
     private int minGasPrice;
@@ -66,7 +66,9 @@ public class SendPresenterImpl extends BaseFragmentPresenterImpl implements Send
         } else {
             getView().hideCurrencyField();
         }
-        minFee = getInteractor().getFeePerKb().doubleValue();
+
+        // temporary use 0.1
+        // minFee = getInteractor().getFeePerKb().doubleValue();
         getView().updateFee(minFee, maxFee);
         minGasPrice = getInteractor().getMinGasPrice();
         getView().updateGasPrice(minGasPrice, maxGasPrice);
