@@ -45,7 +45,7 @@
     <string name="size">Größe</string>
     <string name="compiled_on">Basierend auf:</string>
     <string name="source_code">Quellcode</string>
-    <string name="published_by">Veröffentlich von:</string>
+    <string name="published_by">Veröffentlicht von:</string>
     <string name="downloads">Downloads:</string>
 
     <string name="purchase">Kaufen</string>
@@ -93,7 +93,7 @@
     <string name="no">Nein</string>
     <string name="are_you_sure">Bist du sicher?</string>
     <string name="skip">Überspringen</string>
-    <string name="not_confirmed_balance">Unbestätigte Balance</string>
+    <string name="not_confirmed_balance">Unbestätigtes Guthaben</string>
     <string name="templates">Vorlagen</string>
     <string name="step_1_2">Schritt 1 von 2</string>
     <string name="step_2_2">Schritt 2 von 2</string>
@@ -164,7 +164,7 @@
     <string name="token">Token</string>
     <string name="smart_contract_parameters">Smart Contract Parameter</string>
 
-    <string name="switch_theme">Anwendugsdesign wechseln</string>
+    <string name="switch_theme">Anwendungsdesign wechseln</string>
     <string name="confirmation">Bestätigung..</string>
     <string name="qtum_address">HTMLCOIN Adresse</string>
     <string name="not_confirmed_yet">Noch nicht bestätigt..</string>
@@ -172,7 +172,7 @@
     <string name="preview">Vorschau</string>
     <string name="restore">Wierderherstellen</string>
     <string name="token_was_added_to_your_wallet">Token wurde zu deinem Wallet hinzugefügt</string>
-    <string name="abi_doesnt_match_qrc20_standard">ABI entsprict nicht dem QRC20 Standard</string>
+    <string name="abi_doesnt_match_qrc20_standard">ABI entspricht nicht dem QRC20 Standard</string>
     <string name="token_with_same_address_already_exists">Token mit gleicher Adresse existiert bereits</string>
     <string name="invalid_token_address">Ungültige Token Adresse</string>
     <string name="address_list">Adress Liste</string>
