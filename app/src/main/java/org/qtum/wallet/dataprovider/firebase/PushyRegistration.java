@@ -1,7 +1,12 @@
 package org.qtum.wallet.dataprovider.firebase;
 
 
+import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
+import android.content.pm.PackageManager;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -23,53 +28,67 @@ import rx.schedulers.Schedulers;
 public class PushyRegistration {
     private static final String LOG_TAG = "PushyRegistration";
 
-    public static void registerPushyDeviceToken(final Context context) {
+    public static Boolean isGoogleApiAvailable(Context context) {
         // detect play services
+        int googleApiAvailabilityResult = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(context);
+        if (    googleApiAvailabilityResult == ConnectionResult.SERVICE_MISSING ||
+                googleApiAvailabilityResult == ConnectionResult.SERVICE_INVALID ||
+                googleApiAvailabilityResult == ConnectionResult.SERVICE_DISABLED) {
+
+            return false;
+        }
+        return false;
+    }
+
+    public static void listenPushyService(Activity activity, final Context context) {
         int googleApAvailabilityResult = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(context);
-        if (    googleApAvailabilityResult == ConnectionResult.SERVICE_MISSING ||
-                googleApAvailabilityResult == ConnectionResult.SERVICE_INVALID ||
-                googleApAvailabilityResult == ConnectionResult.SERVICE_DISABLED) {
+        if ( !isGoogleApiAvailable(context)) {
+            // Check whether the user has granted us the READ/WRITE_EXTERNAL_STORAGE permissions
+            if (ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                // Request both READ_EXTERNAL_STORAGE and WRITE_EXTERNAL_STORAGE so that the
+                // Pushy SDK will be able to persist the device token in the external storage
+                ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
+            } else {
+                String pushToken = TokenSharedPreferences.getInstance().getPushyToken(context);
+                if (pushToken == null) {
+                    Observable.create(new Observable.OnSubscribe<String>() {
+                        @Override
+                        public void call(Subscriber<? super String> subscriber) {
+                            try {
+                                String deviceToken = "";
 
-            String pushToken = TokenSharedPreferences.getInstance().getPushyToken(context);
-            if (pushToken == null) {
-                Observable.create(new Observable.OnSubscribe<String>() {
-                    @Override
-                    public void call(Subscriber<? super String> subscriber) {
-                        try {
-                            String deviceToken = Pushy.register(context);
+                                if (!Pushy.isRegistered(context)) {
+                                    deviceToken = Pushy.register(context);
+                                } else {
+                                    deviceToken = Pushy.getDeviceCredentials(context).token;
+                                }
 
-                            TokenSharedPreferences.getInstance().savePushyToken(context, deviceToken);
-                            updatePushyDeviceToken(context);
+                                Pushy.listen(context);
 
-                            subscriber.onNext(deviceToken);
-                        } catch (PushyException e) {
-                            Log.e("Pushy", e.getMessage(), e);
-                            subscriber.onNext("");
-                        } finally {
-
-                            subscriber.onCompleted();
+                                TokenSharedPreferences.getInstance().savePushyToken(context, deviceToken);
+                                updatePushyDeviceToken(context);
+                            } catch (PushyException e) {
+                                Log.e("Pushy", e.getMessage(), e);
+                            } finally {
+                                subscriber.onCompleted();
+                            }
                         }
-                    }
-                })
-                        .subscribeOn(Schedulers.io())
-                        .subscribe();
-
-
+                    }).subscribeOn(Schedulers.io()).subscribe();
+                } else {
+                    Pushy.listen(context);
+                }
             }
         }
     }
 
-    public static void checkPushServices(Context context) {
+    public static void checkPushServices(Activity activity, Context context) {
         int googleApAvailabilityResult = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(context);
-        if (    googleApAvailabilityResult == ConnectionResult.SERVICE_MISSING ||
-                googleApAvailabilityResult == ConnectionResult.SERVICE_INVALID ||
-                googleApAvailabilityResult == ConnectionResult.SERVICE_DISABLED) {
-
+        if ( !isGoogleApiAvailable(context)) {
             updatePushyDeviceToken(context);
         } else {
-            deletePushyDeviceToken(context);
-
+            Pushy.toggleNotifications(false, context);
             TokenSharedPreferences.getInstance().deletePushyToken(context);
+            deletePushyDeviceToken(context);
         }
     }
 
@@ -82,11 +101,6 @@ public class PushyRegistration {
         String token = TokenSharedPreferences.getInstance().getPushyToken(context);
 
         if (addresses == null || addresses.size() == 0 || token == null || token.isEmpty()) return;
-        int googleApAvailabilityResult = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(context);
-        if (!(    googleApAvailabilityResult == ConnectionResult.SERVICE_MISSING ||
-                googleApAvailabilityResult == ConnectionResult.SERVICE_INVALID ||
-                googleApAvailabilityResult == ConnectionResult.SERVICE_DISABLED)) return;
-
 
         AddressDeviceTokenRequest addressDeviceToken = new AddressDeviceTokenRequest(addresses.toArray(new String[0]), null, token);
 
