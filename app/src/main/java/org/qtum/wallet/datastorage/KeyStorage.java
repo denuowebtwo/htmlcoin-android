@@ -78,6 +78,8 @@ public class KeyStorage implements Serializable {
     }
 
     public List<DeterministicKey> getKeyList() {
+        if (sWallet == null) return mDeterministicKeyList;
+
         if (mDeterministicKeyList == null || mDeterministicKeyList.isEmpty()) {
             mDeterministicKeyList = new ArrayList<>(ADDRESSES_COUNT);
             mAddressesList = new ArrayList<>();
@@ -95,6 +97,7 @@ public class KeyStorage implements Serializable {
     }
 
     public String getCurrentAddress() {
+        if (sWallet == null || mDeterministicKeyList == null) return "";
         return getKeyList().get(sCurrentKeyPosition).toAddress(CurrentNetParams.getNetParams()).toString();
     }
 

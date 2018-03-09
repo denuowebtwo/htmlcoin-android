@@ -37,7 +37,7 @@ public class PushyRegistration {
 
             return false;
         }
-        return false;
+        return true;
     }
 
     public static void listenPushyService(Activity activity, final Context context) {

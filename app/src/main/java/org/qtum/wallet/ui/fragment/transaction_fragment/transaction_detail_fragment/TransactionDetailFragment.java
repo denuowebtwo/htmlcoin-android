@@ -43,7 +43,7 @@ public abstract class TransactionDetailFragment extends Fragment implements Tran
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mTransactionFragmentPresenter = new TransactionDetailFragmentPresenter(this);
+        mTransactionFragmentPresenter = new TransactionDetailFragmentPresenter(this, getContext());
     }
 
     @Nullable

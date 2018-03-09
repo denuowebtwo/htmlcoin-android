@@ -36,7 +36,8 @@ public class WalletPresenterImpl extends BaseFragmentPresenterImpl implements Wa
     @Override
     public void notifyHeader() {
         String pubKey = getInteractor().getAddress();
-        getView().updatePubKey(pubKey);
+        if (pubKey != null && !pubKey.isEmpty())
+            getView().updatePubKey(pubKey);
 
         AddressBalance addressBalance = RealmStorage.getInstance(mWalletView.getContext()).getAddressBalance();
         if (addressBalance != null){
