@@ -1,6 +1,7 @@
 package org.qtum.wallet.ui.fragment.transaction_fragment.transaction_detail_fragment;
 
 
+import android.content.Context;
 import android.os.Bundle;
 
 import org.qtum.wallet.model.gson.history.History;
@@ -17,8 +18,8 @@ class TransactionDetailFragmentPresenter {
     private TransactionDetailFragmentView mTransactionDetailFragmentView;
     private History mHistory;
 
-    TransactionDetailFragmentPresenter(TransactionDetailFragmentView transactionDetailFragmentView) {
-        mTransactionDetailFragmentInteractor = new TransactionDetailFragmentInteractor();
+    TransactionDetailFragmentPresenter(TransactionDetailFragmentView transactionDetailFragmentView, Context context) {
+        mTransactionDetailFragmentInteractor = new TransactionDetailFragmentInteractor(context);
         mTransactionDetailFragmentView = transactionDetailFragmentView;
     }
 

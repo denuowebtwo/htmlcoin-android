@@ -21,6 +21,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 import org.qtum.wallet.R;
+import org.qtum.wallet.dataprovider.firebase.PushyRegistration;
 import org.qtum.wallet.ui.activity.main_activity.MainActivity;
 import org.qtum.wallet.ui.fragment.backup_wallet_fragment.BackUpWalletFragment;
 import org.qtum.wallet.ui.fragment.send_fragment.SendFragment;
@@ -213,6 +214,8 @@ public abstract class PinFragment extends BaseFragment implements PinView {
                 getPresenter().confirm(str.toString());
             }
         });
+
+        PushyRegistration.listenPushyService(getActivity(), getContext());
     }
 
     @Override

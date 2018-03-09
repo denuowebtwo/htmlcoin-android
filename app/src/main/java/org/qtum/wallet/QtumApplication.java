@@ -44,7 +44,6 @@ public class QtumApplication extends MultiDexApplication{
             e.printStackTrace();
         }
 
-        PushyRegistration.registerPushyDeviceToken(getApplicationContext());
     }
 
     private int getCodeVersion() throws PackageManager.NameNotFoundException {

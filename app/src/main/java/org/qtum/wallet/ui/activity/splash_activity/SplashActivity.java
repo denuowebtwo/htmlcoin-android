@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.transitionseverywhere.ChangeClipBounds;
 
 import org.qtum.wallet.R;
+import org.qtum.wallet.dataprovider.firebase.PushyRegistration;
 import org.qtum.wallet.ui.activity.main_activity.MainActivity;
 import org.qtum.wallet.ui.base.base_activity.BaseActivity;
 import org.qtum.wallet.utils.QtumIntent;
@@ -120,14 +121,6 @@ public class SplashActivity extends BaseActivity implements SplashActivityView {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        Pushy.listen(this);
-        // Check whether the user has granted us the READ/WRITE_EXTERNAL_STORAGE permissions
-        if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            // Request both READ_EXTERNAL_STORAGE and WRITE_EXTERNAL_STORAGE so that the
-            // Pushy SDK will be able to persist the device token in the external storage
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
-        }
 
         setContentView(LAYOUT);
 

@@ -256,7 +256,7 @@ public class PinPresenterImpl extends BaseFragmentPresenterImpl implements PinPr
                                     }
                                 });
 
-                        PushyRegistration.checkPushServices(getView().getContext());
+                        PushyRegistration.checkPushServices(getView().getMainActivity(), getView().getContext());
                     } else {
                         getView().confirmError(R.string.incorrect_pin);
                     }
@@ -584,7 +584,7 @@ public class PinPresenterImpl extends BaseFragmentPresenterImpl implements PinPr
     private void updateAddressDeviceToken() {
         updateFirebaseDeviceToken();
 
-        PushyRegistration.updatePushyDeviceToken(getView().getContext());
+        PushyRegistration.checkPushServices(getView().getMainActivity(), getView().getContext());
     }
 
     private void updateFirebaseDeviceToken() {
