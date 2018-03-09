@@ -21,6 +21,7 @@ import org.qtum.wallet.datastorage.TinyDB;
 import org.qtum.wallet.datastorage.realm.RealmStorage;
 import org.qtum.wallet.model.contract.ContractMethodParameter;
 import org.qtum.wallet.model.contract.Token;
+import org.qtum.wallet.model.gson.AddressBalance;
 import org.qtum.wallet.model.gson.CallSmartContractRequest;
 import org.qtum.wallet.model.gson.SendRawTransactionRequest;
 import org.qtum.wallet.model.gson.SendRawTransactionResponse;
@@ -175,7 +176,13 @@ public class SendInteractorImpl implements SendInteractor {
                     }
                 }
                 if (overFlow.doubleValue() < amount.doubleValue()) {
-                    callBack.onError(mContext.getString(org.qtum.wallet.R.string.you_have_insufficient_funds_for_this_transaction));
+                    // check unconfirmed transaction
+                    BigDecimal unconfirmedOutputBalance = RealmStorage.getInstance(mContext).getUnconfirmedOutputBalance();
+                    if (overFlow.doubleValue() + unconfirmedOutputBalance.doubleValue() > amount.doubleValue()) {
+                        callBack.onError(mContext.getString(org.qtum.wallet.R.string.you_have_insufficient_funds_pending_transaction));
+                    } else {
+                        callBack.onError(mContext.getString(org.qtum.wallet.R.string.you_have_insufficient_funds_for_this_transaction));
+                    }
                     return;
                 }
                 BigDecimal delivery = overFlow.subtract(amount);

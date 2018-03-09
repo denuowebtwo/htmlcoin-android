@@ -4,6 +4,7 @@ package org.qtum.wallet.datastorage.realm;
 import android.content.Context;
 import android.util.Log;
 
+import org.qtum.wallet.datastorage.KeyStorage;
 import org.qtum.wallet.model.gson.AddressBalance;
 import org.qtum.wallet.model.gson.history.History;
 import org.qtum.wallet.model.gson.history.ScriptPubKey;
@@ -230,6 +231,33 @@ public class RealmStorage {
         }
 
         return false;
+    }
+
+    public BigDecimal getUnconfirmedOutputBalance() {
+        Realm realm = null;
+        BigDecimal bigDecimal = BigDecimal.ZERO;
+        try {
+            realm = Realm.getInstance(config);
+
+            RealmResults<RealmHistory> realmQuery = realm.where(RealmHistory.class)
+                    .isNull("blockTime")
+                    .findAll();
+            for (RealmHistory realmHistory: realmQuery) {
+                for (RealmVout realmVout: realmHistory.getVout()) {
+                    if(KeyStorage.getInstance().getAddresses().contains(realmVout.getAddress()))
+                        bigDecimal = bigDecimal.add(new BigDecimal(realmVout.getValue()));
+                }
+            }
+
+        } catch (Exception ex) {
+            Log.e(LOG_TAG, ex.getMessage());
+            Log.e(LOG_TAG, Log.getStackTraceString(ex));
+        } finally {
+            if (realm != null)
+                realm.close();
+        }
+
+        return bigDecimal;
     }
 
     // Balance
