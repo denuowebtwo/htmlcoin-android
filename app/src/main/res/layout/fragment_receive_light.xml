@@ -49,11 +49,8 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="@string/receive"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/toolbar_text_size"
-                    android:fontFamily="@font/worksans_bold" />
+                    style="@style/TextTitle.Light"
+                    android:text="@string/receive" />
 
                 <ImageButton
                     android:id="@+id/bt_share"

@@ -46,11 +46,8 @@
                     android:id="@+id/tv_toolbar_title"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="@string/copy_brain_code"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    android:fontFamily="@font/worksans_bold" />
+                    style="@style/TextTitle.Light"
+                    android:text="@string/copy_brain_code" />
 
                 <ImageButton
                     android:id="@+id/bt_share"

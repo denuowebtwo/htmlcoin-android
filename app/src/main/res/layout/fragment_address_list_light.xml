@@ -42,11 +42,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginEnd="48dp"
-                android:gravity="center"
-                android:text="@string/address_manage"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                android:fontFamily="@font/worksans_bold" />
+                style="@style/TextTitle.Light"
+                android:text="@string/address_manage" />
         </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>
