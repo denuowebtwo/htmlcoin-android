@@ -49,6 +49,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/select_file_background"
+        android:onClick="hideKeyBoard"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <android.support.v7.widget.AppCompatImageView
@@ -65,7 +66,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/_2017_qtum_n_skynet_testnet_version"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/white"
             android:textSize="18sp"
             android:fontFamily="@font/worksans_regular"
             android:layout_alignParentBottom="true"

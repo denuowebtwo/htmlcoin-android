@@ -27,9 +27,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="@string/import_wallet"
-                android:fontFamily="@font/worksans_bold"
-                android:textColor="@color/white"
-                android:textSize="20sp"/>
+                style="@style/TextTitle.Light"/>
         </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>

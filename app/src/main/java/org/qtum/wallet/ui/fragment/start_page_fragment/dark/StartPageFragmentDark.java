@@ -24,7 +24,7 @@ public class StartPageFragmentDark extends StartPageFragment {
     @Override
     public void hideLoginButton() {
         mButtonLogin.setVisibility(View.GONE);
-        mButtonCreateNew.setBackgroundColor(ContextCompat.getColor(getContext(), org.qtum.wallet.R.color.accent_red_color));
+        mButtonCreateNew.setBackgroundColor(ContextCompat.getColor(getContext(), org.qtum.wallet.R.color.color_custom_yellow_dark));
         mButtonCreateNew.setTextColor(ContextCompat.getColor(getContext(), org.qtum.wallet.R.color.background));
     }
 

@@ -242,6 +242,7 @@ public abstract class BaseFragment extends Fragment implements BaseFragmentView 
             });
 
             if (ThemeUtils.getCurrentTheme(getContext()).equals(ThemeUtils.THEME_DARK)) {
+                view.setBackgroundColor(getContext().getColor(android.R.color.white));
                 switch (type.name()) {
                     case "error":
                         icon.setImageResource(org.qtum.wallet.R.drawable.ic_error);
