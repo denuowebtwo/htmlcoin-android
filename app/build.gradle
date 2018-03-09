@@ -178,7 +178,7 @@ dependencies {
     }
     compile 'com.airbnb.android:lottie:2.0.0-beta3'
     //fabric.io
-    compile('com.crashlytics.sdk.android:crashlytics:2.6.8@aar') {
+    compile('com.crashlytics.sdk.android:crashlytics:2.9.1@aar') {
         transitive = true;
     }
     //
