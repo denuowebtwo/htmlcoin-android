@@ -10,7 +10,7 @@
     <ImageView
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:tint="@color/colorPrimary"
+        android:tint="@color/white"
         android:layout_marginStart="16dp"
         app:srcCompat = "@drawable/ic_transfer"
         android:layout_centerVertical="true"
@@ -20,7 +20,7 @@
     <org.qtum.wallet.utils.FontTextView
         android:id="@+id/address_name"
         android:textSize="16sp"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/white"
         android:text="@string/token_name"
         android:gravity="left|center_vertical"
         android:layout_marginStart="8dp"
@@ -35,10 +35,10 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/colorPrimary"
+        android:layout_height="@dimen/divider_height"
+        android:background="@color/white"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="16dp"/>
+        android:layout_marginStart="@dimen/divider_margin_start"/>
 
     <LinearLayout
         android:id="@+id/ll_balance"
@@ -53,7 +53,7 @@
         <org.qtum.wallet.utils.FontTextView
             android:id="@+id/address_balance"
             android:textSize="14sp"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/white"
             android:fontFamily="@font/worksans_bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -61,7 +61,7 @@
         <org.qtum.wallet.utils.FontTextView
             android:id="@+id/address_symbol"
             android:textSize="14sp"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/white"
             android:fontFamily="@font/worksans_bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />

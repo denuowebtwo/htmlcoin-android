@@ -8,7 +8,7 @@
     <org.qtum.wallet.utils.FontTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/white"
         android:text="test"
         android:maxLines="1"
         android:ellipsize="end"
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:textSize="16sp"
         android:layout_alignParentEnd="true"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/white"
         android:fontFamily="@font/worksans_bold"
         android:layout_centerVertical="true"
         android:text="test"
@@ -33,9 +33,9 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginStart="8dp"
+        android:layout_height="@dimen/divider_height"
+        android:layout_marginStart="0dp"
         android:layout_alignParentBottom="true"
-        android:background="@color/colorPrimary"/>
+        android:background="@color/white"/>
 
 </RelativeLayout>

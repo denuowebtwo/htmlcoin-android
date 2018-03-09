@@ -26,14 +26,14 @@
             android:text="@string/available_balance"
             android:textAllCaps="true"
             android:layout_width="wrap_content"
-            android:fontFamily="@font/worksans_bold"
+            android:fontFamily="@font/worksans_regular"
             android:gravity="center"
             android:textAlignment="center"
             android:layout_height="wrap_content" />
 
         <org.qtum.wallet.utils.FontTextView
             android:textColor="@color/color_custom_yellow"
-            android:textSize="14sp"
+            android:textSize="18sp"
             android:id="@+id/tv_placeholder_balance_value"
             android:fontFamily="@font/worksans_bold"
             android:text="0.0 HTML"

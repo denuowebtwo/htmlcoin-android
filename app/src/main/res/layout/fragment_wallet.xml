@@ -49,7 +49,7 @@
                     android:layout_weight="1"
                     android:gravity="bottom"
                     android:text="@string/qtum_address"
-                    android:textColor="@color/background"
+                    android:textColor="@color/white"
                     android:fontFamily="@font/worksans_regular" />
 
                 <org.qtum.wallet.utils.FontTextView
@@ -61,7 +61,7 @@
                     android:maxLines="1"
                     android:ellipsize="end"
                     android:paddingEnd="16dp"
-                    android:textColor="@color/background"
+                    android:textColor="@color/white"
                     android:fontFamily="@font/worksans_bold" />
             </LinearLayout>
 
@@ -84,7 +84,7 @@
             android:gravity="left|center_vertical"
             android:padding="8dp"
             android:text="@string/activity"
-            android:textColor="@color/color_custom_dark" />
+            android:textColor="@color/white" />
 
             <android.support.v4.widget.SwipeRefreshLayout
                 android:id="@+id/swipe_refresh"

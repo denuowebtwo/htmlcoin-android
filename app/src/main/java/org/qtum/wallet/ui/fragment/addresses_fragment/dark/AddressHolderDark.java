@@ -16,15 +16,15 @@ public class AddressHolderDark extends AddressHolder {
     AddressHolderDark(View itemView, OnAddressClickListener listener) {
         super(itemView, listener);
 
-        defaultTextColor = ContextCompat.getColor(mTextViewAddress.getContext(), R.color.colorPrimary);
-        selectedTextColor = ContextCompat.getColor(mTextViewAddress.getContext(), R.color.background);
+        defaultTextColor = ContextCompat.getColor(mTextViewAddress.getContext(), R.color.white);
+        selectedTextColor = ContextCompat.getColor(mTextViewAddress.getContext(), R.color.white);
     }
 
    public void bindAddress(String address, int position) {
         if (position == KeyStorage.getInstance().getCurrentKeyPosition()) {
             mImageViewCheckIndicator.setVisibility(View.VISIBLE);
             mTextViewAddress.setTextColor(selectedTextColor);
-            mLinearLayoutAddress.setBackgroundColor(ContextCompat.getColor(mLinearLayoutAddress.getContext(), R.color.accent_red_color));
+            mLinearLayoutAddress.setBackgroundColor(ContextCompat.getColor(mLinearLayoutAddress.getContext(), R.color.primary_text_color));
         } else {
             mImageViewCheckIndicator.setVisibility(View.GONE);
             mTextViewAddress.setTextColor(defaultTextColor);

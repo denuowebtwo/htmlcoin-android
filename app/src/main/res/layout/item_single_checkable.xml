@@ -48,7 +48,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5px"
-        android:layout_marginStart="0dp"
+        android:layout_marginStart="@dimen/divider_margin_start"
         android:background="@color/white"/>
 
 </LinearLayout>

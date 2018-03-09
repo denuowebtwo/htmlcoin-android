@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="56dp"
             app:contentInsetStart="0dp"
-            android:background="@color/colorPrimary"
+            android:background="@color/background"
             app:popupTheme="@style/AppTheme.PopupOverlay">
 
             <RelativeLayout
@@ -32,11 +32,8 @@
                     android:id="@+id/tv_toolbar_send"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="@string/receive"
-                    android:textColor="@color/background"
-                    android:textSize="@dimen/toolbar_text_size"
-                    android:fontFamily="@font/worksans_bold"/>
+                    style="@style/TextTitle.Dark"
+                    android:text="@string/receive"/>
 
                 <ImageButton
                     android:id="@+id/ibt_back"
@@ -44,12 +41,12 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center"
-                    android:background="@drawable/background_ibtn_back"
+                    android:background="@android:color/transparent"
                     android:paddingBottom="10dp"
                     android:paddingLeft="16dp"
                     android:paddingRight="16dp"
                     android:paddingTop="10dp"
-                    app:srcCompat="@drawable/ic_back_indicator"/>
+                    app:srcCompat="@drawable/icon_back_indicator"/>
 
                 <ImageButton
                     android:id="@+id/bt_share"
@@ -58,11 +55,10 @@
                     android:layout_height="36dp"
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="8dp"
-                    android:background="@drawable/background_pressed_alpha_white"
+                    android:background="@android:color/transparent"
                     android:padding="4dp"
                     android:scaleType="centerInside"
-                    android:tint="@color/background"
-                    app:srcCompat="@drawable/ic_share"/>
+                    app:srcCompat="@drawable/icon_share_light"/>
             </RelativeLayout>
 
         </android.support.v7.widget.Toolbar>
@@ -73,18 +69,19 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/background"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <View
-            android:id="@+id/divider"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/background"/>
+        <!--<View-->
+            <!--android:id="@+id/divider"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="1dp"-->
+            <!--android:background="@color/white"/>-->
 
         <FrameLayout
             android:layout_below="@+id/divider"
             android:id="@+id/balance"
-            android:background="@color/colorPrimary"
+            android:background="@color/color_custom_dark"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <include
@@ -98,7 +95,7 @@
             android:layout_below="@+id/balance"
             android:layout_marginBottom="8dp"
             android:padding="8dp"
-            android:textColorHint="@color/colorPrimary"
+            android:textColorHint="@color/white"
             android:theme="@style/InputText">
 
             <android.support.design.widget.TextInputEditText
@@ -109,7 +106,7 @@
                 android:gravity="left"
                 android:imeOptions="actionDone"
                 android:inputType="numberDecimal"
-                android:textColor="@color/colorPrimary"/>
+                android:textColor="@color/white"/>
         </android.support.design.widget.TextInputLayout>
 
 
@@ -122,6 +119,7 @@
                 android:layout_above="@+id/buttons"
                 android:clickable="true"
                 android:focusable="true"
+
                 android:focusableInTouchMode="true"
                 android:padding="8dp">
 
@@ -132,6 +130,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_alignParentTop="true"
                     android:layout_above="@+id/tv_single_string"
+                    android:background="@drawable/qr_code_background_dark"
                     android:layout_centerInParent="true"
                     android:padding="4dp">
 
@@ -147,7 +146,7 @@
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:layout_gravity="center"
-                        android:indeterminateTint="@color/colorPrimary"/>
+                        android:indeterminateTint="@color/white"/>
 
                 </FrameLayout>
 
@@ -163,7 +162,7 @@
                     android:ellipsize="end"
                     android:gravity="center"
                     android:maxLines="1"
-                    android:textColor="@color/colorPrimary"/>
+                    android:textColor="@color/white"/>
 
             </RelativeLayout>
         <RelativeLayout
@@ -177,23 +176,18 @@
 
             <org.qtum.wallet.utils.FontButton
                 android:id="@+id/bt_copy_wallet_address"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/bt_choose_another_address"
+                android:layout_alignStart="@+id/bt_choose_another_address"
                 android:layout_centerHorizontal="true"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:background="@color/accent_red_color"
-                android:gravity="center"
-                android:paddingBottom="10dp"
+                android:paddingBottom="16dp"
                 android:paddingEnd="32dp"
                 android:paddingStart="32dp"
-                android:paddingTop="10dp"
+                android:paddingTop="16dp"
                 android:stateListAnimator="@null"
                 android:text="@string/copy_wallet_address"
-                android:textAllCaps="true"
-                android:textColor="@color/background"
-                android:textSize="@dimen/button_text"
-                app:typeface="@string/simplonMonoRegular"/>
+                style="@style/ButtonStyle.Light" />
 
             <org.qtum.wallet.utils.FontButton
                 android:id="@+id/bt_choose_another_address"
@@ -204,17 +198,13 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:layout_marginTop="8dp"
-                android:background="?attr/selectableItemBackground"
-                android:paddingBottom="10dp"
+                android:paddingBottom="16dp"
                 android:paddingEnd="32dp"
                 android:paddingStart="32dp"
-                android:paddingTop="10dp"
+                android:paddingTop="16dp"
                 android:stateListAnimator="@null"
                 android:text="@string/choose_another_address"
-                android:textAllCaps="true"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/button_text"
-                app:typeface="@string/simplonMonoRegular"/>
+                style="@style/ButtonStyle.LightBlue" />
 
         </RelativeLayout>
 

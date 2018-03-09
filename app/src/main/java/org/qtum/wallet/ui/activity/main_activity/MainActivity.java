@@ -323,7 +323,7 @@ public class MainActivity extends BaseActivity implements MainActivityView {
 
     public void recolorStatusBarBlack() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().setStatusBarColor(ContextCompat.getColor(getContext(), R.color.background));
+            getWindow().setStatusBarColor(ContextCompat.getColor(getContext(), R.color.color_custom_yellow_dark));
         }
     }
 
@@ -360,7 +360,7 @@ public class MainActivity extends BaseActivity implements MainActivityView {
     @Override
     public void initializeViews() {
 
-        initBottomNavViewWithFont((ThemeUtils.getCurrentTheme(this).equals(ThemeUtils.THEME_DARK) ? R.string.font_worksans_bold : R.string.font_worksans_bold));
+        initBottomNavViewWithFont((ThemeUtils.getCurrentTheme(this).equals(ThemeUtils.THEME_DARK) ? R.string.font_bottom_navigation : R.string.font_bottom_navigation));
 
         mBottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -593,10 +593,10 @@ public class MainActivity extends BaseActivity implements MainActivityView {
         if (ThemeUtils.getCurrentTheme(this).equals(ThemeUtils.THEME_DARK)) {
             mBottomNavigationView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.background));
             mBottomNavigationView.setItemBackgroundResource(R.drawable.bottom_nav_view_tab_background);
-            mBottomNavigationView.setItemTextColor(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.colorPrimary)));
-            mBottomNavigationView.setItemIconTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.colorPrimary)));
+            mBottomNavigationView.setItemTextColor(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.color_custom_yellow_dark)));
+            mBottomNavigationView.setItemIconTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.color_custom_yellow_dark)));
             resetNavBarIconsWithTheme(blackThemeIcons);
-            recolorStatusBar(R.color.colorPrimary);
+            recolorStatusBar(R.color.color_custom_yellow_dark);
         } else {
             mBottomNavigationView.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.bottom_nav_bar_color_light));
             mBottomNavigationView.setItemBackgroundResource(android.R.color.transparent);
@@ -606,7 +606,7 @@ public class MainActivity extends BaseActivity implements MainActivityView {
             resetNavBarIconsWithTheme(lightThemeIcons);
         }
 
-        initBottomNavViewWithFont((ThemeUtils.getCurrentTheme(this).equals(ThemeUtils.THEME_DARK) ? R.string.font_worksans_bold : R.string.font_worksans_bold));
+        initBottomNavViewWithFont((ThemeUtils.getCurrentTheme(this).equals(ThemeUtils.THEME_DARK) ? R.string.font_bottom_navigation : R.string.font_bottom_navigation));
 
     }
 

@@ -2,8 +2,8 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
         <shape>
-            <size android:height="16dp"/>
-            <solid android:color="@color/section_divider_color"/>
+            <size android:height="0.5dp"/>
+            <solid android:color="@color/white"/>
         </shape>
     </item>
 </layer-list>

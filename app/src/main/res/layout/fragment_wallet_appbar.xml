@@ -1,11 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:app="http://schemas.android.com/apk/res-auto"
-             android:orientation="vertical"
-             android:gravity="center"
-             android:background="@color/color_custom_dark"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="16dp"
+    android:background="@color/color_custom_dark"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center">
+
+    <org.qtum.wallet.utils.FontTextView
+        android:id="@+id/available_balance_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/available_balance"
+        android:textAllCaps="true"
+        android:textSize="@dimen/textSize_SubTitle"
+        android:fontFamily="@font/worksans_regular"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:textAlignment="center"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -15,51 +29,91 @@
 
         <org.qtum.wallet.utils.FontTextView
             android:id="@+id/tv_balance"
+            android:text="0.0 HTML"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/worksans_bold"
-            android:textColor="@color/white"
-            android:textSize="24sp" />
-
-        <org.qtum.wallet.utils.FontTextView
-            android:id="@+id/tv_currency"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/worksans_bold"
-            android:textColor="@color/white"
-            android:textSize="24sp" />
+            android:textColor="@color/color_custom_yellow"
+            android:textSize="@dimen/textSize_SubTitle" />
 
     </LinearLayout>
 
-
+    <org.qtum.wallet.utils.FontTextView
+        android:layout_marginTop="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/unconfirmed_balance_title"
+        android:text="@string/not_confirmed_balance"
+        android:textAllCaps="true"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:fontFamily="@font/worksans_regular"
+        android:gravity="center"
+        android:textAlignment="center"/>
 
     <org.qtum.wallet.utils.FontTextView
-        android:id="@+id/available_balance_title"
-        android:gravity="center"
-        android:fontFamily="@font/worksans_regular"
-        android:textColor="@color/white"
-        android:padding="4dp"
-        android:text="@string/available_balance"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textColor="@color/color_custom_yellow"
+        android:text="0.0 HTML"
+        android:id="@+id/tv_unconfirmed_balance"
+        android:textSize="12sp"
+        android:fontFamily="@font/worksans_regular"
+        android:gravity="center"
+        android:textAlignment="center"/>
+
+    <LinearLayout
+        android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:clickable="true"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:gravity="center">
 
         <org.qtum.wallet.utils.FontTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/worksans_regular"
-            android:text="0.0000000003 HTML"
-            android:textSize="24sp"
+            android:padding="2dp"
+            android:gravity="bottom"
             android:textColor="@color/white"
-            android:id="@+id/tv_unconfirmed_balance"/>
+            android:text="@string/qtum_address"
+            android:textSize="@dimen/textSize_SubTitle"
+            android:fontFamily="@font/worksans_regular" />
 
-    <org.qtum.wallet.utils.FontTextView
-        android:id="@+id/unconfirmed_balance_title"
-        android:gravity="center"
-        android:fontFamily="@font/worksans_regular"
-        android:textColor="@color/white"
-        android:padding="4dp"
-        android:text="@string/not_confirmed_balance"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:id="@+id/ll_receive"
+            android:layout_height="20dp"
+            android:orientation="horizontal"
+            >
 
+            <org.qtum.wallet.utils.FontTextView
+                android:id="@+id/iv_receive"
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:fontFamily="@font/worksans_bold"
+                android:gravity="center"
+                android:text="+"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:tint="@color/white" />
+
+
+            <org.qtum.wallet.utils.FontTextView
+                android:id="@+id/tv_public_key"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:padding="2dp"
+                android:layout_weight="1"
+                android:maxLines="1"
+                android:gravity="top"
+                android:paddingEnd="16dp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/worksans_bold"
+                app:autoSizeTextType="uniform"/>
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>
