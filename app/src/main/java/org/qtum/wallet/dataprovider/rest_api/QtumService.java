@@ -1,6 +1,7 @@
 package org.qtum.wallet.dataprovider.rest_api;
 
 
+import com.datatheorem.android.trustkit.TrustKit;
 import com.google.common.base.Joiner;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -9,17 +10,16 @@ import org.qtum.wallet.model.gson.AddressBalance;
 import org.qtum.wallet.model.gson.AddressDeviceTokenRequest;
 import org.qtum.wallet.model.gson.AddressDeviceTokenResponse;
 import org.qtum.wallet.model.gson.BlockChainInfo;
-
 import org.qtum.wallet.model.gson.CallSmartContractRequest;
 import org.qtum.wallet.model.gson.DGPInfo;
 import org.qtum.wallet.model.gson.FeePerKb;
 import org.qtum.wallet.model.gson.QstoreContractType;
-import org.qtum.wallet.model.gson.call_smart_contract_response.CallSmartContractResponse;
-import org.qtum.wallet.model.gson.history.History;
-import org.qtum.wallet.model.gson.history.HistoryResponse;
 import org.qtum.wallet.model.gson.SendRawTransactionRequest;
 import org.qtum.wallet.model.gson.SendRawTransactionResponse;
 import org.qtum.wallet.model.gson.UnspentOutput;
+import org.qtum.wallet.model.gson.call_smart_contract_response.CallSmartContractResponse;
+import org.qtum.wallet.model.gson.history.History;
+import org.qtum.wallet.model.gson.history.HistoryResponse;
 import org.qtum.wallet.model.gson.qstore.ContractPurchase;
 import org.qtum.wallet.model.gson.qstore.QSearchItem;
 import org.qtum.wallet.model.gson.qstore.QstoreBuyResponse;
@@ -29,10 +29,9 @@ import org.qtum.wallet.model.gson.qstore.QstoreItem;
 import org.qtum.wallet.model.gson.qstore.QstoreSourceCodeResponse;
 import org.qtum.wallet.utils.CurrentNetParams;
 
-
+import java.net.URL;
 import java.security.KeyStore;
 import java.security.SecureRandom;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -117,13 +116,19 @@ public class QtumService {
             KeyManagerFactory keyManagerFactory = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm());
             keyManagerFactory.init(keyStore, "keystore_pass".toCharArray());
             sslContext.init(null, trustAllCerts, new SecureRandom());
-            client.sslSocketFactory(sslContext.getSocketFactory())
-                    .hostnameVerifier(new HostnameVerifier() {
-                        @Override
-                        public boolean verify(String hostname, SSLSession session) {
-                            return true;
-                        }
-                    });
+//            client.sslSocketFactory(sslContext.getSocketFactory())
+//                    .hostnameVerifier(new HostnameVerifier() {
+//                        @Override
+//                        public boolean verify(String hostname, SSLSession session) {
+//                            return true;
+//                        }
+//                    });
+
+
+//            URL url = new URL("https://api.htmlcoin.com");
+//            String serverHostname = url.getHost();
+//            client.sslSocketFactory(TrustKit.getInstance().getSSLSocketFactory(serverHostname),
+//                                    TrustKit.getInstance().getTrustManager(serverHostname));
 
             Gson gson = new GsonBuilder().setLenient().create();
 

@@ -195,7 +195,7 @@ dependencies {
     compile 'com.squareup.okhttp3:logging-interceptor:3.8.1'
     compile 'com.squareup.okhttp3:okhttp:3.8.1'
     compile 'me.pushy:sdk:1.0.31'
-
+    compile 'com.datatheorem.android.trustkit:trustkit:1.0.2'
     compile "com.daimajia.swipelayout:library:1.2.0@aar"
 }
 apply plugin: 'com.google.gms.google-services'
