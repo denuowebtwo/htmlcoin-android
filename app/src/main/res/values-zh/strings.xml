@@ -26,7 +26,7 @@
     <string name="enter_name">输入姓名</string>
     <string name="profile">Profile</string>
     <string name="wallet">钱包</string>
-    <string name="news">Novidades</string>
+    <string name="news">News</string>
     <string name="create_pin">创建PIN码</string>
     <string name="enter_pin">输入PIN码</string>
     <string name="confirm_fingerprint_or_pin">确认指纹或PIN码</string>
