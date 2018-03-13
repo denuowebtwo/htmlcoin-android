@@ -8,7 +8,7 @@ buildscript {
         // can be updated quickly in response to Android tooling updates
         // We recommend changing it to the latest version from our changelog:
         // https://docs.fabric.io/android/changelog.html#fabric-gradle-plugin
-        classpath 'io.fabric.tools:gradle:1.24.4'
+        classpath 'io.fabric.tools:gradle:1.25.1'
         classpath "io.realm:realm-gradle-plugin:$realmVersion"
     }
 }
@@ -177,17 +177,13 @@ dependencies {
         exclude group: 'org.json', module: 'json'
     }
     compile 'com.airbnb.android:lottie:2.0.0-beta3'
-    //fabric.io
-    compile('com.crashlytics.sdk.android:crashlytics:2.9.1@aar') {
-        transitive = true;
-    }
+
     //
     compile 'com.andkulikov:transitionseverywhere:1.7.2'
     compile 'com.alimuzaffar.lib:pinentryedittext:1.3.1'
     compile 'com.baoyz.pullrefreshlayout:library:1.2.0'
     compile 'com.github.JakeWharton:ViewPagerIndicator:2.4.1'
     compile 'com.mikhaellopez:hfrecyclerview:1.0.0'
-    compile 'com.google.firebase:firebase-core:11.8.0'
     compile 'com.google.firebase:firebase-messaging:11.8.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.beloo.widget:ChipsLayoutManager:0.3.7@aar'
@@ -197,5 +193,10 @@ dependencies {
     compile 'me.pushy:sdk:1.0.31'
 
     compile "com.daimajia.swipelayout:library:1.2.0@aar"
+
+    compile('com.crashlytics.sdk.android:crashlytics:2.9.1@aar') {
+        transitive = true
+    }
+    compile 'com.google.firebase:firebase-core:11.8.0'
 }
 apply plugin: 'com.google.gms.google-services'
