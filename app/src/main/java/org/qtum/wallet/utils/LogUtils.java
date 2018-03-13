@@ -17,6 +17,12 @@ public class LogUtils {
         }
     }
 
+    public static void warn(final String tag, String message) {
+        if (BuildConfig.DEBUG) {
+            Log.w(tag, message);
+        }
+    }
+
     public static void error(final String tag, String message) {
         Log.e(tag, message);
     }

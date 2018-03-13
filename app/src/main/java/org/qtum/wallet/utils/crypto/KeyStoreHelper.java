@@ -149,14 +149,14 @@ public class KeyStoreHelper {
             KeyStore.Entry entry = ks.getEntry(alias, null);
 
             if (entry == null) {
-                Log.w(TAG, "No key found under alias: " + alias);
-                Log.w(TAG, "Exiting signData()...");
+                LogUtils.warn(TAG, "No key found under alias: " + alias);
+                LogUtils.warn(TAG, "Exiting signData()...");
                 return null;
             }
 
             if (!(entry instanceof KeyStore.PrivateKeyEntry)) {
-                Log.w(TAG, "Not an instance of a PrivateKeyEntry");
-                Log.w(TAG, "Exiting signData()...");
+                LogUtils.warn(TAG, "Not an instance of a PrivateKeyEntry");
+                LogUtils.warn(TAG, "Exiting signData()...");
                 return null;
             }
             return (KeyStore.PrivateKeyEntry) entry;

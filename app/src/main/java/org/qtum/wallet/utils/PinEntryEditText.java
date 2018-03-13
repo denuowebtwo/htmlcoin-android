@@ -97,7 +97,7 @@ public class PinEntryEditText extends com.alimuzaffar.lib.pin.PinEntryEditText{
                         maxLength = maxLengthField.getInt(filter);
                     }
                 } catch (IllegalAccessException | NoSuchFieldException | IllegalArgumentException e) {
-                    Log.w(filter.getClass().getName(), e);
+                    LogUtils.warn(filter.getClass().getName(), e.getMessage());
                 }
             }
         }
