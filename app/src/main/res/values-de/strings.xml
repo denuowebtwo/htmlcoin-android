@@ -203,7 +203,7 @@
     <string name="functions">Funktionen</string>
     <string name="wallet_backup">Wallet Backup</string>
     <string name="news_placeholder">Bitte folge unserem Medium Account für aktuelle Updates und Neuigkeiten</string>
-    <string name="news_placeholder_link">https://medium.com/@Qtum/</string>
+    <!--<string name="news_placeholder_link">https://medium.com/@Qtum/</string>-->
     <string name="no_transaction_available_yet">Noch keine Übertragung verfügbar</string>
     <string name="_fee">Gebühr</string>
     <string name="invalid_fee">Ungültige Gebühr</string>

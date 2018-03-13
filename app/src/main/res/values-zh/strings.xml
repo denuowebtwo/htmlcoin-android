@@ -203,7 +203,7 @@
     <string name="functions">功能</string>
     <string name="wallet_backup">钱包备份</string>
     <string name="news_placeholder">请关注Medium账号收取最新消息和更新。</string>
-    <string name="news_placeholder_link">https://medium.com/@Qtum/</string>
+    <!--<string name="news_placeholder_link">https://medium.com/@Qtum/</string>-->
     <string name="no_transaction_available_yet">没有可用交易</string>
     <string name="_fee">手续费</string>
     <string name="invalid_fee">无效的手续费</string>

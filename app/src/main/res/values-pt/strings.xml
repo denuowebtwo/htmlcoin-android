@@ -203,7 +203,7 @@
     <string name="functions">Funções</string>
     <string name="wallet_backup">Backup da Carteira</string>
     <string name="news_placeholder">Siga nossa pagina para obter as ultimas noticias e updates:</string>
-    <string name="news_placeholder_link">https://medium.com/@Qtum/</string>
+    <!--<string name="news_placeholder_link">https://medium.com/@Qtum/</string>-->
     <string name="no_transaction_available_yet">Nenhuma transação disponível</string>
     <string name="_fee">Taxa</string>
     <string name="invalid_fee">Taxa Invalida</string>

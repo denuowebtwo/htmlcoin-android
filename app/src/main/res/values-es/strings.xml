@@ -205,7 +205,7 @@
     <string name="functions">Funciones</string>
     <string name="wallet_backup">Respaldo del Monedero</string>
     <string name="news_placeholder">Favor de seguir nuestra cuenta de Medium para obener las últimas noticias yactualizaciones:</string>
-    <string name="news_placeholder_link">https://medium.com/@Qtum/</string>
+    <!--<string name="news_placeholder_link">https://medium.com/@Qtum/</string>-->
     <string name="no_transaction_available_yet">Aún no hay transacción disponible</string>
     <string name="_fee">Cuota</string>
     <string name="invalid_fee">Cuota No Válida</string>
