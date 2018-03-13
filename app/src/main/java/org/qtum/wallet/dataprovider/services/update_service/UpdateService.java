@@ -496,14 +496,10 @@ public class UpdateService extends Service {
                 .setTicker(Ticker)
                 .setContentTitle(Title)
                 .setContentText(Text)
+                .setSmallIcon(R.mipmap.ic_launcher)
                 .setWhen(System.currentTimeMillis())
                 .setSound(sound);
 
-        if (android.os.Build.VERSION.SDK_INT <= 21) {
-            builder.setSmallIcon(R.mipmap.ic_launcher);
-        } else {
-            builder.setSmallIcon(R.drawable.logo);
-        }
         notification = builder.build();
 
         NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);

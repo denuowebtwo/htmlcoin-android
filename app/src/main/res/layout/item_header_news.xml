@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:background="@color/colorAccent"
-        app:srcCompat="@drawable/logo"/>
+        app:srcCompat="@mipmap/logo"/>
 
     <TextView
         android:id="@+id/tv_date_news_header"
