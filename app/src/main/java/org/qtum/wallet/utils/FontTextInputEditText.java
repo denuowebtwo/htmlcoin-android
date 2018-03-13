@@ -39,7 +39,7 @@ public class FontTextInputEditText extends TextInputEditText {
                 if (tf != null)
                     setTypeface(tf, style);
                 else
-                    Log.d("FontText", String.format("Could not create a font from asset: %s", fontAsset));
+                    LogUtils.debug("FontText", String.format("Could not create a font from asset: %s", fontAsset));
             }
         }
     }

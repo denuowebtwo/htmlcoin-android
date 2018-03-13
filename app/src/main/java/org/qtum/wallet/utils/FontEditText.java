@@ -40,7 +40,7 @@ public class FontEditText extends android.support.v7.widget.AppCompatEditText {
                 if (tf != null)
                     setTypeface(tf, style);
                 else
-                    Log.d("FontText", String.format("Could not create a font from asset: %s", fontAsset));
+                    LogUtils.debug("FontText", String.format("Could not create a font from asset: %s", fontAsset));
             }
         }
     }

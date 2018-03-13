@@ -17,6 +17,7 @@ import org.qtum.wallet.utils.DateCalculator;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.qtum.wallet.utils.LogUtils;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -111,10 +112,10 @@ public class FileStorageManager {
                 e.printStackTrace();
                 return false;
             }
-            Log.d(TAG, "writeFile: Complete");
+            LogUtils.debug(TAG, "writeFile: Complete");
             return true;
         } else {
-            Log.d(TAG, "writeFile: File Exists");
+            LogUtils.debug(TAG, "writeFile: File Exists");
             return true;
         }
     }
@@ -165,7 +166,7 @@ public class FileStorageManager {
                 }
             }
         }
-        Log.d(TAG, "readFromAsset: " + data);
+        LogUtils.debug(TAG, "readFromAsset: " + data);
         return data;
     }
 
@@ -345,10 +346,10 @@ public class FileStorageManager {
             tinyDB.putContractTemplate(contractTemplateList);
 
             commitDefaultContractsMigration(context);
-            Log.d(TAG, "migrateDefaultContracts: Migration Complete");
+            LogUtils.debug(TAG, "migrateDefaultContracts: Migration Complete");
             return true;
         } else {
-            Log.d(TAG, "migrateDefaultContracts: Migration already performed");
+            LogUtils.debug(TAG, "migrateDefaultContracts: Migration already performed");
             return true;
         }
     }

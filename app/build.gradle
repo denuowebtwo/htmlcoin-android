@@ -108,7 +108,7 @@ android {
         }
         stagingTestnet {
             applicationId "com.htmlcoin.wallet.app.staging.testnet"
-            buildConfigField 'String', 'SERVER_URL', '\"http://35.225.201.42:3001\"'
+            buildConfigField 'String', 'SERVER_URL', '\"http://testnet-api.htmlcoin.com\"'
         }
         stagingRegtest {
             applicationId "com.htmlcoin.wallet.app.staging"

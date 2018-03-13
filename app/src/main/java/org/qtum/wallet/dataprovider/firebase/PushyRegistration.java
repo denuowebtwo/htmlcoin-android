@@ -16,6 +16,7 @@ import org.qtum.wallet.dataprovider.rest_api.QtumService;
 import org.qtum.wallet.datastorage.KeyStorage;
 import org.qtum.wallet.model.gson.AddressDeviceTokenRequest;
 import org.qtum.wallet.model.gson.AddressDeviceTokenResponse;
+import org.qtum.wallet.utils.LogUtils;
 
 import java.util.List;
 
@@ -68,7 +69,7 @@ public class PushyRegistration {
                                 TokenSharedPreferences.getInstance().savePushyToken(context, deviceToken);
                                 updatePushyDeviceToken(context);
                             } catch (PushyException e) {
-                                Log.e("Pushy", e.getMessage(), e);
+                                LogUtils.error("Pushy", e.getMessage(), e);
                             } finally {
                                 subscriber.onCompleted();
                             }
@@ -114,12 +115,12 @@ public class PushyRegistration {
 
                     @Override
                     public void onError(Throwable e) {
-                        Log.e(LOG_TAG, e.getMessage(), e);
+                        LogUtils.error(LOG_TAG, e.getMessage(), e);
                     }
 
                     @Override
                     public void onNext(AddressDeviceTokenResponse addressDeviceTokenResponse) {
-                        Log.i(LOG_TAG, "Update pushy token success");
+                        LogUtils.info(LOG_TAG, "Update pushy token success");
                     }
                 });
 
@@ -147,12 +148,12 @@ public class PushyRegistration {
 
                     @Override
                     public void onError(Throwable e) {
-                        Log.e(LOG_TAG, e.getMessage(), e);
+                        LogUtils.error(LOG_TAG, e.getMessage(), e);
                     }
 
                     @Override
                     public void onNext(AddressDeviceTokenResponse addressDeviceTokenResponse) {
-                        Log.i(LOG_TAG, "Delete pushy token success");
+                        LogUtils.info(LOG_TAG, "Delete pushy token success");
                     }
                 });
 

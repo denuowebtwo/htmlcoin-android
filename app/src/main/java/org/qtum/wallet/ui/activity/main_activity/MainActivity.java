@@ -57,6 +57,7 @@ import org.qtum.wallet.ui.fragment.wallet_fragment.WalletFragment;
 import org.qtum.wallet.ui.fragment.wallet_main_fragment.WalletMainFragment;
 import org.qtum.wallet.utils.CustomContextWrapper;
 import org.qtum.wallet.utils.FontManager;
+import org.qtum.wallet.utils.LogUtils;
 import org.qtum.wallet.utils.QtumIntent;
 import org.qtum.wallet.utils.ThemeUtils;
 
@@ -484,9 +485,9 @@ public class MainActivity extends BaseActivity implements MainActivityView {
                 item.setChecked(item.getItemData().isChecked());
             }
         } catch (NoSuchFieldException e) {
-            Log.e("BNVHelper", "Unable to get shift mode field", e);
+            LogUtils.error("BNVHelper", "Unable to get shift mode field", e);
         } catch (IllegalAccessException e) {
-            Log.e("BNVHelper", "Unable to change value of shift mode", e);
+            LogUtils.error("BNVHelper", "Unable to change value of shift mode", e);
         }
     }
 

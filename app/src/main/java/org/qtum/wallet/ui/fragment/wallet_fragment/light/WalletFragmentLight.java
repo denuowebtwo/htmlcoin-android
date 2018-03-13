@@ -13,6 +13,7 @@ import org.qtum.wallet.model.gson.history.History;
 import org.qtum.wallet.ui.fragment.wallet_fragment.WalletFragment;
 import org.qtum.wallet.ui.wave_visualizer.WaveHelper;
 import org.qtum.wallet.ui.wave_visualizer.WaveView;
+import org.qtum.wallet.utils.LogUtils;
 
 import java.util.List;
 import butterknife.BindView;
@@ -124,7 +125,7 @@ public class WalletFragmentLight extends WalletFragment {
             uncomfirmedBalanceTitle.setVisibility(View.GONE);
         }
         } catch (NullPointerException e){
-            Log.d("WalletFragmentLight", "updateBalance: " + e.getMessage());
+            LogUtils.debug("WalletFragmentLight", "updateBalance: " + e.getMessage());
         }
     }
 

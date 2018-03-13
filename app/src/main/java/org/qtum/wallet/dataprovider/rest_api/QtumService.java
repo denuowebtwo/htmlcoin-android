@@ -5,6 +5,7 @@ import com.google.common.base.Joiner;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import org.qtum.wallet.BuildConfig;
 import org.qtum.wallet.model.gson.AddressBalance;
 import org.qtum.wallet.model.gson.AddressDeviceTokenRequest;
 import org.qtum.wallet.model.gson.AddressDeviceTokenResponse;
@@ -88,7 +89,10 @@ public class QtumService {
             // Install the all-trusting trust manager
 
             HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
-            httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+            if (BuildConfig.DEBUG)
+                httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+            else
+                httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.NONE);
             OkHttpClient.Builder client = new OkHttpClient.Builder();
             client.interceptors().add(httpLoggingInterceptor);
             client.readTimeout(180, TimeUnit.SECONDS);
@@ -126,9 +130,6 @@ public class QtumService {
                     });
 
             Gson gson = new GsonBuilder().setLenient().create();
-
-            HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
-            interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl(CurrentNetParams.getUrl())
