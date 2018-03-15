@@ -26,7 +26,7 @@
     <string name="enter_name">输入姓名</string>
     <string name="profile">Profile</string>
     <string name="wallet">钱包</string>
-    <string name="news">Novidades</string>
+    <string name="news">News</string>
     <string name="create_pin">创建PIN码</string>
     <string name="enter_pin">输入PIN码</string>
     <string name="confirm_fingerprint_or_pin">确认指纹或PIN码</string>
@@ -172,7 +172,7 @@
     <string name="preview">预览</string>
     <string name="restore">恢复</string>
     <string name="token_was_added_to_your_wallet">代币已添加到您的钱包</string>
-    <string name="abi_doesnt_match_qrc20_standard">ABI不符合QRC20标准</string>
+    <string name="abi_doesnt_match_qrc20_standard">ABI不符合HRC20标准</string>
     <string name="token_with_same_address_already_exists">相同地址已存在代币</string>
     <string name="invalid_token_address">无效的代币地址</string>
     <string name="address_list">地址列表</string>
@@ -203,7 +203,7 @@
     <string name="functions">功能</string>
     <string name="wallet_backup">钱包备份</string>
     <string name="news_placeholder">请关注Medium账号收取最新消息和更新。</string>
-    <string name="news_placeholder_link">https://medium.com/@Qtum/</string>
+    <!--<string name="news_placeholder_link">https://medium.com/@Qtum/</string>-->
     <string name="no_transaction_available_yet">没有可用交易</string>
     <string name="_fee">手续费</string>
     <string name="invalid_fee">无效的手续费</string>

@@ -53,7 +53,7 @@
     <string name="confirm_purchase">Confirmar Compra</string>
 
     <string name="tags">Etiquetas</string>
-    <string name="qstore">Qstore</string>
+    <string name="qstore">Hstore</string>
         <string name="search_by_name">Búsqueda por Nombre</string>
     <string name="search_by_tag">Búsqueda por Hashtag</string>
     <string name="view_details">Ver Detalles</string>
@@ -151,7 +151,7 @@
     <string name="miner_address">Direccion de Minero:</string>
     <string name="Fee">Cuota:</string>
     <string name="Source_code">Código Fuente</string>
-    <string name="store_categories">Categorías de Qstore</string>
+    <string name="store_categories">Categorías de Hstore</string>
     <string name="tap_to_save_the_file">Toque para guardar el archivo</string>
     <string name="my_new_contracts">Mis Plantillas de Contrato</string>
     <string name="my_published_contracts">Mis Contratos Publicados</string>
@@ -205,7 +205,7 @@
     <string name="functions">Funciones</string>
     <string name="wallet_backup">Respaldo del Monedero</string>
     <string name="news_placeholder">Favor de seguir nuestra cuenta de Medium para obener las últimas noticias yactualizaciones:</string>
-    <string name="news_placeholder_link">https://medium.com/@Qtum/</string>
+    <!--<string name="news_placeholder_link">https://medium.com/@Qtum/</string>-->
     <string name="no_transaction_available_yet">Aún no hay transacción disponible</string>
     <string name="_fee">Cuota</string>
     <string name="invalid_fee">Cuota No Válida</string>

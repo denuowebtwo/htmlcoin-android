@@ -8,19 +8,8 @@ import com.google.gson.Gson;
 
 import org.bitcoinj.core.Address;
 import org.bitcoinj.core.AddressFormatException;
-import org.qtum.wallet.R;
-import org.qtum.wallet.datastorage.FileStorageManager;
-import org.qtum.wallet.datastorage.KeyStorage;
-import org.qtum.wallet.model.TransactionHashWithSender;
-import org.qtum.wallet.model.contract.ContractMethod;
-import org.qtum.wallet.model.contract.ContractMethodParameter;
-import org.qtum.wallet.model.gson.UnspentOutput;
-import org.qtum.wallet.utils.sha3.Keccak;
-import org.qtum.wallet.utils.sha3.Parameters;
-
 import org.bitcoinj.core.Base58;
 import org.bitcoinj.core.Coin;
-import org.bitcoinj.core.ECKey;
 import org.bitcoinj.core.Sha256Hash;
 import org.bitcoinj.core.Transaction;
 import org.bitcoinj.core.TransactionConfidence;
@@ -33,6 +22,15 @@ import org.bitcoinj.script.ScriptOpCodes;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.qtum.wallet.R;
+import org.qtum.wallet.datastorage.FileStorageManager;
+import org.qtum.wallet.datastorage.KeyStorage;
+import org.qtum.wallet.model.TransactionHashWithSender;
+import org.qtum.wallet.model.contract.ContractMethod;
+import org.qtum.wallet.model.contract.ContractMethodParameter;
+import org.qtum.wallet.model.gson.UnspentOutput;
+import org.qtum.wallet.utils.sha3.Keccak;
+import org.qtum.wallet.utils.sha3.Parameters;
 import org.spongycastle.crypto.digests.RIPEMD160Digest;
 import org.spongycastle.crypto.digests.SHA256Digest;
 import org.spongycastle.util.encoders.Hex;
@@ -42,12 +40,10 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.math.MathContext;
-import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
 import java.util.ArrayList;
-
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
@@ -537,7 +533,7 @@ public class ContractBuilder {
     private static String FUNCTION_TYPE = "function";
     private static String TYPE = "type";
 
-    public static boolean checkForValidityQRC20(String abiCode) {
+    public static boolean checkForValidityHRC20(String abiCode) {
 
         List<ContractMethod> standardInterface = initStandardInterface();
 

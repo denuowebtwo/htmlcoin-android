@@ -53,7 +53,7 @@
     <string name="confirm_purchase">Confirmer l'achat</string>
 
     <string name="tags">Tags :</string>
-    <string name="qstore">Qstore</string>
+    <string name="qstore">Hstore</string>
     <string name="search_by_name">Recherche par Nom</string>
     <string name="search_by_tag">Recherche par Hashtag</string>
     <string name="view_details">Vue détaillée</string>
@@ -151,7 +151,7 @@
     <string name="miner_address">Adresse du mineur :</string>
     <string name="Fee">Frais :</string>
     <string name="Source_code">Code source</string>
-    <string name="store_categories">Catégories du Qstore</string>
+    <string name="store_categories">Catégories du Hstore</string>
     <string name="tap_to_save_the_file">Toucher pour enregistrer le fichier</string>
     <string name="my_new_contracts">Mes Modèles de Contrats</string>
     <string name="my_published_contracts">Mes Contrats Publiés</string>
@@ -172,7 +172,7 @@
     <string name="preview">Aperçu</string>
     <string name="restore">Restaurer</string>
     <string name="token_was_added_to_your_wallet">Le jeton a été ajouté au portefeuille</string>
-    <string name="abi_doesnt_match_qrc20_standard">L\'ABI n\'est pas compatible avec le standard QRC20</string>
+    <string name="abi_doesnt_match_qrc20_standard">L\'ABI n\'est pas compatible avec le standard HRC20</string>
     <string name="token_with_same_address_already_exists">Un jeton avec la même adresse existe déjà</string>
     <string name="invalid_token_address">Adresse de jeton invalide</string>
     <string name="address_list">Liste d\'adresses</string>
@@ -203,7 +203,7 @@
     <string name="functions">Fonctions</string>
     <string name="wallet_backup">Sauvegarde du portefeuille</string>
     <string name="news_placeholder">Suivez notre compte Medium pour obtenir les dernières nouvelles et mises à jour :</string>
-    <string name="news_placeholder_link">https://medium.com/@Qtum/</string>
+    <!--<string name="news_placeholder_link">https://medium.com/@Qtum/</string>-->
     <string name="no_transaction_available_yet">Aucune transaction disponible pour le moment</string>
     <string name="_fee">Frais</string>
     <string name="invalid_fee">Frais invalide</string>

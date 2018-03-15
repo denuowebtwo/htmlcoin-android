@@ -53,7 +53,7 @@
     <string name="confirm_purchase">Bekræft køb</string>
 
     <string name="tags">Mærker:</string>
-    <string name="qstore">Qstore</string>
+    <string name="qstore">Hstore</string>
     <string name="search_by_name">Søg efter navn</string>
     <string name="search_by_tag">Søg efter Hashtag</string>
     <string name="view_details">Se detaljer</string>
@@ -151,7 +151,7 @@
     <string name="miner_address">Miner Adresse:</string>
     <string name="Fee">Gebyr:</string>
     <string name="Source_code">Kildekode</string>
-    <string name="store_categories">Qstore kategorier</string>
+    <string name="store_categories">Hstore kategorier</string>
     <string name="tap_to_save_the_file">Tryk for at gemme filen</string>
     <string name="my_new_contracts">Mine kontraktskabeloner</string>
     <string name="my_published_contracts">Mine offentliggjorte kontrakter</string>
@@ -172,7 +172,7 @@
     <string name="preview">Forhåndsvisning</string>
     <string name="restore">Gendan</string>
     <string name="token_was_added_to_your_wallet">Token blev tilføjet til din wallet</string>
-    <string name="abi_doesnt_match_qrc20_standard">ABI matcher ikke QRC20 standard</string>
+    <string name="abi_doesnt_match_qrc20_standard">ABI matcher ikke HRC20 standard</string>
     <string name="token_with_same_address_already_exists">Token med samme adresse findes allerede</string>
     <string name="invalid_token_address">Ugyldig Token Adresse</string>
     <string name="address_list">Adresse Liste</string>
@@ -203,7 +203,7 @@
     <string name="functions">Funktioner</string>
     <string name="wallet_backup">Wallet sikkerhedskopi</string>
     <string name="news_placeholder">Vær venlig og følg vores Medium konto for at modtage nyheder og opdateringer</string>
-    <string name="news_placeholder_link">https://medium.com/@Qtum/</string>
+    <!--<string name="news_placeholder_link">https://medium.com/@Qtum/</string>-->
     <string name="no_transaction_available_yet">ingen transaktioner til rådighed endnu</string>
     <string name="_fee">Gebyr</string>
     <string name="invalid_fee">Ugyldig gebyr</string>
