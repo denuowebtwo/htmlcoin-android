@@ -13,76 +13,14 @@
         android:orientation="vertical"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <View
+        <org.qtum.wallet.utils.FontTextView
+            android:id="@+id/textView"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/background" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@color/color_custom_dark"
-            android:clickable="true"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:id="@+id/iv_receive"
-                android:layout_gravity="center"
-                android:layout_marginStart="8dp"
-                android:paddingEnd="6dp"
-                android:tint="@color/white"
-                app:srcCompat="@drawable/ic_createnew" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:weightSum="2"
-                android:layout_weight="1"
-                android:id="@+id/ll_receive"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <org.qtum.wallet.utils.FontTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:gravity="bottom"
-                    android:text="@string/qtum_address"
-                    android:textColor="@color/white"
-                    android:fontFamily="@font/worksans_regular" />
-
-                <org.qtum.wallet.utils.FontTextView
-
-                    android:id="@+id/tv_public_key"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:maxLines="1"
-                    android:ellipsize="end"
-                    android:paddingEnd="16dp"
-                    android:textColor="@color/white"
-                    android:fontFamily="@font/worksans_bold" />
-            </LinearLayout>
-
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:id="@+id/iv_choose_address"
-                android:layout_gravity="center"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:tint="@color/white"
-                app:srcCompat="@drawable/ic_addressbook" />
-
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:background="@color/grey70"
             android:gravity="left|center_vertical"
             android:padding="8dp"
+            android:fontFamily="@font/worksans_bold"
             android:text="@string/activity"
             android:textColor="@color/white" />
 
@@ -103,7 +41,7 @@
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="wrap_content"
         android:background="@color/color_custom_dark"
         android:fitsSystemWindows="true"
         android:theme="@style/AppTheme.AppBarOverlay">
@@ -155,7 +93,7 @@
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="112dp"
+                android:layout_height="56dp"
                 app:contentInsetEnd="0dp"
                 app:contentInsetLeft="0dp"
                 app:contentInsetRight="0dp"
@@ -188,24 +126,26 @@
                             android:layout_alignParentEnd="true"
                             android:layout_margin="9dp"
                             android:background="@drawable/background_pressed_alpha_white"
-                            android:padding="8dp"
+                            android:padding="4dp"
                             android:scaleType="centerInside"
                             android:tint="@color/white"
-                            app:srcCompat="@drawable/ic_qrcode"/>
+                            app:srcCompat="@drawable/icon_qrcode_light"/>
 
-                        <FrameLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:layout_alignParentBottom="true">
+                        <ImageView
+                            android:layout_toStartOf="@+id/bt_qr_code"
+                            android:layout_centerVertical="true"
+                            android:layout_width="36dp"
+                            android:paddingTop="3dp"
+                            android:paddingBottom="5dp"
+                            android:layout_height="36dp"
+                            android:id="@+id/iv_choose_address"
+                            android:tint="@color/white"
+                            app:srcCompat="@drawable/icon_address_book" />
 
-                            <View
-                                android:id="@+id/fade_divider"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:background="@color/background"
-                                android:visibility="invisible"/>
-
-                        </FrameLayout>
+                        <include
+                            android:id="@+id/app_bar_placeholder"
+                            layout="@layout/lyt_appbar_wallet_placeholder_light"
+                            android:visibility="invisible" />
 
                     </RelativeLayout>
 

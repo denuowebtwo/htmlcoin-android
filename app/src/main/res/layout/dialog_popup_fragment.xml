@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:textSize="14sp"
         android:text="Please check your network settings"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:layout_below="@+id/tv_pop_up_title"
         android:layout_centerHorizontal="true"
         android:gravity="center"
@@ -50,7 +50,7 @@
             android:background="?attr/selectableItemBackground"
             android:text="@string/retry"
             android:textAllCaps="true"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:layout_marginRight="4dp"
             android:layout_marginLeft="4dp"
             android:textSize="@dimen/button_text"/>
@@ -65,7 +65,7 @@
             android:layout_marginRight="4dp"
             android:layout_marginLeft="4dp"
             android:textAllCaps="true"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="@dimen/button_text"/>
     </LinearLayout>
 
@@ -80,7 +80,7 @@
         android:padding="8dp"
         android:gravity="center"
         android:text="No Internet Connection"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="18sp"
         app:editTextTypeface="@string/simplonMonoMedium"
         tools:layout_constraintRight_creator="1"

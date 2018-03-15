@@ -103,13 +103,10 @@
             android:padding="16dp"
             android:gravity="center"
             android:layout_marginEnd="4dp"
-            app:typeface="@string/proximaNovaSemibold"
-            android:background="@drawable/btn_gray_corner_background_light"
+            style="@style/ButtonStyle.Light"
             android:text="@string/cancel"
             android:layout_weight="1"
-            android:textAllCaps="false"
-            android:textColor="@color/bottom_nav_bar_text_color_light"
-            android:textSize="@dimen/button_text"/>
+            />
 
         <org.qtum.wallet.utils.FontButton
             android:id="@+id/bt_transfer"
@@ -119,12 +116,9 @@
             android:gravity="center"
             android:layout_marginStart="4dp"
             android:layout_weight="1"
-            app:typeface="@string/proximaNovaSemibold"
-            android:background="@drawable/btn_sea_corner_background_light"
+            style="@style/ButtonStyle.Light"
             android:text="@string/transfer"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="@dimen/button_text"/>
+            />
     </LinearLayout>
 
 </LinearLayout>
