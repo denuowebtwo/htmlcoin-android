@@ -1,11 +1,15 @@
 package org.qtum.wallet.dataprovider.rest_api;
 
 
+import android.util.Log;
+
 import com.datatheorem.android.trustkit.TrustKit;
 import com.google.common.base.Joiner;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import org.qtum.wallet.QtumApplication;
+import org.qtum.wallet.R;
 import org.qtum.wallet.model.gson.AddressBalance;
 import org.qtum.wallet.model.gson.AddressDeviceTokenRequest;
 import org.qtum.wallet.model.gson.AddressDeviceTokenResponse;
@@ -116,24 +120,29 @@ public class QtumService {
             KeyManagerFactory keyManagerFactory = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm());
             keyManagerFactory.init(keyStore, "keystore_pass".toCharArray());
             sslContext.init(null, trustAllCerts, new SecureRandom());
-//            client.sslSocketFactory(sslContext.getSocketFactory())
-//                    .hostnameVerifier(new HostnameVerifier() {
+//            client.sslSocketFactory(sslContext.getSocketFactory());
+//            client.hostnameVerifier(new HostnameVerifier() {
 //                        @Override
 //                        public boolean verify(String hostname, SSLSession session) {
 //                            return true;
 //                        }
 //                    });
 
+            TrustKit.initializeWithNetworkSecurityConfiguration(QtumApplication.instance.getApplicationContext(), R.xml.network_security_config);
 
-//            URL url = new URL("https://api.htmlcoin.com");
-//            String serverHostname = url.getHost();
-//            client.sslSocketFactory(TrustKit.getInstance().getSSLSocketFactory(serverHostname),
-//                                    TrustKit.getInstance().getTrustManager(serverHostname));
+            URL url = new URL("https://api.htmlcoin.com");
+            String serverHostname = url.getHost();
+            client.sslSocketFactory(TrustKit.getInstance().getSSLSocketFactory(serverHostname),
+                                    TrustKit.getInstance().getTrustManager(serverHostname));
+
+//            CertificatePinner certificatePinner = new CertificatePinner.Builder()
+//                    .add(serverHostname, "sha256/QfM8yr2vtvaO3iC+0EFiAoBpv4Juntl80cLa/ncayWE=")
+//                    .add(serverHostname, "sha256/8Rw90Ej3Ttt8RRkrg+WYDS9n7IS03bk5bjP/UXPtaY8=")
+//                    .add(serverHostname, "sha256/Ko8tivDrEjiY90yGasP6ZpBU4jwXvHqVvQI0GS3GNdA=")
+//                    .build();
+//            client.certificatePinner(certificatePinner);
 
             Gson gson = new GsonBuilder().setLenient().create();
-
-            HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
-            interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl(CurrentNetParams.getUrl())
@@ -144,7 +153,7 @@ public class QtumService {
 
             mServiceApi = retrofit.create(QtumRestService.class);
         } catch (Exception e){
-
+            Log.e("Service", e.getMessage(), e);
         }
     }
 

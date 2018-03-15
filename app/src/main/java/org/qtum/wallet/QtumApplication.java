@@ -6,9 +6,7 @@ import android.support.multidex.MultiDexApplication;
 import android.support.v7.app.AppCompatDelegate;
 
 import com.crashlytics.android.Crashlytics;
-import com.datatheorem.android.trustkit.TrustKit;
 
-import org.qtum.wallet.dataprovider.firebase.PushyRegistration;
 import org.qtum.wallet.datastorage.QStoreStorage;
 import org.qtum.wallet.datastorage.QtumSettingSharedPreference;
 import org.qtum.wallet.utils.FontManager;
@@ -32,8 +30,6 @@ public class QtumApplication extends MultiDexApplication{
         QStoreStorage.getInstance(getApplicationContext());
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
 
-        // init trustkit
-        TrustKit.initializeWithNetworkSecurityConfiguration(this, R.xml.network_security_config);
 
         try {
             int currentVersion = getCodeVersion();
