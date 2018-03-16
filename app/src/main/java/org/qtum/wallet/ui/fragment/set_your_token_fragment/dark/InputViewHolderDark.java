@@ -14,7 +14,7 @@ public class InputViewHolderDark extends InputViewHolder {
 
     public InputViewHolderDark(View itemView, OnValidateParamsListener listener) {
         super(itemView, listener);
-        tilParam.setTypeface(FontManager.getInstance().getFont(tilParam.getContext().getString(org.qtum.wallet.R.string.simplonMonoRegular)));
-        etParam.setTypeface(FontManager.getInstance().getFont(etParam.getContext().getString(org.qtum.wallet.R.string.simplonMonoRegular)));
+        tilParam.setTypeface(FontManager.getInstance().getFont(tilParam.getContext().getString(org.qtum.wallet.R.string.fontRegular)));
+        etParam.setTypeface(FontManager.getInstance().getFont(etParam.getContext().getString(org.qtum.wallet.R.string.fontRegular)));
     }
 }

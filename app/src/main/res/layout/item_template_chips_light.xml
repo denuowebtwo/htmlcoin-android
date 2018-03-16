@@ -14,7 +14,7 @@
         android:padding="8dp"
         android:textColor="@color/white"
         android:textSize="12sp"
-        app:typeface="@string/proximaNovaLight">
+        android:fontFamily="@font/worksans_light">
 
     </org.qtum.wallet.utils.FontButton>
 </FrameLayout>

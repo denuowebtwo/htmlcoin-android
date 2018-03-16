@@ -100,7 +100,7 @@
                 android:textColor="@color/colorPrimary"
                 android:layout_marginStart="8dp"
                 android:layout_gravity="center"
-                app:typeface="@string/simplonMonoRegular"/>
+                android:fontFamily="@font/worksans_regular"/>
         </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
@@ -127,7 +127,7 @@
                 android:padding="16dp"
                 android:textSize="16sp"
                 android:textColor="@color/colorPrimary"
-                app:typeface="@string/simplonMonoRegular"
+                android:fontFamily="@font/worksans_regular"
                 android:textAllCaps="true"
                 android:layout_weight="1"
                 android:layout_width="0dp"
@@ -142,7 +142,7 @@
                 android:background="?attr/selectableItemBackground"
                 android:enabled="false"
                 android:textColor="@color/primary_text_color_enabled_selector"
-                app:typeface="@string/simplonMonoRegular"
+                android:fontFamily="@font/worksans_regular"
                 android:textAllCaps="true"
                 android:layout_weight="1"
                 android:layout_width="0dp"

@@ -17,7 +17,7 @@
         android:alpha=".7"
         android:textColor="@color/colorPrimary"
         android:textSize="12sp"
-        app:typeface="@string/simplonMonoRegular">
+        android:fontFamily="@font/worksans_regular">
 
     </org.qtum.wallet.utils.FontButton>
 </FrameLayout>

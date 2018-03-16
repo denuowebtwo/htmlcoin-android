@@ -321,7 +321,7 @@
 
                     <org.qtum.wallet.utils.FontButton
                         android:id="@+id/btn_purchase"
-                        app:typeface="@string/simplonMonoRegular"
+                        android:fontFamily="@font/worksans_regular"
                         android:background="@drawable/purchase_background_selector"
                         android:textColor="@color/background"
                         android:drawableStart="@drawable/ic_purchase"
@@ -341,7 +341,7 @@
                     <org.qtum.wallet.utils.FontButton
                         android:visibility="gone"
                         android:id="@+id/btn_view_source_code"
-                        app:typeface="@string/simplonMonoRegular"
+                        android:fontFamily="@font/worksans_regular"
                         android:background="@drawable/purchase_background_selector"
                         android:textColor="@color/background"
                         android:drawableStart="@drawable/ic_purchase"

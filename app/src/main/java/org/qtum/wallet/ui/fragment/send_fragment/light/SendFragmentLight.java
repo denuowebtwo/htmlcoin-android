@@ -22,12 +22,12 @@ public class SendFragmentLight extends SendFragment {
 
         ((MainActivity) getActivity()).showBottomNavigationView(R.color.title_color_light);
 
-        mTextInputEditTextAddress.setTypeface(FontManager.getInstance().getFont(getString(R.string.proximaNovaSemibold)));
-        mTextInputEditTextAmount.setTypeface(FontManager.getInstance().getFont(getString(R.string.proximaNovaSemibold)));
-        mTextInputEditTextFee.setTypeface(FontManager.getInstance().getFont(getString(R.string.proximaNovaSemibold)));
-        tilAdress.setTypeface(FontManager.getInstance().getFont(getString(R.string.proximaNovaRegular)));
-        tilAmount.setTypeface(FontManager.getInstance().getFont(getString(R.string.proximaNovaRegular)));
-        tilFee.setTypeface(FontManager.getInstance().getFont(getString(R.string.proximaNovaRegular)));
+        mTextInputEditTextAddress.setTypeface(FontManager.getInstance().getFont(getString(R.string.fontBold)));
+        mTextInputEditTextAmount.setTypeface(FontManager.getInstance().getFont(getString(R.string.fontBold)));
+        mTextInputEditTextFee.setTypeface(FontManager.getInstance().getFont(getString(R.string.fontBold)));
+        tilAdress.setTypeface(FontManager.getInstance().getFont(getString(R.string.fontRegular)));
+        tilAmount.setTypeface(FontManager.getInstance().getFont(getString(R.string.fontRegular)));
+        tilFee.setTypeface(FontManager.getInstance().getFont(getString(R.string.fontRegular)));
 
     }
 

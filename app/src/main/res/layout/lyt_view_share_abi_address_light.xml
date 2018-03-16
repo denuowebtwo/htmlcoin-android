@@ -51,7 +51,7 @@
             android:fontFamily="@font/worksans_bold" />
 
         <org.qtum.wallet.utils.FontButton
-            app:typeface="@string/proximaNovaSemibold"
+            android:fontFamily="@font/worksans_bold"
             android:id="@+id/copy_addr_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -92,7 +92,7 @@
             android:fontFamily="@font/worksans_regular" />
 
         <org.qtum.wallet.utils.FontButton
-            app:typeface="@string/proximaNovaSemibold"
+            android:fontFamily="@font/worksans_bold"
             android:id="@+id/copy_abi_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -124,7 +124,7 @@
             android:padding="16dp"
             android:textAllCaps="true"
             android:textSize="16sp"
-            app:typeface="@string/simplonMonoRegular" />
+            android:fontFamily="@font/worksans_regular" />
     </RelativeLayout>
 
 </LinearLayout>

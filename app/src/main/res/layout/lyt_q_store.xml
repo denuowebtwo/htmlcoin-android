@@ -115,7 +115,7 @@
                 android:id="@+id/cb_by_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:checkBoxTypeface="@string/simplonMonoRegular"
+                android:fontFamily="@font/worksans_regular"
                 android:textSize="14sp"
                 android:gravity="center"
                 android:drawablePadding="8dp"
@@ -138,7 +138,7 @@
                 android:text="@string/search_by_tag"
                 android:textColor="@color/colorPrimary"
                 android:textSize="14sp"
-                app:checkBoxTypeface="@string/simplonMonoRegular" />
+                android:fontFamily="@font/worksans_regular" />
 
         </LinearLayout>
 

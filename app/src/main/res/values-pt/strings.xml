@@ -102,17 +102,12 @@
     <string name="token_address">Endereço do Token</string>
 
     <!--FONT PATHS-->
-    <string name="euclidFlexMedium">fonts/euclidflexmedium.ttf</string>
-    <string name="simplonMonoMedium">fonts/simplonmonomedium.ttf</string>
-    <string name="simplonMonoRegular">fonts/simplonmonoregular.ttf</string>
-    <string name="avenir">fonts/avenir.ttc</string>
-    <!--<string name="proximaNovaBold" translatable="false">fonts/proximanovabold.ttf</string>-->
-    <!--<string name="proximaNovaLight" translatable="false">fonts/proximanovalight.ttf</string>-->
-    <!--<string name="proximaNovaRegular" translatable="false">fonts/proximanovaregular.ttf</string>-->
-    <!--<string name="proximaNovaSemibold" translatable="false">fonts/proximanovasemibold.ttf</string>-->
-
 
     <string name="font_bottom_navigation">fonts/worksans_semibold.ttf</string>
+    <string name="fontBold">fonts/worksans_bold.ttf</string>
+    <string name="fontMedium">fonts/worksans_medium.ttf</string>
+    <string name="fontRegular">fonts/worksans_regular.ttf</string>
+    <string name="fontLight">fonts/worksans_light.ttf</string>
 
     <string name="retry">Tentar Novamente</string>
 
