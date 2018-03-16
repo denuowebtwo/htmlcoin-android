@@ -1,5 +1,7 @@
 package org.qtum.wallet.ui.fragment.send_fragment;
 
+import org.bitcoinj.core.Address;
+import org.bitcoinj.core.AddressFormatException;
 import org.qtum.wallet.R;
 import org.qtum.wallet.datastorage.realm.RealmStorage;
 import org.qtum.wallet.model.Currency;
@@ -14,6 +16,7 @@ import org.qtum.wallet.ui.base.AddressInteractor;
 import org.qtum.wallet.ui.base.AddressInteractorImpl;
 import org.qtum.wallet.ui.base.base_fragment.BaseFragment;
 import org.qtum.wallet.ui.base.base_fragment.BaseFragmentPresenterImpl;
+import org.qtum.wallet.utils.CurrentNetParams;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -165,6 +168,13 @@ public class SendPresenterImpl extends BaseFragmentPresenterImpl implements Send
             if (feeDouble < minFee || feeDouble > maxFee) {
                 getView().dismissProgressDialog();
                 getView().setAlertDialog(org.qtum.wallet.R.string.error, R.string.invalid_fee, "Ok", BaseFragment.PopUpType.error);
+                return;
+            }
+
+            try {
+                Address.fromBase58(CurrentNetParams.getNetParams(), getView().getAddressInput());
+            } catch (AddressFormatException a) {
+                getView().setAlertDialog(org.qtum.wallet.R.string.error, org.qtum.wallet.R.string.invalid_qtum_address, "Ok", BaseFragment.PopUpType.error);
                 return;
             }
 
