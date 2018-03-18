@@ -53,7 +53,7 @@
     <string name="confirm_purchase">Confirmar Compra</string>
 
     <string name="tags">Tags:</string>
-    <string name="qstore">Qstore</string>
+    <string name="qstore">Hstore</string>
     <string name="search_by_name">Procurar por Nome</string>
     <string name="search_by_tag">Procurar por Hashtag</string>
     <string name="view_details">Ver Detalhes</string>
@@ -102,17 +102,12 @@
     <string name="token_address">Endereço do Token</string>
 
     <!--FONT PATHS-->
-    <string name="euclidFlexMedium">fonts/euclidflexmedium.ttf</string>
-    <string name="simplonMonoMedium">fonts/simplonmonomedium.ttf</string>
-    <string name="simplonMonoRegular">fonts/simplonmonoregular.ttf</string>
-    <string name="avenir">fonts/avenir.ttc</string>
-    <!--<string name="proximaNovaBold" translatable="false">fonts/proximanovabold.ttf</string>-->
-    <!--<string name="proximaNovaLight" translatable="false">fonts/proximanovalight.ttf</string>-->
-    <!--<string name="proximaNovaRegular" translatable="false">fonts/proximanovaregular.ttf</string>-->
-    <!--<string name="proximaNovaSemibold" translatable="false">fonts/proximanovasemibold.ttf</string>-->
-
 
     <string name="font_bottom_navigation">fonts/worksans_semibold.ttf</string>
+    <string name="fontBold">fonts/worksans_bold.ttf</string>
+    <string name="fontMedium">fonts/worksans_medium.ttf</string>
+    <string name="fontRegular">fonts/worksans_regular.ttf</string>
+    <string name="fontLight">fonts/worksans_light.ttf</string>
 
     <string name="retry">Tentar Novamente</string>
 
@@ -172,7 +167,7 @@
     <string name="preview">Visualização</string>
     <string name="restore">Restaurar</string>
     <string name="token_was_added_to_your_wallet">O Token foi adicionado à sua carteira</string>
-    <string name="abi_doesnt_match_qrc20_standard">ABI não atende ao padrão QRC20</string>
+    <string name="abi_doesnt_match_qrc20_standard">ABI não atende ao padrão HRC20</string>
     <string name="token_with_same_address_already_exists">Já existe Token com mesmo endereço </string>
     <string name="invalid_token_address">Endereço invalido do Token</string>
     <string name="address_list">Lista de Endereços</string>
@@ -203,7 +198,7 @@
     <string name="functions">Funções</string>
     <string name="wallet_backup">Backup da Carteira</string>
     <string name="news_placeholder">Siga nossa pagina para obter as ultimas noticias e updates:</string>
-    <string name="news_placeholder_link">https://medium.com/@Qtum/</string>
+    <!--<string name="news_placeholder_link">https://medium.com/@Qtum/</string>-->
     <string name="no_transaction_available_yet">Nenhuma transação disponível</string>
     <string name="_fee">Taxa</string>
     <string name="invalid_fee">Taxa Invalida</string>

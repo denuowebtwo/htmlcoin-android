@@ -10,6 +10,7 @@ import org.qtum.wallet.model.gson.history.History;
 import org.qtum.wallet.model.gson.history.ScriptPubKey;
 import org.qtum.wallet.model.gson.history.Vin;
 import org.qtum.wallet.model.gson.history.Vout;
+import org.qtum.wallet.utils.LogUtils;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -157,8 +158,8 @@ public class RealmStorage {
             }
             realm.commitTransaction();
         } catch (Exception ex) {
-            Log.e(LOG_TAG, ex.getMessage());
-            Log.e(LOG_TAG, Log.getStackTraceString(ex));
+            LogUtils.error(LOG_TAG, ex.getMessage());
+            LogUtils.error(LOG_TAG, Log.getStackTraceString(ex));
         } finally {
             if (realm != null)
                 realm.close();
@@ -174,8 +175,8 @@ public class RealmStorage {
             return (int)count;
 
         } catch (Exception ex) {
-            Log.e(LOG_TAG, ex.getMessage());
-            Log.e(LOG_TAG, Log.getStackTraceString(ex));
+            LogUtils.error(LOG_TAG, ex.getMessage());
+            LogUtils.error(LOG_TAG, Log.getStackTraceString(ex));
         } finally {
             if (realm != null)
                 realm.close();
@@ -196,8 +197,8 @@ public class RealmStorage {
             }
 
         } catch (Exception ex) {
-            Log.e(LOG_TAG, ex.getMessage());
-            Log.e(LOG_TAG, Log.getStackTraceString(ex));
+            LogUtils.error(LOG_TAG, ex.getMessage());
+            LogUtils.error(LOG_TAG, Log.getStackTraceString(ex));
         } finally {
             if (realm != null)
                 realm.close();
@@ -223,8 +224,8 @@ public class RealmStorage {
                 }
             }
         } catch (Exception ex) {
-            Log.e(LOG_TAG, ex.getMessage());
-            Log.e(LOG_TAG, Log.getStackTraceString(ex));
+            LogUtils.error(LOG_TAG, ex.getMessage());
+            LogUtils.error(LOG_TAG, Log.getStackTraceString(ex));
         } finally {
             if (realm != null)
                 realm.close();
@@ -250,8 +251,8 @@ public class RealmStorage {
             }
 
         } catch (Exception ex) {
-            Log.e(LOG_TAG, ex.getMessage());
-            Log.e(LOG_TAG, Log.getStackTraceString(ex));
+            LogUtils.error(LOG_TAG, ex.getMessage());
+            LogUtils.error(LOG_TAG, Log.getStackTraceString(ex));
         } finally {
             if (realm != null)
                 realm.close();
@@ -275,8 +276,8 @@ public class RealmStorage {
                 addressBalance.setImmature(new BigDecimal(realmBalance.getImmature()));
             }
         } catch (Exception ex) {
-            Log.e(LOG_TAG, ex.getMessage());
-            Log.e(LOG_TAG, Log.getStackTraceString(ex));
+            LogUtils.error(LOG_TAG, ex.getMessage());
+            LogUtils.error(LOG_TAG, Log.getStackTraceString(ex));
         } finally {
             if (realm != null)
                 realm.close();
@@ -303,8 +304,8 @@ public class RealmStorage {
             realm.commitTransaction();
 
         } catch (Exception ex) {
-            Log.e(LOG_TAG, ex.getMessage());
-            Log.e(LOG_TAG, Log.getStackTraceString(ex));
+            LogUtils.error(LOG_TAG, ex.getMessage());
+            LogUtils.error(LOG_TAG, Log.getStackTraceString(ex));
         } finally {
             if (realm != null)
                 realm.close();
@@ -325,8 +326,8 @@ public class RealmStorage {
 
             realm.commitTransaction();
         } catch (Exception ex) {
-            Log.e(LOG_TAG, ex.getMessage());
-            Log.e(LOG_TAG, Log.getStackTraceString(ex));
+            LogUtils.error(LOG_TAG, ex.getMessage());
+            LogUtils.error(LOG_TAG, Log.getStackTraceString(ex));
         } finally {
             if (realm != null)
                 realm.close();

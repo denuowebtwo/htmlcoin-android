@@ -102,17 +102,11 @@
     <string name="token_address">토큰 추가</string>
 
     <!--FONT PATHS-->
-    <string name="euclidFlexMedium">fonts/euclidflexmedium.ttf</string>
-    <string name="simplonMonoMedium">fonts/simplonmonomedium.ttf</string>
-    <string name="simplonMonoRegular">fonts/simplonmonoregular.ttf</string>
-    <string name="avenir">fonts/avenir.ttc</string>
-    <!--<string name="proximaNovaBold" translatable="false">fonts/proximanovabold.ttf</string>-->
-    <!--<string name="proximaNovaLight" translatable="false">fonts/proximanovalight.ttf</string>-->
-    <!--<string name="proximaNovaRegular" translatable="false">fonts/proximanovaregular.ttf</string>-->
-    <!--<string name="proximaNovaSemibold" translatable="false">fonts/proximanovasemibold.ttf</string>-->
-
-
     <string name="font_bottom_navigation">fonts/worksans_semibold.ttf</string>
+    <string name="fontBold">fonts/worksans_bold.ttf</string>
+    <string name="fontMedium">fonts/worksans_medium.ttf</string>
+    <string name="fontRegular">fonts/worksans_regular.ttf</string>
+    <string name="fontLight">fonts/worksans_light.ttf</string>
 
     <string name="retry">재시도</string>
 
@@ -206,7 +200,7 @@
     <string name="functions">기능</string>
     <string name="wallet_backup">지갑 백업</string>
     <string name="news_placeholder">최신 소식이나 업데이트 소식을 얻기 위해 Medium 계정을 팔로우하세요.</string>
-    <string name="news_placeholder_link">https://medium.com/@Qtum/</string>
+    <!--<string name="news_placeholder_link">https://medium.com/@Qtum/</string>-->
     <string name="no_transaction_available_yet">아직 가능한 거래가 없습니다.</string>
     <string name="_fee">수수료</string>
     <string name="invalid_fee">유효하지 않은 수수료</string>

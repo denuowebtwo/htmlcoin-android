@@ -9,6 +9,7 @@ import org.qtum.wallet.dataprovider.rest_api.QtumService;
 import org.qtum.wallet.datastorage.KeyStorage;
 import org.qtum.wallet.model.gson.AddressDeviceTokenRequest;
 import org.qtum.wallet.model.gson.AddressDeviceTokenResponse;
+import org.qtum.wallet.utils.LogUtils;
 
 import java.util.List;
 
@@ -22,7 +23,7 @@ public class QtumFirebaseInstanceIdService extends FirebaseInstanceIdService {
     @Override
     public void onTokenRefresh() {
         String refreshedToken = FirebaseInstanceId.getInstance().getToken();
-        Log.d(TAG, "Refreshed token: " + refreshedToken);
+        LogUtils.debug(TAG, "Refreshed token: " + refreshedToken);
 
         sendRegistrationToServer(refreshedToken);
     }
@@ -61,12 +62,12 @@ public class QtumFirebaseInstanceIdService extends FirebaseInstanceIdService {
 
                     @Override
                     public void onError(Throwable e) {
-                        Log.e(TAG, e.getMessage(), e);
+                        LogUtils.error(TAG, e.getMessage(), e);
                     }
 
                     @Override
                     public void onNext(AddressDeviceTokenResponse addressDeviceTokenResponse) {
-                        Log.i(TAG, "Success");
+                        LogUtils.info(TAG, "Success");
                     }
                 });
 

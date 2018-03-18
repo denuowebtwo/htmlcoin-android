@@ -53,7 +53,7 @@
     <string name="confirm_purchase">Kaufen bestätigen</string>
 
     <string name="tags">Schlagwörter</string>
-    <string name="qstore">Qstore</string>
+    <string name="qstore">Hstore</string>
     <string name="search_by_name">Nach Name suchen</string>
     <string name="search_by_tag">Nach Hashtag suchen</string>
     <string name="view_details">Details anzeigen</string>
@@ -102,17 +102,11 @@
     <string name="token_address">Token Adresse</string>
 
     <!--FONT PATHS-->
-    <string name="euclidFlexMedium">fonts/euclidflexmedium.ttf</string>
-    <string name="simplonMonoMedium">fonts/simplonmonomedium.ttf</string>
-    <string name="simplonMonoRegular">fonts/simplonmonoregular.ttf</string>
-    <string name="avenir">fonts/avenir.ttc</string>
-    <!--<string name="proximaNovaBold" translatable="false">fonts/proximanovabold.ttf</string>-->
-    <!--<string name="proximaNovaLight" translatable="false">fonts/proximanovalight.ttf</string>-->
-    <!--<string name="proximaNovaRegular" translatable="false">fonts/proximanovaregular.ttf</string>-->
-    <!--<string name="proximaNovaSemibold" translatable="false">fonts/proximanovasemibold.ttf</string>-->
-
-
     <string name="font_bottom_navigation">fonts/worksans_semibold.ttf</string>
+    <string name="fontBold">fonts/worksans_bold.ttf</string>
+    <string name="fontMedium">fonts/worksans_medium.ttf</string>
+    <string name="fontRegular">fonts/worksans_regular.ttf</string>
+    <string name="fontLight">fonts/worksans_light.ttf</string>
 
     <string name="retry">Erneut versuchen</string>
 
@@ -151,7 +145,7 @@
     <string name="miner_address">Miner Adresse:</string>
     <string name="Fee">Gebühr</string>
     <string name="Source_code">Quellcode</string>
-    <string name="store_categories">Qstore Kategorien</string>
+    <string name="store_categories">Hstore Kategorien</string>
     <string name="tap_to_save_the_file">Tippen um Datei zu speichern</string>
     <string name="my_new_contracts">Meine Vertragsvorlagen</string>
     <string name="my_published_contracts">Meine veröffentlichten Verträge</string>
@@ -172,7 +166,7 @@
     <string name="preview">Vorschau</string>
     <string name="restore">Wierderherstellen</string>
     <string name="token_was_added_to_your_wallet">Token wurde zu deinem Wallet hinzugefügt</string>
-    <string name="abi_doesnt_match_qrc20_standard">ABI entspricht nicht dem QRC20 Standard</string>
+    <string name="abi_doesnt_match_qrc20_standard">ABI entspricht nicht dem HRC20 Standard</string>
     <string name="token_with_same_address_already_exists">Token mit gleicher Adresse existiert bereits</string>
     <string name="invalid_token_address">Ungültige Token Adresse</string>
     <string name="address_list">Adress Liste</string>
@@ -203,7 +197,7 @@
     <string name="functions">Funktionen</string>
     <string name="wallet_backup">Wallet Backup</string>
     <string name="news_placeholder">Bitte folge unserem Medium Account für aktuelle Updates und Neuigkeiten</string>
-    <string name="news_placeholder_link">https://medium.com/@Qtum/</string>
+    <!--<string name="news_placeholder_link">https://medium.com/@Qtum/</string>-->
     <string name="no_transaction_available_yet">Noch keine Übertragung verfügbar</string>
     <string name="_fee">Gebühr</string>
     <string name="invalid_fee">Ungültige Gebühr</string>

@@ -8,6 +8,7 @@ import android.net.NetworkInfo;
 import android.util.Log;
 
 import org.qtum.wallet.dataprovider.receivers.network_state_receiver.listeners.NetworkStateListener;
+import org.qtum.wallet.utils.LogUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,12 +30,12 @@ public class NetworkStateReceiver extends BroadcastReceiver {
             NetworkInfo ni = connectivityManager.getActiveNetworkInfo();
             if (ni != null && ni.getState() == NetworkInfo.State.CONNECTED) {
                 mInitialState = true;
-                Log.i("app", "Network " + ni.getTypeName() + " connected");
+                LogUtils.info("app", "Network " + ni.getTypeName() + " connected");
                 for(NetworkStateListener networkStateListener : mNetworkStateListenerList){
                     networkStateListener.onNetworkStateChanged(true);
                 }
             } else if (intent.getBooleanExtra(ConnectivityManager.EXTRA_NO_CONNECTIVITY, Boolean.FALSE)) {
-                Log.d("app", "There's no network connectivity");
+                LogUtils.debug("app", "There's no network connectivity");
                 mInitialState = false;
                 for(NetworkStateListener networkStateListener : mNetworkStateListenerList){
                     networkStateListener.onNetworkStateChanged(false);

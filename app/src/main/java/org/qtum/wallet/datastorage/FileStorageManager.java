@@ -5,18 +5,18 @@ import android.content.ContextWrapper;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.google.gson.Gson;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.qtum.wallet.BuildConfig;
 import org.qtum.wallet.model.ContractTemplate;
 import org.qtum.wallet.model.backup.TemplateJSON;
 import org.qtum.wallet.model.contract.ContractMethod;
 import org.qtum.wallet.utils.DateCalculator;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import org.qtum.wallet.utils.LogUtils;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -42,15 +42,15 @@ public class FileStorageManager {
     private final static String prefMigrationBuildVersion = "migration_buid_version";
 
     private final static String CROWDSALE = "Crowdsale";
-    private final static String QRC20TOKENSTANDART = "QRC20TokenStandard";
+    private final static String HRC20TOKENSTANDART = "HRC20TokenStandard";
     private final static String HUMANSTANDARDTOKEN = "HumanStandardToken";
 
     public final static String HUMANSTANDARDTOKENUUID = "human-standard-token-identifire";
-    private final static String QRC20TOKENSTANDARTUUID = "qrc20-token-identifire";
+    private final static String HRC20TOKENSTANDARTUUID = "qrc20-token-identifire";
     private final static String CROWDSALEUUID = "crowdsale-identifire";
 
-    private static String[] STANDARD_CONTRACTS = {CROWDSALE, HUMANSTANDARDTOKEN, QRC20TOKENSTANDART};
-    private static String[] STANDARD_UUIDS = {CROWDSALEUUID, HUMANSTANDARDTOKENUUID, QRC20TOKENSTANDARTUUID};
+    private static String[] STANDARD_CONTRACTS = {CROWDSALE, HUMANSTANDARDTOKEN, HRC20TOKENSTANDART};
+    private static String[] STANDARD_UUIDS = {CROWDSALEUUID, HUMANSTANDARDTOKENUUID, HRC20TOKENSTANDARTUUID};
 
     private HashMap<String, String> standardUUIDs;
 
@@ -111,10 +111,10 @@ public class FileStorageManager {
                 e.printStackTrace();
                 return false;
             }
-            Log.d(TAG, "writeFile: Complete");
+            LogUtils.debug(TAG, "writeFile: Complete");
             return true;
         } else {
-            Log.d(TAG, "writeFile: File Exists");
+            LogUtils.debug(TAG, "writeFile: File Exists");
             return true;
         }
     }
@@ -165,7 +165,7 @@ public class FileStorageManager {
                 }
             }
         }
-        Log.d(TAG, "readFromAsset: " + data);
+        LogUtils.debug(TAG, "readFromAsset: " + data);
         return data;
     }
 
@@ -345,10 +345,10 @@ public class FileStorageManager {
             tinyDB.putContractTemplate(contractTemplateList);
 
             commitDefaultContractsMigration(context);
-            Log.d(TAG, "migrateDefaultContracts: Migration Complete");
+            LogUtils.debug(TAG, "migrateDefaultContracts: Migration Complete");
             return true;
         } else {
-            Log.d(TAG, "migrateDefaultContracts: Migration already performed");
+            LogUtils.debug(TAG, "migrateDefaultContracts: Migration already performed");
             return true;
         }
     }

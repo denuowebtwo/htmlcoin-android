@@ -43,6 +43,7 @@ import org.qtum.wallet.utils.BoughtContractBuilder;
 import org.qtum.wallet.utils.ContractBuilder;
 import org.qtum.wallet.utils.CurrentNetParams;
 import org.qtum.wallet.utils.DateCalculator;
+import org.qtum.wallet.utils.LogUtils;
 import org.qtum.wallet.utils.QtumIntent;
 
 import java.math.BigDecimal;
@@ -164,7 +165,7 @@ public class UpdateService extends Service {
                     JSONObject data = (JSONObject) args[0];
 
                     try {
-                        Log.d(LOG_TAG, data.toString());
+                        LogUtils.debug(LOG_TAG, data.toString());
                         unconfirmedBalance = (new BigDecimal(data.getString("unconfirmedBalance"))).divide(new BigDecimal("100000000"), MathContext.DECIMAL128);
                         balance = (new BigDecimal(data.getString("balance"))).divide(new BigDecimal("100000000"), MathContext.DECIMAL128);
                     } catch (JSONException e) {
@@ -277,7 +278,7 @@ public class UpdateService extends Service {
         }).on(Socket.EVENT_DISCONNECT, new Emitter.Listener() {
             @Override
             public void call(Object... args) {
-                Log.d("socket","disconnect");
+                LogUtils.debug("socket","disconnect");
             }
         });
 
@@ -495,14 +496,10 @@ public class UpdateService extends Service {
                 .setTicker(Ticker)
                 .setContentTitle(Title)
                 .setContentText(Text)
+                .setSmallIcon(R.mipmap.ic_launcher)
                 .setWhen(System.currentTimeMillis())
                 .setSound(sound);
 
-        if (android.os.Build.VERSION.SDK_INT <= 21) {
-            builder.setSmallIcon(R.mipmap.ic_launcher);
-        } else {
-            builder.setSmallIcon(R.drawable.logo);
-        }
         notification = builder.build();
 
         NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);

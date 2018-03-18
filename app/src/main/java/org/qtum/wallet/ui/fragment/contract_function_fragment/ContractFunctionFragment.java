@@ -403,8 +403,8 @@ public abstract class ContractFunctionFragment extends BaseFragment implements C
             super(itemView);
             ButterKnife.bind(this, itemView);
 
-            tilParam.setTypeface(FontManager.getInstance().getFont(tilParam.getContext().getString(org.qtum.wallet.R.string.simplonMonoRegular)));
-            etParam.setTypeface(FontManager.getInstance().getFont(etParam.getContext().getString(org.qtum.wallet.R.string.simplonMonoRegular)));
+            tilParam.setTypeface(FontManager.getInstance().getFont(tilParam.getContext().getString(org.qtum.wallet.R.string.fontRegular)));
+            etParam.setTypeface(FontManager.getInstance().getFont(etParam.getContext().getString(org.qtum.wallet.R.string.fontRegular)));
             etParam.setFilters(new InputFilter[]{filter});
         }
 

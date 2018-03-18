@@ -24,11 +24,11 @@ public class WatchContractFragmentDark extends WatchContractFragment {
     public void initializeViews() {
         super.initializeViews();
 
-        mTilContractName.setTypeface(FontManager.getInstance().getFont(getResources().getString(R.string.simplonMonoRegular)));
-        mTilContractAddress.setTypeface(FontManager.getInstance().getFont(getResources().getString(R.string.simplonMonoRegular)));
+        mTilContractName.setTypeface(FontManager.getInstance().getFont(getResources().getString(R.string.fontRegular)));
+        mTilContractAddress.setTypeface(FontManager.getInstance().getFont(getResources().getString(R.string.fontRegular)));
 
-        mEditTextContractName.setTypeface(FontManager.getInstance().getFont(getResources().getString(R.string.simplonMonoMedium)));
-        mEditTextContractAddress.setTypeface(FontManager.getInstance().getFont(getResources().getString(R.string.simplonMonoMedium)));
+        mEditTextContractName.setTypeface(FontManager.getInstance().getFont(getResources().getString(R.string.fontRegular)));
+        mEditTextContractAddress.setTypeface(FontManager.getInstance().getFont(getResources().getString(R.string.fontRegular)));
     }
 
     @Override

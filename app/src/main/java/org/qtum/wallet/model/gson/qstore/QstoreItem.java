@@ -33,7 +33,7 @@ public class QstoreItem {
 
     public int getIcon() {
         switch (type){
-            case "QRC20 Token":
+            case "HRC20 Token":
                 return R.drawable.ic_supertoken;
             case "Smart Contract":
                 return R.drawable.ic_smart_contract;

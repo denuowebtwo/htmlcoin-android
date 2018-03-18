@@ -16,6 +16,7 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 
 import org.qtum.wallet.R;
+import org.qtum.wallet.utils.LogUtils;
 import org.qtum.wallet.utils.ThemeUtils;
 
 import butterknife.ButterKnife;
@@ -164,37 +165,37 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
         switch (googleApAvailabilityResult) {
 
             case ConnectionResult.SERVICE_DISABLED:
-                Log.w(LOG_TAG, "Google Play Services Disabled");
+                LogUtils.warn(LOG_TAG, "Google Play Services Disabled");
                 dialogRequired = true;
                 break;
 
             case ConnectionResult.SERVICE_MISSING:
-                Log.w(LOG_TAG, "Google Play Services Missing");
+                LogUtils.warn(LOG_TAG, "Google Play Services Missing");
                 dialogRequired = true;
                 break;
 
             case ConnectionResult.SERVICE_INVALID:
-                Log.w(LOG_TAG, "Google Play Services Disabled");
+                LogUtils.warn(LOG_TAG, "Google Play Services Disabled");
                 dialogRequired = true;
                 break;
 
             case ConnectionResult.SERVICE_MISSING_PERMISSION:
-                Log.w(LOG_TAG, "Google Play Services Missing Permission");
+                LogUtils.warn(LOG_TAG, "Google Play Services Missing Permission");
                 dialogRequired = true;
                 break;
 
             case ConnectionResult.SERVICE_UPDATING:
-                Log.w(LOG_TAG, "Google Play Services Updating");
+                LogUtils.warn(LOG_TAG, "Google Play Services Updating");
                 dialogRequired = true;
                 break;
 
             case ConnectionResult.SERVICE_VERSION_UPDATE_REQUIRED:
-                Log.w(LOG_TAG, "Google Play Services Version Update Required");
+                LogUtils.warn(LOG_TAG, "Google Play Services Version Update Required");
                 dialogRequired = true;
                 break;
 
             default:
-                Log.w(LOG_TAG, "Google Play Services Available version code: " + googleApAvailabilityResult);
+                LogUtils.warn(LOG_TAG, "Google Play Services Available version code: " + googleApAvailabilityResult);
                 break;
         }
 

@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import org.qtum.wallet.R;
 import org.qtum.wallet.model.gson.history.History;
 import org.qtum.wallet.ui.fragment.wallet_fragment.WalletFragment;
+import org.qtum.wallet.utils.LogUtils;
 import org.qtum.wallet.utils.ResizeWidthAnimation;
 
 import java.util.List;
@@ -168,7 +169,7 @@ public class WalletFragmentDark extends WalletFragment {
                 uncomfirmedBalanceTitle.setVisibility(View.GONE);
             }
         } catch (NullPointerException e){
-            Log.d("WalletFragmentDark", "updateBalance: " + e.getMessage());
+            LogUtils.debug("WalletFragmentDark", "updateBalance: " + e.getMessage());
         }
     }
 }

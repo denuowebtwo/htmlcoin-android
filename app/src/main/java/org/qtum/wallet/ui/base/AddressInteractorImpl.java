@@ -11,6 +11,7 @@ import org.qtum.wallet.model.gson.AddressBalance;
 import org.qtum.wallet.model.gson.AddressDeviceTokenRequest;
 import org.qtum.wallet.model.gson.AddressDeviceTokenResponse;
 import org.qtum.wallet.model.gson.UnspentOutput;
+import org.qtum.wallet.utils.LogUtils;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -137,12 +138,12 @@ public class AddressInteractorImpl implements AddressInteractor {
 
                     @Override
                     public void onError(Throwable e) {
-                        Log.e(LOG_TAG, e.getMessage(), e);
+                        LogUtils.error(LOG_TAG, e.getMessage(), e);
                     }
 
                     @Override
                     public void onNext(AddressDeviceTokenResponse addressDeviceTokenResponse) {
-                        Log.i(LOG_TAG, "Update firebase token success");
+                        LogUtils.info(LOG_TAG, "Update firebase token success");
                     }
                 });
 
@@ -163,12 +164,12 @@ public class AddressInteractorImpl implements AddressInteractor {
 
                     @Override
                     public void onError(Throwable e) {
-                        Log.e(LOG_TAG, e.getMessage(), e);
+                        LogUtils.error(LOG_TAG, e.getMessage(), e);
                     }
 
                     @Override
                     public void onNext(AddressDeviceTokenResponse addressDeviceTokenResponse) {
-                        Log.i(LOG_TAG, "Update pushy token success");
+                        LogUtils.info(LOG_TAG, "Update pushy token success");
                     }
                 });
 

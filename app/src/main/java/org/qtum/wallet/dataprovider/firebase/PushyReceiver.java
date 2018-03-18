@@ -2,11 +2,13 @@ package org.qtum.wallet.dataprovider.firebase;
 
 
 import android.app.Notification;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.LocalBroadcastManager;
 
@@ -40,22 +42,31 @@ public class PushyReceiver extends BroadcastReceiver {
         Intent notificationIntent = new Intent(context, MainActivity.class);
         notificationIntent.setAction(QtumIntent.OPEN_FROM_NOTIFICATION);
         PendingIntent contentIntent = PendingIntent.getActivity(context, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(context);
+
+        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        NotificationCompat.Builder builder = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            int importance = NotificationManager.IMPORTANCE_HIGH;
+            NotificationChannel notificationChannel = new NotificationChannel("ID", "Name", importance);
+            notificationChannel.enableLights(true);
+            notificationChannel.setLightColor(Color.RED);
+            notificationChannel.enableVibration(true);
+            notificationManager.createNotificationChannel(notificationChannel);
+            builder = new NotificationCompat.Builder(context, notificationChannel.getId());
+        } else {
+            builder = new NotificationCompat.Builder(context);
+        }
+
         builder.setContentIntent(contentIntent)
                 .setAutoCancel(true)
                 .setTicker(Ticker)
                 .setContentTitle(Title)
                 .setContentText(Text)
+                .setSmallIcon(R.mipmap.ic_launcher)
                 .setWhen(System.currentTimeMillis());
 
-        if (android.os.Build.VERSION.SDK_INT <= 21) {
-            builder.setSmallIcon(R.mipmap.ic_launcher);
-        } else {
-            builder.setSmallIcon(org.qtum.wallet.R.drawable.logo);
-        }
-        Notification notification = builder.build();
 
-        NotificationManager mNotificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        mNotificationManager.notify(108, notification);
+        Notification notification = builder.build();
+        notificationManager.notify(108, notification);
     }
 }

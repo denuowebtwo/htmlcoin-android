@@ -9,11 +9,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.FrameLayout;
+
 import com.google.zxing.Result;
 
+import org.bitcoinj.core.Address;
+import org.bitcoinj.core.AddressFormatException;
 import org.qtum.wallet.ui.fragment.send_fragment.SendFragment;
+import org.qtum.wallet.utils.CurrentNetParams;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
@@ -109,7 +115,14 @@ public class QrCodeRecognitionFragment extends Fragment implements ZXingScannerV
         if(!TextUtils.isEmpty(receiveAddr)) {
             ((SendFragment) getTargetFragment()).onResponse(receiveAddr, Double.valueOf(amount), tokenAddr);
         } else {
-            ((SendFragment) getTargetFragment()).onResponseError();
+            try {
+                Address.fromBase58(CurrentNetParams.getNetParams(), result.getText());
+            } catch (AddressFormatException a) {
+                ((SendFragment) getTargetFragment()).onResponseError();
+                return;
+            }
+            //((SendFragment) getTargetFragment()).onResponseError();
+            ((SendFragment) getTargetFragment()).onResponse(result.getText(), Double.valueOf(amount), tokenAddr);
         }
         dismiss();
     }

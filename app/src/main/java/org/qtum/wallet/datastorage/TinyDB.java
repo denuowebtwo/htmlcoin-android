@@ -51,6 +51,7 @@ import org.qtum.wallet.model.contract.Token;
 import org.qtum.wallet.model.ContractTemplate;
 import org.qtum.wallet.model.news.News;
 import org.qtum.wallet.utils.DateCalculator;
+import org.qtum.wallet.utils.LogUtils;
 import org.xmlpull.v1.XmlPullParserFactory;
 
 
@@ -205,7 +206,7 @@ public class TinyDB {
 
         if (isExternalStorageReadable() && isExternalStorageWritable() && !mFolder.exists()) {
             if (!mFolder.mkdirs()) {
-                Log.e("ERROR", "Failed to setup folder");
+                LogUtils.error("ERROR", "Failed to setup folder");
                 return "";
             }
         }

@@ -10,6 +10,8 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 
+import org.qtum.wallet.utils.LogUtils;
+
 import java.util.List;
 
 
@@ -80,7 +82,7 @@ public class DividerItemDecoration extends RecyclerView.ItemDecoration {
                     sectionDivider.draw(c);
                 }
             }catch (Exception e){
-                Log.d("TAG", e.getMessage());
+                LogUtils.debug("TAG", e.getMessage());
             }
         }
     }

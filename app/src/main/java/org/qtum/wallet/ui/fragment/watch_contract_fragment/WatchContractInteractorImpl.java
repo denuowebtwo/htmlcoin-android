@@ -80,6 +80,6 @@ public class WatchContractInteractorImpl implements WatchContractInteractor {
 
     @Override
     public boolean isABIInterfaceValid(String ABIInterface) {
-        return ContractBuilder.checkForValidityQRC20(ABIInterface);
+        return ContractBuilder.checkForValidityHRC20(ABIInterface);
     }
 }

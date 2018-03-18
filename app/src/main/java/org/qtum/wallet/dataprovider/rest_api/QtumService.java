@@ -10,6 +10,7 @@ import com.google.gson.GsonBuilder;
 
 import org.qtum.wallet.QtumApplication;
 import org.qtum.wallet.R;
+import org.qtum.wallet.BuildConfig;
 import org.qtum.wallet.model.gson.AddressBalance;
 import org.qtum.wallet.model.gson.AddressDeviceTokenRequest;
 import org.qtum.wallet.model.gson.AddressDeviceTokenResponse;
@@ -91,7 +92,10 @@ public class QtumService {
             // Install the all-trusting trust manager
 
             HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
-            httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+            if (BuildConfig.DEBUG)
+                httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+            else
+                httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.NONE);
             OkHttpClient.Builder client = new OkHttpClient.Builder();
             client.interceptors().add(httpLoggingInterceptor);
             client.readTimeout(180, TimeUnit.SECONDS);

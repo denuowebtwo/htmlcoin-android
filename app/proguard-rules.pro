@@ -18,3 +18,9 @@
 
 -dontwarn me.pushy.**
 -keep class me.pushy.** { *; }
+
+-assumenosideeffects class android.util.Log {
+    public static *** d(...);
+    public static *** v(...);
+    public static *** i(...);
+}

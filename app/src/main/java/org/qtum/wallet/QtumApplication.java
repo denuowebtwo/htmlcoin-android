@@ -23,9 +23,15 @@ public class QtumApplication extends MultiDexApplication{
         super.onCreate();
         instance = this;
 
-        if(!BuildConfig.DEBUG) {
-            Fabric.with(this, new Crashlytics());
-        }
+//        if(!BuildConfig.DEBUG) {
+//            Fabric.with(this, new Crashlytics());
+//        }
+        Fabric fabric = new Fabric.Builder(this)
+                .kits(new Crashlytics())
+                .debuggable(true)           // Enables Crashlytics debugger
+                .build();
+        Fabric.with(fabric);
+
         FontManager.init(getAssets());
         QStoreStorage.getInstance(getApplicationContext());
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);

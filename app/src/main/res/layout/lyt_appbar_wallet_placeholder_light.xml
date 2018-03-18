@@ -21,7 +21,7 @@
 
         <org.qtum.wallet.utils.FontTextView
             android:textColor="@color/white"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:id="@+id/tv_placeholder_balance_title"
             android:text="@string/available_balance"
             android:textAllCaps="true"
@@ -33,7 +33,7 @@
 
         <org.qtum.wallet.utils.FontTextView
             android:textColor="@color/color_custom_yellow"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:id="@+id/tv_placeholder_balance_value"
             android:fontFamily="@font/worksans_bold"
             android:text="0.0 HTML"
