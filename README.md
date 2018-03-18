@@ -1,5 +1,5 @@
 
-<a href="https://snyk.io/test/github/htmlcoin/htmlcoin-android"><img src="https://snyk.io/test/github/htmlcoin/htmlcoin-android/badge.svg" alt="Known Vulnerabilities" data-canonical-src="https://snyk.io/test/github/htmlcoin/htmlcoin-android" style="max-width:100%;"/></a>
+<a href="https://snyk.io/test/github/htmlcoin/htmlcoin-android"><img src="https://snyk.io/test/github/htmlcoin/htmlcoin-android/badge.svg" alt="Known Vulnerabilities" data-canonical-src="https://snyk.io/test/github/htmlcoin/htmlcoin-android" style="max-width:100%;"/></a><br/>
 <b>About</b><br/>
 Combining a modified Bitcoin Core infrastructure with an intercompatible version of the Ethereum Virtual Machine (EVM), Qtum merges the reliability of Bitcoin’s unfailing blockchain with the endless possibilities provided by smart contracts. 
 Designed with stability, modularity and interoperability in mind, Qtum is the foremost toolkit for building trusted decentralized applications, suited for real-world, business oriented use cases. Its hybrid nature, in combination with a first-of-its-kind PoS consensus protocol, allow Qtum applications to be compatible with major blockchain ecosystems, while providing native support for mobile devices and IoT appliances.
