@@ -3,7 +3,7 @@
               xmlns:app="http://schemas.android.com/apk/res-auto"
               android:layout_width="match_parent"
               android:orientation="vertical"
-              android:background="@color/colorPrimary"
+              android:background="@drawable/background_popup_dark"
               android:padding="16dp"
               android:clickable="true"
               android:focusableInTouchMode="true"
@@ -16,9 +16,9 @@
         android:maxLines="1"
         android:layout_margin="16dp"
         android:text="@string/transfer_balance"
-        android:textColor="@color/background"
+        android:textColor="@color/white"
         android:textSize="18sp"
-        android:fontFamily="@font/worksans_medium"/>
+        android:fontFamily="@font/worksans_bold"/>
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/til_amount"
@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:theme="@style/InputTextBlack"
-        android:textColorHint="@color/background">
+        android:textColorHint="@color/white">
 
         <android.support.design.widget.TextInputEditText
             android:id="@+id/et_amount"
@@ -38,7 +38,7 @@
             android:gravity="left"
             android:hint="@string/amount"
             android:inputType="numberDecimal"
-            android:textColor="@color/background"/>
+            android:textColor="@color/white"/>
     </android.support.design.widget.TextInputLayout>
 
     <org.qtum.wallet.utils.FontTextView
@@ -47,7 +47,7 @@
         android:textSize="12dp"
         android:paddingBottom="4dp"
         android:fontFamily="@font/worksans_regular"
-        android:textColor="@color/background"
+        android:textColor="@color/white"
         android:text="@string/to"/>
 
     <LinearLayout
@@ -63,7 +63,7 @@
             android:maxLines="1"
             android:ellipsize="middle"
             android:layout_height="wrap_content"
-            android:textColor="@color/background"
+            android:textColor="@color/white"
             android:gravity="left"
             android:layout_weight="1"
             android:textSize="16sp"/>
@@ -73,13 +73,13 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="4dp"
-        android:background="@color/background"/>
+        android:background="@color/white"/>
 
     <android.support.v7.widget.AppCompatSpinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:backgroundTint="@color/background"
+        android:backgroundTint="@color/white"
         android:id="@+id/spinner_transfer">
 
     </android.support.v7.widget.AppCompatSpinner>
@@ -87,41 +87,31 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/background"/>
+        android:background="@color/white"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:layout_marginBottom="16dp">
+        android:layout_marginBottom="8dp">
 
         <org.qtum.wallet.utils.FontButton
             android:id="@+id/bt_back"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:gravity="center"
-            android:fontFamily="@font/worksans_regular"
-            android:background="?attr/selectableItemBackground"
+            style="@style/ButtonStyle.PopupLightBlue"
+            android:layout_marginRight="8dp"
             android:text="@string/cancel"
             android:layout_weight="1"
-            android:textAllCaps="true"
-            android:textColor="@color/black"
-            android:textSize="@dimen/button_text"/>
+            />
 
         <org.qtum.wallet.utils.FontButton
             android:id="@+id/bt_transfer"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="16dp"
             android:gravity="center"
+            style="@style/ButtonStyle.Popup"
+            android:layout_marginLeft="8dp"
             android:layout_weight="1"
-            android:fontFamily="@font/worksans_regular"
-            android:background="?attr/selectableItemBackground"
-            android:text="@string/transfer"
-            android:textAllCaps="true"
-            android:textColor="@color/black"
-            android:textSize="@dimen/button_text"/>
+            android:text="@string/transfer"/>
     </LinearLayout>
 
 </LinearLayout>

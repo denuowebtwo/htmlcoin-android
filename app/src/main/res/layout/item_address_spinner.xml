@@ -10,7 +10,7 @@
     <org.qtum.wallet.utils.FontTextView
         android:id="@+id/address_name"
         android:textSize="16sp"
-        android:textColor="@color/background"
+        android:textColor="@color/white"
         android:text="@string/token_name"
         android:gravity="left|center_vertical"
         android:layout_toStartOf="@+id/ll_balance"
@@ -33,7 +33,7 @@
         <org.qtum.wallet.utils.FontTextView
             android:id="@+id/address_balance"
             android:textSize="14sp"
-            android:textColor="@color/background"
+            android:textColor="@color/white"
             android:fontFamily="@font/worksans_bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -41,7 +41,7 @@
         <org.qtum.wallet.utils.FontTextView
             android:id="@+id/address_symbol"
             android:textSize="14sp"
-            android:textColor="@color/background"
+            android:textColor="@color/white"
             android:fontFamily="@font/worksans_bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
