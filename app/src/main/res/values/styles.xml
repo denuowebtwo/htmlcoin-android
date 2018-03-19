@@ -201,7 +201,7 @@
 
     <!--WHITE THEME-->
 
-    <style name="ButtonStyle" parent="Widget.AppCompat.Button">
+    <style name="ButtonStyle" parent="Widget.AppCompat.Button.Borderless">
         <item name="android:gravity">center</item>
         <item name="android:padding">10dp</item>
         <item name="android:textSize">@dimen/button_text</item>
@@ -217,6 +217,22 @@
 
     <style name="ButtonStyle.Light">
 
+    </style>
+
+    <style name="ButtonStyle.Popup">
+        <item name="android:layout_height">44dp</item>
+        <item name="android:textSize">@dimen/popup_button_text</item>
+        <item name="android:textAllCaps">true</item>
+        <!--<item name="android:stateListAnimator">@null</item>-->
+    </style>
+
+    <style name="ButtonStyle.PopupLightBlue">
+        <!--<item name="android:layout_gravity">center</item>-->
+        <item name="android:layout_height">44dp</item>
+        <item name="android:textSize">@dimen/popup_button_text</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:background">@drawable/btn_gray_corner_background_light</item>
+        <!--<item name="android:stateListAnimator">@null</item>-->
     </style>
 
     <style name="ButtonStyle.LightBlue">
