@@ -16,7 +16,7 @@ import io.fabric.sdk.android.Fabric;
 
 public class QtumApplication extends MultiDexApplication{
 
-    public static QtumApplication instance;
+    public static QtumApplication instance; //@senagbe Not recommended but leaving there as its from the original QTum code.
 
     @Override
     public void onCreate() {

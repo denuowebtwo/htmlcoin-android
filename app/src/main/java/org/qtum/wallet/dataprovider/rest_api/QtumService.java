@@ -1,26 +1,28 @@
 package org.qtum.wallet.dataprovider.rest_api;
 
 
+import com.commonsware.cwac.netsecurity.OkHttp3Integrator;
+import com.commonsware.cwac.netsecurity.TrustManagerBuilder;
 import com.google.common.base.Joiner;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import org.qtum.wallet.BuildConfig;
+import org.qtum.wallet.QtumApplication;
 import org.qtum.wallet.model.gson.AddressBalance;
 import org.qtum.wallet.model.gson.AddressDeviceTokenRequest;
 import org.qtum.wallet.model.gson.AddressDeviceTokenResponse;
 import org.qtum.wallet.model.gson.BlockChainInfo;
-
 import org.qtum.wallet.model.gson.CallSmartContractRequest;
 import org.qtum.wallet.model.gson.DGPInfo;
 import org.qtum.wallet.model.gson.FeePerKb;
 import org.qtum.wallet.model.gson.QstoreContractType;
-import org.qtum.wallet.model.gson.call_smart_contract_response.CallSmartContractResponse;
-import org.qtum.wallet.model.gson.history.History;
-import org.qtum.wallet.model.gson.history.HistoryResponse;
 import org.qtum.wallet.model.gson.SendRawTransactionRequest;
 import org.qtum.wallet.model.gson.SendRawTransactionResponse;
 import org.qtum.wallet.model.gson.UnspentOutput;
+import org.qtum.wallet.model.gson.call_smart_contract_response.CallSmartContractResponse;
+import org.qtum.wallet.model.gson.history.History;
+import org.qtum.wallet.model.gson.history.HistoryResponse;
 import org.qtum.wallet.model.gson.qstore.ContractPurchase;
 import org.qtum.wallet.model.gson.qstore.QSearchItem;
 import org.qtum.wallet.model.gson.qstore.QstoreBuyResponse;
@@ -30,10 +32,8 @@ import org.qtum.wallet.model.gson.qstore.QstoreItem;
 import org.qtum.wallet.model.gson.qstore.QstoreSourceCodeResponse;
 import org.qtum.wallet.utils.CurrentNetParams;
 
-
 import java.security.KeyStore;
 import java.security.SecureRandom;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -94,6 +94,10 @@ public class QtumService {
             else
                 httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.NONE);
             OkHttpClient.Builder client = new OkHttpClient.Builder();
+
+            TrustManagerBuilder tmb = new TrustManagerBuilder().withManifestConfig(QtumApplication.instance); // From @senagbe this is evil.
+            OkHttp3Integrator.applyTo(tmb, client);
+
             client.interceptors().add(httpLoggingInterceptor);
             client.readTimeout(180, TimeUnit.SECONDS);
             client.connectTimeout(180, TimeUnit.SECONDS);
