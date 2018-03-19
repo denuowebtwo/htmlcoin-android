@@ -14,7 +14,7 @@
         android:padding="8dp"
         android:textColor="@color/background"
         android:textSize="12sp"
-        app:typeface="@string/simplonMonoRegular">
+        android:fontFamily="@font/worksans_regular">
 
     </org.qtum.wallet.utils.FontButton>
 </FrameLayout>

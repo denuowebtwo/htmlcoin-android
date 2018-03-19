@@ -280,7 +280,7 @@
                         android:textAllCaps="true"
                         android:textColor="@color/colorPrimary"
                         android:textSize="16sp"
-                        app:typeface="@string/simplonMonoRegular"/>
+                        android:fontFamily="@font/worksans_regular"/>
 
                     <LinearLayout
                         android:id="@+id/buttons"
@@ -298,7 +298,7 @@
                             android:padding="16dp"
                             android:textSize="16sp"
                             android:textColor="@color/colorPrimary"
-                            app:typeface="@string/simplonMonoRegular"
+                            android:fontFamily="@font/worksans_regular"
                             android:textAllCaps="true"
                             android:layout_weight="1"
                             android:layout_width="0dp"
@@ -312,7 +312,7 @@
                             android:textSize="16sp"
                             android:background="?attr/selectableItemBackground"
                             android:textColor="@color/colorPrimary"
-                            app:typeface="@string/simplonMonoRegular"
+                            android:fontFamily="@font/worksans_regular"
                             android:textAllCaps="true"
                             android:layout_weight="1"
                             android:layout_width="0dp"

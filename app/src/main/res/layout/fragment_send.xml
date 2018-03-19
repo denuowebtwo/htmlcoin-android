@@ -410,7 +410,7 @@
                             android:textSize="16sp"
                             android:background="?attr/selectableItemBackground"
                             android:textColor="@color/white"
-                            app:typeface="@string/simplonMonoRegular"
+                            android:fontFamily="@font/worksans_regular"
                             android:textAllCaps="true"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />

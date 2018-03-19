@@ -130,7 +130,7 @@
                 android:textAllCaps="true"
                 android:textColor="@color/background"
                 android:textSize="12sp"
-                app:typeface="@string/simplonMonoRegular" />
+                android:fontFamily="@font/worksans_regular" />
         </LinearLayout>
 
 
@@ -149,7 +149,7 @@
             android:padding="6dp"
             android:textColor="@color/colorPrimary"
             android:textColorHint="@color/colorPrimary"
-            app:editTextTypeface="@string/simplonMonoMedium" />
+            android:fontFamily="@font/worksans_medium" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_templates"
@@ -185,7 +185,7 @@
                 android:textAllCaps="true"
                 android:textColor="@color/colorPrimary"
                 android:textSize="16sp"
-                app:typeface="@string/simplonMonoRegular" />
+                android:fontFamily="@font/worksans_regular" />
 
             <org.qtum.wallet.utils.FontButton
                 android:id="@+id/bt_ok"
@@ -200,7 +200,7 @@
                 android:textAllCaps="true"
                 android:textColor="@color/primary_text_color_enabled_selector"
                 android:textSize="16sp"
-                app:typeface="@string/simplonMonoRegular" />
+                android:fontFamily="@font/worksans_regular" />
 
         </LinearLayout>
 

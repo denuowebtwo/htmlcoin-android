@@ -60,7 +60,7 @@
                     android:paddingStart="8dp"
                     android:paddingEnd="8dp"
                     android:textColor="@color/white"
-                    app:typeface="@string/proximaNovaSemibold"
+                    android:fontFamily="@font/worksans_bold"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent" />
 
@@ -75,7 +75,7 @@
                     android:layout_toStartOf="@+id/confirm"
                     android:background="?attr/selectableItemBackground"
                     android:textColor="@color/white"
-                    app:typeface="@string/proximaNovaSemibold"
+                    android:fontFamily="@font/worksans_bold"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent" />
 
@@ -320,7 +320,7 @@
                     android:textAllCaps="true"
                     android:textColor="@color/bt_grey_text_color"
                     android:textSize="16sp"
-                    app:typeface="@string/proximaNovaSemibold"/>
+                    android:fontFamily="@font/worksans_bold"/>
 
             </RelativeLayout>
 

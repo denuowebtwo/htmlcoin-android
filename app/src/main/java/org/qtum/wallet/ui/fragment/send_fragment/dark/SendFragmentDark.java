@@ -20,12 +20,12 @@ public class SendFragmentDark extends SendFragment {
         super.initializeViews();
 
         showBottomNavView(R.color.color_custom_dark);
-        mTextInputEditTextAddress.setTypeface(FontManager.getInstance().getFont(getString(org.qtum.wallet.R.string.simplonMonoRegular)));
-        mTextInputEditTextAmount.setTypeface(FontManager.getInstance().getFont(getString(org.qtum.wallet.R.string.simplonMonoRegular)));
-        mTextInputEditTextFee.setTypeface(FontManager.getInstance().getFont(getString(org.qtum.wallet.R.string.simplonMonoRegular)));
-        tilAdress.setTypeface(FontManager.getInstance().getFont(getString(org.qtum.wallet.R.string.simplonMonoRegular)));
-        tilAmount.setTypeface(FontManager.getInstance().getFont(getString(org.qtum.wallet.R.string.simplonMonoRegular)));
-        tilFee.setTypeface(FontManager.getInstance().getFont(getString(org.qtum.wallet.R.string.simplonMonoRegular)));
+        mTextInputEditTextAddress.setTypeface(FontManager.getInstance().getFont(getString(org.qtum.wallet.R.string.fontRegular)));
+        mTextInputEditTextAmount.setTypeface(FontManager.getInstance().getFont(getString(org.qtum.wallet.R.string.fontRegular)));
+        mTextInputEditTextFee.setTypeface(FontManager.getInstance().getFont(getString(org.qtum.wallet.R.string.fontRegular)));
+        tilAdress.setTypeface(FontManager.getInstance().getFont(getString(org.qtum.wallet.R.string.fontRegular)));
+        tilAmount.setTypeface(FontManager.getInstance().getFont(getString(org.qtum.wallet.R.string.fontRegular)));
+        tilFee.setTypeface(FontManager.getInstance().getFont(getString(org.qtum.wallet.R.string.fontRegular)));
     }
 
 }

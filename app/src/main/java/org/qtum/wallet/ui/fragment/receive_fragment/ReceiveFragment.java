@@ -318,8 +318,8 @@ public abstract class ReceiveFragment extends BaseFragment implements ReceiveVie
             }
         });
 
-        mTextInputEditTextAmount.setTypeface(FontManager.getInstance().getFont(getString(R.string.simplonMonoRegular)));
-        mTextInputLayoutAmount.setTypeface(FontManager.getInstance().getFont(getString(R.string.simplonMonoRegular)));
+        mTextInputEditTextAmount.setTypeface(FontManager.getInstance().getFont(getString(R.string.fontRegular)));
+        mTextInputLayoutAmount.setTypeface(FontManager.getInstance().getFont(getString(R.string.fontRegular)));
 
         if (getArguments() != null) {
             String tokenAddr = getArguments().getString(TOKEN_ADDRESS, null);

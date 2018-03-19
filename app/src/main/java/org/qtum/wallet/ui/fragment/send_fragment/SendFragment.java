@@ -799,12 +799,26 @@ public abstract class SendFragment extends BaseFragment implements SendView {
         public void onSuccess() {
             setAlertDialog(org.qtum.wallet.R.string.payment_completed_successfully, "Ok", BaseFragment.PopUpType.confirm);
             clearInputs();
+
+            getView().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    hideKeyBoard();
+                }
+            },50);
         }
 
         @Override
         public void onError(String error) {
             dismissProgressDialog();
             setAlertDialog(org.qtum.wallet.R.string.error, error, "Ok", BaseFragment.PopUpType.error);
+
+            getView().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    hideKeyBoard();
+                }
+            },50);
         }
     };
 
