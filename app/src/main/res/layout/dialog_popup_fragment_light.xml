@@ -64,17 +64,14 @@
             android:id="@+id/bt_pop_up"
             android:background="@drawable/btn_sea_corner_background_light"
             android:padding="16dp"
-            android:gravity="center"
+            style="@style/ButtonStyle.Light"
             android:layout_weight="1"
             android:maxLines="1"
             android:layout_marginLeft="4dp"
             android:layout_marginRight="4dp"
             android:text="@string/ok"
-            android:textAllCaps="false"
-            android:textColor="@color/color_custom_dark"
-            android:fontFamily="@font/worksans_bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content" />
 
         <org.qtum.wallet.utils.FontButton
             android:id="@+id/bt_pop_up2"
@@ -83,14 +80,11 @@
             android:maxLines="1"
             android:layout_marginLeft="4dp"
             android:layout_marginRight="4dp"
-            android:gravity="center"
             android:layout_weight="1"
             android:text="@string/ok"
-            android:textAllCaps="false"
-            android:textColor="@color/color_custom_dark"
-            android:fontFamily="@font/worksans_bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            style="@style/ButtonStyle.Light"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content" />
 
     </LinearLayout>
 

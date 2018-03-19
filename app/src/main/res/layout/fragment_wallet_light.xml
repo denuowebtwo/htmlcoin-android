@@ -103,10 +103,9 @@
 
                         <org.qtum.wallet.utils.FontTextView
                             android:id="@+id/tv_wallet_name"
-                            style="@style/appbar_wallet_title"
+                            style="@style/TextTitle.Light"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:gravity="center"
                             android:text="@string/my_wallet" />
 
                         <ImageButton
