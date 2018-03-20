@@ -91,7 +91,7 @@ public abstract class ProfileFragment extends BaseFragment implements ProfileVie
                 fragment = AboutFragment.newInstance(getContext());
                 break;
             case org.qtum.wallet.R.string.log_out:
-                setAlertDialog(getString(R.string.warning), getString(R.string.you_are_about_to_exit_your_account_all_account_data_will_be_erased_from_the_device_please_make_sure_you_have_saved_backups_of_your_passphrase_and_required_contracts), "Cancel", "Logout", PopUpType.error, new AlertDialogCallBack() {
+                setAlertDialog(getString(R.string.warning), getString(R.string.you_are_about_to_exit_your_account_all_account_data_will_be_erased_from_the_device_please_make_sure_you_have_saved_backups_of_your_passphrase_and_required_contracts), getString(R.string.cancel), getString(R.string.log_out), PopUpType.error, new AlertDialogCallBack() {
                     @Override
                     public void onButtonClick() {
 
