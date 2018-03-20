@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">HTMLCOIN</string>
     <string name="blockchain_we_trust">IN BLOCKCHAIN WE TRUST</string>
-    <string name="create_new">Crear Nuevo</string>
+    <!--<string name="create_new">Crear Nuevo</string>-->
     <string name="import_wallet">Importar Monedero</string>
     <string name="create_the_first_one_or_restore_n_the_previous_wallet_key">Crear el primero o restaurar \n la clave anterior del monedero anterior</string>
     <string name="you_don_t_have_a_wallet_yet">No tiene todavía un monedero.</string>
