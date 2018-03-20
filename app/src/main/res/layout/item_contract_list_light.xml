@@ -106,10 +106,10 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="@dimen/divider_height"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="16dp"
-            android:background="@color/bottom_nav_bar_color_light"/>
+            android:layout_marginStart="0dp"
+            android:background="@color/section_divider_color"/>
 
     </RelativeLayout>
 
