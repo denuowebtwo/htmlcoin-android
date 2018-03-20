@@ -26,8 +26,8 @@ public class WatchContractFragmentLight extends WatchContractFragment {
         mTilContractName.setTypeface(FontManager.getInstance().getFont(getResources().getString(org.qtum.wallet.R.string.fontRegular)));
         mTilContractAddress.setTypeface(FontManager.getInstance().getFont(getResources().getString(org.qtum.wallet.R.string.fontRegular)));
 
-        mEditTextContractName.setTypeface(FontManager.getInstance().getFont(getResources().getString(org.qtum.wallet.R.string.fontBold)));
-        mEditTextContractAddress.setTypeface(FontManager.getInstance().getFont(getResources().getString(org.qtum.wallet.R.string.fontBold)));
+        mEditTextContractName.setTypeface(FontManager.getInstance().getFont(getResources().getString(org.qtum.wallet.R.string.font_bottom_navigation)));
+        mEditTextContractAddress.setTypeface(FontManager.getInstance().getFont(getResources().getString(org.qtum.wallet.R.string.font_bottom_navigation)));
     }
 
     @Override

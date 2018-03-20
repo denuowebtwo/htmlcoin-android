@@ -12,9 +12,10 @@
         android:background="@drawable/chip_normal_corner_background"
         android:gravity="center"
         android:padding="8dp"
-        android:textColor="@color/white"
+        android:textColor="@color/color_custom_dark"
         android:textSize="12sp"
-        android:fontFamily="@font/worksans_light">
+        android:textAllCaps="true"
+        android:fontFamily="@font/worksans_regular">
 
     </org.qtum.wallet.utils.FontButton>
 </FrameLayout>
