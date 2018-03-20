@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">HTMLCOIN</string>
     <string name="blockchain_we_trust">IN BLOCKCHAIN WE TRUST</string>
-    <!--<string name="create_new">Opret ny</string>-->
+    <string name="create_new">SLET/Opret Ny</string>
     <string name="import_wallet">Importer wallet</string>
     <string name="create_the_first_one_or_restore_n_the_previous_wallet_key">Opret den første eller gendan \ n den tidligere wallet nøgle</string>
     <string name="you_don_t_have_a_wallet_yet">Du har ikke en wallet endnu</string>
@@ -174,6 +174,8 @@
     <string name="transfer">Overførsel</string>
     <string name="enter_valid_amount_value">Indtast gyldig beløbsværdi </string>
     <string name="transaction_amount_cant_be_zero">Transaktionsbeløb kan ikke være nul. Rediger din transaktion og prøv igen</string>
+    <string name="transaction_amount_can_be_dust">Transaktionsbeløbet er for lavt. Rediger din transaktion, og prøv igen</string>
+    <string name="transaction_fee_cant_be_large">Gebyrbeløbet kan ikke være større end 1/3 af transaktionsbeløbet. Rediger din transaktion, og prøv igen</string>
     <string name="address_book">Adressebog</string>
     <string name="complete">Komplet</string>
     <string name="address_manage">Administrer adresser</string>
@@ -182,12 +184,13 @@
     <string name="contract_details">Kontrakt administrering</string>
     <string name="sent_time">Sendt tid</string>
     <string name="you_have_insufficient_funds_for_this_transaction">Du har ikke tilstrækkelige midler til denne transaktion</string>
+    <string name="you_have_insufficient_funds_pending_transaction">Advarsel \ Der er en ventende transaktion. Du kan ikke foretage en ny transaktion, før den foregående er bekræftet. Prøv igen, efter at den foregående transaktion er blevet bekræftet.</string>
     <string name="invalid_qtum_address">Ugyldig HTML Adresse</string>
     <string name="fail_to_get_contract_methods">Fejl til at få kontrakt metoder</string>
     <string name="fail_to_get_contracts">Fejl til at få kontrakter</string>
     <string name="trending_now">Trender nu</string>
     <string name="whats_new">Hvad er nyt?</string>
-    <string name="error_qrcode_recognition_try_again">fejl QR-kode anerkendelse. Prøv igen</string>
+    <string name="error_qrcode_recognition_try_again">Fejl i QR-kode anerkendelse. Prøv igen</string>
     <string name="invalid_qr_code">Ugyldig QR kode</string>
     <string name="token_not_found">Token ikke fundet</string>
     <string name="copied">Kopieret</string>
@@ -213,5 +216,7 @@
     <string name="you_are_about_to_exit_your_account_all_account_data_will_be_erased_from_the_device_please_make_sure_you_have_saved_backups_of_your_passphrase_and_required_contracts">Du er ved at logge ud af din konto. Alle konto data slettes fra enheden. Venligst Sørg for, at du har gemt sikkerhedskopier af din adgangskode og nødvendige kontrakter</string>
     <string name="amount_too_big">Beløb værdi for stor</string>
     <string name="swipe_left_to_unsubscribe_or_delete_contract">Stryg til venstre for at afmelde eller slette kontrakt</string>
+
+    <string name="warning_play_services_required_user_cancelled">HTMLCOIN kræver Google Play Tjenester. htmlcoin er blevet afbrudt. Venligst genstart og løs problemet.</string>
 
 </resources>
