@@ -6,8 +6,9 @@
             <pin digest="SHA-256">QfM8yr2vtvaO3iC+0EFiAoBpv4Juntl80cLa/ncayWE=</pin>
             <pin digest="SHA-256">8Rw90Ej3Ttt8RRkrg+WYDS9n7IS03bk5bjP/UXPtaY8=</pin>
             <pin digest="SHA-256">Ko8tivDrEjiY90yGasP6ZpBU4jwXvHqVvQI0GS3GNdA=</pin>
+            <pin digest="SHA-256">VjLZe/p3W/PJnd6lL8JVNBCGQBZynFLdZSTIqcO0SJ8=</pin>
         </pin-set>
-        <trustkit-config enforcePinning="false">
+        <trustkit-config enforcePinning="true">
             <report-uri>http://report.datatheorem.com/log_report</report-uri>
         </trustkit-config>
     </domain-config>
