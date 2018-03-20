@@ -39,11 +39,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginEnd="48dp"
-                android:gravity="center"
+                style="@style/TextTitle.Light"
                 android:text="Restore Contracts"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                android:fontFamily="@font/worksans_bold" />
+                 />
         </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>
@@ -84,7 +82,7 @@
                     android:text="@string/select_back_up_file"
                     android:textSize="18sp"
                     android:fontFamily="@font/worksans_bold"
-                    android:textColor="@color/bottom_nav_bar_text_color_light"/>
+                    android:textColor="@color/color_custom_dark"/>
 
                 <org.qtum.wallet.utils.FontTextView
                     android:id="@+id/tv_file_size"
@@ -105,16 +103,11 @@
         <org.qtum.wallet.utils.FontButton
             android:id="@+id/bt_restore"
             android:text="Restore"
-            android:gravity="center"
+            style="@style/ButtonStyle.Light"
             android:padding="16dp"
             android:paddingStart="32dp"
             android:paddingEnd="32dp"
-            android:textSize="16sp"
-            android:background="@drawable/btn_sea_corner_background_light"
-            android:textColor="@color/white"
-            android:fontFamily="@font/worksans_bold"
-            android:textAllCaps="true"
-            android:layout_width="wrap_content"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:layout_alignParentBottom="true"
@@ -139,15 +132,16 @@
                     android:id="@+id/cb_restore_templates"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/worksans_bold"
-                    android:gravity="center"
-                    android:textSize="18sp"
-                    android:clickable="true"
+                    android:drawableTint="@color/color_custom_blue_dark"
                     android:button="@null"
+                    android:clickable="true"
                     android:drawablePadding="16dp"
                     android:drawableStart="@drawable/checkbox_selector_light"
-                    android:textColor="@color/bottom_nav_bar_text_color_light"
-                    android:text="Restore Templates"/>
+                    android:fontFamily="@font/worksans_light"
+                    android:gravity="center"
+                    android:text="Restore Templates"
+                    android:textColor="@color/color_custom_dark"
+                    android:textSize="18sp" />
 
                 <View
                     android:layout_width="match_parent"
@@ -161,13 +155,14 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:layout_marginTop="8dp"
-                    android:fontFamily="@font/worksans_bold"
+                    android:fontFamily="@font/worksans_light"
+                    android:drawableTint="@color/color_custom_blue_dark"
                     android:textSize="18sp"
                     android:clickable="true"
                     android:button="@null"
                     android:drawablePadding="16dp"
                     android:drawableStart="@drawable/checkbox_selector_light"
-                    android:textColor="@color/bottom_nav_bar_text_color_light"
+                    android:textColor="@color/color_custom_dark"
                     android:text="Restore Contracts"/>
 
                 <View
@@ -181,14 +176,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:fontFamily="@font/worksans_bold"
+                    android:fontFamily="@font/worksans_light"
+                    android:drawableTint="@color/color_custom_blue_dark"
                     android:gravity="center"
                     android:textSize="18sp"
                     android:clickable="true"
                     android:button="@null"
                     android:drawablePadding="16dp"
                     android:drawableStart="@drawable/checkbox_selector_light"
-                    android:textColor="@color/bottom_nav_bar_text_color_light"
+                    android:textColor="@color/color_custom_dark"
                     android:text="Restore Tokens"/>
 
                 <View
@@ -203,13 +199,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:gravity="center"
-                    android:fontFamily="@font/worksans_bold"
+                    android:fontFamily="@font/worksans_light"
                     android:textSize="18sp"
                     android:clickable="true"
                     android:button="@null"
                     android:drawablePadding="16dp"
                     android:drawableStart="@drawable/checkbox_selector_light"
-                    android:textColor="@color/bottom_nav_bar_text_color_light"
+                    android:drawableTint="@color/color_custom_blue_dark"
+                    android:textColor="@color/color_custom_dark"
                     android:text="Restore All"/>
 
                 <View

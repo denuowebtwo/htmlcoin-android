@@ -64,8 +64,8 @@
             <org.qtum.wallet.utils.FontTextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textColor="@color/footer_text_color"
-                android:fontFamily="@font/worksans_bold"
+                android:textColor="@color/color_custom_dark"
+                android:fontFamily="@font/worksans_semibold"
                 android:layout_weight="1"
                 android:gravity="left"
                 android:layout_gravity="left"
@@ -74,8 +74,8 @@
             <org.qtum.wallet.utils.FontTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/footer_text_color"
-                android:fontFamily="@font/worksans_bold"
+                android:textColor="@color/color_custom_dark"
+                android:fontFamily="@font/worksans_semibold"
                 android:layout_gravity="end"
                 android:text="Purchase Date"/>
 
