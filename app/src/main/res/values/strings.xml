@@ -67,7 +67,7 @@
     <string name="copy_brain_code">Copy Passphrase</string>
     <string name="copy_brain_code_n_to_use_it_in_another_app">Copy the passphase to restore your wallet on another device</string>
     <string name="choose_another_address">Choose Another Address</string>
-    <string name="log_out">Log Out</string>
+    <string name="log_out">RESET AND WIPE</string>
     <string name="qr_code">QR Code</string>
     <string name="_continue">Continue</string>
     <string name="you_can_skip_this_step_and_export_your_brain_code_at_any_time_you_want">You can skip this step and export your passphrase at any time</string>
