@@ -101,7 +101,7 @@
             android:layout_marginEnd="8dp"
             android:scaleType="center"
             android:tint="@color/colorPrimary"
-            app:srcCompat="@drawable/ic_setting_arrow"/>
+            app:srcCompat="@drawable/icon_setting_arrow"/>
 
         <org.qtum.wallet.utils.FontTextView
             android:id="@+id/date"

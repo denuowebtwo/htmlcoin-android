@@ -34,14 +34,14 @@
 
     <android.support.v7.widget.AppCompatImageView
         android:id="@+id/arrow"
-        app:srcCompat="@drawable/ic_setting_arrow"
+        app:srcCompat="@drawable/icon_setting_arrow"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
         android:scaleType="center"
         android:layout_marginEnd="16dp"
-        android:tint="@color/grey"
-        android:layout_width="16dp"
-        android:layout_height="16dp" />
+        android:tint="@color/color_custom_dark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <Switch
         android:id="@+id/pref_switch"

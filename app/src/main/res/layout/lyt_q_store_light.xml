@@ -26,7 +26,7 @@
             app:contentInsetEnd="0dp"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/title_color_light"
+            android:background="@drawable/background_main"
             app:popupTheme="@style/AppTheme.PopupOverlay">
 
             <RelativeLayout
