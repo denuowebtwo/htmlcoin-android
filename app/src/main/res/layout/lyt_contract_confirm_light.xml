@@ -31,11 +31,8 @@
                 android:id="@+id/tv_toolbar_send"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="@string/preview"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                android:fontFamily="@font/worksans_bold" />
+                style="@style/TextTitle.Light"
+                android:text="@string/preview" />
 
                 <ImageButton
                     android:id="@+id/ibt_back"
@@ -308,19 +305,16 @@
 
                 <org.qtum.wallet.utils.FontButton
                     android:id="@+id/bt_edit_close"
-                    android:layout_width="wrap_content"
+                    android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/seek_bar_container"
                     android:layout_centerHorizontal="true"
                     android:layout_margin="16dp"
-                    android:background="@drawable/btn_gray_corner_background_light"
+                    android:background="@drawable/btn_sea_corner_background_light"
                     android:gravity="center"
                     android:padding="16dp"
                     android:text="@string/edit"
-                    android:textAllCaps="true"
-                    android:textColor="@color/bt_grey_text_color"
-                    android:textSize="16sp"
-                    android:fontFamily="@font/worksans_bold"/>
+                    style="@style/ButtonStyle.Light"/>
 
             </RelativeLayout>
 

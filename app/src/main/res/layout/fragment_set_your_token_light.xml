@@ -7,11 +7,17 @@
     android:clickable="true"
     android:fitsSystemWindows="true">
 
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="84dp"
+        android:background="@drawable/background_main"/>
+
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay"
+        android:background="@android:color/transparent"
         app:elevation="0dp">
 
         <android.support.v7.widget.Toolbar
@@ -19,7 +25,6 @@
             android:layout_width="match_parent"
             app:contentInsetStart="0dp"
             android:layout_height="?attr/actionBarSize"
-            android:background="@drawable/background_main"
             app:popupTheme="@style/AppTheme.PopupOverlay">
 
             <RelativeLayout
@@ -43,11 +48,10 @@
                     android:id="@+id/tv_toolbar_send"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="center"
+                    style="@style/TextTitle.Light"
+                    android:textSize="16sp"
                     android:text="@string/smart_contract_parameters"
-                    android:textColor="@color/white"
-                    android:textSize="18sp"
-                    android:fontFamily="@font/worksans_bold" />
+                     />
 
                 <org.qtum.wallet.utils.FontButton
                     android:id="@+id/confirm"
@@ -59,8 +63,8 @@
                     android:enabled="false"
                     android:paddingStart="8dp"
                     android:paddingEnd="8dp"
-                    android:textColor="@color/primary_text_color_enabled_selector_light"
-                    android:fontFamily="@font/worksans_bold"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/worksans_semibold"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent" />
 
@@ -77,51 +81,52 @@
         <org.qtum.wallet.utils.FontTextView
             android:id="@+id/step"
             android:layout_marginTop="8dp"
-            android:textColor="@color/bottom_nav_bar_text_color_light_alpha_60"
+            android:textColor="@color/white"
             android:text="@string/step_2_2"
             android:textSize="12sp"
             android:gravity="center"
-            android:fontFamily="@font/worksans_regular"
-            android:padding="4dp"
+            android:fontFamily="@font/worksans_semibold"
+            android:paddingBottom="4dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <RelativeLayout
-            android:padding="8dp"
-            android:layout_alignParentRight="true"
-            android:background="@drawable/tocken_stick_background"
+            android:id="@+id/ll_token_field"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
+            android:layout_below="@+id/step"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/btn_sea_corner_background_light"
             android:clickable="false"
-            android:id="@+id/ll_token_field"
-            android:layout_below="@+id/step">
+            android:padding="8dp">
 
             <org.qtum.wallet.utils.FontEditText
-                android:inputType="textNoSuggestions"
+                android:id="@+id/tv_template_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/ic_token"
                 android:layout_alignBottom="@+id/ic_token"
-                android:text="@string/token"
-                android:focusableInTouchMode="true"
-                android:id="@+id/tv_template_name"
-                android:textSize="16sp"
-                android:textColor="@color/white"
-                android:gravity="center"
-                android:layout_marginStart="8dp"
+                android:layout_alignTop="@+id/ic_token"
                 android:layout_gravity="center"
-                android:fontFamily="@font/worksans_bold"/>
+                android:layout_marginStart="8dp"
+                android:focusableInTouchMode="true"
+                android:fontFamily="@font/worksans_regular"
+                android:gravity="center"
+                android:inputType="textNoSuggestions"
+                android:text="@string/token"
+                android:textColor="@color/color_custom_dark"
+                android:textAllCaps="true"
+                android:textSize="18sp" />
 
             <ImageView
-                android:layout_marginStart="8dp"
-                android:layout_toEndOf="@+id/tv_template_name"
                 android:id="@+id/ic_token"
                 android:layout_width="20dp"
-                android:tint="@color/white"
                 android:layout_height="20dp"
-                app:srcCompat="@drawable/ic_prof_token_subscribe"/>
+                android:layout_marginStart="8dp"
+                android:layout_toEndOf="@+id/tv_template_name"
+                android:tint="@color/white"
+                android:visibility="gone"
+                app:srcCompat="@drawable/ic_prof_token_subscribe" />
 
         </RelativeLayout>
 
