@@ -60,4 +60,5 @@
     <color name="color_custom_blue_dark">#2162af</color>
     <color name="color_custom_blue_20">#64369cd6</color>
     <color name="color_searchview_bg">#79a4ce</color>
+    <color name="color_searchview_bg_dark">#292729</color>
 </resources>

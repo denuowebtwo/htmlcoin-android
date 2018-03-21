@@ -45,7 +45,7 @@
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
                 android:paddingTop="10dp"
-                app:srcCompat="@drawable/ic_back_indicator" />
+                app:srcCompat="@drawable/icon_back_indicator" />
 
             <org.qtum.wallet.utils.FontTextView
                 android:id="@+id/tv_toolbar_profile"

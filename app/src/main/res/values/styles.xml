@@ -249,7 +249,7 @@
     <style name="TextTitle.Dark">
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">@dimen/textSize_Title</item>
-        <item name="android:fontFamily">@font/worksans_regular</item>
+        <item name="android:fontFamily">@font/worksans_semibold</item>
     </style>
 
     <style name="TextTitle.Light">
