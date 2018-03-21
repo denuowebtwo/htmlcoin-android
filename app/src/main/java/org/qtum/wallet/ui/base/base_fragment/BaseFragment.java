@@ -130,6 +130,8 @@ public abstract class BaseFragment extends Fragment implements BaseFragmentView 
     @Override
     public void setAlertDialog(String title, String message, String buttonText, PopUpType type, final AlertDialogCallBack callBack) {
         try {
+            if (!isAdded()) return;
+
             dismissProgressDialog();
             dismissAlertDialog();
             View view = LayoutInflater.from(getContext()).inflate(ThemeUtils.getCurrentTheme(getContext()).equals(ThemeUtils.THEME_DARK) ? org.qtum.wallet.R.layout.dialog_popup_fragment : org.qtum.wallet.R.layout.dialog_popup_fragment_light, null);
@@ -436,7 +438,7 @@ public abstract class BaseFragment extends Fragment implements BaseFragmentView 
 
     @Override
     public void dismiss() {
-        if (!getMainActivity().isFinishing()) {
+        if (getMainActivity() != null && !getMainActivity().isFinishing()) {
             try {
                 getFragmentManager().beginTransaction().remove(this).commit();
             } catch (Exception e) {

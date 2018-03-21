@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">HTMLCOIN</string>
     <string name="blockchain_we_trust">IN BLOCKCHAIN WE TRUST</string>
-    <string name="create_new">Nouvelle création</string>
+    <string name="create_new">Effacer/Nouveau</string>
     <string name="import_wallet">Importer un portefeuille</string>
     <string name="create_the_first_one_or_restore_n_the_previous_wallet_key">Créer la première ou restaurer \n la clé du portefeuille précédent</string>
     <string name="you_don_t_have_a_wallet_yet">Vous n\'avez pas encore de portefeuille</string>
@@ -50,7 +50,7 @@
 
     <string name="purchase">Achat</string>
 
-    <string name="confirm_purchase">Confirmer l'achat</string>
+    <string name="confirm_purchase">Confirmer l\'achat</string>
 
     <string name="tags">Tags :</string>
     <string name="qstore">Hstore</string>
@@ -88,7 +88,7 @@
     <string name="enter_pin_lower_case">Entrer le pin</string>
     <string name="enter_new_pin">Entrer le nouveau pin</string>
     <string name="repeat_pin">Répéter le pin</string>
-    <string name="enter_old_pin">Entrer l'ancien pin</string>
+    <string name="enter_old_pin">Entrer l\'ancien pin</string>
     <string name="yes">Oui</string>
     <string name="no">Non</string>
     <string name="are_you_sure">Êtes-vous sur ?</string>
@@ -174,6 +174,8 @@
     <string name="transfer">Transfert</string>
     <string name="enter_valid_amount_value">Entrer un montant valide</string>
     <string name="transaction_amount_cant_be_zero">Le montant de la transaction ne peut pas être nul. Veuillez modifier votre transaction et réessayer</string>
+    <string name="transaction_amount_can_be_dust">Le montant de la transaction est trop faible. Veuillez éditer votre transaction et réessayer.</string>
+    <string name="transaction_fee_cant_be_large">Les frais ne peuvent pas être supérieurs à 1\/3 du montant de la transaction. Veuillez éditer votre transaction et réessayer.</string>
     <string name="address_book">L\'adresse du livre</string>
     <string name="complete">Valider</string>
     <string name="address_manage">Gérer les adresses</string>
@@ -182,12 +184,13 @@
     <string name="contract_details">Détails des contrats</string>
     <string name="sent_time">Heure envoyée</string>
     <string name="you_have_insufficient_funds_for_this_transaction">Vous avez des fonds insuffisants pour cette transaction</string>
+    <string name="you_have_insufficient_funds_pending_transaction">Attention\nUne transaction est en cours. Vous ne pouvez pas faire une nouvelle transaction avant que la précédente soit confirmée. Veuillez réessayer après la confirmation de la précédente transaction.</string>
     <string name="invalid_qtum_address">Adresse HTML invalide</string>
     <string name="fail_to_get_contract_methods">Échec de récupération des méthodes du contrat</string>
     <string name="fail_to_get_contracts">Échec de récupération des contrats</string>
     <string name="trending_now">Les tendances actuelles</string>
     <string name="whats_new">Quoi de neuf ?</string>
-    <string name="error_qrcode_recognition_try_again">Erreur sur la reconnaissance du QR code. Veuillez réessayer</string>
+    <string name="error_qrcode_recognition_try_again">Erreur sur la reconnaissance du QR code. Veuillez réessayer.</string>
     <string name="invalid_qr_code">Code QR invalide</string>
     <string name="token_not_found">Jeton introuvable</string>
     <string name="copied">Copié</string>
@@ -213,5 +216,8 @@
     <string name="you_are_about_to_exit_your_account_all_account_data_will_be_erased_from_the_device_please_make_sure_you_have_saved_backups_of_your_passphrase_and_required_contracts">Vous êtes sur le point de quitter votre compte. Toutes les données du compte seront supprimées de l\'appareil. Veuillez vous assurer que vous avez des copies de sauvegarde de votre phrase secrète et des contrats voulus</string>
     <string name="amount_too_big">Montant trop élevé</string>
     <string name="swipe_left_to_unsubscribe_or_delete_contract">Balayer à gauche pour se désabonner ou supprimer un contrat</string>
+
+    <string name="warning_play_services_required_user_cancelled">HTMLCOIN requiert l\'application Services Google Play. Htmlcoin doit fermer. Veuillez résoudre le problème et relancer l\'application.</string>
+
 
 </resources>

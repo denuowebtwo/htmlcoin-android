@@ -40,6 +40,10 @@ public class WalletInteractorImpl implements WalletInteractor {
     @Override
     public void getHistoryList(final int STATE, int limit, int offest, final GetHistoryListCallBack callBack) {
 
+        if (addresses == null) {
+            callBack.onSuccess();
+            return;
+        }
         mSubscriptionList.add(QtumService.newInstance()
                 .getHistoryListForSeveralAddresses(addresses, limit, offest)
                 .subscribeOn(Schedulers.io())

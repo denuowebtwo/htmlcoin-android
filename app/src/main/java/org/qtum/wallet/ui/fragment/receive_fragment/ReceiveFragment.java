@@ -380,7 +380,8 @@ public abstract class ReceiveFragment extends BaseFragment implements ReceiveVie
 
     @Override
     public void showSpinner() {
-        qrProgressBar.setVisibility(View.VISIBLE);
+        if (qrProgressBar != null)
+            qrProgressBar.setVisibility(View.VISIBLE);
     }
 
     @Override

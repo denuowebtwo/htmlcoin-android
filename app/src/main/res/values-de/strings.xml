@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">HTMLCOIN</string>
     <string name="blockchain_we_trust">IN BLOCKCHAIN WE TRUST</string>
-    <string name="create_new">Neu erstellen</string>
+    <string name="create_new">Wischen/Neu erstellen</string>
     <string name="import_wallet">Wallet importieren</string>
     <string name="create_the_first_one_or_restore_n_the_previous_wallet_key">Key erstellen oder vorherigen Wallet Key wieder herstellen</string>
     <string name="you_don_t_have_a_wallet_yet">Du hast noch keinen Wallet Key</string>
@@ -174,6 +174,8 @@
     <string name="transfer">Übertragen</string>
     <string name="enter_valid_amount_value">Gültigen Betrag eingeben</string>
     <string name="transaction_amount_cant_be_zero">Transferbetrag kann nicht Null sein. Bitte ändern und erneut versuchen.</string>
+    <string name="transaction_amount_can_be_dust">Transaktionsbetrag ist zu gering. Bitte Transaktion bearbeiten und erneut versuchen</string>
+    <string name="transaction_fee_cant_be_large">Gebührenhöhe kann nicht größer als 1/3 des Transaktionsbetrags sein. Bitte Transaktion bearbeiten und erneut versuchen</string>
     <string name="address_book">Adressbuch</string>
     <string name="complete">Fertig</string>
     <string name="address_manage">Adressen Verwalten</string>
@@ -182,12 +184,13 @@
     <string name="contract_details">Vertragsdetails</string>
     <string name="sent_time">Übertragunszeit</string>
     <string name="you_have_insufficient_funds_for_this_transaction">Du verfügst über zu geringes Guthaben für diese Übertragung</string>
+    <string name="you_have_insufficient_funds_pending_transaction">Warnung/ Eine ausstehende Transaktion. Eine neue Transaktion ist erst möglich nachdem die vorhergehende abgeschlossen ist. Bitte erneut versuchen nachdem die Transaktion abgeschlossen ist.</string>
     <string name="invalid_qtum_address">Ungültige HTML Adresse</string>
     <string name="fail_to_get_contract_methods">Erhalt der Vertrags Methode fehlgeschlagen</string>
     <string name="fail_to_get_contracts">Erhalt des Vertrags fehlgeschlagen</string>
     <string name="trending_now">Aktuelle Trends</string>
     <string name="whats_new">Was ist Neu?</string>
-    <string name="error_qrcode_recognition_try_again">Falsche QR-Code Erkennung. Bitte wiederholen</string>
+    <string name="error_qrcode_recognition_try_again">Fehlerhafter QR-Code.Erneut versuchen</string>
     <string name="invalid_qr_code">Ungültiger QR Code</string>
     <string name="token_not_found">Token nicht gefunden</string>
     <string name="copied">Kopiert</string>
@@ -213,5 +216,7 @@
     <string name="you_are_about_to_exit_your_account_all_account_data_will_be_erased_from_the_device_please_make_sure_you_have_saved_backups_of_your_passphrase_and_required_contracts">Du bist im Begriff deinen Account zu verlassen. Alle Account Daten werden vom Gerät entfernt. Bitte stelle sicher, dass du über Backups deiner Passphrase verfügst.</string>
     <string name="amount_too_big">Betragsgröße zu hoch</string>
     <string name="swipe_left_to_unsubscribe_or_delete_contract">Verschiebe nach links zum abmelden oder Vertrag löschen</string>
+
+    <string name="warning_play_services_required_user_cancelled">HTMLCOIN benötigt Google Play Dienste. HTMLCOIN wude beendet. Bitte neu starten und das Problem lösen.</string>
 
 </resources>

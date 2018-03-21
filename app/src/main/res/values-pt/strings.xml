@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">HTMLCOIN</string>
     <string name="blockchain_we_trust">IN BLOCKCHAIN WE TRUST</string>
-    <string name="create_new">Criar nova</string>
+    <string name="create_new">Apagar/Criar Nova</string>
     <string name="import_wallet">Importar carteira</string>
     <string name="create_the_first_one_or_restore_n_the_previous_wallet_key">Criar a primeira carteira ou restaurar n\ a chave da carteira anterior.</string>
     <string name="you_don_t_have_a_wallet_yet">Você não tem uma carteira (ainda)</string>
@@ -160,7 +160,7 @@
     <string name="smart_contract_parameters">Parâmetros do contrato inteligente</string>
 
     <string name="switch_theme">Alternar tema do aplicativo</string>
-    <string name="confirmation">Confirmação...</string>
+    <string name="confirmation">Confirmação&#8230;</string>
     <string name="qtum_address">Endereço HTMLCOIN</string>
     <string name="not_confirmed_yet">Ainda Não confirmado</string>
     <string name="confirmed">Confirmado</string>
@@ -175,6 +175,8 @@
     <string name="transfer">Transferência</string>
     <string name="enter_valid_amount_value">Introduzir um valor válido</string>
     <string name="transaction_amount_cant_be_zero">Valor da Transação não pode ser zero. Por favor altere a sua transação e tente novamente.</string>
+    <string name="transaction_amount_can_be_dust">O valor da transação é muito pequeno. Edite sua transação e tente novamente.</string>
+    <string name="transaction_fee_cant_be_large">As taxas não podem ser superiores a 1/3 do valor da transação. Edite sua transação e tente novamente.</string>
     <string name="address_book">Livro de Endereços</string>
     <string name="complete">Completo</string>
     <string name="address_manage">Gerenciar endereços</string>
@@ -183,12 +185,13 @@
     <string name="contract_details">Detalhes de Contrato</string>
     <string name="sent_time">Hora do envio</string>
     <string name="you_have_insufficient_funds_for_this_transaction">Você tem fundos insuficientes para esta transação</string>
+    <string name="you_have_insufficient_funds_pending_transaction">Aviso\nUma transação está em andamento. Você não pode fazer uma nova transação até que o anterior seja confirmado. Tente novamente depois de confirmar a transação anterior.</string>
     <string name="invalid_qtum_address">Endereço Html invalido</string>
     <string name="fail_to_get_contract_methods">Falha ao processar métodos do contrato</string>
     <string name="fail_to_get_contracts">Falha ao processar contrato</string>
     <string name="trending_now">Trending Now</string>
     <string name="whats_new">Novidades</string>
-    <string name="error_qrcode_recognition_try_again">Erro ao reconhecer Código QR. Tente novamente.</string>
+    <string name="error_qrcode_recognition_try_again">Erro no reconhecimento do código QR. Tente novamente.</string>
     <string name="invalid_qr_code">Código QR invalido</string>
     <string name="token_not_found">Token não encontrado</string>
     <string name="copied">Copiado</string>
@@ -214,5 +217,7 @@
     <string name="you_are_about_to_exit_your_account_all_account_data_will_be_erased_from_the_device_please_make_sure_you_have_saved_backups_of_your_passphrase_and_required_contracts">Você esta prestes a encerrar a sua conta. Todos os dados da sua conta serão deletados desse dispositivo. Favor verifique que você salvou e possui backups da sua frase de acesso e contratos</string>
     <string name="amount_too_big">Valor muito alto</string>
     <string name="swipe_left_to_unsubscribe_or_delete_contract">Deslize para a esquerda para cancelar a assinatura ou deletar o contrato.</string>
+
+    <string name="warning_play_services_required_user_cancelled">HTMLCOIN requer o aplicativo Google Play Services. Htmlcoin deve fechar. Corrija o problema e reinicie o aplicativo.</string>
 
 </resources>

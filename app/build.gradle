@@ -141,20 +141,20 @@ dependencies {
         exclude group: 'stax', module: 'stax'
     }
 
-    compile 'com.android.support:appcompat-v7:27.0.2'
+    compile 'com.android.support:appcompat-v7:27.1.0'
     testCompile 'junit:junit:4.12'
     testCompile "org.mockito:mockito-all:$rootProject.ext.mockitoVersion"
     testCompile "org.hamcrest:hamcrest-all:$rootProject.ext.hamcrestVersion"
     testCompile 'org.assertj:assertj-core:2.8.0'
 
-    compile 'com.android.support:support-v4:27.0.2'
-    compile 'com.android.support:design:27.0.2'
+    compile 'com.android.support:support-v4:27.1.0'
+    compile 'com.android.support:design:27.1.0'
     compile 'com.github.designsters:android-fork-bitcoinj:1.0.11'
 //    compile (files('../submodules/android-fork-bitcoinj/core/target/bitcoinj-core-0.14.5.jar'))
 
     compile "com.google.android.gms:play-services-base:11.8.0"
 
-    compile 'com.android.support:multidex:1.0.2'
+    compile 'com.android.support:multidex:1.0.3'
     compile 'com.google.guava:guava:23.6-android'
     compile 'com.google.zxing:core:3.3.0'
     compile 'com.madgag.spongycastle:core:1.58.0.0'
@@ -186,7 +186,7 @@ dependencies {
     compile 'com.squareup.okhttp3:logging-interceptor:3.8.1'
     compile 'com.squareup.okhttp3:okhttp:3.8.1'
     compile 'me.pushy:sdk:1.0.31'
-
+    compile 'com.datatheorem.android.trustkit:trustkit:1.0.2'
     compile "com.daimajia.swipelayout:library:1.2.0@aar"
 
     compile 'com.crashlytics.sdk.android:crashlytics:2.9.1'

@@ -41,6 +41,7 @@ import org.qtum.wallet.BuildConfig;
 import org.qtum.wallet.QtumApplication;
 import org.qtum.wallet.R;
 import org.qtum.wallet.dataprovider.firebase.PushyRegistration;
+import org.qtum.wallet.dataprovider.firebase.QtumFirebaseMessagingService;
 import org.qtum.wallet.dataprovider.receivers.network_state_receiver.NetworkStateReceiver;
 import org.qtum.wallet.dataprovider.receivers.network_state_receiver.listeners.NetworkStateListener;
 import org.qtum.wallet.dataprovider.services.update_service.UpdateService;
@@ -143,9 +144,16 @@ public class MainActivity extends BaseActivity implements MainActivityView {
                 QtumSharedPreference.getInstance().setIsRefreshNeeded(getApplicationContext(), true);
                 break;
             case QtumIntent.OPEN_FROM_NOTIFICATION:
-                mRootFragment = WalletMainFragment.newInstance(getContext());
-                openRootFragment(mRootFragment);
-                setIconChecked(0);
+                if (!getPresenter().isCheckAuthenticationShowFlag()) {
+                    if (!getPresenter().getAuthenticationFlag()) {
+                        openPinFragment(PinAction.CHECK_AUTHENTICATION);
+                    } else {
+                        mRootFragment = WalletMainFragment.newInstance(getContext());
+                        setIconChecked(0);
+                        openRootFragment(mRootFragment);
+                    }
+                }
+
                 break;
 //            case QtumIntent.SEND_FROM_SDK:
 //                mAddressForSendAction = intent.getStringExtra(QtumIntent.SEND_ADDRESS);
@@ -335,6 +343,7 @@ public class MainActivity extends BaseActivity implements MainActivityView {
     }
 
     public boolean isBottomNavigationViewVisible() {
+        if (mBottomNavigationView == null) return false;
         return mBottomNavigationView.getVisibility() == View.VISIBLE;
     }
 

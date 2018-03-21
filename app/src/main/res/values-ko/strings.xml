@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">HTMLCOIN</string>
     <string name="blockchain_we_trust">IN BLOCKCHAIN WE TRUST</string>
-    <string name="create_new">새로 만들기</string>
+    <string name="create_new">지우기/새로 만들기</string>
     <string name="import_wallet">지갑 불러오기</string>
     <string name="create_the_first_one_or_restore_n_the_previous_wallet_key">새로운 지갑을 만들거나 혹은 이전의 지갑을 복원하십시오.</string>
     <string name="you_don_t_have_a_wallet_yet">아직 지갑이 없는 상태입니다.</string>
@@ -174,8 +174,8 @@
     <string name="transfer">전송</string>
     <string name="enter_valid_amount_value">유효한 금액을 입력하세요</string>
     <string name="transaction_amount_cant_be_zero">0은 거래금액이 될 수 없습니다. 수정 후 재시도해주세요.</string>
-    <string name="transaction_amount_can_be_dust">Transaction amount is too small. Please edit your transaction and try again</string>
-    <string name="transaction_fee_cant_be_large">Fee amount can\'t be larger than 1\/3 of transaction amount. Please edit your transaction and try again</string>
+    <string name="transaction_amount_can_be_dust">거래 금액이 너무 작습니다. 거래 금액을 수정하고 다시 시도해 주십시오.</string>
+    <string name="transaction_fee_cant_be_large">수수료가 거래 금액의 1/3보다 클 수 없습니다. 거래를 수정하고 다시 시도해 주십시오.</string>
     <string name="address_book">주소록</string>
     <string name="complete">완료</string>
     <string name="address_manage">주소 관리</string>
@@ -184,13 +184,13 @@
     <string name="contract_details">계약 세부사항</string>
     <string name="sent_time">전송 시간</string>
     <string name="you_have_insufficient_funds_for_this_transaction">이 거래를 위한 금액이 부족합니다.</string>
-    <!--<string name="you_have_insufficient_funds_pending_transaction">Warning\nThere is a pending transaction. You cannot make new transaction until the previous one is confirmed. Please retry after the previous transaction has been confirmed.</string>-->
+    <string name="you_have_insufficient_funds_pending_transaction">경고 : 미완료된 거래가 있습니다. 이 거래가 완료될 때까지 새 거래를 할 수 없습니다. 거래가 확인되면 다시 시도해 주십시오.</string>
     <string name="invalid_qtum_address">유효하지 않은 HTML 주소</string>
     <string name="fail_to_get_contract_methods">계약 방식 실패</string>
     <string name="fail_to_get_contracts">계약에 실패</string>
     <string name="trending_now">최신 트렌드</string>
     <string name="whats_new">무엇이 달라졌을까요?</string>
-    <!--<string name="error_qrcode_recognition_try_again">Error QR-code Recognition. Try Again</string>-->
+    <string name="error_qrcode_recognition_try_again">QR 코드 인식이 잘못되었습니다. 다시 시도해 주십시오.</string>
     <string name="invalid_qr_code">유효하지 않은 QR 코드</string>
     <string name="token_not_found">토큰이 없습니다</string>
     <string name="copied">Copied</string>
@@ -217,7 +217,7 @@
     <string name="amount_too_big">금액이 너무 큽니다.</string>
     <string name="swipe_left_to_unsubscribe_or_delete_contract">왼쪽으로 밀어서 구독 해지 또는 계약 삭제</string>
 
-    <!--<string name="warning_play_services_required_user_cancelled">htmlcoin requires Play Services. htmlcoin has quit. Please relaunch and resolve the issue.</string>-->
+    <string name="warning_play_services_required_user_cancelled">HTMLCOIN은 Play Services가 필요합니다. HTMLCOIN이 종료됩니다. 재시작한 후 이 문제를 해결하십시오.</string>
 
     <!--<string name="english">English</string>-->
     <!--<string name="french">Français</string>-->

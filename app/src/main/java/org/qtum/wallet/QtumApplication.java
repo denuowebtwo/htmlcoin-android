@@ -33,6 +33,7 @@ public class QtumApplication extends MultiDexApplication{
         QStoreStorage.getInstance(getApplicationContext());
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
 
+
         try {
             int currentVersion = getCodeVersion();
             QtumSettingSharedPreference qtumSettingSharedPreference = new QtumSettingSharedPreference();

@@ -8,7 +8,6 @@ import android.security.keystore.KeyGenParameterSpec;
 import android.security.keystore.KeyProperties;
 import android.support.annotation.NonNull;
 import android.util.Base64;
-import android.util.Log;
 
 import org.qtum.wallet.datastorage.QtumSharedPreference;
 import org.qtum.wallet.utils.LogUtils;
@@ -42,7 +41,7 @@ public class KeyStoreHelper {
      * Creates a public and private key and stores it using the Android Key
      * Store, so that only this application will be able to access the keys.
      */
-    public static void createKeys(Context context, String alias) throws NoSuchProviderException,
+    public static void createKeys(Context context, String alias) throws NullPointerException, NoSuchProviderException,
             NoSuchAlgorithmException, InvalidAlgorithmParameterException {
         if (!isSigningKey(alias)) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -97,7 +96,7 @@ public class KeyStoreHelper {
             KeyPair keyPair = keyPairGenerator.generateKeyPair();
             LogUtils.debug(TAG, "Public Key is: " + keyPair.getPublic().toString());
 
-        } catch (NoSuchProviderException | NoSuchAlgorithmException | InvalidAlgorithmParameterException e) {
+        } catch (NullPointerException | NoSuchProviderException | NoSuchAlgorithmException | InvalidAlgorithmParameterException e) {
             throw new RuntimeException(e);
         }
     }
@@ -190,7 +189,10 @@ public class KeyStoreHelper {
 
     public static String decrypt(String alias, String ciphertext) {
         try {
-            PrivateKey privateKey = getPrivateKeyEntry(alias).getPrivateKey();
+            KeyStore.PrivateKeyEntry privateKeyEntry =  getPrivateKeyEntry(alias);
+            if (privateKeyEntry == null) return "";
+
+            PrivateKey privateKey = privateKeyEntry.getPrivateKey();
             Cipher cipher = getCipher();
             cipher.init(Cipher.DECRYPT_MODE, privateKey);
             return new String(cipher.doFinal(Base64.decode(ciphertext, Base64.NO_WRAP)));
