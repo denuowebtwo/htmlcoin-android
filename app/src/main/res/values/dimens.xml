@@ -12,4 +12,5 @@
     <dimen name="pin_title_marginTop">30sp</dimen>
     <dimen name="divider_height">0.5dp</dimen>
     <dimen name="divider_margin_start">0dp</dimen>
+    <dimen name="max_news_item_height">144dp</dimen>
 </resources>
