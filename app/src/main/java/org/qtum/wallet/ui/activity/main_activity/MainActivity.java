@@ -335,6 +335,7 @@ public class MainActivity extends BaseActivity implements MainActivityView {
     }
 
     public boolean isBottomNavigationViewVisible() {
+        if (mBottomNavigationView == null) return false;
         return mBottomNavigationView.getVisibility() == View.VISIBLE;
     }
 
