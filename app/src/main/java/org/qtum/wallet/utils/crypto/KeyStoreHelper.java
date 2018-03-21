@@ -8,7 +8,6 @@ import android.security.keystore.KeyGenParameterSpec;
 import android.security.keystore.KeyProperties;
 import android.support.annotation.NonNull;
 import android.util.Base64;
-import android.util.Log;
 
 import org.qtum.wallet.datastorage.QtumSharedPreference;
 import org.qtum.wallet.utils.LogUtils;
@@ -190,7 +189,10 @@ public class KeyStoreHelper {
 
     public static String decrypt(String alias, String ciphertext) {
         try {
-            PrivateKey privateKey = getPrivateKeyEntry(alias).getPrivateKey();
+            KeyStore.PrivateKeyEntry privateKeyEntry =  getPrivateKeyEntry(alias);
+            if (privateKeyEntry == null) return "";
+
+            PrivateKey privateKey = privateKeyEntry.getPrivateKey();
             Cipher cipher = getCipher();
             cipher.init(Cipher.DECRYPT_MODE, privateKey);
             return new String(cipher.doFinal(Base64.decode(ciphertext, Base64.NO_WRAP)));
