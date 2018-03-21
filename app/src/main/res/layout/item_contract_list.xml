@@ -67,7 +67,7 @@
                     android:maxLines="1"
                     android:paddingRight="60dp"
                     android:text="@string/about"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="@color/white"
                     android:textSize="18sp"
                     android:fontFamily="@font/worksans_regular"/>
             </FrameLayout>
@@ -100,7 +100,7 @@
             android:layout_centerVertical="true"
             android:layout_marginEnd="8dp"
             android:scaleType="center"
-            android:tint="@color/colorPrimary"
+            android:tint="@color/white"
             app:srcCompat="@drawable/icon_setting_arrow"/>
 
         <org.qtum.wallet.utils.FontTextView
@@ -123,7 +123,7 @@
             android:layout_height="1dp"
             android:layout_alignParentBottom="true"
             android:layout_marginStart="16dp"
-            android:background="@color/colorPrimary"/>
+            android:background="@color/section_divider_color"/>
 
     </RelativeLayout>
 

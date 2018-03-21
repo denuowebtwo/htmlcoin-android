@@ -38,11 +38,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="48dp"
-                android:gravity="center"
-                android:text="@string/functions"
-                android:textColor="@color/background"
-                android:textSize="@dimen/toolbar_text_size"
-                android:fontFamily="@font/worksans_bold" />
+                style="@style/TextTitle.Dark"
+                android:text="@string/functions" />
 
         </android.support.v7.widget.Toolbar>
 
@@ -66,7 +63,7 @@
             android:layout_height="wrap_content">
 
             <org.qtum.wallet.utils.FontTextView
-                android:textColor="@color/background"
+                android:textColor="@color/white"
                 android:textSize="12sp"
                 android:padding="2dp"
                 android:alpha=".7"
@@ -77,7 +74,7 @@
                 android:layout_height="wrap_content" />
 
             <org.qtum.wallet.utils.FontTextView
-                android:textColor="@color/background"
+                android:textColor="@color/white"
                 android:textSize="12sp"
                 android:padding="2dp"
                 android:maxLines="1"

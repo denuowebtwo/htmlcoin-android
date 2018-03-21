@@ -116,7 +116,7 @@
 
             <org.qtum.wallet.utils.FontButton
                 android:id="@+id/bt_choose_from_library"
-                android:text="Choose from library"
+                android:text="@string/choose_from_library"
                 android:gravity="center"
                 android:padding="8dp"
                 android:textSize="12sp"

@@ -24,7 +24,6 @@
 
             <ImageButton
                 android:id="@+id/ibt_back"
-                android:tint="@color/background"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/background_ibtn_back"
@@ -39,11 +38,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginEnd="48dp"
-                android:gravity="center"
-                android:text="Watch Contract"
-                android:textColor="@color/background"
-                android:textSize="@dimen/toolbar_text_size"
-                android:fontFamily="@font/worksans_bold" />
+                style="@style/TextTitle.Dark"
+                android:text="Watch Contract" />
         </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>
@@ -61,7 +57,7 @@
             android:layout_marginRight="16dp"
             android:layout_marginTop="16dp"
             android:paddingStart="-4dp"
-            android:textColorHint="@color/colorPrimary"
+            android:textColorHint="@color/white"
             android:theme="@style/InputText">
 
             <android.support.design.widget.TextInputEditText
@@ -73,7 +69,7 @@
                 android:imeOptions="actionNext"
                 android:inputType="text"
                 android:maxLines="1"
-                android:textColor="@color/colorPrimary" />
+                android:textColor="@color/white" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -84,7 +80,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:paddingStart="-4dp"
-            android:textColorHint="@color/colorPrimary"
+            android:textColorHint="@color/white"
             android:theme="@style/InputText">
 
             <android.support.design.widget.TextInputEditText
@@ -96,7 +92,7 @@
                 android:imeOptions="actionNext"
                 android:inputType="text"
                 android:maxLines="1"
-                android:textColor="@color/colorPrimary" />
+                android:textColor="@color/white" />
         </android.support.design.widget.TextInputLayout>
 
         <LinearLayout
@@ -115,20 +111,20 @@
                 android:layout_weight="1"
                 android:gravity="left"
                 android:text="ABI Interface"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/white"
                 android:textSize="16sp"
-                android:fontFamily="@font/worksans_regular"/>
+                android:fontFamily="@font/worksans_bold"/>
 
             <org.qtum.wallet.utils.FontButton
                 android:id="@+id/bt_choose_from_library"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/colorPrimary"
+                android:background="@drawable/btn_sea_corner_background_light_blue"
                 android:gravity="center"
-                android:padding="8dp"
-                android:text="Choose from library >"
+                android:padding="2dp"
+                android:text="@string/choose_from_library"
                 android:textAllCaps="true"
-                android:textColor="@color/background"
+                android:textColor="@color/white"
                 android:textSize="12sp"
                 android:fontFamily="@font/worksans_regular" />
         </LinearLayout>
@@ -147,9 +143,9 @@
             android:imeOptions="actionDone"
             android:inputType="text"
             android:padding="6dp"
-            android:textColor="@color/colorPrimary"
-            android:textColorHint="@color/colorPrimary"
-            android:fontFamily="@font/worksans_medium" />
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:fontFamily="@font/worksans_regular" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_templates"
@@ -171,36 +167,26 @@
             android:layout_below="@+id/et_abi_interface"
             android:gravity="bottom"
             android:orientation="horizontal"
+            android:padding="@dimen/default_margin"
+            android:layout_margin="@dimen/default_margin"
             android:weightSum="2">
 
             <org.qtum.wallet.utils.FontButton
                 android:id="@+id/bt_cancel"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="?attr/selectableItemBackground"
-                android:gravity="center"
-                android:padding="16dp"
-                android:text="@string/cancel"
-                android:textAllCaps="true"
-                android:textColor="@color/colorPrimary"
-                android:textSize="16sp"
-                android:fontFamily="@font/worksans_regular" />
+                style="@style/ButtonStyle.LightBlue"
+                android:text="@string/cancel" />
 
             <org.qtum.wallet.utils.FontButton
                 android:id="@+id/bt_ok"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                style="@style/ButtonStyle.Dark"
                 android:layout_weight="1"
-                android:background="?attr/selectableItemBackground"
                 android:enabled="false"
-                android:gravity="center"
-                android:padding="16dp"
-                android:text="@string/ok"
-                android:textAllCaps="true"
-                android:textColor="@color/primary_text_color_enabled_selector"
-                android:textSize="16sp"
-                android:fontFamily="@font/worksans_regular" />
+                android:text="@string/ok" />
 
         </LinearLayout>
 

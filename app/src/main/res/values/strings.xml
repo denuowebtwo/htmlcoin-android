@@ -229,5 +229,6 @@
     <string name="arabic">العربية</string>
     <string name="korean">한글</string>
     <string name="spanish">Español</string>
+    <string name="choose_from_library">Choose from library</string>
 
 </resources>
