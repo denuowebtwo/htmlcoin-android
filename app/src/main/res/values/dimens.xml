@@ -16,4 +16,5 @@
     <dimen name="popup_button_cancel_width">200dp</dimen>
     <dimen name="default_margin">16dp</dimen>
     <dimen name="max_news_item_height">144dp</dimen>
+    <dimen name="divider_height_2">6dp</dimen>
 </resources>

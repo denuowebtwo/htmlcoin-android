@@ -38,11 +38,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginEnd="48dp"
-                android:gravity="center"
-                android:text="@string/templates"
-                android:textColor="@color/background"
-                android:textSize="@dimen/toolbar_text_size"
-                android:fontFamily="@font/worksans_bold" />
+                style="@style/TextTitle.Dark"
+                android:text="@string/templates" />
         </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>
@@ -55,7 +52,7 @@
     <org.qtum.wallet.utils.FontTextView
         android:id="@+id/step"
         android:background="@color/colorPrimary"
-        android:textColor="@color/background"
+        android:textColor="@color/white"
         android:text="@string/step_1_2"
         android:textSize="12sp"
         android:gravity="center"
@@ -66,29 +63,32 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="44dp"
             android:orientation="horizontal"
             android:layout_below="@+id/step"
-            android:layout_margin="16dp"
+            android:background="@color/color_searchview_bg_dark"
             android:id="@+id/ll_footer">
 
             <org.qtum.wallet.utils.FontTextView
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorPrimary"
-                android:fontFamily="@font/worksans_bold"
-                android:gravity="left|center_vertical"
-                android:layout_weight="1"
+                android:layout_height="match_parent"
                 android:layout_gravity="left"
-                android:text="Type"/>
+                android:layout_weight="1"
+                android:fontFamily="@font/worksans_semibold"
+                android:gravity="left|center_vertical"
+                android:paddingLeft="16dp"
+                android:text="Type"
+                android:textColor="@color/white" />
 
             <org.qtum.wallet.utils.FontTextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorPrimary"
-                android:fontFamily="@font/worksans_bold"
+                android:layout_height="match_parent"
                 android:layout_gravity="end"
-                android:text="Publish Date"/>
+                android:fontFamily="@font/worksans_semibold"
+                android:gravity="center_vertical"
+                android:paddingRight="16dp"
+                android:text="Publish Date"
+                android:textColor="@color/white" />
 
         </LinearLayout>
 
