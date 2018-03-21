@@ -7,19 +7,24 @@
     android:background="@color/white"
     android:fitsSystemWindows="true">
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="@drawable/background_main" />
+
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:elevation="0dp"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:theme="@style/AppTheme.AppBarOverlay"
+        android:background="@android:color/transparent">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             app:contentInsetStart="0dp"
             android:layout_height="?attr/actionBarSize"
-            android:background="@drawable/background_main"
             app:popupTheme="@style/AppTheme.PopupOverlay">
 
             <ImageButton
@@ -39,11 +44,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginEnd="48dp"
-                android:gravity="center"
-                android:text="@string/chose_to_subscribe"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                android:fontFamily="@font/worksans_bold" />
+                style="@style/TextTitle.Light"
+                android:text="@string/chose_to_subscribe" />
         </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>
@@ -59,22 +61,22 @@
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/background_main">
+            android:layout_height="wrap_content">
 
             <org.qtum.wallet.utils.SearchBar
                 android:id="@+id/search_bar"
                 app:lytSearchView="@layout/lyt_search_view_light"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"/>
+                android:layout_height="64dp"/>
 
         </FrameLayout>
 
         <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="64dp"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:background="@color/white"
             android:id="@+id/recycler_view">
 
         </android.support.v7.widget.RecyclerView>

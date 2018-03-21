@@ -2,10 +2,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:padding="8dp"
+    android:paddingLeft="16dp"
+    android:paddingBottom="8dp"
+    android:paddingRight="16dp"
     android:layout_width="match_parent"
-    android:background="@drawable/background_main"
-    android:layout_height="50dp">
+    android:layout_height="56dp">
 
     <EditText
         android:id="@+id/input"
@@ -20,7 +21,7 @@
         android:maxLines="1"
         android:lines="1"
         android:textColor="@color/white"
-        android:background="@drawable/btn_gray_corner_background_light_alpha_30"
+        android:background="@drawable/background_searchview"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
