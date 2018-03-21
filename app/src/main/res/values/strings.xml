@@ -217,7 +217,7 @@
     <string name="amount_too_big">Amount Value Too Big</string>
     <string name="swipe_left_to_unsubscribe_or_delete_contract">Swipe Left to Unsubscribe or Delete Contract</string>
 
-    <string name="warning_play_services_required_user_cancelled">htmlcoin requires Play Services. htmlcoin has quit. Please relaunch and resolve the issue.</string>
+    <string name="warning_play_services_required_user_cancelled">HTMLCOIN requires Play Services. htmlcoin has quit. Please relaunch and resolve the issue.</string>
 
     <string name="english">English</string>
     <string name="french">Français</string>
