@@ -76,6 +76,8 @@ public class AddressListPresenterImpl extends BaseFragmentPresenterImpl implemen
     }
 
     private void initAddressesWithBalanceList(List<String> addresses){
+        if (addresses == null) return;
+        
         for(String address : addresses){
             mAddressWithBalanceList.add(new AddressWithBalance(address));
         }
