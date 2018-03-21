@@ -28,7 +28,7 @@ class PinInteractorImpl implements PinInteractor {
         mContext = context;
         try {
             KeyStoreHelper.createKeys(mContext,QTUM_PIN_ALIAS);
-        } catch (NoSuchProviderException | NoSuchAlgorithmException | InvalidAlgorithmParameterException e) {
+        } catch (NullPointerException | NoSuchProviderException | NoSuchAlgorithmException | InvalidAlgorithmParameterException e) {
             e.printStackTrace();
         }
     }

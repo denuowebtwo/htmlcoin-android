@@ -42,7 +42,7 @@ public class KeyStoreHelper {
      * Creates a public and private key and stores it using the Android Key
      * Store, so that only this application will be able to access the keys.
      */
-    public static void createKeys(Context context, String alias) throws NoSuchProviderException,
+    public static void createKeys(Context context, String alias) throws NullPointerException, NoSuchProviderException,
             NoSuchAlgorithmException, InvalidAlgorithmParameterException {
         if (!isSigningKey(alias)) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -97,7 +97,7 @@ public class KeyStoreHelper {
             KeyPair keyPair = keyPairGenerator.generateKeyPair();
             LogUtils.debug(TAG, "Public Key is: " + keyPair.getPublic().toString());
 
-        } catch (NoSuchProviderException | NoSuchAlgorithmException | InvalidAlgorithmParameterException e) {
+        } catch (NullPointerException | NoSuchProviderException | NoSuchAlgorithmException | InvalidAlgorithmParameterException e) {
             throw new RuntimeException(e);
         }
     }
