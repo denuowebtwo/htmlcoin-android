@@ -61,5 +61,5 @@
     <color name="color_custom_blue_20">#64369cd6</color>
     <color name="color_searchview_bg">#79a4ce</color>
     <color name="color_searchview_bg_dark">#292729</color>
-    <color name="section_divider_color_dark">#ffffff</color>
+    <color name="section_divider_color_dark">#f5f5f5</color>
 </resources>
