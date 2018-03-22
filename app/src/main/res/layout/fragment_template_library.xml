@@ -38,11 +38,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginEnd="48dp"
-                android:gravity="center"
-                android:text="@string/templates"
-                android:textColor="@color/background"
-                android:textSize="@dimen/toolbar_text_size"
-                android:fontFamily="@font/worksans_bold"/>
+                style="@style/TextTitle.Dark"
+                android:text="@string/templates"/>
         </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>

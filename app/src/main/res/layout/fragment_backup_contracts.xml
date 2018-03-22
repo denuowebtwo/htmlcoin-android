@@ -31,7 +31,6 @@
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
                 android:paddingTop="10dp"
-                android:tint="@color/background"
                 app:srcCompat="@drawable/icon_back_indicator"/>
 
             <org.qtum.wallet.utils.FontTextView
@@ -39,11 +38,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginEnd="48dp"
-                android:gravity="center"
-                android:text="@string/backup_contracts"
-                android:textColor="@color/background"
-                android:textSize="@dimen/toolbar_text_size"
-                android:fontFamily="@font/worksans_bold"/>
+                style="@style/TextTitle.Dark"
+                android:text="@string/backup_contracts"/>
         </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>
@@ -67,6 +63,7 @@
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_gravity="center"
+                android:tint="@color/white"
                 app:srcCompat="@drawable/ic_attach"/>
 
             <org.qtum.wallet.utils.FontTextView
@@ -76,7 +73,7 @@
                 android:maxLines="1"
                 android:paddingTop="14dp"
                 android:text="@string/tap_to_save_the_file"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/white"
                 android:textSize="18sp"
                 android:fontFamily="@font/worksans_regular"/>
 
@@ -87,7 +84,7 @@
                 android:layout_gravity="center"
                 android:maxLines="1"
                 android:paddingTop="14dp"
-                android:textColor="@color/file_size_color"
+                android:textColor="@color/white"
                 android:textSize="18sp"
                 android:fontFamily="@font/worksans_regular"/>
 

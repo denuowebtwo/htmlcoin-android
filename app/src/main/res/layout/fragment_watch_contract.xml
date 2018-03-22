@@ -168,7 +168,6 @@
             android:gravity="bottom"
             android:orientation="horizontal"
             android:padding="@dimen/default_margin"
-            android:layout_margin="@dimen/default_margin"
             android:weightSum="2">
 
             <org.qtum.wallet.utils.FontButton
@@ -177,6 +176,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 style="@style/ButtonStyle.LightBlue"
+                android:layout_marginRight="@dimen/default_margin"
                 android:text="@string/cancel" />
 
             <org.qtum.wallet.utils.FontButton
@@ -184,6 +184,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/ButtonStyle.Dark"
+                android:layout_marginLeft="@dimen/default_margin"
                 android:layout_weight="1"
                 android:enabled="false"
                 android:text="@string/ok" />
