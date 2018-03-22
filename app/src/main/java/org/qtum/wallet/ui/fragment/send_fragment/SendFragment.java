@@ -721,7 +721,10 @@ public abstract class SendFragment extends BaseFragment implements SendView {
 
 
     private UpdateService getUpdateService() {
-        return getMainActivity().getUpdateService();
+        if (getMainActivity() != null)
+            return getMainActivity().getUpdateService();
+        else
+            return null;
     }
 
     @Override
