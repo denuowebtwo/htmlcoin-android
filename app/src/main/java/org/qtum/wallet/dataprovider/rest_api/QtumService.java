@@ -166,12 +166,16 @@ public class QtumService {
     }
 
     public Observable<List<UnspentOutput>> getUnspentOutputsForSeveralAddresses(final List<String> addresses) {
-        String addressString = Joiner.on(",").join(addresses);
+        String addressString = "";
+        if (addresses != null)
+            addressString = Joiner.on(",").join(addresses);
         return mServiceApi.getUnspentOutputsForSeveralAddresses(addressString);
     }
 
     public Observable<HistoryResponse> getHistoryListForSeveralAddresses(final List<String> addresses, final int limit, final int offset) {
-        String addressString = Joiner.on(",").join(addresses);
+        String addressString = "";
+        if (addresses != null)
+            addressString = Joiner.on(",").join(addresses);
         return mServiceApi.getHistoryListForSeveralAddresses(addressString, offset);
     }
 

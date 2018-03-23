@@ -159,8 +159,10 @@ public abstract class PinFragment extends BaseFragment implements PinView {
 
     @Override
     public void clearError() {
-        tooltip.setText("");
-        tooltip.setVisibility(View.INVISIBLE);
+        if (tooltip != null) {
+            tooltip.setText("");
+            tooltip.setVisibility(View.INVISIBLE);
+        }
     }
 
     @Override
