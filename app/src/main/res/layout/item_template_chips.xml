@@ -9,10 +9,10 @@
         android:id="@+id/bt_template"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/background_chipview_dark"
         android:gravity="center"
         android:padding="8dp"
-        android:textColor="@color/background"
+        android:textColor="@color/color_custom_dark"
         android:textSize="12sp"
         android:fontFamily="@font/worksans_regular">
 
