@@ -42,11 +42,9 @@
                 android:id="@+id/tv_toolbar_send"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="@string/smart_contract_parameters"
-                android:textColor="@color/background"
-                android:textSize="20dp"
-                    android:fontFamily="@font/worksans_bold" />
+                style="@style/TextTitle.Dark"
+                    android:textSize="17sp"
+                android:text="@string/smart_contract_parameters" />
 
             </RelativeLayout>
         </android.support.v7.widget.Toolbar>
@@ -61,25 +59,26 @@
         <org.qtum.wallet.utils.FontTextView
             android:id="@+id/step"
             android:background="@color/colorPrimary"
-            android:textColor="@color/background"
+            android:textColor="@color/white"
             android:text="@string/step_2_2"
             android:textSize="12sp"
             android:gravity="center"
-            android:fontFamily="@font/worksans_bold"
+            android:fontFamily="@font/worksans_semibold"
             android:padding="4dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="230dp"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginTop="32dp"
             android:layout_marginBottom="32dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
+            android:gravity="center"
+            android:layout_centerInParent="true"
             android:clickable="false"
             android:id="@+id/ll_token_field"
+            android:background="@drawable/btn_sea_corner_background_light"
             android:layout_below="@+id/step">
 
             <ImageView
@@ -87,19 +86,21 @@
                 android:id="@+id/test_click"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
+                android:tint="@color/white"
+                android:visibility="gone"
                 app:srcCompat="@drawable/ic_token2"/>
 
             <org.qtum.wallet.utils.FontEditText
                 android:inputType="textNoSuggestions"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="44dp"
                 android:focusableInTouchMode="true"
                 android:id="@+id/tv_template_name"
                 android:textSize="16sp"
-                android:gravity="left"
-                android:textColor="@color/colorPrimary"
-                android:layout_marginStart="8dp"
+                android:gravity="center"
+                android:textColor="@color/color_custom_dark"
                 android:layout_gravity="center"
+                android:textAllCaps="true"
                 android:fontFamily="@font/worksans_regular"/>
         </LinearLayout>
 
@@ -117,18 +118,14 @@
             android:layout_width="match_parent"
             android:orientation="horizontal"
             android:weightSum="2"
+            android:padding="@dimen/default_margin"
             android:layout_height="wrap_content">
 
             <org.qtum.wallet.utils.FontButton
                 android:id="@+id/cancel"
                 android:text="@string/cancel"
-                android:gravity="center"
-                android:background="?attr/selectableItemBackground"
-                android:padding="16dp"
-                android:textSize="16sp"
-                android:textColor="@color/colorPrimary"
-                android:fontFamily="@font/worksans_regular"
-                android:textAllCaps="true"
+                style="@style/ButtonStyle.LightBlue"
+                android:layout_marginRight="@dimen/default_margin"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content" />
@@ -136,14 +133,9 @@
             <org.qtum.wallet.utils.FontButton
                 android:id="@+id/confirm"
                 android:text="@string/next"
-                android:gravity="center"
-                android:padding="16dp"
-                android:textSize="16sp"
-                android:background="?attr/selectableItemBackground"
+                style="@style/ButtonStyle.Dark"
+                android:layout_marginLeft="@dimen/default_margin"
                 android:enabled="false"
-                android:textColor="@color/primary_text_color_enabled_selector"
-                android:fontFamily="@font/worksans_regular"
-                android:textAllCaps="true"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content" />

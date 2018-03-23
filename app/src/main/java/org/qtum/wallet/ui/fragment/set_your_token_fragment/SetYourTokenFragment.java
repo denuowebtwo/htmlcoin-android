@@ -101,7 +101,7 @@ public abstract class SetYourTokenFragment extends BaseFragment implements SetYo
             }
         }
 
-        mTextViewTemplateName.setText(templateName);
+        mTextViewTemplateName.setText(templateName.toUpperCase());
     }
 
     @Override
