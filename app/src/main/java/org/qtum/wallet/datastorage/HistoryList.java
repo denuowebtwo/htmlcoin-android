@@ -14,10 +14,12 @@ public class HistoryList {
     private List<History> mHistoryList;
     private int mTotalItem = 0;
     private RealmStorage realmStorage;
+    private Context mContext;
 
     private HistoryList(Context context) {
         mHistoryList = new ArrayList<>();
         realmStorage = RealmStorage.getInstance(context);
+        mContext = context;
     }
 
     public static HistoryList getInstance(Context context) {
@@ -41,8 +43,14 @@ public class HistoryList {
     public void setHistoryList(List<History> historyList) {
         mHistoryList = historyList;
 
+        ContractStorage contractStorage = ContractStorage.getInstance(mContext);
         for (History history: historyList) {
             realmStorage.upsertHistory(history);
+
+            // update transactions
+            if (history.isContractTransaction()) {
+                contractStorage.updateContractStatus(history);
+            }
         }
     }
 

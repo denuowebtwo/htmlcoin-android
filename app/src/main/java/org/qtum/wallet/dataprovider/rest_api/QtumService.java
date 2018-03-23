@@ -21,6 +21,7 @@ import org.qtum.wallet.model.gson.FeePerKb;
 import org.qtum.wallet.model.gson.QstoreContractType;
 import org.qtum.wallet.model.gson.SendRawTransactionRequest;
 import org.qtum.wallet.model.gson.SendRawTransactionResponse;
+import org.qtum.wallet.model.gson.SmartContractInfo;
 import org.qtum.wallet.model.gson.UnspentOutput;
 import org.qtum.wallet.model.gson.call_smart_contract_response.CallSmartContractResponse;
 import org.qtum.wallet.model.gson.history.History;
@@ -257,6 +258,10 @@ public class QtumService {
 
     public Observable<List<QstoreContractType>> getContractTypes() {
         return mServiceApi.getContractTypes();
+    }
+
+    public Observable<SmartContractInfo> getContractInfo(String address){
+        return mServiceApi.getContractInfo(address);
     }
 
     public Observable<AddressDeviceTokenResponse> updateDeviceToken(AddressDeviceTokenRequest addressDeviceToken) {

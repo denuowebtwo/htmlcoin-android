@@ -141,4 +141,13 @@ public class History {
     public void setContractHasBeenCreated(Boolean contractHasBeenCreated) {
         this.contractHasBeenCreated = contractHasBeenCreated;
     }
+
+    public Boolean isContractTransaction() {
+        for (Vout v: vout) {
+            if(v.getAddress() == null && v.getScriptPubKey().getType() == null)
+                return true;
+        }
+
+        return false;
+    }
 }

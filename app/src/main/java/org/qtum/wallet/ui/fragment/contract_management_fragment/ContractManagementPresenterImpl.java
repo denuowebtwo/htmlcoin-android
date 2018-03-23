@@ -3,10 +3,15 @@ package org.qtum.wallet.ui.fragment.contract_management_fragment;
 import org.qtum.wallet.R;
 import org.qtum.wallet.model.contract.Contract;
 import org.qtum.wallet.model.contract.ContractMethod;
+import org.qtum.wallet.model.gson.SmartContractInfo;
 import org.qtum.wallet.ui.base.base_fragment.BaseFragment;
 import org.qtum.wallet.ui.base.base_fragment.BaseFragmentPresenterImpl;
 
 import java.util.List;
+
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 
 public class ContractManagementPresenterImpl extends BaseFragmentPresenterImpl implements ContractManagementPresenter{
@@ -40,6 +45,26 @@ public class ContractManagementPresenterImpl extends BaseFragmentPresenterImpl i
             } else {
                 getView().setAlertDialog(R.string.error,R.string.fail_to_get_contract_methods, BaseFragment.PopUpType.error);
             }
+        }
+
+        if(contractAddress!=null && !contractAddress.isEmpty()) {
+            getInteractor().getContractInfo(contractAddress)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new Subscriber<SmartContractInfo>() {
+                        @Override
+                        public void onCompleted() {
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+                        }
+
+                        @Override
+                        public void onNext(SmartContractInfo smartContractInfo) {
+                            getView().setContractInfo(smartContractInfo);
+                        }
+                    });
         }
     }
 

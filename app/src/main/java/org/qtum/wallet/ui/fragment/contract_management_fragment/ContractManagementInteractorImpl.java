@@ -2,13 +2,18 @@ package org.qtum.wallet.ui.fragment.contract_management_fragment;
 
 import android.content.Context;
 
+import org.qtum.wallet.dataprovider.rest_api.QtumService;
 import org.qtum.wallet.datastorage.FileStorageManager;
 import org.qtum.wallet.datastorage.TinyDB;
+import org.qtum.wallet.model.AddressWithBalance;
 import org.qtum.wallet.model.contract.Contract;
 import org.qtum.wallet.model.contract.ContractMethod;
+import org.qtum.wallet.model.gson.SmartContractInfo;
 
 import java.lang.ref.WeakReference;
 import java.util.List;
+
+import rx.Observable;
 
 
 public class ContractManagementInteractorImpl implements ContractManagementInteractor{
@@ -38,5 +43,9 @@ public class ContractManagementInteractorImpl implements ContractManagementInter
     @Override
     public List<ContractMethod> getContractListByUiid(String uiid) {
         return  FileStorageManager.getInstance().getContractMethods(mContext.get(), uiid);
+    }
+
+    public Observable<SmartContractInfo> getContractInfo(final String address) {
+        return QtumService.newInstance().getContractInfo(address);
     }
 }

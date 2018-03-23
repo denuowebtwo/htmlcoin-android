@@ -83,7 +83,9 @@ public class TokenViewHolder extends RecyclerView.ViewHolder implements TokenBal
         tokenName.setText(token.getContractName());
         tokenBalanceView.setVisibility(View.GONE);
         spinner.setVisibility(View.VISIBLE);
-        socketInstance.getSocketInstance().addTokenBalanceChangeListener(token.getContractAddress(),this);
+
+        if (socketInstance != null && socketInstance.getSocketInstance() != null)
+            socketInstance.getSocketInstance().addTokenBalanceChangeListener(token.getContractAddress(),this);
     }
 
     @SuppressLint("DefaultLocale")

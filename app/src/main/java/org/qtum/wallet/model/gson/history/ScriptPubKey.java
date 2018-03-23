@@ -9,11 +9,23 @@ public class ScriptPubKey {
     @Expose
     private String[] addresses;
 
+    @SerializedName("type")
+    @Expose
+    private String type;
+
     public String[] getAddresses() {
         return addresses;
     }
 
     public void setAddresses(String[] addresses) {
         this.addresses = addresses;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

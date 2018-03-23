@@ -3,6 +3,7 @@ package org.qtum.wallet.ui.fragment.contract_management_fragment;
 import android.support.annotation.StringRes;
 
 import org.qtum.wallet.model.contract.ContractMethod;
+import org.qtum.wallet.model.gson.SmartContractInfo;
 import org.qtum.wallet.ui.base.base_fragment.BaseFragmentView;
 
 import java.util.List;
@@ -14,4 +15,6 @@ public interface ContractManagementView extends BaseFragmentView {
     String getContractAddress();
     String getContractABI();
     void setTitleText(@StringRes int resId);
+
+    void setContractInfo(SmartContractInfo smartContractInfo);
 }

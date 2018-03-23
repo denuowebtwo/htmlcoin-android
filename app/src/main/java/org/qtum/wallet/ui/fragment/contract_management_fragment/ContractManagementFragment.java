@@ -5,22 +5,23 @@ import android.os.Bundle;
 import android.support.annotation.StringRes;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+
 import org.qtum.wallet.R;
 import org.qtum.wallet.model.contract.Contract;
 import org.qtum.wallet.model.contract.ContractMethod;
-import org.qtum.wallet.ui.fragment_factory.Factory;
+import org.qtum.wallet.model.gson.SmartContractInfo;
 import org.qtum.wallet.ui.base.base_fragment.BaseFragment;
 import org.qtum.wallet.ui.fragment.contract_function_fragment.ContractFunctionFragment;
-import org.qtum.wallet.utils.ContractManagementHelper;
+import org.qtum.wallet.ui.fragment_factory.Factory;
 import org.qtum.wallet.utils.FontTextView;
 
 import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -51,6 +52,7 @@ public abstract class ContractManagementFragment extends BaseFragment implements
     }
 
     protected MethodAdapter mMethodAdapter;
+    private SmartContractInfo mContractInfo;
 
     public static BaseFragment newInstance(Context context, String contractTemplateUiid, String contractAddress) {
         Bundle args = new Bundle();
@@ -112,6 +114,12 @@ public abstract class ContractManagementFragment extends BaseFragment implements
         return getArguments().getString(CONTRACT_TEMPLATE_UIID);
     }
 
+    @Override
+    public void setContractInfo(SmartContractInfo smartContractInfo) {
+        mContractInfo = smartContractInfo;
+        mMethodAdapter.notifyDataSetChanged();
+    }
+
     class MethodViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.method_name)
@@ -167,19 +175,37 @@ public abstract class ContractManagementFragment extends BaseFragment implements
         void bindProperty(ContractMethod contractMethod){
             mTextViewPropertyName.setText(contractMethod.name);
             mContractMethod = contractMethod;
-            if(needToGetValue) {
-                ContractManagementHelper.getPropertyValue(getContractByAddress(getContractAddress()), mContractMethod, new ContractManagementHelper.GetPropertyValueCallBack() {
-                    @Override
-                    public void onSuccess(String value) {
-                        mProgressBar.setVisibility(View.GONE);
-                        mTextViewPropertyValue.setVisibility(View.VISIBLE);
-                        mTextViewPropertyValue.setText(value);
-                    }
-                });
+            if(needToGetValue && mContractInfo != null) {
+                mProgressBar.setVisibility(View.GONE);
+                mTextViewPropertyValue.setVisibility(View.VISIBLE);
+                mTextViewPropertyValue.setText(getValue(contractMethod.name));
+
+//                ContractManagementHelper.getPropertyValue(getContractByAddress(getContractAddress()), mContractMethod, new ContractManagementHelper.GetPropertyValueCallBack() {
+//                    @Override
+//                    public void onSuccess(String value) {
+//                        mProgressBar.setVisibility(View.GONE);
+//                        mTextViewPropertyValue.setVisibility(View.VISIBLE);
+//                        mTextViewPropertyValue.setText(value);
+//                    }
+//                });
             } else {
                 mProgressBar.setVisibility(View.GONE);
                 itemView.setClickable(false);
             }
+        }
+
+        String getValue(String name) {
+            switch (name) {
+                case "name":
+                    return mContractInfo.getName();
+                case "totalSupply":
+                    return mContractInfo.getTotalSupply();
+                case "symbol":
+                    return mContractInfo.getSymbol();
+                case "decimals":
+                    return mContractInfo.getDecimals();
+            }
+            return "";
         }
 
     }
