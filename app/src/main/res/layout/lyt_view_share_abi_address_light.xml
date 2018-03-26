@@ -57,15 +57,14 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="16dp"
-            android:background="@drawable/btn_sea_corner_background_light"
+            style="@style/ButtonStyle.Light"
             android:paddingBottom="8dp"
             android:paddingEnd="32dp"
             android:paddingStart="32dp"
             android:paddingTop="8dp"
             android:text="@string/copy_address"
             android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="18sp" />
+             />
 
         <org.qtum.wallet.utils.FontTextView
             android:layout_width="wrap_content"
@@ -99,16 +98,14 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
-            android:background="@drawable/btn_sea_corner_background_light"
-            android:gravity="center"
+            style="@style/ButtonStyle.Light"
             android:paddingBottom="8dp"
             android:paddingEnd="48dp"
             android:paddingStart="48dp"
             android:paddingTop="8dp"
             android:text="@string/copy_abi"
             android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="18sp" />
+             />
 
     </LinearLayout>
 
