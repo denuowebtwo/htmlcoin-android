@@ -127,6 +127,7 @@
                             android:paddingBottom="6dp"
                             android:layout_height="36dp"
                             android:id="@+id/iv_choose_address"
+                            android:visibility="gone"
                             android:tint="@color/white"
                             app:srcCompat="@drawable/icon_address_book" />
 
