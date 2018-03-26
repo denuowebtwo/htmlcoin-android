@@ -15,7 +15,7 @@ public class Item {
     @SerializedName("excepted")
     @Expose
     private String excepted;
-    @SerializedName("gas_used")
+    @SerializedName("gasUsed")
     @Expose
     private int gasUsed;
 

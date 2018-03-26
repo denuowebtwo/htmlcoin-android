@@ -2,6 +2,8 @@ package org.qtum.wallet.ui.fragment.contract_function_fragment;
 
 import android.content.Context;
 
+import com.google.common.base.Joiner;
+
 import org.bitcoinj.script.Script;
 import org.qtum.wallet.dataprovider.rest_api.QtumService;
 import org.qtum.wallet.datastorage.FileStorageManager;
@@ -63,7 +65,8 @@ public class ContractFunctionInteractorImpl implements ContractFunctionInteracto
             @Override
             public Observable<CallSmartContractResponse> call(String s) {
                 wrapper.setAbiParams(s);
-                return QtumService.newInstance().callSmartContract(contract.getContractAddress(), new CallSmartContractRequest(new String[]{s},contract.getSenderAddress()));
+                return QtumService.newInstance().callSmartContractInfo(contract.getContractAddress(), s, contract.getSenderAddress());
+//                return QtumService.newInstance().callSmartContract(contract.getContractAddress(), new CallSmartContractRequest(new String[]{s},contract.getSenderAddress()));
             }
         }).map(new Func1<CallSmartContractResponse, CallSmartContractRespWrapper>() {
             @Override

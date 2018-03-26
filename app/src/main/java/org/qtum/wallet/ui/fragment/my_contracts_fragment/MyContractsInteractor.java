@@ -14,4 +14,6 @@ public interface MyContractsInteractor {
     void setTokens(List<Token> tokens);
     boolean isShowWizard();
     void setShowWizard(boolean isShow);
+
+    void checkConfirmContract();
 }

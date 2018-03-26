@@ -201,6 +201,10 @@ public class QtumService {
         return mServiceApi.callSmartContract(contractAddress, callSmartContractRequest);
     }
 
+    public Observable<CallSmartContractResponse> callSmartContractInfo(String contractAddress, String contractHash, String from) {
+        return mServiceApi.callSmartContractInfo(contractAddress, contractHash, from);
+    }
+
     public Observable<History> getTransaction(final String txHash) {
         return mServiceApi.getTransaction(txHash);
     }

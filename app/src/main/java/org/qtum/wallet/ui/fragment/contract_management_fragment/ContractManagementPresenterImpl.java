@@ -1,8 +1,10 @@
 package org.qtum.wallet.ui.fragment.contract_management_fragment;
 
 import org.qtum.wallet.R;
+import org.qtum.wallet.datastorage.ContractStorage;
 import org.qtum.wallet.model.contract.Contract;
 import org.qtum.wallet.model.contract.ContractMethod;
+import org.qtum.wallet.model.contract.Token;
 import org.qtum.wallet.model.gson.SmartContractInfo;
 import org.qtum.wallet.ui.base.base_fragment.BaseFragment;
 import org.qtum.wallet.ui.base.base_fragment.BaseFragmentPresenterImpl;
@@ -47,25 +49,25 @@ public class ContractManagementPresenterImpl extends BaseFragmentPresenterImpl i
             }
         }
 
-        if(contractAddress!=null && !contractAddress.isEmpty()) {
-            getInteractor().getContractInfo(contractAddress)
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(new Subscriber<SmartContractInfo>() {
-                        @Override
-                        public void onCompleted() {
-                        }
-
-                        @Override
-                        public void onError(Throwable e) {
-                        }
-
-                        @Override
-                        public void onNext(SmartContractInfo smartContractInfo) {
-                            getView().setContractInfo(smartContractInfo);
-                        }
-                    });
-        }
+//        if(contractAddress!=null && !contractAddress.isEmpty()) {
+//            getInteractor().getContractInfo(contractAddress)
+//                    .subscribeOn(Schedulers.io())
+//                    .observeOn(AndroidSchedulers.mainThread())
+//                    .subscribe(new Subscriber<SmartContractInfo>() {
+//                        @Override
+//                        public void onCompleted() {
+//                        }
+//
+//                        @Override
+//                        public void onError(Throwable e) {
+//                        }
+//
+//                        @Override
+//                        public void onNext(SmartContractInfo smartContractInfo) {
+//                            getView().setContractInfo(smartContractInfo);
+//                        }
+//                    });
+//        }
     }
 
     @Override

@@ -18,6 +18,7 @@ import org.qtum.wallet.model.gson.SmartContractInfo;
 import org.qtum.wallet.ui.base.base_fragment.BaseFragment;
 import org.qtum.wallet.ui.fragment.contract_function_fragment.ContractFunctionFragment;
 import org.qtum.wallet.ui.fragment_factory.Factory;
+import org.qtum.wallet.utils.ContractManagementHelper;
 import org.qtum.wallet.utils.FontTextView;
 
 import java.util.List;
@@ -175,19 +176,16 @@ public abstract class ContractManagementFragment extends BaseFragment implements
         void bindProperty(ContractMethod contractMethod){
             mTextViewPropertyName.setText(contractMethod.name);
             mContractMethod = contractMethod;
-            if(needToGetValue && mContractInfo != null) {
-                mProgressBar.setVisibility(View.GONE);
-                mTextViewPropertyValue.setVisibility(View.VISIBLE);
-                mTextViewPropertyValue.setText(getValue(contractMethod.name));
 
-//                ContractManagementHelper.getPropertyValue(getContractByAddress(getContractAddress()), mContractMethod, new ContractManagementHelper.GetPropertyValueCallBack() {
-//                    @Override
-//                    public void onSuccess(String value) {
-//                        mProgressBar.setVisibility(View.GONE);
-//                        mTextViewPropertyValue.setVisibility(View.VISIBLE);
-//                        mTextViewPropertyValue.setText(value);
-//                    }
-//                });
+            if(needToGetValue) {
+                ContractManagementHelper.getPropertyValue(getContractByAddress(getContractAddress()), mContractMethod, new ContractManagementHelper.GetPropertyValueCallBack() {
+                    @Override
+                    public void onSuccess(String value) {
+                        mProgressBar.setVisibility(View.GONE);
+                        mTextViewPropertyValue.setVisibility(View.VISIBLE);
+                        mTextViewPropertyValue.setText(value);
+                    }
+                });
             } else {
                 mProgressBar.setVisibility(View.GONE);
                 itemView.setClickable(false);

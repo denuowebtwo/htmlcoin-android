@@ -58,6 +58,8 @@ public class MyContractsPresenterImpl extends BaseFragmentPresenterImpl implemen
             } else {
                 getView().setPlaceHolder();
             }
+
+            getInteractor().checkConfirmContract();
         } else {
             getView().setAlertDialog(R.string.error, R.string.fail_to_get_contracts, BaseFragment.PopUpType.error);
         }

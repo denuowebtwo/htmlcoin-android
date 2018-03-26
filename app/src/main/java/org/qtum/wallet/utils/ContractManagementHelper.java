@@ -3,6 +3,8 @@ package org.qtum.wallet.utils;
 
 import android.content.Context;
 
+import com.google.common.base.Joiner;
+
 import org.qtum.wallet.dataprovider.rest_api.QtumService;
 import org.qtum.wallet.datastorage.FileStorageManager;
 import org.qtum.wallet.model.contract.Contract;
@@ -52,7 +54,7 @@ public class ContractManagementHelper {
 
                             @Override
                             public void onNext(String[] hashes) {
-                                QtumService.newInstance().callSmartContract(contract.getContractAddress(), new CallSmartContractRequest(hashes))
+                                QtumService.newInstance().callSmartContractInfo(contract.getContractAddress(), Joiner.on(",").join(hashes), contract.getSenderAddress())
                                         .subscribeOn(Schedulers.io())
                                         .observeOn(AndroidSchedulers.mainThread())
                                         .subscribe(new Subscriber<CallSmartContractResponse>() {
@@ -62,7 +64,7 @@ public class ContractManagementHelper {
                                             public void onError(Throwable e) {}
                                             @Override
                                             public void onNext(CallSmartContractResponse callSmartContractResponse) {
-                                                callBack.onSuccess(processResponse(contractMethod.outputParams, callSmartContractResponse.getItems().get(0).getOutput()));
+                                                callBack.onSuccess(processResponse(contractMethod.outputParams, callSmartContractResponse.getExecutionResult().getOutput()));
                                             }
                                         });
                             }
@@ -89,7 +91,7 @@ public class ContractManagementHelper {
 
                     @Override
                     public void onNext(String[] hashes) {
-                        QtumService.newInstance().callSmartContract(contract.getContractAddress(), new CallSmartContractRequest(hashes, contract.getSenderAddress()))
+                        QtumService.newInstance().callSmartContractInfo(contract.getContractAddress(), Joiner.on(",").join(hashes), contract.getSenderAddress())
                                 .subscribeOn(Schedulers.io())
                                 .observeOn(AndroidSchedulers.mainThread())
                                 .subscribe(new Subscriber<CallSmartContractResponse>() {
@@ -105,7 +107,7 @@ public class ContractManagementHelper {
 
                                     @Override
                                     public void onNext(CallSmartContractResponse callSmartContractResponse) {
-                                        callBack.onSuccess(processResponse(contractMethod.outputParams, callSmartContractResponse.getItems().get(0).getOutput()));
+                                        callBack.onSuccess(processResponse(contractMethod.outputParams, callSmartContractResponse.getExecutionResult().getOutput()));
                                     }
                                 });
                     }

@@ -186,7 +186,9 @@ public abstract class CurrencyFragment extends BaseFragment implements CurrencyV
                 mTextViewCurrencyBalance.setVisibility(View.GONE);
                 spinner.setVisibility(View.VISIBLE);
 
-                mUpdateService.addTokenBalanceChangeListener(token.getContractAddress(),this);
+                if (mUpdateService != null) {
+                    mUpdateService.addTokenBalanceChangeListener(token.getContractAddress(), this);
+                }
 
             } else {
                 mTextViewCurrencyBalance.setVisibility(View.GONE);

@@ -520,6 +520,21 @@ public class TinyDB {
         return token;
     }
 
+    public Token setTokenInfo(Token token) {
+        List<Token> tokenList = getTokenList();
+        for (Token t : tokenList) {
+            if (token.getContractAddress().equals(t.getContractAddress())) {
+                t.setContractName(token.getContractName());
+                t.setSymbol(token.getSymbol());
+                t.setLastBalance(token.getLastBalance());
+                t.setDecimalUnits(token.getDecimalUnits());
+                token = t;
+            }
+        }
+        putTokenList(tokenList);
+        return token;
+    }
+
     public ArrayList<String> getUnconfirmedContractTxHasList() {
         return getListString(UNCONFIRMED_CONTRACT_TX_HAS_LIST);
     }

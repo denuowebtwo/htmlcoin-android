@@ -11,6 +11,10 @@ public class CallSmartContractResponse {
     @Expose
     private List<Item> items = null;
 
+    @SerializedName("executionResult")
+    @Expose
+    private Item executionResult;
+
     /**
      * Constructor for unit testing
      */
@@ -33,4 +37,12 @@ public class CallSmartContractResponse {
         this.items = items;
     }
 
+
+    public Item getExecutionResult() {
+        return executionResult;
+    }
+
+    public void setExecutionResult(Item executionResult) {
+        this.executionResult = executionResult;
+    }
 }

@@ -5,10 +5,12 @@ import android.content.Context;
 
 import org.qtum.wallet.model.contract.Contract;
 import org.qtum.wallet.model.contract.Token;
+import org.qtum.wallet.model.gson.SmartContractInfo;
 import org.qtum.wallet.model.gson.history.History;
 import org.qtum.wallet.utils.ContractBuilder;
 import org.qtum.wallet.utils.DateCalculator;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -64,6 +66,18 @@ public class ContractStorage {
 
             }
         }
+    }
+
+    public void updateContractInfo(SmartContractInfo smartContractInfo) {
+        TinyDB tinyDB = new TinyDB(mContext);
+        Token token = new Token();
+        token.setContractAddress(smartContractInfo.getContractAddress());
+        token.setDecimalUnits(Integer.parseInt(smartContractInfo.getDecimals()));
+        token.setSymbol(smartContractInfo.getSymbol());
+        token.setContractName(smartContractInfo.getName());
+        token.setLastBalance(new BigDecimal(smartContractInfo.getTotalSupply()));
+
+        tinyDB.setTokenInfo(token);
     }
 
 }

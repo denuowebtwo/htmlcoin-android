@@ -84,7 +84,7 @@ public class ContractFunctionPresenterImpl extends BaseFragmentPresenterImpl imp
 
                     @Override
                     public void onNext(final ContractFunctionInteractorImpl.CallSmartContractRespWrapper respWrapper) {
-                        Item item = respWrapper.getResponse().getItems().get(0);
+                        Item item = respWrapper.getResponse().getExecutionResult(); //.getItems().get(0);
                         if (!item.getExcepted().equals("None")) {
                             getView().setAlertDialog(org.qtum.wallet.R.string.error,
                                     item.getExcepted(), "Ok",

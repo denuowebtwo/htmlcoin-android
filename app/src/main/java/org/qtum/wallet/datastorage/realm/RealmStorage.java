@@ -149,7 +149,7 @@ public class RealmStorage {
             } else {
                 for (Vout vout : history.getVout()) {
                     for(RealmVout realmVout: realmHistory.getVout()){
-                        if (vout.getAddress().equals(realmVout.getAddress()) && vout.getSpentTxId() != null) {
+                        if (vout.getAddress() != null && vout.getAddress().equals(realmVout.getAddress()) && vout.getSpentTxId() != null) {
                             realmVout.setSpentTxId(vout.getSpentTxId());
                         }
                     }

@@ -66,6 +66,9 @@ interface QtumRestService {
     @GET("/api/tx/{tx_hash}")
     Observable<History> getTransaction(@Path("tx_hash") String txHash);
 
+    @GET("/api/contracts/{addressContract}/hash/{contractHash}/call")
+    Observable<CallSmartContractResponse> callSmartContractInfo(@Path("addressContract") String addressContract, @Path("contractHash")String contractHash, @Query("from") String from);
+
     @GET("/contracts/trending-now")
     Observable<List<QstoreItem>> getTrendingNow();
 

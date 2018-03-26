@@ -3,6 +3,7 @@ package org.qtum.wallet.ui.fragment.contract_management_fragment;
 import android.content.Context;
 
 import org.qtum.wallet.dataprovider.rest_api.QtumService;
+import org.qtum.wallet.datastorage.ContractStorage;
 import org.qtum.wallet.datastorage.FileStorageManager;
 import org.qtum.wallet.datastorage.TinyDB;
 import org.qtum.wallet.model.AddressWithBalance;
@@ -14,6 +15,8 @@ import java.lang.ref.WeakReference;
 import java.util.List;
 
 import rx.Observable;
+import rx.Subscriber;
+import rx.schedulers.Schedulers;
 
 
 public class ContractManagementInteractorImpl implements ContractManagementInteractor{
@@ -46,6 +49,39 @@ public class ContractManagementInteractorImpl implements ContractManagementInter
     }
 
     public Observable<SmartContractInfo> getContractInfo(final String address) {
-        return QtumService.newInstance().getContractInfo(address);
+        return Observable.create(new Observable.OnSubscribe<SmartContractInfo>() {
+            @Override
+            public void call(final Subscriber<? super SmartContractInfo> subscriber) {
+                try {
+                    if (!subscriber.isUnsubscribed()) {
+                        QtumService.newInstance().getContractInfo(address)
+                                .subscribeOn(Schedulers.io())
+                                .subscribe(new Subscriber<SmartContractInfo>() {
+                                    @Override
+                                    public void onCompleted() {
+
+                                    }
+
+                                    @Override
+                                    public void onError(Throwable e) {
+
+                                    }
+
+                                    @Override
+                                    public void onNext(SmartContractInfo smartContractInfo) {
+                                        ContractStorage contractStorage = ContractStorage.getInstance(mContext.get());
+                                        contractStorage.updateContractInfo(smartContractInfo);
+
+                                        subscriber.onNext(smartContractInfo);
+                                        subscriber.onCompleted();
+                                    }
+                                });
+                    }
+                } catch (Exception e) {
+                    subscriber.onError(e);
+                }
+            }
+        });
+
     }
 }
