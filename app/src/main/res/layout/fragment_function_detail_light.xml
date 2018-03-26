@@ -39,11 +39,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginEnd="48dp"
-                android:gravity="center"
-                android:text="@string/function_detail"
-                android:textColor="@color/white"
-                android:textSize="@dimen/toolbar_text_size"
-                android:fontFamily="@font/worksans_bold" />
+                style="@style/TextTitle.Light"
+                android:text="@string/function_detail" />
         </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>
@@ -158,15 +155,15 @@
                                 android:layout_gravity="center"
                                 android:text="Gas Price: "
                                 android:textColor="@color/black"
-                                android:fontFamily="@font/worksans_regular"/>
+                                android:fontFamily="@font/worksans_bold"/>
 
                             <org.qtum.wallet.utils.FontTextView
                                 android:id="@+id/tv_gas_price"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:textColor="@color/light_blue"
-                                android:fontFamily="@font/worksans_regular"/>
+                                android:textColor="@color/color_custom_dark"
+                                android:fontFamily="@font/worksans_bold"/>
                         </LinearLayout>
 
                         <LinearLayout
@@ -182,15 +179,15 @@
                                 android:layout_gravity="center"
                                 android:text="Gas Limit: "
                                 android:textColor="@color/black"
-                                android:fontFamily="@font/worksans_regular"/>
+                                android:fontFamily="@font/worksans_bold"/>
 
                             <org.qtum.wallet.utils.FontTextView
                                 android:id="@+id/tv_gas_limit"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:textColor="@color/light_blue"
-                                android:fontFamily="@font/worksans_regular"/>
+                                android:textColor="@color/color_custom_dark"
+                                android:fontFamily="@font/worksans_bold"/>
                         </LinearLayout>
 
                     </LinearLayout>
@@ -275,14 +272,8 @@
                         android:layout_below="@+id/seek_bar_container"
                         android:layout_centerHorizontal="true"
                         android:layout_margin="16dp"
-                        android:background="@drawable/btn_gray_corner_background_light"
-                        android:gravity="center"
-                        android:padding="16dp"
-                        android:text="@string/edit"
-                        android:textAllCaps="true"
-                        android:textColor="@color/bt_grey_text_color"
-                        android:textSize="16sp"
-                        android:fontFamily="@font/worksans_bold"/>
+                        style="@style/ButtonStyle.LightBlue"
+                        android:text="@string/edit"/>
 
                     <LinearLayout
                         android:id="@+id/buttons"
@@ -296,12 +287,7 @@
                             android:id="@+id/cancel"
                             android:text="@string/cancel"
                             android:gravity="center"
-                            android:background="@drawable/btn_gray_corner_background_light"
-                            android:padding="16dp"
-                            android:textSize="16sp"
-                            android:textColor="@color/bt_grey_text_color"
-                            android:fontFamily="@font/worksans_bold"
-                            android:textAllCaps="true"
+                            style="@style/ButtonStyle.LightBlue"
                             android:layout_weight="1"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -310,13 +296,7 @@
                         <org.qtum.wallet.utils.FontButton
                             android:id="@+id/call"
                             android:text="@string/call"
-                            android:gravity="center"
-                            android:padding="16dp"
-                            android:textSize="16sp"
-                            android:background="@drawable/btn_sea_corner_background_light"
-                            android:textColor="@color/white"
-                            android:fontFamily="@font/worksans_bold"
-                            android:textAllCaps="true"
+                            style="@style/ButtonStyle.Light"
                             android:layout_weight="1"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
