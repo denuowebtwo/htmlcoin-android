@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 import org.qtum.wallet.R;
+import org.qtum.wallet.datastorage.ContractStorage;
 import org.qtum.wallet.model.contract.Contract;
 import org.qtum.wallet.model.contract.ContractMethod;
 import org.qtum.wallet.model.gson.SmartContractInfo;
@@ -177,7 +178,7 @@ public abstract class ContractManagementFragment extends BaseFragment implements
             ButterKnife.bind(this, itemView);
         }
 
-        void bindProperty(ContractMethod contractMethod){
+        void bindProperty(final ContractMethod contractMethod){
             mTextViewPropertyName.setText(contractMethod.name);
             mContractMethod = contractMethod;
             if (needToGetValue) {
@@ -200,6 +201,8 @@ public abstract class ContractManagementFragment extends BaseFragment implements
                                 mProgressBar.setVisibility(View.GONE);
                                 mTextViewPropertyValue.setVisibility(View.VISIBLE);
                                 mTextViewPropertyValue.setText(s);
+
+                                ContractStorage.getInstance(getContext()).updateContractProperty(getContractAddress(), contractMethod.name, s);
                             }
                         });
             } else {

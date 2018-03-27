@@ -24,10 +24,11 @@ public abstract class TokenHistoryAdapter extends RecyclerView.Adapter<RecyclerV
     protected TokenHistoryClickListener listener;
     protected int decimalUnits = 0;
 
-    public TokenHistoryAdapter(List<TokenHistory> historyList, TokenHistoryClickListener listener, int decimalUnits) {
+    public TokenHistoryAdapter(List<TokenHistory> historyList, TokenHistoryClickListener listener, Integer decimalUnits) {
         mHistoryList = historyList;
         this.listener = listener;
-        this.decimalUnits = decimalUnits;
+        if (decimalUnits != null)
+            this.decimalUnits = decimalUnits;
     }
 
     @Override

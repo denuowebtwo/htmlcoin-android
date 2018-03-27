@@ -15,7 +15,7 @@ import java.util.List;
 
 public class TokenHistoryAdapterLight extends TokenHistoryAdapter {
 
-    public TokenHistoryAdapterLight(List<TokenHistory> historyList, TokenHistoryClickListener listener, int decimalUnits) {
+    public TokenHistoryAdapterLight(List<TokenHistory> historyList, TokenHistoryClickListener listener, Integer decimalUnits) {
         super(historyList, listener, decimalUnits);
     }
 

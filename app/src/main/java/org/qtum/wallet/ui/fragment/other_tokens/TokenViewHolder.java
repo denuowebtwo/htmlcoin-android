@@ -58,7 +58,7 @@ public class TokenViewHolder extends RecyclerView.ViewHolder implements TokenBal
         });
     }
 
-    public void bind (Token token) {
+    public void bind(final Token token) {
 
         tokenName.setText("");
         tokenBalanceView.setText("0.0");
@@ -91,6 +91,8 @@ public class TokenViewHolder extends RecyclerView.ViewHolder implements TokenBal
                         }
                         mTextViewSymbol.setVisibility(View.VISIBLE);
                         mTextViewSymbol.setText(String.format(" %s", string));
+
+                        new TinyDB(itemView.getContext()).setTokenSymbol(token, string);
                     }
                 });
 

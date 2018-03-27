@@ -54,7 +54,8 @@
                     android:layout_height="wrap_content"
                     android:text="@string/getting_info"
                     android:textColor="@color/grey"
-                    android:fontFamily="@font/worksans_regular"/>
+                    android:fontFamily="@font/worksans_regular"
+                    android:visibility="gone"/>
 
                 <org.qtum.wallet.utils.FontTextView
                     android:id="@+id/tv_value"
@@ -92,7 +93,8 @@
         android:id="@+id/progress_indicator"
         android:background="@color/qr_code_background"
         app:progressSrc="@drawable/ic_progress_light_1"
-        android:layout_marginStart="16dp"/>
+        android:layout_marginStart="16dp"
+        android:visibility="gone"/>
 
     <View
 

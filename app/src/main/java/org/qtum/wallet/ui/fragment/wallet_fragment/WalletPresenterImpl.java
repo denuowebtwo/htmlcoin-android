@@ -8,6 +8,7 @@ import org.qtum.wallet.model.AddressWithBalance;
 import org.qtum.wallet.model.gson.AddressBalance;
 import org.qtum.wallet.model.gson.history.History;
 import org.qtum.wallet.model.gson.history.HistoryResponse;
+import org.qtum.wallet.model.gson.history.TransactionReceipt;
 import org.qtum.wallet.model.gson.history.Vin;
 import org.qtum.wallet.model.gson.history.Vout;
 import org.qtum.wallet.ui.base.AddressInteractor;
@@ -124,7 +125,7 @@ public class WalletPresenterImpl extends BaseFragmentPresenterImpl implements Wa
         boolean equals = false;
         for (Vin vin : history.getVin()) {
             for (String address : addresses) {
-                if (vin.getAddress().equals(address)) {
+                if (address.equals(vin.getAddress())) {
                     vin.setOwnAddress(true);
                     equals = true;
                 }
@@ -194,7 +195,35 @@ public class WalletPresenterImpl extends BaseFragmentPresenterImpl implements Wa
     }
 
     private void initTransactionReceipt(final List<History> histories) {
+        for (final History history : histories) {
+            if (history.getTransactionReceipt() == null) {
+                getInteractor().getTransactionReceipt(history.getTxHash())
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(new Subscriber<List<TransactionReceipt>>() {
+                            @Override
+                            public void onCompleted() {
 
+                            }
+
+                            @Override
+                            public void onError(Throwable e) {
+
+                            }
+
+                            @Override
+                            public void onNext(final List<TransactionReceipt> transactionReceipt) {
+                                if(transactionReceipt.size()>0) {
+                                    history.setTransactionReceipt(transactionReceipt.get(0));
+
+                                } else {
+                                    history.setReceiptUpdated(true);
+                                }
+                                getView().notifyConfirmHistory(histories.indexOf(history));
+                            }
+                        });
+            }
+        }
     }
 
     @Override

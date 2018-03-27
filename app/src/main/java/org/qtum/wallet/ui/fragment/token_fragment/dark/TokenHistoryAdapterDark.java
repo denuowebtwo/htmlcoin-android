@@ -18,7 +18,7 @@ import java.util.List;
 
 public class TokenHistoryAdapterDark extends TokenHistoryAdapter {
 
-    public TokenHistoryAdapterDark(List<TokenHistory> historyList, TokenHistoryClickListener listener, int decimalUnits) {
+    public TokenHistoryAdapterDark(List<TokenHistory> historyList, TokenHistoryClickListener listener, Integer decimalUnits) {
         super(historyList, listener, decimalUnits);
     }
 

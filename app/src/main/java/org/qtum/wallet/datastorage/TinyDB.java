@@ -520,6 +520,36 @@ public class TinyDB {
         return token;
     }
 
+    public void setTokenSymbol(String address, String symbol) {
+        List<Token> tokenList = getTokenList();
+        for (Token t : tokenList) {
+            if (address.equals(t.getContractAddress())) {
+                t.setSymbol(symbol);
+            }
+        }
+        putTokenList(tokenList);
+    }
+
+    public void setDecimalUnits(String address, String value) {
+        List<Token> tokenList = getTokenList();
+        for (Token t : tokenList) {
+            if (address.equals(t.getContractAddress())) {
+                t.setDecimalUnits(Integer.valueOf(value));
+            }
+        }
+        putTokenList(tokenList);
+    }
+
+    public void setTokenName(String address, String name) {
+        List<Token> tokenList = getTokenList();
+        for (Token t : tokenList) {
+            if (address.equals(t.getContractAddress())) {
+                t.setContractName(name);
+            }
+        }
+        putTokenList(tokenList);
+    }
+
     public Token setTokenInfo(Token token) {
         List<Token> tokenList = getTokenList();
         for (Token t : tokenList) {

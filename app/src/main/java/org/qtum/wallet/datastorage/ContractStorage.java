@@ -80,4 +80,17 @@ public class ContractStorage {
         tinyDB.setTokenInfo(token);
     }
 
+    public void updateContractProperty(String address, String name, String value) {
+        TinyDB tinyDB = new TinyDB(mContext);
+        switch (name) {
+            case "name":
+                tinyDB.setTokenName(address, value);
+            case "symbol":
+                tinyDB.setTokenSymbol(address, value);
+            case "decimals":
+                tinyDB.setDecimalUnits(address, value);
+        }
+    }
+
+
 }
