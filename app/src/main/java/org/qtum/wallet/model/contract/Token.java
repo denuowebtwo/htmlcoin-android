@@ -18,8 +18,8 @@ public class Token extends Contract {
     @SerializedName("decimal_units")
     private Integer decimalUnits;
 
-    public Token(String contractAddress, String templateUiid, Boolean hasBeenCreated, String date, String senderAddress, String contractName) {
-        super(contractAddress, templateUiid, hasBeenCreated, date, senderAddress, contractName);
+    public Token(String contractAddress, String templateUiid, ContractCreationStatus creationStatus, String date, String senderAddress, String contractName) {
+        super(contractAddress, templateUiid, creationStatus, date, senderAddress, contractName);
         this.mIsSubscribe = true;
     }
 
@@ -61,9 +61,9 @@ public class Token extends Contract {
     /**
      * Constructor for unit testing
      */
-    public Token(boolean isSubscribe, Boolean isHasBeenCreated) {
+    public Token(boolean isSubscribe, ContractCreationStatus contractCreationStatus) {
         super(isSubscribe);
-        this.mHasBeenCreated = isHasBeenCreated;
+        this.mCreationStatus = contractCreationStatus;
     }
 
     public String getSymbol() {

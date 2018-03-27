@@ -16,6 +16,7 @@ import org.qtum.wallet.model.gson.AddressDeviceTokenRequest;
 import org.qtum.wallet.model.gson.AddressDeviceTokenResponse;
 import org.qtum.wallet.model.gson.BlockChainInfo;
 import org.qtum.wallet.model.gson.CallSmartContractRequest;
+import org.qtum.wallet.model.gson.ContractParams;
 import org.qtum.wallet.model.gson.DGPInfo;
 import org.qtum.wallet.model.gson.FeePerKb;
 import org.qtum.wallet.model.gson.QstoreContractType;
@@ -272,6 +273,10 @@ public class QtumService {
 
     public Observable<List<TransactionReceipt>> getTransactionReceipt(String txHash){
         return mServiceApi.getTransactionReceipt(txHash);
+    }
+
+    public Observable<ContractParams> getContractParams(String contractAddress) {
+        return mServiceApi.getContractParams(contractAddress);
     }
 
     public Observable<AddressDeviceTokenResponse> updateDeviceToken(AddressDeviceTokenRequest addressDeviceToken) {

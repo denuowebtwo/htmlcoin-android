@@ -4,6 +4,7 @@ package org.qtum.wallet.datastorage;
 import android.content.Context;
 
 import org.qtum.wallet.model.contract.Contract;
+import org.qtum.wallet.model.contract.ContractCreationStatus;
 import org.qtum.wallet.model.contract.Token;
 import org.qtum.wallet.model.gson.SmartContractInfo;
 import org.qtum.wallet.model.gson.history.History;
@@ -39,7 +40,7 @@ public class ContractStorage {
             List<Contract> contractList = tinyDB.getContractListWithoutToken();
             for(Contract contract : contractList){
                 if(contract.getContractAddress()!=null && contract.getContractAddress().equals(contractAddress)){
-                    contract.setHasBeenCreated(true);
+                    contract.setCreationStatus(ContractCreationStatus.Created);
                     contract.setDate(DateCalculator.getDateInFormat(history.getBlockTime()*1000L));
                     done = true;
                     ArrayList<String> unconfirmedContractTxHashList = tinyDB.getUnconfirmedContractTxHasList();
@@ -54,7 +55,7 @@ public class ContractStorage {
                 List<Token> tokenList = tinyDB.getTokenList();
                 for(Token token : tokenList){
                     if(token.getContractAddress()!=null && token.getContractAddress().equals(contractAddress)){
-                        token.setHasBeenCreated(true);
+                        token.setCreationStatus(ContractCreationStatus.Created);
                         token.setDate(DateCalculator.getDateInFormat(history.getBlockTime()*1000L));
                         ArrayList<String> unconfirmedContractTxHashList = tinyDB.getUnconfirmedContractTxHasList();
                         unconfirmedContractTxHashList.remove(history.getTxHash());

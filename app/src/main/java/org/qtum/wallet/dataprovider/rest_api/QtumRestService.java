@@ -6,6 +6,7 @@ import org.qtum.wallet.model.gson.AddressDeviceTokenResponse;
 import org.qtum.wallet.model.gson.BlockChainInfo;
 
 import org.qtum.wallet.model.gson.CallSmartContractRequest;
+import org.qtum.wallet.model.gson.ContractParams;
 import org.qtum.wallet.model.gson.DGPInfo;
 import org.qtum.wallet.model.gson.FeePerKb;
 import org.qtum.wallet.model.gson.QstoreContractType;
@@ -113,6 +114,9 @@ interface QtumRestService {
 
     @GET("/api/txs/{txhash}/receipt")
     Observable<List<TransactionReceipt>> getTransactionReceipt(@Path("txhash") String txHash);
+
+    @GET("/api/contracts/{addressContract}/params?keys=symbol,decimals,name,totalSupply")
+    Observable<ContractParams> getContractParams(@Path("addressContract") String addressContract);
 
     @GET("/api/dgpinfo")
     Observable<DGPInfo> getDGPInfo();

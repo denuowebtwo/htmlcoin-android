@@ -1,13 +1,15 @@
-package org.qtum.wallet.ui.fragment.watch_contract_fragment;
+package org.qtum.wallet.ui.fragment.watch_token_fragment;
 
 import android.content.Context;
 
+import org.qtum.wallet.dataprovider.rest_api.QtumService;
 import org.qtum.wallet.datastorage.FileStorageManager;
 import org.qtum.wallet.datastorage.TinyDB;
 import org.qtum.wallet.model.ContractTemplate;
 import org.qtum.wallet.model.contract.Contract;
 import org.qtum.wallet.model.contract.ContractCreationStatus;
 import org.qtum.wallet.model.contract.Token;
+import org.qtum.wallet.model.gson.ContractParams;
 import org.qtum.wallet.utils.ContractBuilder;
 import org.qtum.wallet.utils.DateCalculator;
 
@@ -17,12 +19,13 @@ import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import rx.Observable;
 
-public class WatchContractInteractorImpl implements WatchContractInteractor {
+public class WatchTokenInteractorImpl implements WatchTokenInteractor {
 
     private WeakReference<Context> mContext;
 
-    public WatchContractInteractorImpl(Context context) {
+    public WatchTokenInteractorImpl(Context context) {
         this.mContext = new WeakReference<>(context);
     }
 
@@ -69,18 +72,18 @@ public class WatchContractInteractorImpl implements WatchContractInteractor {
     }
 
     @Override
-    public void handleContractWithoutToken(String name, String address, String ABIInterface) {
-        ContractTemplate contractTemplate = FileStorageManager.getInstance().importTemplate(mContext.get(), null, null, ABIInterface, "contract", "no_name",
-                DateCalculator.getCurrentDate(), UUID.randomUUID().toString());
+    public String getQRC20TokenStandardAbi() {
         TinyDB tinyDB = new TinyDB(mContext.get());
-        List<Contract> contractList = tinyDB.getContractListWithoutToken();
-        Contract contract = new Contract(address, contractTemplate.getUuid(), ContractCreationStatus.Created, DateCalculator.getCurrentDate(), "", name);
-        contractList.add(contract);
-        tinyDB.putContractListWithoutToken(contractList);
+        for(ContractTemplate template: tinyDB.getContractTemplateList()){
+            if(template.getName().equals("QRC20TokenStandard")) {
+                return FileStorageManager.getInstance().readAbiContract(mContext.get(), template.getUuid());
+            }
+        }
+        return null;
     }
 
     @Override
-    public boolean isABIInterfaceValid(String ABIInterface) {
-        return ContractBuilder.checkForValidityHRC20(ABIInterface);
+    public Observable<ContractParams> getContractParams(String contractAddress) {
+        return QtumService.newInstance().getContractParams(contractAddress);
     }
 }
