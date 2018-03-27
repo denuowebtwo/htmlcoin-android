@@ -111,6 +111,7 @@
                 android:focusableInTouchMode="true"
                 android:fontFamily="@font/worksans_regular"
                 android:gravity="center"
+                android:enabled="false"
                 android:inputType="textNoSuggestions"
                 android:text="@string/token"
                 android:textColor="@color/color_custom_dark"
