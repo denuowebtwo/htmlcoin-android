@@ -36,4 +36,7 @@
         <attr name="lytSearchView" format="reference"/>
     </declare-styleable>
 
+    <declare-styleable name="CustomProgressBarView">
+        <attr name="progressSrc" format="reference"/>
+    </declare-styleable>
 </resources>

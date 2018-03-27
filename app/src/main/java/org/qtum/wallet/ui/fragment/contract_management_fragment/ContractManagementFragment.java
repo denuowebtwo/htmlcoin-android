@@ -26,6 +26,10 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.OnLongClick;
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 public abstract class ContractManagementFragment extends BaseFragment implements ContractManagementView {
 
@@ -176,16 +180,28 @@ public abstract class ContractManagementFragment extends BaseFragment implements
         void bindProperty(ContractMethod contractMethod){
             mTextViewPropertyName.setText(contractMethod.name);
             mContractMethod = contractMethod;
+            if (needToGetValue) {
+                ContractManagementHelper.getPropertyValue(getContractByAddress(getContractAddress()), mContractMethod)
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(new Subscriber<String>() {
+                            @Override
+                            public void onCompleted() {
 
-            if(needToGetValue) {
-                ContractManagementHelper.getPropertyValue(getContractByAddress(getContractAddress()), mContractMethod, new ContractManagementHelper.GetPropertyValueCallBack() {
-                    @Override
-                    public void onSuccess(String value) {
-                        mProgressBar.setVisibility(View.GONE);
-                        mTextViewPropertyValue.setVisibility(View.VISIBLE);
-                        mTextViewPropertyValue.setText(value);
-                    }
-                });
+                            }
+
+                            @Override
+                            public void onError(Throwable e) {
+
+                            }
+
+                            @Override
+                            public void onNext(String s) {
+                                mProgressBar.setVisibility(View.GONE);
+                                mTextViewPropertyValue.setVisibility(View.VISIBLE);
+                                mTextViewPropertyValue.setText(s);
+                            }
+                        });
             } else {
                 mProgressBar.setVisibility(View.GONE);
                 itemView.setClickable(false);

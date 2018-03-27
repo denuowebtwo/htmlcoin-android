@@ -36,6 +36,9 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 public abstract class CurrencyFragment extends BaseFragment implements CurrencyView, SearchBarListener {
 
@@ -175,14 +178,26 @@ public abstract class CurrencyFragment extends BaseFragment implements CurrencyV
             mCurrency = currency;
             mTextViewCurrencyName.setText(currency.getName());
             if (mCurrency instanceof CurrencyToken) {
-                token = ((CurrencyToken)mCurrency).getToken();
-                ContractManagementHelper.getPropertyValue(TokenFragment.symbol, ((CurrencyToken) mCurrency).getToken(), getContext(), new ContractManagementHelper.GetPropertyValueCallBack() {
-                    @Override
-                    public void onSuccess(String value) {
-                        mTextViewSymbol.setVisibility(View.VISIBLE);
-                        mTextViewSymbol.setText(value);
-                    }
-                });
+                token = ((CurrencyToken) mCurrency).getToken();
+                ContractManagementHelper.getPropertyValue(TokenFragment.symbol, ((CurrencyToken) mCurrency).getToken(), getContext())
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(new Subscriber<String>() {
+                            @Override
+                            public void onCompleted() {
+                            }
+
+                            @Override
+                            public void onError(Throwable e) {
+                            }
+
+                            @Override
+                            public void onNext(String string) {
+                                mTextViewSymbol.setVisibility(View.VISIBLE);
+                                mTextViewSymbol.setText(string);
+                            }
+                        });
+
                 mTextViewCurrencyBalance.setVisibility(View.GONE);
                 spinner.setVisibility(View.VISIBLE);
 
@@ -203,13 +218,25 @@ public abstract class CurrencyFragment extends BaseFragment implements CurrencyV
                 token.setLastBalance(tokenBalance.getTotalBalance());
 
                 if (token.getDecimalUnits() == null) {
-                    ContractManagementHelper.getPropertyValue(TokenFragment.decimals, token, itemView.getContext(), new ContractManagementHelper.GetPropertyValueCallBack() {
-                        @Override
-                        public void onSuccess(String value) {
-                            token = new TinyDB(itemView.getContext()).setTokenDecimals(token, Integer.valueOf(value));
-                            updateBalance();
-                        }
-                    });
+                    ContractManagementHelper.getPropertyValue(TokenFragment.decimals, token, itemView.getContext())
+                            .subscribeOn(Schedulers.io())
+                            .observeOn(AndroidSchedulers.mainThread())
+                            .subscribe(new Subscriber<String>() {
+                                @Override
+                                public void onCompleted() {
+                                }
+
+                                @Override
+                                public void onError(Throwable e) {
+                                }
+
+                                @Override
+                                public void onNext(String string) {
+                                    token = new TinyDB(itemView.getContext()).setTokenDecimals(token, Integer.valueOf(string));
+                                    updateBalance();
+                                }
+                            });
+
                 } else {
                     updateBalance();
                 }

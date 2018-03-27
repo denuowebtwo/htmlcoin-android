@@ -399,32 +399,6 @@ public abstract class WalletFragment extends BaseFragment implements WalletView,
         });
     }
 
-    @Override
-    public WalletInteractorImpl.GetHistoryListCallBack getHistoryCallback() {
-        return historyCallback;
-    }
-
-    WalletInteractorImpl.GetHistoryListCallBack historyCallback = new WalletInteractorImpl.GetHistoryListCallBack() {
-        @Override
-        public void onSuccess() {
-            updateHistory(getPresenter().getHistoryList());
-        }
-
-        @Override
-        public void onError(Throwable e) {
-            stopRefreshRecyclerAnimation();
-
-            if (!getPresenter().getNetworkConnectedFlag()) {
-                setAlertDialog(org.qtum.wallet.R.string.no_internet_connection,
-                        org.qtum.wallet.R.string.please_check_your_network_settings,
-                        org.qtum.wallet.R.string.ok,
-                        BaseFragment.PopUpType.error);
-            } else {
-                Toast.makeText(getContext(), e.toString(), Toast.LENGTH_SHORT).show();
-            }
-        }
-    };
-
     BalanceChangeListener balanceListener = new BalanceChangeListener() {
         @Override
         public void onChangeBalance(final BigDecimal unconfirmedBalance, final BigDecimal balance) {

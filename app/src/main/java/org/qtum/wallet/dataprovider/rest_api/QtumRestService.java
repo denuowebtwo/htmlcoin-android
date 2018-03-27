@@ -16,6 +16,7 @@ import org.qtum.wallet.model.gson.history.HistoryResponse;
 import org.qtum.wallet.model.gson.SendRawTransactionRequest;
 import org.qtum.wallet.model.gson.SendRawTransactionResponse;
 import org.qtum.wallet.model.gson.UnspentOutput;
+import org.qtum.wallet.model.gson.history.TransactionReceipt;
 import org.qtum.wallet.model.gson.qstore.ContractPurchase;
 import org.qtum.wallet.model.gson.qstore.QSearchItem;
 import org.qtum.wallet.model.gson.qstore.QstoreBuyResponse;
@@ -23,6 +24,7 @@ import org.qtum.wallet.model.gson.qstore.QstoreByteCodeResponse;
 import org.qtum.wallet.model.gson.qstore.QstoreContract;
 import org.qtum.wallet.model.gson.qstore.QstoreItem;
 import org.qtum.wallet.model.gson.qstore.QstoreSourceCodeResponse;
+import org.qtum.wallet.model.gson.token_history.TokenHistoryResponse;
 
 import java.util.HashMap;
 import java.util.List;
@@ -50,9 +52,6 @@ interface QtumRestService {
 
     @POST("/api/tx/send")
     Observable<SendRawTransactionResponse> sendRawTransaction(@Body SendRawTransactionRequest sendRawTransactionRequest);
-
-    @POST("/contracts/{addressContract}/call")
-    Observable<CallSmartContractResponse> callSmartContract(@Path("addressContract") String addressContract, @Body CallSmartContractRequest callSmartContractRequest);
 
 //    @GET("/outputs/unspent")
     @GET("/api/addrs/{addresses}/unspent")
@@ -108,6 +107,12 @@ interface QtumRestService {
 
     @GET("/api/erc20/{address}")
     Observable<SmartContractInfo> getContractInfo(@Path("address") String address);
+
+    @GET("/api/erc20/{contractAddress}/transfers")
+    Observable<TokenHistoryResponse> getTokenHistoryList(@Path("contractAddress") String contractAddress, @Query("limit") int limit, @Query("offset") int offset, @Query("addresses[]") List<String> addresses);
+
+    @GET("/api/txs/{txhash}/receipt")
+    Observable<List<TransactionReceipt>> getTransactionReceipt(@Path("txhash") String txHash);
 
     @GET("/api/dgpinfo")
     Observable<DGPInfo> getDGPInfo();

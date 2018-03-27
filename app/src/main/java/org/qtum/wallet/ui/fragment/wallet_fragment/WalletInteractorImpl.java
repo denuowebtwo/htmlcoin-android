@@ -2,10 +2,13 @@ package org.qtum.wallet.ui.fragment.wallet_fragment;
 
 
 import android.content.Context;
+import android.text.TextUtils;
 
 import org.qtum.wallet.dataprovider.rest_api.QtumService;
+import org.qtum.wallet.datastorage.QtumSharedPreference;
 import org.qtum.wallet.model.gson.history.History;
 import org.qtum.wallet.model.gson.history.HistoryResponse;
+import org.qtum.wallet.model.gson.history.TransactionReceipt;
 import org.qtum.wallet.model.gson.history.Vin;
 import org.qtum.wallet.model.gson.history.Vout;
 import org.qtum.wallet.datastorage.HistoryList;
@@ -14,6 +17,7 @@ import org.qtum.wallet.datastorage.KeyStorage;
 import java.math.BigDecimal;
 import java.util.List;
 
+import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.internal.util.SubscriptionList;
@@ -38,51 +42,13 @@ public class WalletInteractorImpl implements WalletInteractor {
 
 
     @Override
-    public void getHistoryList(final int STATE, int limit, int offest, final GetHistoryListCallBack callBack) {
+    public Observable<HistoryResponse> getHistoryList(int limit, int offest) {
+        return QtumService.newInstance().getHistoryListForSeveralAddresses(getAddresses(), limit, offest);
+    }
 
-        if (addresses == null) {
-            callBack.onSuccess();
-            return;
-        }
-        mSubscriptionList.add(QtumService.newInstance()
-                .getHistoryListForSeveralAddresses(addresses, limit, offest)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<HistoryResponse>() {
-                    @Override
-                    public void onCompleted() {
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        callBack.onError(e);
-                    }
-
-                    @Override
-                    public void onNext(HistoryResponse historyResponse) {
-
-                        for (History history : historyResponse.getItems()) {
-                            calculateChangeInBalance(history, addresses);
-                        }
-
-                        switch (STATE) {
-                            case UPDATE_STATE: {
-                                HistoryList.getInstance(mContext).setHistoryList(historyResponse.getItems());
-                                HistoryList.getInstance(mContext).setTotalItem(historyResponse.getTotalItems());
-                                callBack.onSuccess();
-                                break;
-                            }
-                            case LOAD_STATE: {
-                                HistoryList.getInstance(mContext).getHistoryList().addAll(historyResponse.getItems());
-                                callBack.onSuccess();
-                                break;
-                            }
-
-                        }
-
-                    }
-                }));
+    @Override
+    public List<String> getAddresses() {
+        return KeyStorage.getInstance().getAddresses();
     }
 
     private void calculateChangeInBalance(History history, List<String> addresses) {
@@ -127,13 +93,11 @@ public class WalletInteractorImpl implements WalletInteractor {
 
     @Override
     public void addToHistoryList(History history) {
-        calculateChangeInBalance(history, addresses);
         HistoryList.getInstance(mContext).getHistoryList().add(0, history);
     }
 
     @Override
     public Integer setHistory(History history) {
-        calculateChangeInBalance(history, addresses);
         for (History historyReplacing : getHistoryList()) {
             if (historyReplacing.getTxHash().equals(history.getTxHash())) {
                 int position = getHistoryList().indexOf(historyReplacing);
@@ -146,20 +110,16 @@ public class WalletInteractorImpl implements WalletInteractor {
     }
 
     @Override
-    public void unSubscribe() {
-        if (mSubscriptionList != null) {
-            mSubscriptionList.clear();
+    public String getAddress() {
+        String s = KeyStorage.getInstance().getCurrentAddress();
+        if(!TextUtils.isEmpty(s)) {
+            QtumSharedPreference.getInstance().saveCurrentAddress(mContext, s);
         }
-    }
-
-    public interface GetHistoryListCallBack {
-        void onSuccess();
-
-        void onError(Throwable e);
+        return s;
     }
 
     @Override
-    public String getAddress() {
-        return KeyStorage.getInstance().getCurrentAddress();
+    public Observable<List<TransactionReceipt>> getTransactionReceipt(String txHash) {
+        return QtumService.newInstance().getTransactionReceipt(txHash);
     }
 }

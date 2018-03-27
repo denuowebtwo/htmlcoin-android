@@ -2,20 +2,26 @@ package org.qtum.wallet.ui.fragment.token_fragment;
 
 import android.content.Context;
 
+import org.qtum.wallet.dataprovider.rest_api.QtumService;
 import org.qtum.wallet.datastorage.FileStorageManager;
 import org.qtum.wallet.datastorage.KeyStorage;
 import org.qtum.wallet.datastorage.TinyDB;
+import org.qtum.wallet.datastorage.TokenHistoryList;
 import org.qtum.wallet.model.contract.Token;
+import org.qtum.wallet.model.gson.token_history.TokenHistory;
+import org.qtum.wallet.model.gson.token_history.TokenHistoryResponse;
 import org.qtum.wallet.utils.ContractManagementHelper;
 
 import java.lang.ref.WeakReference;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
+import java.util.List;
 
-/**
- * Created by drevnitskaya on 06.10.17.
- */
+import rx.Observable;
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 public class TokenInteractorImpl implements TokenInteractor {
     private WeakReference<Context> mContext;
@@ -35,23 +41,35 @@ public class TokenInteractorImpl implements TokenInteractor {
     }
 
     @Override
-    public void setupPropertyTotalSupplyValue(Token token, ContractManagementHelper.GetPropertyValueCallBack totalSupplyValueCallback) {
-        ContractManagementHelper.getPropertyValue(TokenFragment.totalSupply, token, mContext.get(), totalSupplyValueCallback);
+    public void setupPropertyTotalSupplyValue(Token token, Subscriber<String> stringSubscriber) {
+        ContractManagementHelper.getPropertyValue(TokenFragment.totalSupply, token, mContext.get())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(stringSubscriber);
     }
 
     @Override
-    public void setupPropertyDecimalsValue(Token token, ContractManagementHelper.GetPropertyValueCallBack decimalsValueCallback) {
-        ContractManagementHelper.getPropertyValue(TokenFragment.decimals, token, mContext.get(), decimalsValueCallback);
+    public void setupPropertyDecimalsValue(Token token, Subscriber<String> stringSubscriber) {
+        ContractManagementHelper.getPropertyValue(TokenFragment.decimals, token, mContext.get())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(stringSubscriber);
     }
 
     @Override
-    public void setupPropertySymbolValue(Token token, ContractManagementHelper.GetPropertyValueCallBack symbolValueCallback) {
-        ContractManagementHelper.getPropertyValue(TokenFragment.symbol, token, mContext.get(), symbolValueCallback);
+    public void setupPropertySymbolValue(Token token, Subscriber<String> stringSubscriber) {
+        ContractManagementHelper.getPropertyValue(TokenFragment.symbol, token, mContext.get())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(stringSubscriber);
     }
 
     @Override
-    public void setupPropertyNameValue(Token token, ContractManagementHelper.GetPropertyValueCallBack nameValueCallback) {
-        ContractManagementHelper.getPropertyValue(TokenFragment.name, token, mContext.get(), nameValueCallback);
+    public void setupPropertyNameValue(Token token, Subscriber<String> stringSubscriber) {
+        ContractManagementHelper.getPropertyValue(TokenFragment.name, token, mContext.get())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(stringSubscriber);
     }
 
     @Override
@@ -69,4 +87,31 @@ public class TokenInteractorImpl implements TokenInteractor {
 
         return value;
     }
+
+    @Override
+    public List<TokenHistory> getHistoryList() {
+        return TokenHistoryList.newInstance().getTokenHistories();
+    }
+
+    @Override
+    public Observable<TokenHistoryResponse> getHistoryList(String contractAddress, int limit, int offset) {
+        return QtumService.newInstance().getTokenHistoryList(contractAddress,limit,offset,getAddresses());
+    }
+
+    @Override
+    public int getTotalHistoryItem() {
+        return TokenHistoryList.newInstance().getTotalItems();
+    }
+
+//    @Override
+//    public void addToHistoryList(TokenHistory history) {
+//        TokenHistoryList.newInstance().getTokenHistories().add(0,history);
+//    }
+
+    @Override
+    public List<String> getAddresses() {
+        return KeyStorage.getInstance().getAddresses();
+    }
+
+
 }

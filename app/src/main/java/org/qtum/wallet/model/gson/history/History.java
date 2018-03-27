@@ -6,6 +6,8 @@ import com.google.gson.annotations.SerializedName;
 import java.math.BigDecimal;
 import java.util.List;
 
+import io.realm.annotations.Ignore;
+
 
 public class History {
 
@@ -33,7 +35,15 @@ public class History {
     @SerializedName("vin")
     @Expose
     private List<Vin> vin = null;
+
+    private TransactionReceipt mTransactionReceipt;
+
+    @Ignore
     private BigDecimal changeInBalance;
+    @Ignore
+    private BigDecimal fee;
+    @Ignore
+    private boolean isReceiptUpdated = false;
 
     /**
      * Constructor for unit tests
@@ -149,5 +159,30 @@ public class History {
         }
 
         return false;
+    }
+
+    public BigDecimal getFee() {
+        return fee;
+    }
+
+    public void setFee(BigDecimal fee) {
+        this.fee = fee;
+    }
+
+    public TransactionReceipt getTransactionReceipt() {
+        return mTransactionReceipt;
+    }
+
+    public void setTransactionReceipt(TransactionReceipt transactionReceipt) {
+        mTransactionReceipt = transactionReceipt;
+        isReceiptUpdated = true;
+    }
+
+    public boolean isReceiptUpdated() {
+        return isReceiptUpdated;
+    }
+
+    public void setReceiptUpdated(boolean receiptUpdated) {
+        isReceiptUpdated = receiptUpdated;
     }
 }

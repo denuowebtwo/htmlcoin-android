@@ -26,6 +26,7 @@ import org.qtum.wallet.model.gson.UnspentOutput;
 import org.qtum.wallet.model.gson.call_smart_contract_response.CallSmartContractResponse;
 import org.qtum.wallet.model.gson.history.History;
 import org.qtum.wallet.model.gson.history.HistoryResponse;
+import org.qtum.wallet.model.gson.history.TransactionReceipt;
 import org.qtum.wallet.model.gson.qstore.ContractPurchase;
 import org.qtum.wallet.model.gson.qstore.QSearchItem;
 import org.qtum.wallet.model.gson.qstore.QstoreBuyResponse;
@@ -33,6 +34,7 @@ import org.qtum.wallet.model.gson.qstore.QstoreByteCodeResponse;
 import org.qtum.wallet.model.gson.qstore.QstoreContract;
 import org.qtum.wallet.model.gson.qstore.QstoreItem;
 import org.qtum.wallet.model.gson.qstore.QstoreSourceCodeResponse;
+import org.qtum.wallet.model.gson.token_history.TokenHistoryResponse;
 import org.qtum.wallet.utils.CurrentNetParams;
 
 import java.net.URL;
@@ -197,10 +199,6 @@ public class QtumService {
         return mServiceApi.sendRawTransaction(sendRawTransactionRequest);
     }
 
-    public Observable<CallSmartContractResponse> callSmartContract(String contractAddress, final CallSmartContractRequest callSmartContractRequest) {
-        return mServiceApi.callSmartContract(contractAddress, callSmartContractRequest);
-    }
-
     public Observable<CallSmartContractResponse> callSmartContractInfo(String contractAddress, String contractHash, String from) {
         return mServiceApi.callSmartContractInfo(contractAddress, contractHash, from);
     }
@@ -266,6 +264,14 @@ public class QtumService {
 
     public Observable<SmartContractInfo> getContractInfo(String address){
         return mServiceApi.getContractInfo(address);
+    }
+
+    public Observable<TokenHistoryResponse> getTokenHistoryList(String contractAddress, int limit, int offset, List<String> addresses){
+        return mServiceApi.getTokenHistoryList(contractAddress, limit, offset, addresses);
+    }
+
+    public Observable<List<TransactionReceipt>> getTransactionReceipt(String txHash){
+        return mServiceApi.getTransactionReceipt(txHash);
     }
 
     public Observable<AddressDeviceTokenResponse> updateDeviceToken(AddressDeviceTokenRequest addressDeviceToken) {

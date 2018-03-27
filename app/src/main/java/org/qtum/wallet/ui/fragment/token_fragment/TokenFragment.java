@@ -13,10 +13,12 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import org.qtum.wallet.R;
 import org.qtum.wallet.model.contract.Contract;
 import org.qtum.wallet.model.contract.Token;
+import org.qtum.wallet.model.gson.token_history.TokenHistory;
 import org.qtum.wallet.ui.fragment.receive_fragment.ReceiveFragment;
 import org.qtum.wallet.ui.fragment.token_cash_management_fragment.AddressesListFragmentToken;
 import org.qtum.wallet.ui.fragment_factory.Factory;
@@ -25,14 +27,15 @@ import org.qtum.wallet.ui.fragment.token_fragment.dialogs.ShareDialogFragment;
 import org.qtum.wallet.utils.ClipboardUtils;
 import org.qtum.wallet.utils.ContractManagementHelper;
 import org.qtum.wallet.utils.FontTextView;
-import org.qtum.wallet.utils.StackCollapseLinearLayout;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 import butterknife.OnLongClick;
+import rx.Subscriber;
 
-
-public abstract class TokenFragment extends BaseFragment implements TokenView {
+public abstract class TokenFragment extends BaseFragment implements TokenView, TokenHistoryClickListener {
 
     private static final String tokenKey = "tokenInfo";
     private static final String qtumAddressKey = "qtumAddressKey";
@@ -63,23 +66,19 @@ public abstract class TokenFragment extends BaseFragment implements TokenView {
     @BindView(R.id.tv_balance)
     protected FontTextView mTextViewBalance;
     @BindView(R.id.tv_currency)
-    protected
-    FontTextView mTextViewCurrency;
+    protected FontTextView mTextViewCurrency;
+
     @BindView(R.id.available_balance_title)
-    protected
-    FontTextView balanceTitle;
+    protected FontTextView balanceTitle;
 
     @BindView(R.id.tv_unconfirmed_balance)
-    protected
-    FontTextView uncomfirmedBalanceValue;
+    protected FontTextView uncomfirmedBalanceValue;
+
     @BindView(R.id.unconfirmed_balance_title)
-    protected
-    FontTextView uncomfirmedBalanceTitle;
-    //HEADER
+    protected FontTextView uncomfirmedBalanceTitle;
 
     @BindView(R.id.balance_view)
-    protected
-    FrameLayout balanceView;
+    protected FrameLayout balanceView;
 
     @BindView(R.id.fade_divider_root)
     RelativeLayout fadeDividerRoot;
@@ -116,7 +115,20 @@ public abstract class TokenFragment extends BaseFragment implements TokenView {
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
 
+    @BindView(R.id.token_histories_placeholder)
+    TextView mTextViewHistoriesPlaceholder;
+
+    @BindView(R.id.recycler_token_history)
+    protected RecyclerView mRecyclerView;
+    protected TokenHistoryAdapter mAdapter;
+    protected LinearLayoutManager mLinearLayoutManager = new LinearLayoutManager(getActivity());
+
     ShareDialogFragment shareDialog;
+
+    protected int visibleItemCount;
+    protected int totalItemCount;
+    protected int pastVisibleItems;
+    protected boolean mLoadingFlag = false;
 
     @OnLongClick(R.id.tv_token_address)
     public boolean onAddressLongClick() {
@@ -196,7 +208,32 @@ public abstract class TokenFragment extends BaseFragment implements TokenView {
         setSenderAddress(token.getSenderAddress());
         headerPAdding = convertDpToPixel(16, getContext());
 
-        //mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        mRecyclerView.setNestedScrollingEnabled(true);
+        mRecyclerView.setLayoutManager(mLinearLayoutManager);
+        mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                if (dy > 0) {
+                    if (!mLoadingFlag) {
+                        visibleItemCount = mLinearLayoutManager.getChildCount();
+                        totalItemCount = mLinearLayoutManager.getItemCount();
+                        pastVisibleItems = mLinearLayoutManager.findFirstVisibleItemPosition();
+                        if ((visibleItemCount + pastVisibleItems) >= totalItemCount - 1) {
+                            getPresenter().onLastItem(totalItemCount - 1);
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    @Override
+    public void addHistory(int positionStart, int itemCount, List<TokenHistory> historyList) {
+        mAdapter.setHistoryList(historyList);
+        mAdapter.setLoadingFlag(false);
+        mLoadingFlag = false;
+        mAdapter.notifyItemRangeChanged(positionStart, itemCount);
     }
 
     @Override
@@ -241,6 +278,15 @@ public abstract class TokenFragment extends BaseFragment implements TokenView {
     }
 
     @Override
+    public void updateHistory(List<TokenHistory> tokenHistories) {
+        if(tokenHistories.isEmpty()){
+            mTextViewHistoriesPlaceholder.setVisibility(View.VISIBLE);
+        } else {
+            mTextViewHistoriesPlaceholder.setVisibility(View.GONE);
+        }
+    }
+
+    @Override
     public void setSenderAddress(String address) {
         //if(!TextUtils.isEmpty(address)) {
         //senderAddrValue.setText(address);
@@ -253,45 +299,92 @@ public abstract class TokenFragment extends BaseFragment implements TokenView {
     }
 
     @Override
-    public ContractManagementHelper.GetPropertyValueCallBack getTotalSupplyValueCallback() {
-        return new ContractManagementHelper.GetPropertyValueCallBack() {
+    public Subscriber<String> getTotalSupplyValueCallback() {
+        return new Subscriber<String>() {
             @Override
-            public void onSuccess(String value) {
-                onContractPropertyUpdated(TokenFragment.totalSupply, presenter.onTotalSupplyPropertySuccess(getPresenter().getToken(), value));
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(String s) {
+                onContractPropertyUpdated(TokenFragment.totalSupply, presenter.onTotalSupplyPropertySuccess(getPresenter().getToken(), s));
             }
         };
     }
 
     @Override
-    public ContractManagementHelper.GetPropertyValueCallBack getDecimalsValueCallback() {
-        return new ContractManagementHelper.GetPropertyValueCallBack() {
+    public Subscriber<String> getDecimalsValueCallback() {
+        return new Subscriber<String>() {
             @Override
-            public void onSuccess(String value) {
-                onContractPropertyUpdated(TokenFragment.decimals, value);
-                if (value != null) {
-                    getPresenter().onDecimalsPropertySuccess(value);
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(String s) {
+                onContractPropertyUpdated(TokenFragment.decimals, s);
+                if (s != null) {
+                    getPresenter().onDecimalsPropertySuccess(s);
                 }
             }
         };
     }
 
     @Override
-    public ContractManagementHelper.GetPropertyValueCallBack getSymbolValueCallback() {
-        return new ContractManagementHelper.GetPropertyValueCallBack() {
+    public Subscriber<String> getSymbolValueCallback() {
+        return new Subscriber<String>() {
             @Override
-            public void onSuccess(String value) {
-                onContractPropertyUpdated(TokenFragment.symbol, value);
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(String s) {
+                onContractPropertyUpdated(TokenFragment.symbol, s);
+                mAdapter.setSymbol(" " + s);
+                mAdapter.notifyDataSetChanged();
             }
         };
     }
 
     @Override
-    public ContractManagementHelper.GetPropertyValueCallBack getNameValueCallback() {
-        return new ContractManagementHelper.GetPropertyValueCallBack() {
+    public Subscriber<String> getNameValueCallback() {
+        return new Subscriber<String>() {
             @Override
-            public void onSuccess(String value) {
-                onContractPropertyUpdated(TokenFragment.name, value);
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(String s) {
+                onContractPropertyUpdated(TokenFragment.name, s);
             }
         };
+    }
+
+    @Override
+    public void onTokenHistoryClick(int adapterPosition) {
+
     }
 }

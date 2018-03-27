@@ -19,6 +19,9 @@ import org.qtum.wallet.utils.FontTextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 public class TokenViewHolder extends RecyclerView.ViewHolder implements TokenBalanceChangeListener {
 
@@ -67,25 +70,36 @@ public class TokenViewHolder extends RecyclerView.ViewHolder implements TokenBal
 
         this.token = token;
 
-        ContractManagementHelper.getPropertyValue(TokenFragment.symbol, token, mContext, new ContractManagementHelper.GetPropertyValueCallBack() {
-            @Override
-            public void onSuccess(String value) {
-                spinner.setVisibility(View.GONE);
-                if(TextUtils.isEmpty(tokenBalanceView.getText().toString())){
-                    tokenBalanceView.setVisibility(View.VISIBLE);
-                    tokenBalanceView.setText("0.0");
-                }
-                mTextViewSymbol.setVisibility(View.VISIBLE);
-                mTextViewSymbol.setText(String.format(" %s", value));
-            }
-        });
+        ContractManagementHelper.getPropertyValue(TokenFragment.symbol, token, mContext)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<String>() {
+                    @Override
+                    public void onCompleted() {
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                    }
+
+                    @Override
+                    public void onNext(String string) {
+                        spinner.setVisibility(View.GONE);
+                        if (TextUtils.isEmpty(tokenBalanceView.getText().toString())) {
+                            tokenBalanceView.setVisibility(View.VISIBLE);
+                            tokenBalanceView.setText("0.0");
+                        }
+                        mTextViewSymbol.setVisibility(View.VISIBLE);
+                        mTextViewSymbol.setText(String.format(" %s", string));
+                    }
+                });
 
         tokenName.setText(token.getContractName());
         tokenBalanceView.setVisibility(View.GONE);
         spinner.setVisibility(View.VISIBLE);
-
-        if (socketInstance != null && socketInstance.getSocketInstance() != null)
-            socketInstance.getSocketInstance().addTokenBalanceChangeListener(token.getContractAddress(),this);
+        if(socketInstance.getSocketInstance()!=null) {
+            socketInstance.getSocketInstance().addTokenBalanceChangeListener(token.getContractAddress(), this);
+        }
     }
 
     @SuppressLint("DefaultLocale")
@@ -95,13 +109,25 @@ public class TokenViewHolder extends RecyclerView.ViewHolder implements TokenBal
             token.setLastBalance(tokenBalance.getTotalBalance());
 
             if (token.getDecimalUnits() == null) {
-                ContractManagementHelper.getPropertyValue(TokenFragment.decimals, token, itemView.getContext(), new ContractManagementHelper.GetPropertyValueCallBack() {
-                    @Override
-                    public void onSuccess(String value) {
-                        token = new TinyDB(itemView.getContext()).setTokenDecimals(token, Integer.valueOf(value));
-                        updateBalance();
-                    }
-                });
+                ContractManagementHelper.getPropertyValue(TokenFragment.decimals, token, itemView.getContext())
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(new Subscriber<String>() {
+                            @Override
+                            public void onCompleted() {
+                            }
+
+                            @Override
+                            public void onError(Throwable e) {
+                            }
+
+                            @Override
+                            public void onNext(String string) {
+                                token = new TinyDB(itemView.getContext()).setTokenDecimals(token, Integer.valueOf(string));
+                                updateBalance();
+                            }
+                        });
+
             } else {
                 updateBalance();
             }

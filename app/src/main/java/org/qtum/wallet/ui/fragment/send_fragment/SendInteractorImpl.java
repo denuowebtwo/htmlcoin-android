@@ -2,6 +2,8 @@ package org.qtum.wallet.ui.fragment.send_fragment;
 
 import android.content.Context;
 
+import com.google.common.base.Joiner;
+
 import org.bitcoinj.core.Address;
 import org.bitcoinj.core.AddressFormatException;
 import org.bitcoinj.core.Coin;
@@ -344,7 +346,7 @@ public class SendInteractorImpl implements SendInteractor {
     @Override
     public Observable<CallSmartContractResponse> callSmartContractObservable(Token token, String hash, String fromAddress) {
 
-        return QtumService.newInstance().callSmartContract(token.getContractAddress(), new CallSmartContractRequest(new String[]{hash},fromAddress));
+        return QtumService.newInstance().callSmartContractInfo(token.getContractAddress(), hash, fromAddress);
     }
 
     @Override

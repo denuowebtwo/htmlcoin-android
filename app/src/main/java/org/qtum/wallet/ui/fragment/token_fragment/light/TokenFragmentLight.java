@@ -9,10 +9,14 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import org.qtum.wallet.R;
+import org.qtum.wallet.model.gson.token_history.TokenHistory;
 import org.qtum.wallet.ui.fragment.token_fragment.TokenFragment;
+import org.qtum.wallet.ui.fragment.token_fragment.dark.TokenHistoryAdapterDark;
 import org.qtum.wallet.ui.wave_visualizer.WaveHelper;
 import org.qtum.wallet.ui.wave_visualizer.WaveView;
 import org.qtum.wallet.utils.ContractBuilder;
+
+import java.util.List;
 
 import butterknife.BindView;
 
@@ -24,13 +28,6 @@ public class TokenFragmentLight extends TokenFragment {
     @BindView(org.qtum.wallet.R.id.wave_view)
     WaveView waveView;
     private WaveHelper mWaveHelper;
-
-//    @BindView(org.qtum.wallet.R.id.app_bar_placeholder) View appbarPlaceholder;
-//    @BindView(org.qtum.wallet.R.id.tv_placeholder_balance_value)
-//    TextView placeHolderBalance;
-
-//    @BindView(org.qtum.wallet.R.id.tv_placeholder_currency_value)
-//    TextView placeHolderCurrency;
 
     @BindView(org.qtum.wallet.R.id.bt_share)
     ImageButton mShareBtn;
@@ -56,27 +53,18 @@ public class TokenFragmentLight extends TokenFragment {
         waveView.setShapeType(WaveView.ShapeType.SQUARE);
         mWaveHelper = new WaveHelper(waveView);
 
-        //mSwipeRefreshLayout.setEnabled(false);
-
         mAppBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
             @Override
             public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-                percents = (((getTotalRange() - Math.abs(verticalOffset))*1.0f)/getTotalRange());
-
-                float testPercents = percents - (1 - percents);
-                float testP2 = (percents >= .8f)? 0 : (1 - percents) - percents;
-
-                mShareBtn.setAlpha(testPercents);
-                mIvChooseAddress.setAlpha(testPercents);
-                mTokenTitle.setAlpha(testPercents);
-                balanceView.setAlpha(testPercents);
-                //appbarPlaceholder.setAlpha(testP2);
+                percents = (((getTotalRange() - Math.abs(verticalOffset)) * 1.0f) / getTotalRange());
+                float offsetPercents = percents - (1 - percents);
+                mShareBtn.setAlpha(offsetPercents);
+                mIvChooseAddress.setAlpha(offsetPercents);
+                mTokenTitle.setAlpha(offsetPercents);
+                balanceView.setAlpha(offsetPercents);
                 prevPercents = percents;
             }
-
         });
-
-        //appbarPlaceholder.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -97,8 +85,7 @@ public class TokenFragmentLight extends TokenFragment {
             @Override
             public void onGlobalLayout() {
                 llBalance.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-                mTextViewBalance.setLongNumberText(balance, llBalance.getWidth() * 2/3);
-                //placeHolderBalance.setText(String.valueOf(balance));
+                mTextViewBalance.setLongNumberText(balance, llBalance.getWidth() * 2 / 3);
             }
         });
     }
@@ -113,13 +100,19 @@ public class TokenFragmentLight extends TokenFragment {
                 decimalsValue.setText(propValue);
                 break;
             case symbol:
-                //placeHolderCurrency.setText(propValue);
                 mTextViewCurrency.setText(" " + propValue);
                 break;
             case name:
                 mTextViewTokenName.setText(propValue);
                 break;
         }
+    }
+
+    @Override
+    public void updateHistory(List<TokenHistory> tokenHistories) {
+        super.updateHistory(tokenHistories);
+        mAdapter = new TokenHistoryAdapterLight(tokenHistories,this, getPresenter().getToken().getDecimalUnits());
+        mRecyclerView.setAdapter(mAdapter);
     }
 
 }
