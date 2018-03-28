@@ -8,6 +8,16 @@ import com.google.gson.Gson;
 
 import org.bitcoinj.core.Address;
 import org.bitcoinj.core.AddressFormatException;
+import org.qtum.wallet.R;
+import org.qtum.wallet.datastorage.FileStorageManager;
+import org.qtum.wallet.datastorage.KeyStorage;
+import org.qtum.wallet.model.TransactionHashWithSender;
+import org.qtum.wallet.model.contract.ContractMethod;
+import org.qtum.wallet.model.contract.ContractMethodParameter;
+import org.qtum.wallet.model.gson.UnspentOutput;
+import org.qtum.wallet.utils.sha3.Keccak;
+import org.qtum.wallet.utils.sha3.Parameters;
+
 import org.bitcoinj.core.Base58;
 import org.bitcoinj.core.Coin;
 import org.bitcoinj.core.Sha256Hash;
@@ -22,15 +32,6 @@ import org.bitcoinj.script.ScriptOpCodes;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.qtum.wallet.R;
-import org.qtum.wallet.datastorage.FileStorageManager;
-import org.qtum.wallet.datastorage.KeyStorage;
-import org.qtum.wallet.model.TransactionHashWithSender;
-import org.qtum.wallet.model.contract.ContractMethod;
-import org.qtum.wallet.model.contract.ContractMethodParameter;
-import org.qtum.wallet.model.gson.UnspentOutput;
-import org.qtum.wallet.utils.sha3.Keccak;
-import org.qtum.wallet.utils.sha3.Parameters;
 import org.spongycastle.crypto.digests.RIPEMD160Digest;
 import org.spongycastle.crypto.digests.SHA256Digest;
 import org.spongycastle.util.encoders.Hex;
@@ -44,6 +45,7 @@ import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
 import java.util.ArrayList;
+
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
@@ -77,7 +79,6 @@ public class ContractBuilder {
     private Context mContext;
 
     public ContractBuilder() {
-
     }
 
     private List<String> getArrayValues(ContractMethodParameter contractMethodParameter) {
@@ -152,9 +153,7 @@ public class ContractBuilder {
     }
 
     private String convertParameter(ContractMethodParameter parameter) {
-
         String _value = parameter.getValue();
-
         if (!parameterIsArray(parameter)) {
             if (parameter.getType().contains(TYPE_INT)) {
                 return appendNumericPattern(convertToByteCode(new BigInteger(_value)));
@@ -173,7 +172,6 @@ public class ContractBuilder {
         } else {
             return getStringOffset(parameter);
         }
-
         return "";
     }
 
@@ -221,25 +219,19 @@ public class ContractBuilder {
     }
 
     private int getStringsChainSize(ContractMethodParameter parameter) {
-
         if (mContractMethodParameterList == null || mContractMethodParameterList.size() == 0) {
             return 0;
         }
-
         int index = mContractMethodParameterList.indexOf(parameter);
-
         if (index == mContractMethodParameterList.size() - 1) {
             return 1;
         }
-
         int chainSize = 0;
-
         for (int i = index; i < mContractMethodParameterList.size(); i++) {
             if (mContractMethodParameterList.get(index).getType().contains(TYPE_STRING)) {
                 chainSize++;
             }
         }
-
         return chainSize;
     }
 
@@ -252,12 +244,7 @@ public class ContractBuilder {
     }
 
     private static String convertToByteCode(String _value) {
-        char[] chars = _value.toCharArray();
-        StringBuilder hex = new StringBuilder();
-        for (char aChar : chars) {
-            hex.append(Integer.toHexString((int) aChar));
-        }
-        return hex.toString();
+        return Hex.toHexString(_value.getBytes());
     }
 
     private String getStringOffset(String data) {
@@ -268,7 +255,7 @@ public class ContractBuilder {
 
     private String getStringOffset(ContractMethodParameter parameter) {
         long currOffset = ((paramsCount + currStringOffset) * 32);
-        currStringOffset = getStringHash(parameter.getValue()).length() / hashPattern.length() + 1/*string length section*/;
+        currStringOffset = getStringHash(parameter.getValue()).length() / hashPattern.length() + 1;
         return appendNumericPattern(convertToByteCode(currOffset));
     }
 
@@ -317,20 +304,15 @@ public class ContractBuilder {
     }
 
     public Script createConstructScript(String abiParams, int gasLimitInt, int gasPriceInt) {
-
         byte[] version = Hex.decode("04000000");
-
         byte[] arrayGasLimit = org.spongycastle.util.Arrays.reverse((new BigInteger(String.valueOf(gasLimitInt))).toByteArray());
         byte[] gasLimit = new byte[]{0, 0, 0, 0, 0, 0, 0, 0};
         System.arraycopy(arrayGasLimit, 0, gasLimit, 0, arrayGasLimit.length);
-
         byte[] arrayGasPrice = org.spongycastle.util.Arrays.reverse((new BigInteger(String.valueOf(gasPriceInt))).toByteArray());
         byte[] gasPrice = new byte[]{0, 0, 0, 0, 0, 0, 0, 0};
         System.arraycopy(arrayGasPrice, 0, gasPrice, 0, arrayGasPrice.length);
-
         byte[] data = Hex.decode(abiParams);
         byte[] program;
-
         ScriptChunk versionChunk = new ScriptChunk(OP_PUSHDATA_4, version);
         ScriptChunk gasLimitChunk = new ScriptChunk(OP_PUSHDATA_8, gasLimit);
         ScriptChunk gasPriceChunk = new ScriptChunk(OP_PUSHDATA_8, gasPrice);
@@ -342,7 +324,6 @@ public class ContractBuilder {
         chunkList.add(gasPriceChunk);
         chunkList.add(dataChunk);
         chunkList.add(opExecChunk);
-
         try {
             ByteArrayOutputStream bos = new ByteArrayOutputStream();
             for (ScriptChunk chunk : chunkList) {
@@ -356,21 +337,16 @@ public class ContractBuilder {
     }
 
     public Script createMethodScript(String abiParams, int gasLimitInt, int gasPriceInt, String _contractAddress) throws RuntimeException {
-
         byte[] version = Hex.decode("04000000");
-
         byte[] arrayGasLimit = org.spongycastle.util.Arrays.reverse((new BigInteger(String.valueOf(gasLimitInt))).toByteArray());
         byte[] gasLimit = new byte[]{0, 0, 0, 0, 0, 0, 0, 0};
         System.arraycopy(arrayGasLimit, 0, gasLimit, 0, arrayGasLimit.length);
-
         byte[] arrayGasPrice = org.spongycastle.util.Arrays.reverse((new BigInteger(String.valueOf(gasPriceInt))).toByteArray());
         byte[] gasPrice = new byte[]{0, 0, 0, 0, 0, 0, 0, 0};
         System.arraycopy(arrayGasPrice, 0, gasPrice, 0, arrayGasPrice.length);
-
         byte[] data = Hex.decode(abiParams);
         byte[] contractAddress = Hex.decode(_contractAddress);
         byte[] program;
-
         ScriptChunk versionChunk = new ScriptChunk(OP_PUSHDATA_4, version);
         ScriptChunk gasLimitChunk = new ScriptChunk(OP_PUSHDATA_8, gasLimit);
         ScriptChunk gasPriceChunk = new ScriptChunk(OP_PUSHDATA_8, gasPrice);
@@ -384,7 +360,6 @@ public class ContractBuilder {
         chunkList.add(dataChunk);
         chunkList.add(contactAddressChunk);
         chunkList.add(opExecChunk);
-
         try {
             ByteArrayOutputStream bos = new ByteArrayOutputStream();
             for (ScriptChunk chunk : chunkList) {
@@ -397,28 +372,34 @@ public class ContractBuilder {
         return new Script(program);
     }
 
-    public String createTransactionHash(Script script, List<UnspentOutput> unspentOutputs, int gasLimit, int gasPrice, BigDecimal feePerKb, String feeString, Context context) {
-
+    public String createTransactionHash(Script script, List<UnspentOutput> unspentOutputs, int gasLimit, int gasPrice, BigDecimal feePerKb, String feeString, String sendToContractString, Context context) {
         Transaction transaction = new Transaction(CurrentNetParams.getNetParams());
-        transaction.addOutput(Coin.ZERO, script);
+
         BigDecimal fee = new BigDecimal(feeString);
         BigDecimal gasFee = (new BigDecimal(gasLimit)).multiply(new BigDecimal(gasPrice)).divide(new BigDecimal(100000000), MathContext.DECIMAL128);
-        BigDecimal totalFee = fee.add(gasFee);
+        BigDecimal totalAmount = fee.add(gasFee);
         BigDecimal amountFromOutput = new BigDecimal("0.0");
         BigDecimal overFlow = new BigDecimal("0.0");
+        BigDecimal bitcoin = new BigDecimal(100000000);
+
+        if(sendToContractString.isEmpty()) {
+            transaction.addOutput(Coin.ZERO, script);
+        } else {
+            BigDecimal sendToContract = new BigDecimal(sendToContractString).multiply(bitcoin);
+            transaction.addOutput(Coin.valueOf((long) (sendToContract.doubleValue())), script);
+            totalAmount = totalAmount.add(sendToContract);
+        }
+
         for (UnspentOutput unspentOutput : unspentOutputs) {
             overFlow = overFlow.add(unspentOutput.getAmount());
-            if (overFlow.doubleValue() >= totalFee.doubleValue()) {
+            if (overFlow.doubleValue() >= totalAmount.doubleValue()) {
                 break;
             }
         }
-        if (overFlow.doubleValue() < totalFee.doubleValue()) {
+        if (overFlow.doubleValue() < totalAmount.doubleValue()) {
             throw new RuntimeException("You have insufficient funds for this transaction");
         }
-        BigDecimal delivery = overFlow.subtract(totalFee);
-
-
-        BigDecimal bitcoin = new BigDecimal(100000000);
+        BigDecimal delivery = overFlow.subtract(totalAmount);
 
         Address myAddress;
         try {
@@ -426,45 +407,36 @@ public class ContractBuilder {
         } catch (AddressFormatException a) {
             throw new RuntimeException(mContext.getString(org.qtum.wallet.R.string.invalid_qtum_address));
         }
-
         if (delivery.doubleValue() != 0.0) {
             transaction.addOutput(Coin.valueOf((long) (delivery.multiply(bitcoin).doubleValue())), myAddress);
         }
-
-
         for (UnspentOutput unspentOutput : unspentOutputs) {
-
-                for (DeterministicKey deterministicKey : KeyStorage.getInstance().getKeyList()) {
-                    if (deterministicKey.toAddress(CurrentNetParams.getNetParams()).toString().equals(unspentOutput.getAddress())) {
-                        Sha256Hash sha256Hash = new Sha256Hash(Utils.parseAsHexOrBase58(unspentOutput.getTxHash()));
-                        TransactionOutPoint outPoint = new TransactionOutPoint(CurrentNetParams.getNetParams(), unspentOutput.getVout(), sha256Hash);
-                        Script script2 = new Script(Utils.parseAsHexOrBase58(unspentOutput.getTxoutScriptPubKey()));
-                        transaction.addSignedInput(outPoint, script2, deterministicKey, Transaction.SigHash.ALL, true);
-                        amountFromOutput = amountFromOutput.add(unspentOutput.getAmount());
-                        break;
-                    }
+            for (DeterministicKey deterministicKey : KeyStorage.getInstance().getKeyList()) {
+                if (deterministicKey.toAddress(CurrentNetParams.getNetParams()).toString().equals(unspentOutput.getAddress())) {
+                    Sha256Hash sha256Hash = new Sha256Hash(Utils.parseAsHexOrBase58(unspentOutput.getTxHash()));
+                    TransactionOutPoint outPoint = new TransactionOutPoint(CurrentNetParams.getNetParams(), unspentOutput.getVout(), sha256Hash);
+                    Script script2 = new Script(Utils.parseAsHexOrBase58(unspentOutput.getTxoutScriptPubKey()));
+                    transaction.addSignedInput(outPoint, script2, deterministicKey, Transaction.SigHash.ALL, true);
+                    amountFromOutput = amountFromOutput.add(unspentOutput.getAmount());
+                    break;
                 }
-            if (amountFromOutput.doubleValue() >= totalFee.doubleValue()) {
+            }
+            if (amountFromOutput.doubleValue() >= totalAmount.doubleValue()) {
                 break;
             }
         }
-
         transaction.getConfidence().setSource(TransactionConfidence.Source.SELF);
         transaction.setPurpose(Transaction.Purpose.USER_PAYMENT);
-
         byte[] bytes = transaction.unsafeBitcoinSerialize();
-
         int txSizeInkB = (int) Math.ceil(bytes.length / 1024.);
         BigDecimal minimumFee = (feePerKb.multiply(new BigDecimal(txSizeInkB)));
         if (minimumFee.doubleValue() > fee.doubleValue()) {
             throw new RuntimeException(context.getString(R.string.insufficient_fee_lease_use_minimum_of) + " " + minimumFee.toString() + " QTUM");
         }
-
         return Hex.toHexString(bytes);
     }
 
     public TransactionHashWithSender createTransactionHashForCreateContract(Script script, List<UnspentOutput> unspentOutputs, int gasLimit, int gasPrice, BigDecimal feePerKb, String feeString, Context context) {
-
         Transaction transaction = new Transaction(CurrentNetParams.getNetParams());
         transaction.addOutput(Coin.ZERO, script);
         BigDecimal fee = new BigDecimal(feeString);
@@ -482,66 +454,53 @@ public class ContractBuilder {
             throw new RuntimeException("You have insufficient funds for this transaction");
         }
         BigDecimal delivery = overFlow.subtract(totalFee);
-
-
         BigDecimal bitcoin = new BigDecimal(100000000);
-
         Address myAddress;
         try {
             myAddress = Address.fromBase58(CurrentNetParams.getNetParams(), unspentOutputs.get(0).getAddress());
         } catch (AddressFormatException a) {
             throw new RuntimeException(mContext.getString(org.qtum.wallet.R.string.invalid_qtum_address));
         }
-
         if (delivery.doubleValue() != 0.0) {
             transaction.addOutput(Coin.valueOf((long) (delivery.multiply(bitcoin).doubleValue())), myAddress);
         }
-
-
         for (UnspentOutput unspentOutput : unspentOutputs) {
 
-                for (DeterministicKey deterministicKey : KeyStorage.getInstance().getKeyList()) {
-                    if (deterministicKey.toAddress(CurrentNetParams.getNetParams()).toString().equals(unspentOutput.getAddress())) {
-                        Sha256Hash sha256Hash = new Sha256Hash(Utils.parseAsHexOrBase58(unspentOutput.getTxHash()));
-                        TransactionOutPoint outPoint = new TransactionOutPoint(CurrentNetParams.getNetParams(), unspentOutput.getVout(), sha256Hash);
-                        Script script2 = new Script(Utils.parseAsHexOrBase58(unspentOutput.getTxoutScriptPubKey()));
-                        transaction.addSignedInput(outPoint, script2, deterministicKey, Transaction.SigHash.ALL, true);
-                        amountFromOutput = amountFromOutput.add(unspentOutput.getAmount());
-                        break;
-                    }
+            for (DeterministicKey deterministicKey : KeyStorage.getInstance().getKeyList()) {
+                if (deterministicKey.toAddress(CurrentNetParams.getNetParams()).toString().equals(unspentOutput.getAddress())) {
+                    Sha256Hash sha256Hash = new Sha256Hash(Utils.parseAsHexOrBase58(unspentOutput.getTxHash()));
+                    TransactionOutPoint outPoint = new TransactionOutPoint(CurrentNetParams.getNetParams(), unspentOutput.getVout(), sha256Hash);
+                    Script script2 = new Script(Utils.parseAsHexOrBase58(unspentOutput.getTxoutScriptPubKey()));
+                    transaction.addSignedInput(outPoint, script2, deterministicKey, Transaction.SigHash.ALL, true);
+                    amountFromOutput = amountFromOutput.add(unspentOutput.getAmount());
+                    break;
                 }
+            }
             if (amountFromOutput.doubleValue() >= totalFee.doubleValue()) {
                 break;
             }
         }
-
         transaction.getConfidence().setSource(TransactionConfidence.Source.SELF);
         transaction.setPurpose(Transaction.Purpose.USER_PAYMENT);
-
         byte[] bytes = transaction.unsafeBitcoinSerialize();
-
         int txSizeInkB = (int) Math.ceil(bytes.length / 1024.);
         BigDecimal minimumFee = (feePerKb.multiply(new BigDecimal(txSizeInkB)));
         if (minimumFee.doubleValue() > fee.doubleValue()) {
-            throw new RuntimeException(context.getString(R.string.insufficient_fee_lease_use_minimum_of) + " " + minimumFee.toString() + " HTML");
+            throw new RuntimeException(context.getString(R.string.insufficient_fee_lease_use_minimum_of) + " " + minimumFee.toString() + " QTUM");
         }
-
-        return new TransactionHashWithSender(Hex.toHexString(bytes),transaction.getInputs().get(0).getFromAddress().toString());
+        return new TransactionHashWithSender(Hex.toHexString(bytes), transaction.getInputs().get(0).getFromAddress().toString());
     }
 
 
     private static String FUNCTION_TYPE = "function";
     private static String TYPE = "type";
 
-    public static boolean checkForValidityHRC20(String abiCode) {
-
+    public static boolean checkForValidityQRC20(String abiCode) {
         List<ContractMethod> standardInterface = initStandardInterface();
-
         JSONArray array;
         List<ContractMethod> contractMethods = new ArrayList<>();
         try {
             array = new JSONArray(abiCode);
-
             for (int i = 0; i < array.length(); i++) {
                 JSONObject jb = array.getJSONObject(i);
                 if (FUNCTION_TYPE.equals(jb.getString(TYPE))) {
@@ -549,12 +508,10 @@ public class ContractBuilder {
                     contractMethods.add(gson.fromJson(jb.toString(), ContractMethod.class));
                 }
             }
-
             boolean validityFlag = true;
             for (ContractMethod contractMethodStandard : standardInterface) {
                 for (ContractMethod contractMethod : contractMethods) {
                     if (contractMethod.getName().equals(contractMethodStandard.getName()) && contractMethod.getType().contains(contractMethodStandard.getType()) && contractMethod.isConstant() == contractMethodStandard.isConstant()) {
-
                         if (contractMethodStandard.getInputParams() != null) {
                             if (contractMethod.getInputParams() == null) {
                                 return false;
@@ -605,7 +562,6 @@ public class ContractBuilder {
                 if (!validityFlag) return false;
             }
             return true;
-
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -613,7 +569,6 @@ public class ContractBuilder {
     }
 
     private static List<ContractMethod> initStandardInterface() {
-
         List<ContractMethod> standardInterface = new ArrayList<>();
 
         List<ContractMethodParameter> totalSupplyOutputParams = new ArrayList<>();
@@ -671,23 +626,17 @@ public class ContractBuilder {
         for (int i = 0; i < txHash.length(); i += 2) {
             sb.insert(0, ca, i, 2);
         }
-
         String reverse_tx_hash = sb.toString();
         reverse_tx_hash = reverse_tx_hash.concat("00000000");
-
-
         byte[] test5 = Hex.decode(reverse_tx_hash);
-
         SHA256Digest sha256Digest = new SHA256Digest();
         sha256Digest.update(test5, 0, test5.length);
         byte[] out = new byte[sha256Digest.getDigestSize()];
         sha256Digest.doFinal(out, 0);
-
         RIPEMD160Digest ripemd160Digest = new RIPEMD160Digest();
         ripemd160Digest.update(out, 0, out.length);
         byte[] out2 = new byte[ripemd160Digest.getDigestSize()];
         ripemd160Digest.doFinal(out2, 0);
-
         return Hex.toHexString(out2);
     }
 
@@ -698,7 +647,7 @@ public class ContractBuilder {
     }
 
     public static String getShortBigNumberRepresentation(String value, int maxNumbers) {
-        if(value.length() > maxNumbers) {
+        if (value.length() > maxNumbers) {
             BigDecimal number = new BigDecimal(value);
             NumberFormat formatter = new DecimalFormat("0.##E0", DecimalFormatSymbols.getInstance(Locale.ROOT));
             return formatter.format(number);
@@ -706,5 +655,4 @@ public class ContractBuilder {
             return value;
         }
     }
-
 }

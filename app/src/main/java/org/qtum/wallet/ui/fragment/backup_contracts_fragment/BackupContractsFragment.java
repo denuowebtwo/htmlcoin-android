@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.content.FileProvider;
 import android.view.View;
 
 import org.qtum.wallet.R;
@@ -16,9 +17,10 @@ import org.qtum.wallet.ui.fragment_factory.Factory;
 import org.qtum.wallet.ui.base.base_fragment.BaseFragment;
 import org.qtum.wallet.utils.FontTextView;
 
+import java.io.File;
+
 import butterknife.BindView;
 import butterknife.OnClick;
-
 
 public abstract class BackupContractsFragment extends BaseFragment implements BackupContractsView {
 
@@ -60,7 +62,7 @@ public abstract class BackupContractsFragment extends BaseFragment implements Ba
         getMainActivity().addPermissionResultListener(new MainActivity.PermissionsResultListener() {
             @Override
             public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-                if(requestCode == WRITE_EXTERNAL_STORAGE_CODE) {
+                if (requestCode == WRITE_EXTERNAL_STORAGE_CODE) {
                     if ((grantResults.length > 0) && (grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
                         PERMISION_GRANT = true;
                     }
@@ -70,8 +72,8 @@ public abstract class BackupContractsFragment extends BaseFragment implements Ba
     }
 
     @Override
-    public void checkPermissionForCreateFile(){
-        if(getMainActivity().checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+    public void checkPermissionForCreateFile() {
+        if (getMainActivity().checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
             getPresenter().permissionGrantedForCreateBackUpFile();
         } else {
             STATE = CHECK_PERMISSION_AND_CREATE;
@@ -80,8 +82,8 @@ public abstract class BackupContractsFragment extends BaseFragment implements Ba
     }
 
     @Override
-    public void checkPermissionForBackupFile(){
-        if(getMainActivity().checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+    public void checkPermissionForBackupFile() {
+        if (getMainActivity().checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
             getPresenter().permissionGrantedForChooseShareMethod();
         } else {
             STATE = CHECK_PERMISSION_AND_BACKUP;
@@ -90,22 +92,29 @@ public abstract class BackupContractsFragment extends BaseFragment implements Ba
     }
 
     @Override
-    public void chooseShareMethod(String absolutePath) {
+    public void chooseShareMethod(String authority, File file) {
+
+        String absolutePath = FileProvider.getUriForFile(
+                getView().getContext(),
+                authority,
+                file).toString();
+
         Intent intentShareFile = new Intent(Intent.ACTION_SEND);
         intentShareFile.setType("application/json");
-        intentShareFile.putExtra(Intent.EXTRA_STREAM, Uri.parse("file://"+absolutePath));
+        intentShareFile.putExtra(Intent.EXTRA_STREAM, Uri.parse(absolutePath));
 
         intentShareFile.putExtra(Intent.EXTRA_SUBJECT,
-                "Html Backup File");
-        intentShareFile.putExtra(Intent.EXTRA_TEXT, "Html Backup File");
+                "Qtum Backup File");
+        intentShareFile.putExtra(Intent.EXTRA_TEXT, "Qtum Backup File");
+        intentShareFile.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         getMainActivity().startActivity(Intent.createChooser(intentShareFile, "Share File"));
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        if(PERMISION_GRANT){
-            switch (STATE){
+        if (PERMISION_GRANT) {
+            switch (STATE) {
                 case CHECK_PERMISSION_AND_BACKUP:
                     getPresenter().permissionGrantedForCreateAndBackUpFile();
                     break;

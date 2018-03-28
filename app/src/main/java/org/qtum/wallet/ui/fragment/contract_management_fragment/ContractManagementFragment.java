@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import org.qtum.wallet.R;
 import org.qtum.wallet.datastorage.ContractStorage;
@@ -17,8 +18,10 @@ import org.qtum.wallet.model.contract.Contract;
 import org.qtum.wallet.model.contract.ContractMethod;
 import org.qtum.wallet.model.gson.SmartContractInfo;
 import org.qtum.wallet.ui.base.base_fragment.BaseFragment;
-import org.qtum.wallet.ui.fragment.contract_function_fragment.ContractFunctionFragment;
+import org.qtum.wallet.ui.fragment.contract_function_fragment.contract_constant_function_fragment.ContractFunctionConstantFragment;
+import org.qtum.wallet.ui.fragment.contract_function_fragment.contract_default_function_fragment.ContractFunctionDefaultFragment;
 import org.qtum.wallet.ui.fragment_factory.Factory;
+import org.qtum.wallet.utils.ClipboardUtils;
 import org.qtum.wallet.utils.ContractManagementHelper;
 import org.qtum.wallet.utils.FontTextView;
 
@@ -55,6 +58,17 @@ public abstract class ContractManagementFragment extends BaseFragment implements
                 getActivity().onBackPressed();
                 break;
         }
+    }
+
+    @OnLongClick(R.id.available_balance_view)
+    public boolean onCopyaddressClick() {
+        ClipboardUtils.copyToClipBoard(getContext(), tvContractAddress.getText().toString(), new ClipboardUtils.CopyCallback() {
+            @Override
+            public void onCopyToClipBoard() {
+                Toast.makeText(getContext(), getString(R.string.copied), Toast.LENGTH_SHORT).show();
+            }
+        });
+        return true;
     }
 
     protected MethodAdapter mMethodAdapter;
@@ -142,7 +156,12 @@ public abstract class ContractManagementFragment extends BaseFragment implements
                 itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        BaseFragment contractFunctionFragment = ContractFunctionFragment.newInstance(getContext(), mContractMethod.name, getContractTemplateUiid(), getArguments().getString(CONTRACT_ADDRESS));
+                        BaseFragment contractFunctionFragment;
+                        if(mContractMethod.isConstant()){
+                            contractFunctionFragment = ContractFunctionConstantFragment.newInstance(getContext(), mContractMethod.getName(), getContractTemplateUiid(), getArguments().getString(CONTRACT_ADDRESS));
+                        }else {
+                            contractFunctionFragment = ContractFunctionDefaultFragment.newInstance(getContext(), mContractMethod.getName(), getContractTemplateUiid(), getArguments().getString(CONTRACT_ADDRESS));
+                        }
                         openFragment(contractFunctionFragment);
                     }
                 });
@@ -154,7 +173,7 @@ public abstract class ContractManagementFragment extends BaseFragment implements
 
         void bindMethod(ContractMethod contractMethod){
             mContractMethod = contractMethod;
-            mTextViewName.setText(contractMethod.name);
+            mTextViewName.setText(contractMethod.getName());
         }
 
     }

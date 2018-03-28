@@ -220,6 +220,9 @@
     <string name="warning_play_services_required_user_cancelled">HTMLCOIN requires Play Services. htmlcoin has quit. Please relaunch and resolve the issue.</string>
 
     <string name="getting_info">Getting transaction receipt</string>
+    <string name="query_result">Query Result</string>
+    <string name="query">Query</string>
+    <string name="default_address">Default Address</string>
 
     <string name="english">English</string>
     <string name="french">Français</string>

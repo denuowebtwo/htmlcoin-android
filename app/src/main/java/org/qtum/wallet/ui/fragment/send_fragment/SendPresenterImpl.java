@@ -293,9 +293,9 @@ public class SendPresenterImpl extends BaseFragmentPresenterImpl implements Send
 
                     @Override
                     public void onNext(CallSmartContractResponse response) {
-                        if (!response.getItems().get(0).getExcepted().equals("None")) {
+                        if (!response.getExecutionResult().getExcepted().equals("None")) {
                             getView().setAlertDialog(org.qtum.wallet.R.string.error,
-                                    response.getItems().get(0).getExcepted(), "Ok", BaseFragment.PopUpType.error);
+                                    response.getExecutionResult().getExcepted(), "Ok", BaseFragment.PopUpType.error);
                             return;
                         }
                         createTx(params, token.getContractAddress(), availableAddress, gasLimit, gasPrice, fee);

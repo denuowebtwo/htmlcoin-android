@@ -7,7 +7,7 @@ import org.qtum.wallet.ui.fragment.template_library_fragment.TemplateLibraryFrag
 
 import java.util.List;
 
-public class TemplateLibraryFragmentLight extends TemplateLibraryFragment{
+public class TemplateLibraryFragmentLight extends TemplateLibraryFragment {
 
     @Override
     protected int getLayout() {

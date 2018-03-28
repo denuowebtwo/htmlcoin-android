@@ -74,7 +74,7 @@ public abstract class SmartContractsFragment extends BaseFragment implements OnS
                 openFragment(qStroreFragment);
                 break;
             case R.string.watch_contract:
-                BaseFragment watchContractFragment = WatchContractFragment.newInstance(getContext(), false);
+                BaseFragment watchContractFragment = WatchContractFragment.newInstance(getContext());
                 openFragment(watchContractFragment);
                 break;
             case R.string.watch_token:

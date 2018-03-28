@@ -1,13 +1,12 @@
-package org.qtum.wallet.ui.fragment.contract_function_fragment;
+package org.qtum.wallet.ui.fragment.contract_function_fragment.contract_default_function_fragment;
 
 import android.content.Context;
-
-import com.google.common.base.Joiner;
 
 import org.bitcoinj.script.Script;
 import org.qtum.wallet.dataprovider.rest_api.QtumService;
 import org.qtum.wallet.datastorage.FileStorageManager;
 import org.qtum.wallet.datastorage.KeyStorage;
+import org.qtum.wallet.datastorage.QtumSettingSharedPreference;
 import org.qtum.wallet.datastorage.QtumSharedPreference;
 import org.qtum.wallet.datastorage.TinyDB;
 import org.qtum.wallet.model.contract.Contract;
@@ -28,12 +27,11 @@ import rx.Observable;
 import rx.functions.Func0;
 import rx.functions.Func1;
 
-
-public class ContractFunctionInteractorImpl implements ContractFunctionInteractor {
+public class ContractFunctionDefaultInteractorImpl implements ContractFunctionDefaultInteractor {
 
     private WeakReference<Context> mContext;
 
-    public ContractFunctionInteractorImpl(Context context) {
+    public ContractFunctionDefaultInteractorImpl(Context context) {
         mContext = new WeakReference<>(context);
     }
 
@@ -44,7 +42,8 @@ public class ContractFunctionInteractorImpl implements ContractFunctionInteracto
 
     @Override
     public BigDecimal getFeePerKb() {
-        return new BigDecimal(QtumSharedPreference.getInstance().getFeePerKb(mContext.get()));
+        QtumSettingSharedPreference qtumSettingSharedPreference = new QtumSettingSharedPreference();
+        return new BigDecimal(qtumSettingSharedPreference.getFeePerKb(mContext.get()));
     }
 
     @Override
@@ -53,7 +52,7 @@ public class ContractFunctionInteractorImpl implements ContractFunctionInteracto
     }
 
     @Override
-    public Observable<CallSmartContractRespWrapper> callSmartContractObservable(final String methodName, final List<ContractMethodParameter> contractMethodParameterList, final Contract contract) {
+    public Observable<CallSmartContractRespWrapper> callSmartContractObservable(final String methodName, final List<ContractMethodParameter> contractMethodParameterList, final Contract contract, final String addressFrom) {
         final CallSmartContractRespWrapper wrapper = new CallSmartContractRespWrapper();
         return Observable.defer(new Func0<Observable<String>>() {
             @Override
@@ -65,8 +64,7 @@ public class ContractFunctionInteractorImpl implements ContractFunctionInteracto
             @Override
             public Observable<CallSmartContractResponse> call(String s) {
                 wrapper.setAbiParams(s);
-                return QtumService.newInstance().callSmartContractInfo(contract.getContractAddress(), s, contract.getSenderAddress());
-//                return QtumService.newInstance().callSmartContract(contract.getContractAddress(), new CallSmartContractRequest(new String[]{s},contract.getSenderAddress()));
+                return QtumService.newInstance().callSmartContractInfo(contract.getContractAddress(), s, addressFrom);
             }
         }).map(new Func1<CallSmartContractResponse, CallSmartContractRespWrapper>() {
             @Override
@@ -88,11 +86,11 @@ public class ContractFunctionInteractorImpl implements ContractFunctionInteracto
     }
 
     @Override
-    public String createTransactionHash(String abiParams, List<UnspentOutput> unspentOutputs, int gasLimit, int gasPrice, BigDecimal feePerKb, String fee, final String contractAddress) {
+    public String createTransactionHash(String abiParams, List<UnspentOutput> unspentOutputs, int gasLimit, int gasPrice, BigDecimal feePerKb, String fee, final String contractAddress, String sendToContract) {
         ContractBuilder contractBuilder = new ContractBuilder();
         Script script = contractBuilder.createMethodScript(abiParams, gasLimit, gasPrice, contractAddress);
 
-        return contractBuilder.createTransactionHash(script, unspentOutputs, gasLimit, gasPrice, feePerKb, fee, mContext.get());
+        return contractBuilder.createTransactionHash(script, unspentOutputs, gasLimit, gasPrice, feePerKb, fee, sendToContract, mContext.get());
     }
 
     @Override
@@ -103,12 +101,22 @@ public class ContractFunctionInteractorImpl implements ContractFunctionInteracto
     @Override
     public Contract getContractByAddress(String address) {
         TinyDB tinyDB = new TinyDB(mContext.get());
-        for(Contract contract : tinyDB.getContractList()){
-            if(contract.getContractAddress().equals(address)){
+        for (Contract contract : tinyDB.getContractList()) {
+            if (contract.getContractAddress().equals(address)) {
                 return contract;
             }
         }
         return null;
+    }
+
+    @Override
+    public List<String> getAddresses() {
+        return KeyStorage.getInstance().getAddresses();
+    }
+
+    @Override
+    public Observable<List<UnspentOutput>> getUnspentOutputs(List<String> addresses) {
+        return QtumService.newInstance().getUnspentOutputsForSeveralAddresses(addresses);
     }
 
     public static class CallSmartContractRespWrapper {
