@@ -1,9 +1,6 @@
 package org.qtum.wallet.ui.fragment.watch_token_fragment;
 
-import android.support.annotation.MainThread;
-
 import org.qtum.wallet.R;
-import org.qtum.wallet.model.ContractTemplate;
 import org.qtum.wallet.model.contract.Contract;
 import org.qtum.wallet.model.gson.ContractParams;
 import org.qtum.wallet.ui.base.base_fragment.BaseFragment;
@@ -11,7 +8,6 @@ import org.qtum.wallet.ui.base.base_fragment.BaseFragmentPresenterImpl;
 
 import java.util.List;
 
-import rx.Scheduler;
 import rx.Subscriber;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
@@ -21,13 +17,13 @@ public class WatchTokenPresenterImpl extends BaseFragmentPresenterImpl implement
 
     private WatchTokenView mWatchContractView;
     private WatchTokenInteractor mWatchContractInteractor;
-    private String QRC20TokenStandardAbi;
+    private String HRC20TokenStandardAbi;
     private Subscription mSubscription;
 
     public WatchTokenPresenterImpl(WatchTokenView view, WatchTokenInteractor interactor) {
         mWatchContractView = view;
         mWatchContractInteractor = interactor;
-        QRC20TokenStandardAbi = getInteractor().getQRC20TokenStandardAbi();
+        HRC20TokenStandardAbi = getInteractor().getHRC20TokenStandardAbi();
     }
 
     @Override
@@ -49,7 +45,7 @@ public class WatchTokenPresenterImpl extends BaseFragmentPresenterImpl implement
                 return;
             }
         }
-        String contractAddress = getInteractor().handleContractWithToken(name, address, QRC20TokenStandardAbi);
+        String contractAddress = getInteractor().handleContractWithToken(name, address, HRC20TokenStandardAbi);
         getView().subscribeTokenBalanceChanges(contractAddress);
 
         getView().setAlertDialog(R.string.token_was_added_to_your_wallet, "", R.string.ok, BaseFragment.PopUpType.confirm, getView().getAlertCallback());

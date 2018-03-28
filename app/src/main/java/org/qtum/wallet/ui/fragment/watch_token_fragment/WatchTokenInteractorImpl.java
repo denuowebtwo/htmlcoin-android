@@ -10,7 +10,6 @@ import org.qtum.wallet.model.contract.Contract;
 import org.qtum.wallet.model.contract.ContractCreationStatus;
 import org.qtum.wallet.model.contract.Token;
 import org.qtum.wallet.model.gson.ContractParams;
-import org.qtum.wallet.utils.ContractBuilder;
 import org.qtum.wallet.utils.DateCalculator;
 
 import java.lang.ref.WeakReference;
@@ -72,10 +71,10 @@ public class WatchTokenInteractorImpl implements WatchTokenInteractor {
     }
 
     @Override
-    public String getQRC20TokenStandardAbi() {
+    public String getHRC20TokenStandardAbi() {
         TinyDB tinyDB = new TinyDB(mContext.get());
         for(ContractTemplate template: tinyDB.getContractTemplateList()){
-            if(template.getName().equals("QRC20TokenStandard")) {
+            if(template.getName().equals("HRC20TokenStandard")) {
                 return FileStorageManager.getInstance().readAbiContract(mContext.get(), template.getUuid());
             }
         }
