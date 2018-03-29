@@ -81,7 +81,7 @@ public class SendPresenterImpl extends BaseFragmentPresenterImpl implements Send
 
         AddressBalance addressBalance = RealmStorage.getInstance(mSendFragmentView.getContext()).getAddressBalance();
         if (addressBalance != null){
-            getView().updateBalance(addressBalance.getFormattedBalance().stripTrailingZeros().toPlainString(), addressBalance.getFormattedUnconfirmedBalance().stripTrailingZeros().toPlainString());
+            getView().updateBalance(addressBalance.getFormattedBalance().stripTrailingZeros().toPlainString(), addressBalance.getFormattedUnconfirmedBalance().stripTrailingZeros().toPlainString(), null);
         } else {
             loadAndUpdateBalance();
         }
@@ -364,12 +364,12 @@ public class SendPresenterImpl extends BaseFragmentPresenterImpl implements Send
 
                     @Override
                     public void onNext(AddressBalance addressBalance) {
-                        getView().updateBalance(addressBalance.getFormattedBalance().stripTrailingZeros().toPlainString(), addressBalance.getFormattedUnconfirmedBalance().stripTrailingZeros().toPlainString());
+                        getView().updateBalance(addressBalance.getFormattedBalance().stripTrailingZeros().toPlainString(), addressBalance.getFormattedUnconfirmedBalance().stripTrailingZeros().toPlainString(), null);
                     }
                 });
     }
 
-    private void loadAndUpdateTokenBalance(Token token) {
+    private void loadAndUpdateTokenBalance(final Token token) {
         final List<String> addresses = new ArrayList<>();
         if (!"".equals(getView().getFromAddress())) {
             addresses.add(getView().getFromAddress());
@@ -394,9 +394,10 @@ public class SendPresenterImpl extends BaseFragmentPresenterImpl implements Send
                     public void onNext(TokenBalanceResponse tokenBalanceResponse) {
                         mTokenBalance = tokenBalanceResponse;
                         if (tokenBalanceResponse.getItems() != null && tokenBalanceResponse.getItems().size() > 0) {
-                            getView().updateBalance(tokenBalanceResponse.getItems().get(0).getBalance().toPlainString(), "");
+                            String resultamount = tokenBalanceResponse.getItems().get(0).getBalance().divide(new BigDecimal("10").pow(token.getDecimalUnits())).toPlainString();
+                            getView().updateBalance(resultamount, "", token.getSymbol());
                         } else {
-                            getView().updateBalance("","");
+                            getView().updateBalance("","", token.getSymbol());
                         }
                     }
                 });

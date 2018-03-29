@@ -28,6 +28,7 @@ import org.qtum.wallet.utils.ClipboardUtils;
 import org.qtum.wallet.utils.ContractManagementHelper;
 import org.qtum.wallet.utils.FontTextView;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import butterknife.BindView;
@@ -398,7 +399,8 @@ public abstract class TokenFragment extends BaseFragment implements TokenView, T
 
             @Override
             public void onNext(String s) {
-                setBalance(s);
+                String resultamount = new BigDecimal(s).divide(new BigDecimal("10").pow(getPresenter().getToken().getDecimalUnits())).toPlainString();
+                setBalance(resultamount);
             }
         };
     }
