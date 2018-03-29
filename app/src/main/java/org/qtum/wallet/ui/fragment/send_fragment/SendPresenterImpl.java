@@ -12,6 +12,7 @@ import org.qtum.wallet.model.gson.UnspentOutput;
 import org.qtum.wallet.model.gson.call_smart_contract_response.CallSmartContractResponse;
 import org.qtum.wallet.model.gson.token_balance.Balance;
 import org.qtum.wallet.model.gson.token_balance.TokenBalance;
+import org.qtum.wallet.model.gson.token_balance.TokenBalanceResponse;
 import org.qtum.wallet.ui.base.AddressInteractor;
 import org.qtum.wallet.ui.base.AddressInteractorImpl;
 import org.qtum.wallet.ui.base.base_fragment.BaseFragment;
@@ -47,6 +48,7 @@ public class SendPresenterImpl extends BaseFragmentPresenterImpl implements Send
     private int maxGasLimit = 5000000;
 
     private AddressInteractor mAddressInteractor;
+    private TokenBalanceResponse mTokenBalance;
 
     public SendPresenterImpl(SendView sendFragmentView, SendInteractor interactor) {
         mSendFragmentView = sendFragmentView;
@@ -127,6 +129,17 @@ public class SendPresenterImpl extends BaseFragmentPresenterImpl implements Send
     @Override
     public void onCurrencyChoose(Currency currency) {
         getView().setUpCurrencyField(currency);
+
+        if (currency.getName().equals("Html " + getView().getStringValue(org.qtum.wallet.R.string.default_currency))) {
+            loadAndUpdateBalance();
+        } else {
+            for (final Token token : mTokenList) {
+                String contractAddress = token.getContractAddress();
+                if (contractAddress.equals(((CurrencyToken) currency).getToken().getContractAddress())) {
+                    loadAndUpdateTokenBalance(token);
+                }
+            }
+        }
     }
 
     @Override
@@ -217,7 +230,6 @@ public class SendPresenterImpl extends BaseFragmentPresenterImpl implements Send
             for (final Token token : mTokenList) {
                 String contractAddress = token.getContractAddress();
                 if (contractAddress.equals(((CurrencyToken) currency).getToken().getContractAddress())) {
-
                     String resultAmount = amount;
 
                     if (token.getDecimalUnits() != null) {
@@ -229,12 +241,17 @@ public class SendPresenterImpl extends BaseFragmentPresenterImpl implements Send
                         getView().setAlertDialog(getView().getContext().getString(R.string.amount_too_big), getView().getContext().getString(R.string.ok), BaseFragment.PopUpType.error);
                     }
 
-                    TokenBalance tokenBalance = getView().getTokenBalance(contractAddress);
+//                    TokenBalance tokenBalance = getView().getTokenBalance(contractAddress);
+                    if (mTokenBalance.getItems() == null || mTokenBalance.getItems().size() == 0) {
+                        getView().setAlertDialog(org.qtum.wallet.R.string.error, "", "Ok", BaseFragment.PopUpType.error);
+                        return;
+                    }
 
+                    List<Balance> balances = mTokenBalance.getItems();
                     availableAddress = null;
 
                     if (!from.equals("")) {
-                        for (Balance balance : tokenBalance.getBalances()) {
+                        for (Balance balance : balances) {
                             if (balance.getAddress().equals(from)) {
                                 if (balance.getBalance().floatValue() >= Float.valueOf(resultAmount)) {
                                     availableAddress = balance.getAddress();
@@ -245,7 +262,7 @@ public class SendPresenterImpl extends BaseFragmentPresenterImpl implements Send
                             }
                         }
                     } else {
-                        for (Balance balance : tokenBalance.getBalances()) {
+                        for (Balance balance : balances) {
                             if (balance.getBalance().floatValue() >= Float.valueOf(resultAmount)) {
                                 availableAddress = balance.getAddress();
                                 break;
@@ -348,6 +365,39 @@ public class SendPresenterImpl extends BaseFragmentPresenterImpl implements Send
                     @Override
                     public void onNext(AddressBalance addressBalance) {
                         getView().updateBalance(addressBalance.getFormattedBalance().stripTrailingZeros().toPlainString(), addressBalance.getFormattedUnconfirmedBalance().stripTrailingZeros().toPlainString());
+                    }
+                });
+    }
+
+    private void loadAndUpdateTokenBalance(Token token) {
+        final List<String> addresses = new ArrayList<>();
+        if (!"".equals(getView().getFromAddress())) {
+            addresses.add(getView().getFromAddress());
+        } else {
+            addresses.addAll(mAddressInteractor.getAddresses());
+        }
+        mAddressInteractor.getTokenBalance(token, addresses)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<TokenBalanceResponse>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onNext(TokenBalanceResponse tokenBalanceResponse) {
+                        mTokenBalance = tokenBalanceResponse;
+                        if (tokenBalanceResponse.getItems() != null && tokenBalanceResponse.getItems().size() > 0) {
+                            getView().updateBalance(tokenBalanceResponse.getItems().get(0).getBalance().toPlainString(), "");
+                        } else {
+                            getView().updateBalance("","");
+                        }
                     }
                 });
     }

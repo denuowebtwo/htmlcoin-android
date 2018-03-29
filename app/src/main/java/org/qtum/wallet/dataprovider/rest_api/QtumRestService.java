@@ -25,6 +25,7 @@ import org.qtum.wallet.model.gson.qstore.QstoreByteCodeResponse;
 import org.qtum.wallet.model.gson.qstore.QstoreContract;
 import org.qtum.wallet.model.gson.qstore.QstoreItem;
 import org.qtum.wallet.model.gson.qstore.QstoreSourceCodeResponse;
+import org.qtum.wallet.model.gson.token_balance.TokenBalanceResponse;
 import org.qtum.wallet.model.gson.token_history.TokenHistoryResponse;
 
 import java.util.HashMap;
@@ -112,10 +113,14 @@ interface QtumRestService {
     @GET("/api/erc20/{contractAddress}/transfers")
     Observable<TokenHistoryResponse> getTokenHistoryList(@Path("contractAddress") String contractAddress, @Query("limit") int limit, @Query("offset") int offset, @Query("addresses[]") List<String> addresses);
 
+    @GET("/api/erc20/{contractAddress}/balances")
+    Observable<TokenBalanceResponse> getTokenBalance(@Path("contractAddress") String contractAddress, @Query("limit") int limit, @Query("offset") int offset, @Query("addresses[]") List<String> addresses);
+
     @GET("/api/txs/{txhash}/receipt")
     Observable<List<TransactionReceipt>> getTransactionReceipt(@Path("txhash") String txHash);
 
-    @GET("/api/contracts/{addressContract}/params?keys=symbol,decimals,name,totalSupply")
+//    @GET("/api/contracts/{addressContract}/params?keys=symbol,decimals,name,totalSupply")
+    @GET("/api/erc20/{addressContract}")
     Observable<ContractParams> getContractParams(@Path("addressContract") String addressContract);
 
     @GET("/api/dgpinfo")

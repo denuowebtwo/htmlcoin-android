@@ -384,6 +384,26 @@ public abstract class TokenFragment extends BaseFragment implements TokenView, T
     }
 
     @Override
+    public Subscriber<String> getBalanceValueCallback() {
+        return new Subscriber<String>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(String s) {
+                setBalance(s);
+            }
+        };
+    }
+
+    @Override
     public void onTokenHistoryClick(int adapterPosition) {
 
     }

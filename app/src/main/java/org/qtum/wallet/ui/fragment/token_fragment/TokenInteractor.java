@@ -25,6 +25,8 @@ public interface TokenInteractor {
 
     void setupPropertyDecimalsValue(Token token, Subscriber<String> stringSubscriber);
 
+    void setupBalanceValue(final Token token, List<String> addresses, final Subscriber<String> stringSubscriber);
+
     Token setTokenDecimals(Token token, String value);
 
     String handleTotalSupplyValue(Token token, String value);

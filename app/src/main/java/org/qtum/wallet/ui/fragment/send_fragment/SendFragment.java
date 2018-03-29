@@ -845,6 +845,10 @@ public abstract class SendFragment extends BaseFragment implements SendView {
 
     @Override
     public TokenBalance getTokenBalance(String contractAddress) {
-        return getSocketService().getTokenBalance(contractAddress);
+        if (getSocketService() != null) {
+            return getSocketService().getTokenBalance(contractAddress);
+        } else {
+            return null;
+        }
     }
 }

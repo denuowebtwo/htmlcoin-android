@@ -11,7 +11,7 @@ public class Balance {
     @SerializedName("address")
     @Expose
     private String address;
-    @SerializedName("balance")
+    @SerializedName("amount")
     @Expose
     private BigDecimal balance;
 

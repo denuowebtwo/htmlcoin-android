@@ -64,7 +64,7 @@ public class TokenViewHolder extends RecyclerView.ViewHolder implements TokenBal
         tokenBalanceView.setText("0.0");
         mTextViewSymbol.setText("");
 
-        if(this.token != null) {
+        if(this.token != null && socketInstance != null && socketInstance.getSocketInstance() != null) {
             socketInstance.getSocketInstance().removeTokenBalanceChangeListener(token.getContractAddress());
         }
 
