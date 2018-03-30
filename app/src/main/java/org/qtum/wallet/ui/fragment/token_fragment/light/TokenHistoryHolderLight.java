@@ -101,7 +101,7 @@ public class TokenHistoryHolderLight extends RecyclerView.ViewHolder {
            resultamount = new BigDecimal(history.getAmount()).divide(new BigDecimal("10").pow(decimalUnits)).toString();
         }
 
-        mTextViewValue.setText(getSpannedBalance(resultamount) + mSymbol);
+        mTextViewValue.setText(getSpannedBalance(resultamount) + " " + mSymbol);
     }
 
     private SpannableString getSpannedBalance(String balance) {

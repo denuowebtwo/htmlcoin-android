@@ -52,6 +52,11 @@ public class TokenPresenterImpl extends BaseFragmentPresenterImpl implements Tok
     }
 
     @Override
+    public void onRefresh() {
+        loadAndUpdateData();
+    }
+
+    @Override
     public Token getToken() {
         return token;
     }

@@ -4,6 +4,8 @@ import org.qtum.wallet.model.contract.Token;
 import org.qtum.wallet.ui.base.base_fragment.BaseFragmentPresenter;
 
 public interface TokenPresenter extends BaseFragmentPresenter {
+    void onRefresh();
+
     Token getToken();
 
     void setToken(Token token);

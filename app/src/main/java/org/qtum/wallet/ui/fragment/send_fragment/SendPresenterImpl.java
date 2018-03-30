@@ -79,12 +79,7 @@ public class SendPresenterImpl extends BaseFragmentPresenterImpl implements Send
         getView().updateGasPrice(minGasPrice, maxGasPrice);
         getView().updateGasLimit(minGasLimit, maxGasLimit);
 
-        AddressBalance addressBalance = RealmStorage.getInstance(mSendFragmentView.getContext()).getAddressBalance();
-        if (addressBalance != null){
-            getView().updateBalance(addressBalance.getFormattedBalance().stripTrailingZeros().toPlainString(), addressBalance.getFormattedUnconfirmedBalance().stripTrailingZeros().toPlainString(), null);
-        } else {
-            loadAndUpdateBalance();
-        }
+        loadBalance();
     }
 
     @Override
@@ -120,6 +115,9 @@ public class SendPresenterImpl extends BaseFragmentPresenterImpl implements Send
         for (Token token : getInteractor().getTokenList()) {
             if (token.getContractAddress().equals(currency)) {
                 getView().setUpCurrencyField(new CurrencyToken(token.getContractName(), token));
+
+                loadAndUpdateTokenBalance(token);
+
                 return;
             }
         }
@@ -242,7 +240,7 @@ public class SendPresenterImpl extends BaseFragmentPresenterImpl implements Send
                     }
 
 //                    TokenBalance tokenBalance = getView().getTokenBalance(contractAddress);
-                    if (mTokenBalance.getItems() == null || mTokenBalance.getItems().size() == 0) {
+                    if (mTokenBalance == null || mTokenBalance.getItems() == null || mTokenBalance.getItems().size() == 0) {
                         getView().setAlertDialog(org.qtum.wallet.R.string.error, "", "Ok", BaseFragment.PopUpType.error);
                         return;
                     }
@@ -339,6 +337,24 @@ public class SendPresenterImpl extends BaseFragmentPresenterImpl implements Send
                 getView().setAlertDialog(org.qtum.wallet.R.string.error, error, "Ok", BaseFragment.PopUpType.error);
             }
         });
+    }
+
+    private void loadBalance() {
+        if (getView().getCurrency().getName().equals("Html " + getView().getStringValue(org.qtum.wallet.R.string.default_currency))) {
+            AddressBalance addressBalance = RealmStorage.getInstance(mSendFragmentView.getContext()).getAddressBalance();
+            if (addressBalance != null){
+                getView().updateBalance(addressBalance.getFormattedBalance().stripTrailingZeros().toPlainString(), addressBalance.getFormattedUnconfirmedBalance().stripTrailingZeros().toPlainString(), null);
+            } else {
+                loadAndUpdateBalance();
+            }
+        } else {
+            for (final Token token : mTokenList) {
+                String contractAddress = token.getContractAddress();
+                if (contractAddress.equals(((CurrencyToken) getView().getCurrency()).getToken().getContractAddress())) {
+                    loadAndUpdateTokenBalance(token);
+                }
+            }
+        }
     }
 
     private void loadAndUpdateBalance() {

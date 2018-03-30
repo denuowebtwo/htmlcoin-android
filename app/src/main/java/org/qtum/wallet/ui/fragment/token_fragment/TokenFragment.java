@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -119,6 +121,9 @@ public abstract class TokenFragment extends BaseFragment implements TokenView, T
     @BindView(R.id.token_histories_placeholder)
     TextView mTextViewHistoriesPlaceholder;
 
+    @BindView(R.id.swipe_refresh)
+    protected SwipeRefreshLayout mSwipeRefreshLayout;
+
     @BindView(R.id.recycler_token_history)
     protected RecyclerView mRecyclerView;
     protected TokenHistoryAdapter mAdapter;
@@ -225,6 +230,15 @@ public abstract class TokenFragment extends BaseFragment implements TokenView, T
                         }
                     }
                 }
+            }
+        });
+
+        mSwipeRefreshLayout.setColorSchemeColors(ContextCompat.getColor(getContext(), R.color.colorAccent));
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                getPresenter().onRefresh();
+                mSwipeRefreshLayout.setRefreshing(false);
             }
         });
     }
@@ -358,7 +372,7 @@ public abstract class TokenFragment extends BaseFragment implements TokenView, T
             @Override
             public void onNext(String s) {
                 onContractPropertyUpdated(TokenFragment.symbol, s);
-                mAdapter.setSymbol(" " + s);
+                mAdapter.setSymbol(s);
                 mAdapter.notifyDataSetChanged();
             }
         };

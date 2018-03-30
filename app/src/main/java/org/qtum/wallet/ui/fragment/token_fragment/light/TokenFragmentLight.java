@@ -113,6 +113,7 @@ public class TokenFragmentLight extends TokenFragment {
         super.updateHistory(tokenHistories);
         mAdapter = new TokenHistoryAdapterLight(tokenHistories,this, getPresenter().getToken().getDecimalUnits());
         mRecyclerView.setAdapter(mAdapter);
+        mAdapter.setSymbol(getCurrency());
     }
 
 }
