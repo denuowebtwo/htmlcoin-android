@@ -172,7 +172,8 @@ public abstract class PinFragment extends BaseFragment implements PinView {
 
     @Override
     public void setPin(String pin) {
-        mWalletPin.setText(pin);
+        if (mWalletPin != null)
+            mWalletPin.setText(pin);
     }
 
     @Override

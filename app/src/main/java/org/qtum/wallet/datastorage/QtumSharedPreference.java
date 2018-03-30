@@ -172,7 +172,10 @@ public class QtumSharedPreference {
     }
 
     public Integer getMinGasPrice(Context context) {
-        return context.getSharedPreferences(QTUM_DATA_STORAGE, Context.MODE_PRIVATE).getInt(MIN_GAS_PRICE, 40);
+        if (context != null)
+            return context.getSharedPreferences(QTUM_DATA_STORAGE, Context.MODE_PRIVATE).getInt(MIN_GAS_PRICE, 40);
+        else
+            return 40;
     }
 
     public void setFeePerKb(Context context, String feePerKb) {
@@ -183,7 +186,10 @@ public class QtumSharedPreference {
     }
 
     public String getFeePerKb(Context context) {
-        return context.getSharedPreferences(QTUM_DATA_STORAGE, Context.MODE_PRIVATE).getString(FEE_PER_KB, "0.00001");
+        if (context != null)
+            return context.getSharedPreferences(QTUM_DATA_STORAGE, Context.MODE_PRIVATE).getString(FEE_PER_KB, "0.00001");
+        else
+            return "0.00001";
     }
 
     public void setIsRefreshNeeded(Context context, Boolean isRefresh) {
