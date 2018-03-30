@@ -128,7 +128,8 @@ public abstract class NewsFragment extends BaseFragment implements NewsView {
         void bindNews(News news) {
             mTextViewTitle.setText(news.getTitle());
             mTextViewDate.setText(news.getFormattedPubDate());
-            mTextViewDescription.setText(news.getDocument().select("p").get(0).text());
+            if (news.getDocument().select("p").size() > 0)
+                mTextViewDescription.setText(news.getDocument().select("p").get(0).text());
         }
     }
 
