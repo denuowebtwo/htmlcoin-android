@@ -93,7 +93,6 @@ public abstract class BackupContractsFragment extends BaseFragment implements Ba
 
     @Override
     public void chooseShareMethod(String authority, File file) {
-
         String absolutePath = FileProvider.getUriForFile(
                 getView().getContext(),
                 authority,
@@ -101,11 +100,11 @@ public abstract class BackupContractsFragment extends BaseFragment implements Ba
 
         Intent intentShareFile = new Intent(Intent.ACTION_SEND);
         intentShareFile.setType("application/json");
-        intentShareFile.putExtra(Intent.EXTRA_STREAM, Uri.parse(absolutePath));
+//        intentShareFile.putExtra(Intent.EXTRA_STREAM, Uri.parse(absolutePath));
+        intentShareFile.putExtra(Intent.EXTRA_STREAM, Uri.parse("file://"+ file.getAbsolutePath()));
 
-        intentShareFile.putExtra(Intent.EXTRA_SUBJECT,
-                "Qtum Backup File");
-        intentShareFile.putExtra(Intent.EXTRA_TEXT, "Qtum Backup File");
+        intentShareFile.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.back_up_file));
+        intentShareFile.putExtra(Intent.EXTRA_TEXT, getString(R.string.back_up_file));
         intentShareFile.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         getMainActivity().startActivity(Intent.createChooser(intentShareFile, "Share File"));
     }

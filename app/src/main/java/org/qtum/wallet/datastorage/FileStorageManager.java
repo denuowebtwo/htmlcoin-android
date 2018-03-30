@@ -46,7 +46,7 @@ public class FileStorageManager {
     private final static String HUMANSTANDARDTOKEN = "HumanStandardToken";
 
     public final static String HUMANSTANDARDTOKENUUID = "human-standard-token-identifire";
-    private final static String HRC20TOKENSTANDARTUUID = "hrc20-token-identifire";
+    private final static String HRC20TOKENSTANDARTUUID = "qrc20-token-identifire";
     private final static String CROWDSALEUUID = "crowdsale-identifire";
 
     private static String[] STANDARD_CONTRACTS = {CROWDSALE, HUMANSTANDARDTOKEN, HRC20TOKENSTANDART};

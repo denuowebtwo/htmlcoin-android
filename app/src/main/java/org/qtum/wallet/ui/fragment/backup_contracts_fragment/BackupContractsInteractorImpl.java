@@ -46,6 +46,8 @@ public class BackupContractsInteractorImpl implements BackupContractsInteractor 
                     String source = FileStorageManager.getInstance().readSourceContract(mContext, contractTemplate.getUuid());
                     String bytecode = FileStorageManager.getInstance().readByteCodeContract(mContext, contractTemplate.getUuid());
                     String abi = FileStorageManager.getInstance().readAbiContract(mContext, contractTemplate.getUuid());
+                    if (abi.isEmpty()) continue;
+
                     TemplateJSON templateJSON = new TemplateJSON(source, bytecode, contractTemplate.getUuid(), contractTemplate.getDate(), abi, contractTemplate.getContractType(), contractTemplate.getName());
                     templateJSONList.add(templateJSON);
                 }
@@ -63,7 +65,7 @@ public class BackupContractsInteractorImpl implements BackupContractsInteractor 
                 Gson gson = new Gson();
                 String backupData = gson.toJson(backup);
 
-                String fileName = "qtum_backup_file.json";
+                String fileName = "html_backup_file.json";
                 File backupFile = new File(Environment.getExternalStorageDirectory(), fileName);
 
                 try {
