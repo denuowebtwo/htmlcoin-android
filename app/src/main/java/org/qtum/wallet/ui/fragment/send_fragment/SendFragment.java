@@ -547,7 +547,12 @@ public abstract class SendFragment extends BaseFragment implements SendView {
                     return;
                 }
                 if(!s.toString().isEmpty()) {
-                    Double fee = Double.valueOf(s.toString().replaceAll(",", ".")) * 100000000;
+                    Double fee = (double)mMinFee;
+                    try {
+                        fee = Double.valueOf(s.toString().replaceAll(",", ".")) * 100000000;
+                    } catch (NumberFormatException e) {
+                        fee = (double)mMinFee;
+                    }
                     textViewChangeValue = true;
                     int progress;
                     if (fee < mMinFee) {
