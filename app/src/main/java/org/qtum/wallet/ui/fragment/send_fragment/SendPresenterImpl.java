@@ -17,6 +17,7 @@ import org.qtum.wallet.ui.base.AddressInteractorImpl;
 import org.qtum.wallet.ui.base.base_fragment.BaseFragment;
 import org.qtum.wallet.ui.base.base_fragment.BaseFragmentPresenterImpl;
 import org.qtum.wallet.utils.CurrentNetParams;
+import org.qtum.wallet.utils.LogUtils;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -164,7 +165,13 @@ public class SendPresenterImpl extends BaseFragmentPresenterImpl implements Send
     @Override
     public void send() {
         if (mNetworkConnectedFlag) {
-            final double feeDouble = Double.valueOf(getView().getFeeInput().replace(',', '.'));
+            double feeDouble = minFee;
+            try {
+                feeDouble = Double.valueOf(getView().getFeeInput().replace(',', '.'));
+            } catch (NumberFormatException ex) {
+                LogUtils.error("Send", ex.getMessage(), ex);
+            }
+
             if (feeDouble < minFee || feeDouble > maxFee) {
                 getView().dismissProgressDialog();
                 getView().setAlertDialog(org.qtum.wallet.R.string.error, R.string.invalid_fee, "Ok", BaseFragment.PopUpType.error);
