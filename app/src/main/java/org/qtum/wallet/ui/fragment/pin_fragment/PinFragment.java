@@ -141,10 +141,14 @@ public abstract class PinFragment extends BaseFragment implements PinView {
 
     @Override
     public void updateState(int state) {
-        mWalletPin.setText("");
-        tooltip.setText(state);
-        tooltip.setTextColor(ContextCompat.getColor(getContext(), android.R.color.white));
-        tooltip.setVisibility(View.VISIBLE);
+        if (mWalletPin != null) {
+            mWalletPin.setText("");
+        }
+        if (tooltip != null) {
+            tooltip.setText(state);
+            tooltip.setTextColor(ContextCompat.getColor(getContext(), android.R.color.white));
+            tooltip.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override

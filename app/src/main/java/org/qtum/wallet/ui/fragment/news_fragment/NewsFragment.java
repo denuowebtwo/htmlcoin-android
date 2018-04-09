@@ -21,6 +21,7 @@ import org.qtum.wallet.ui.fragment_factory.Factory;
 
 import org.qtum.wallet.R;
 import org.qtum.wallet.ui.base.base_fragment.BaseFragment;
+import org.qtum.wallet.utils.LogUtils;
 
 import java.util.List;
 
@@ -126,10 +127,14 @@ public abstract class NewsFragment extends BaseFragment implements NewsView {
         }
 
         void bindNews(News news) {
-            mTextViewTitle.setText(news.getTitle());
-            mTextViewDate.setText(news.getFormattedPubDate());
-            if (news.getDocument().select("p").size() > 0)
-                mTextViewDescription.setText(news.getDocument().select("p").get(0).text());
+            try {
+                mTextViewTitle.setText(news.getTitle());
+                mTextViewDate.setText(news.getFormattedPubDate());
+                if (news.getDocument() != null && news.getDocument().select("p").size() > 0)
+                    mTextViewDescription.setText(news.getDocument().select("p").get(0).text());
+            } catch (Exception ex) {
+                LogUtils.error("News", ex.getMessage(), ex);
+            }
         }
     }
 

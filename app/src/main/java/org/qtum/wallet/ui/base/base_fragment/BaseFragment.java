@@ -395,10 +395,14 @@ public abstract class BaseFragment extends Fragment implements BaseFragmentView 
     }
 
     public void setFocusTextInput(View textInputEditText, View textInputLayout) {
-        textInputEditText.setFocusableInTouchMode(true);
-        textInputEditText.requestFocus();
-        textInputLayout.setFocusableInTouchMode(true);
-        textInputLayout.requestFocus();
+        if (textInputEditText != null) {
+            textInputEditText.setFocusableInTouchMode(true);
+            textInputEditText.requestFocus();
+        }
+        if (textInputLayout != null) {
+            textInputLayout.setFocusableInTouchMode(true);
+            textInputLayout.requestFocus();
+        }
     }
 
     @Override
