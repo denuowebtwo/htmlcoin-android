@@ -130,66 +130,66 @@ android {
     }
 }
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
-    compile ('com.squareup.retrofit2:converter-simplexml:2.0.0-beta3'){
+    implementation ('com.squareup.retrofit2:converter-simplexml:2.0.0-beta3'){
         exclude group: 'xpp3', module: 'xpp3'
         exclude group: 'stax', module: 'stax-api'
         exclude group: 'stax', module: 'stax'
     }
 
-    compile 'com.android.support:appcompat-v7:27.1.0'
-    testCompile 'junit:junit:4.12'
-    testCompile "org.mockito:mockito-all:$rootProject.ext.mockitoVersion"
-    testCompile "org.hamcrest:hamcrest-all:$rootProject.ext.hamcrestVersion"
-    testCompile 'org.assertj:assertj-core:2.8.0'
+    implementation 'com.android.support:appcompat-v7:27.1.0'
+    testImplementation 'junit:junit:4.12'
+    testImplementation "org.mockito:mockito-all:$rootProject.ext.mockitoVersion"
+    testImplementation "org.hamcrest:hamcrest-all:$rootProject.ext.hamcrestVersion"
+    testImplementation 'org.assertj:assertj-core:2.8.0'
 
-    compile 'com.android.support:support-v4:27.1.0'
-    compile 'com.android.support:design:27.1.0'
-    compile 'com.github.designsters:android-fork-bitcoinj:1.0.11'
+    implementation 'com.android.support:support-v4:27.1.0'
+    implementation 'com.android.support:design:27.1.0'
+    implementation 'com.github.designsters:android-fork-bitcoinj:1.0.11'
 //    compile (files('../submodules/android-fork-bitcoinj/core/target/bitcoinj-core-0.14.5.jar'))
 
-    compile "com.google.android.gms:play-services-base:11.8.0"
+    implementation "com.google.android.gms:play-services-base:11.8.0"
 
-    compile 'com.android.support:multidex:1.0.3'
-    compile 'com.google.guava:guava:23.6-android'
-    compile 'com.google.zxing:core:3.3.0'
-    compile 'com.madgag.spongycastle:core:1.58.0.0'
-    compile 'com.jakewharton:butterknife:8.8.1'
+    implementation 'com.android.support:multidex:1.0.3'
+    implementation 'com.google.guava:guava:23.6-android'
+    implementation 'com.google.zxing:core:3.3.0'
+    implementation 'com.madgag.spongycastle:core:1.58.0.0'
+    implementation 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
-    compile 'com.google.zxing:android-core:3.3.0'
-    compile 'me.dm7.barcodescanner:zxing:1.8.4'
-    compile 'io.reactivex:rxjava:1.2.2'
-    compile 'io.reactivex:rxandroid:1.2.1'
-    compile 'com.squareup.retrofit2:retrofit:2.3.0'
-    compile 'com.squareup.retrofit2:converter-gson:2.3.0'
-    compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
-    compile 'com.squareup.picasso:picasso:2.5.2'
-    compile('io.socket:socket.io-client:0.8.3') {
+    implementation 'com.google.zxing:android-core:3.3.0'
+    implementation 'me.dm7.barcodescanner:zxing:1.8.4'
+    implementation 'io.reactivex:rxjava:1.2.2'
+    implementation 'io.reactivex:rxandroid:1.2.1'
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation('io.socket:socket.io-client:0.8.3') {
         exclude group: 'org.json', module: 'json'
     }
-    compile 'com.airbnb.android:lottie:2.0.0-beta3'
+    implementation 'com.airbnb.android:lottie:2.0.0-beta3'
 
     //
-    compile 'com.andkulikov:transitionseverywhere:1.7.2'
-    compile 'com.alimuzaffar.lib:pinentryedittext:1.3.1'
-    compile 'com.baoyz.pullrefreshlayout:library:1.2.0'
-    compile 'com.github.JakeWharton:ViewPagerIndicator:2.4.1'
-    compile 'com.mikhaellopez:hfrecyclerview:1.0.0'
-    compile 'com.google.firebase:firebase-messaging:11.8.0'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.beloo.widget:ChipsLayoutManager:0.3.7@aar'
-    compile 'org.jsoup:jsoup:1.10.3'
-    compile 'com.squareup.okhttp3:logging-interceptor:3.8.1'
-    compile 'com.squareup.okhttp3:okhttp:3.8.1'
-    compile 'me.pushy:sdk:1.0.31'
-    compile 'com.datatheorem.android.trustkit:trustkit:1.0.2'
-    compile "com.daimajia.swipelayout:library:1.2.0@aar"
+    implementation 'com.andkulikov:transitionseverywhere:1.7.2'
+    implementation 'com.alimuzaffar.lib:pinentryedittext:1.3.1'
+    implementation 'com.baoyz.pullrefreshlayout:library:1.2.0'
+    implementation 'com.github.JakeWharton:ViewPagerIndicator:2.4.1'
+    implementation 'com.mikhaellopez:hfrecyclerview:1.0.0'
+    implementation 'com.google.firebase:firebase-messaging:11.8.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation 'com.beloo.widget:ChipsLayoutManager:0.3.7@aar'
+    implementation 'org.jsoup:jsoup:1.10.3'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.8.1'
+    implementation 'com.squareup.okhttp3:okhttp:3.8.1'
+    implementation 'me.pushy:sdk:1.0.31'
+    implementation 'com.datatheorem.android.trustkit:trustkit:1.0.2'
+    implementation "com.daimajia.swipelayout:library:1.2.0@aar"
 
-    compile 'com.crashlytics.sdk.android:crashlytics:2.9.1'
-    compile 'com.google.firebase:firebase-core:11.8.0'
+    implementation 'com.crashlytics.sdk.android:crashlytics:2.9.1'
+    implementation 'com.google.firebase:firebase-core:11.8.0'
 }
 apply plugin: 'com.google.gms.google-services'
