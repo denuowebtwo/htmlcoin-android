@@ -4,6 +4,7 @@ package org.qtum.wallet.ui.fragment.backup_contracts_fragment;
 import org.qtum.wallet.R;
 import org.qtum.wallet.ui.base.base_fragment.BaseFragment;
 import org.qtum.wallet.ui.base.base_fragment.BaseFragmentPresenterImpl;
+import org.qtum.wallet.utils.LogUtils;
 
 import java.io.File;
 
@@ -96,10 +97,15 @@ public class BackupContractsPresenterImpl extends BaseFragmentPresenterImpl impl
 
     @Override
     public void permissionGrantedForChooseShareMethod() {
-        if (mBackUpFile.exists()) {
-            getView().chooseShareMethod(mBackUpFile.getAbsolutePath());
-        } else {
-            getView().setAlertDialog(R.string.error,R.string.cancel, BaseFragment.PopUpType.error);
+        try {
+            if (mBackUpFile.exists()) {
+                getView().chooseShareMethod(mBackUpFile.getAbsolutePath());
+            } else {
+                getView().setAlertDialog(R.string.error, R.string.cancel, BaseFragment.PopUpType.error);
+            }
+        } catch (Exception ex) {
+            getView().setAlertDialog(R.string.error, R.string.cancel, BaseFragment.PopUpType.error);
+            LogUtils.error("Backup", ex.getMessage(), ex);
         }
     }
 

@@ -258,7 +258,11 @@ public class MainActivity extends BaseActivity implements MainActivityView {
 
     @Override
     public void popBackStack() {
-        getSupportFragmentManager().popBackStack(BaseFragment.BACK_STACK_ROOT_TAG, 0);
+        try {
+            getSupportFragmentManager().popBackStack(BaseFragment.BACK_STACK_ROOT_TAG, 0);
+        } catch (IllegalStateException ex) {
+            LogUtils.error("MainActivity", ex.getMessage(), ex);
+        }
     }
 
     @Override

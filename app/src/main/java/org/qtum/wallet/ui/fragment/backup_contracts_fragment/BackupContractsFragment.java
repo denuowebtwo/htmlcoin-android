@@ -91,6 +91,8 @@ public abstract class BackupContractsFragment extends BaseFragment implements Ba
 
     @Override
     public void chooseShareMethod(String absolutePath) {
+        if (absolutePath == null) return;
+
         Intent intentShareFile = new Intent(Intent.ACTION_SEND);
         intentShareFile.setType("application/json");
         intentShareFile.putExtra(Intent.EXTRA_STREAM, Uri.parse("file://"+absolutePath));

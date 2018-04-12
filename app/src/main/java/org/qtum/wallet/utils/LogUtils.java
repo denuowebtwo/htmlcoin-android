@@ -2,6 +2,8 @@ package org.qtum.wallet.utils;
 
 import android.util.Log;
 
+import com.crashlytics.android.Crashlytics;
+
 import org.qtum.wallet.BuildConfig;
 
 public class LogUtils {
@@ -29,5 +31,6 @@ public class LogUtils {
 
     public static void error(final String tag, String message, Throwable e) {
         Log.e(tag, message, e);
+        Crashlytics.getInstance().core.logException(e);
     }
 }
