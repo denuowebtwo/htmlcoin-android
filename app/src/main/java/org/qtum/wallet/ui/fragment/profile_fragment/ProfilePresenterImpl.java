@@ -32,7 +32,7 @@ public class ProfilePresenterImpl extends BaseFragmentPresenterImpl implements P
             settingsData.add(new SettingObject(org.qtum.wallet.R.string.smart_contracts, org.qtum.wallet.R.drawable.icon_prof_smartcontr, 2));
             settingsData.add(new SettingObject(org.qtum.wallet.R.string.subscribe_tokens, org.qtum.wallet.R.drawable.icon_tokensubscribe, 2));
             settingsData.add(new SettingObject(org.qtum.wallet.R.string.about, R.drawable.icon_about, 4));
-            settingsData.add(new SettingObject(org.qtum.wallet.R.string.switch_theme, org.qtum.wallet.R.drawable.icon_prof_theme, 4));
+//            settingsData.add(new SettingObject(org.qtum.wallet.R.string.switch_theme, org.qtum.wallet.R.drawable.icon_prof_theme, 4));
             settingsData.add(new SettingObject(org.qtum.wallet.R.string.log_out, R.drawable.icon_logout, 4));
         }
     }
