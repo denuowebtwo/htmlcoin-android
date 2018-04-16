@@ -138,7 +138,9 @@ public abstract class WatchTokenFragment extends BaseFragment implements WatchTo
 
     @Override
     public void subscribeTokenBalanceChanges(String contractAddress) {
-        mUpdateService.subscribeTokenBalanceChange(contractAddress);
+        if (mUpdateService != null) {
+            mUpdateService.subscribeTokenBalanceChange(contractAddress);
+        }
     }
 
     @Override

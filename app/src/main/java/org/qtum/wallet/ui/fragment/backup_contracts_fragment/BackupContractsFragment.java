@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -93,15 +94,21 @@ public abstract class BackupContractsFragment extends BaseFragment implements Ba
 
     @Override
     public void chooseShareMethod(String authority, File file) {
-//        String absolutePath = FileProvider.getUriForFile(
-//                getView().getContext(),
-//                authority,
-//                file).toString();
+        String absolutePath = "";
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+             absolutePath = FileProvider.getUriForFile(
+                    getView().getContext(),
+                    authority,
+                    file).toString();
+        } else {
+            absolutePath = "file://"+ file.getAbsolutePath();
+        }
+
 
         Intent intentShareFile = new Intent(Intent.ACTION_SEND);
         intentShareFile.setType("application/json");
-//        intentShareFile.putExtra(Intent.EXTRA_STREAM, Uri.parse(absolutePath));
-        intentShareFile.putExtra(Intent.EXTRA_STREAM, Uri.parse("file://"+ file.getAbsolutePath()));
+        intentShareFile.putExtra(Intent.EXTRA_STREAM, Uri.parse(absolutePath));
 
         intentShareFile.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.back_up_file));
         intentShareFile.putExtra(Intent.EXTRA_TEXT, getString(R.string.back_up_file));
