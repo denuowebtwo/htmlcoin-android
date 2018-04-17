@@ -97,7 +97,7 @@
                 android:padding="2dp"
                 android:layout_weight="1"
                 android:maxLines="1"
-                android:ellipsize="end"
+                android:autoSizeTextType="uniform"
                 android:gravity="top"
                 android:paddingEnd="16dp"
                 android:textColor="@color/white"
