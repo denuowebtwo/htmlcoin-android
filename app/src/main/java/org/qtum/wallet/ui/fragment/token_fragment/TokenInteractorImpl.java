@@ -8,6 +8,7 @@ import org.qtum.wallet.datastorage.KeyStorage;
 import org.qtum.wallet.datastorage.TinyDB;
 import org.qtum.wallet.datastorage.TokenHistoryList;
 import org.qtum.wallet.model.contract.Token;
+import org.qtum.wallet.model.gson.token_balance.Balance;
 import org.qtum.wallet.model.gson.token_balance.TokenBalanceResponse;
 import org.qtum.wallet.model.gson.token_history.TokenHistory;
 import org.qtum.wallet.model.gson.token_history.TokenHistoryResponse;
@@ -74,7 +75,7 @@ public class TokenInteractorImpl implements TokenInteractor {
     }
 
     @Override
-    public void setupBalanceValue(final Token token, List<String> addresses, final Subscriber<String> stringSubscriber) {
+    public void setupBalanceValue(final Token token, final List<String> addresses, final Subscriber<String> stringSubscriber) {
         QtumService.newInstance().getTokenBalances(token.getContractAddress(), 20, 0, addresses)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -92,7 +93,13 @@ public class TokenInteractorImpl implements TokenInteractor {
                     @Override
                     public void onNext(TokenBalanceResponse tokenBalanceResponse) {
                         if (tokenBalanceResponse.getItems() != null && tokenBalanceResponse.getItems().size() > 0) {
-                            stringSubscriber.onNext(tokenBalanceResponse.getItems().get(0).getBalance().toPlainString());
+                            BigDecimal total = BigDecimal.ZERO;
+                            for (Balance balance: tokenBalanceResponse.getItems()) {
+                                if (addresses.contains(balance.getAddress())) {
+                                    total = total.add(balance.getBalance());
+                                }
+                            }
+                            stringSubscriber.onNext(total.toPlainString());
                         } else {
                             stringSubscriber.onNext("0");
                         }

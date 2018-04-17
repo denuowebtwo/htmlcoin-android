@@ -21,6 +21,7 @@ import org.qtum.wallet.utils.CurrentNetParams;
 import org.qtum.wallet.utils.LogUtils;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -417,7 +418,14 @@ public class SendPresenterImpl extends BaseFragmentPresenterImpl implements Send
                     public void onNext(TokenBalanceResponse tokenBalanceResponse) {
                         mTokenBalance = tokenBalanceResponse;
                         if (tokenBalanceResponse.getItems() != null && tokenBalanceResponse.getItems().size() > 0) {
-                            String resultamount = tokenBalanceResponse.getItems().get(0).getBalance().divide(new BigDecimal("10").pow(token.getDecimalUnits())).toPlainString();
+                            BigDecimal total = BigDecimal.ZERO;
+                            for (Balance balance: tokenBalanceResponse.getItems()) {
+                                if (addresses.contains(balance.getAddress())) {
+                                    total = total.add(balance.getBalance());
+                                }
+                            }
+
+                            String resultamount = total.divide(new BigDecimal("10").pow(token.getDecimalUnits())).toPlainString();
                             getView().updateBalance(resultamount, "", token.getSymbol());
                         } else {
                             getView().updateBalance("","", token.getSymbol());
