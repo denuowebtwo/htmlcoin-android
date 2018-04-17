@@ -66,6 +66,7 @@ public class AddressWithBalanceHolder extends RecyclerView.ViewHolder {
         if(mTextViewAddressBalance.getLayoutParams().width == WRAP_CONTENT){
             mTextViewAddressBalance.setLongNumberText(balance, itemView.getContext().getResources().getDisplayMetrics().widthPixels/2);
         } else {
+            mTextViewAddressBalance.setText(balance);
             mTextViewAddressBalance.setLongNumberText(balance);
         }
 

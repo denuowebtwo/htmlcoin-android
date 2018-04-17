@@ -33,6 +33,8 @@ public interface TokenView extends BaseFragmentView {
 
     Subscriber<String> getTotalSupplyValueCallback();
 
+    Subscriber<String> getBalanceValueCallback();
+
     void updateHistory(List<TokenHistory> tokenHistories);
 
     void addHistory(int positionStart, int itemCount, List<TokenHistory> historyList);

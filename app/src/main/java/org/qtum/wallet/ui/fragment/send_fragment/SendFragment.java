@@ -703,11 +703,14 @@ public abstract class SendFragment extends BaseFragment implements SendView {
     }
 
     @Override
-    public void updateBalance(String balance, String unconfirmedBalance) {
-        placeHolderBalance.setText(String.format("%s %s",balance, getContext().getString(R.string.currency_html)));
-        if (!TextUtils.isEmpty(unconfirmedBalance) && !"0".equals(unconfirmedBalance)) {
+    public void updateBalance(String balance, String unconfirmedBalance, String symbol) {
+        if (symbol == null || symbol.isEmpty())
+            symbol = getContext().getString(R.string.currency_html);
+
+        placeHolderBalance.setText(String.format("%s %s",balance, symbol));
+        if (unconfirmedBalance != null && !TextUtils.isEmpty(unconfirmedBalance) && !"0".equals(unconfirmedBalance)) {
             notConfirmedBalancePlaceholder.setVisibility(View.VISIBLE);
-            placeHolderBalanceNotConfirmed.setText(String.format("%s %s", unconfirmedBalance, getContext().getString(R.string.currency_html)));
+            placeHolderBalanceNotConfirmed.setText(String.format("%s %s", unconfirmedBalance, symbol));
         } else {
             notConfirmedBalancePlaceholder.setVisibility(View.GONE);
         }
@@ -731,9 +734,9 @@ public abstract class SendFragment extends BaseFragment implements SendView {
     public void handleBalanceUpdating(String balanceString, BigDecimal unconfirmedBalance) {
         String unconfirmedBalanceString = unconfirmedBalance.toString();
         if (!TextUtils.isEmpty(unconfirmedBalanceString) && !unconfirmedBalanceString.equals("0")) {
-            updateBalance(String.format("%S HTML", balanceString), String.format("%S HTML", String.valueOf(unconfirmedBalance.floatValue())));
+            updateBalance(String.format("%S HTML", balanceString), String.format("%S HTML", String.valueOf(unconfirmedBalance.floatValue())), null);
         } else {
-            updateBalance(String.format("%S HTML", balanceString), null);
+            updateBalance(String.format("%S HTML", balanceString), null, null);
         }
     }
 
@@ -845,6 +848,10 @@ public abstract class SendFragment extends BaseFragment implements SendView {
 
     @Override
     public TokenBalance getTokenBalance(String contractAddress) {
-        return getSocketService().getTokenBalance(contractAddress);
+        if (getSocketService() != null) {
+            return getSocketService().getTokenBalance(contractAddress);
+        } else {
+            return null;
+        }
     }
 }

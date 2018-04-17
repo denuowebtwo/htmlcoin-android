@@ -1,4 +1,4 @@
-package org.qtum.wallet.ui.fragment.contract_function_fragment;
+package org.qtum.wallet.ui.fragment.contract_function_fragment.contract_constant_function_fragment;
 
 import org.qtum.wallet.model.contract.Contract;
 import org.qtum.wallet.model.contract.ContractMethod;
@@ -11,26 +11,18 @@ import java.util.List;
 
 import rx.Observable;
 
-/**
- * Created by drevnitskaya on 09.10.17.
- */
-
-public interface ContractFunctionInteractor {
+public interface ContractFunctionConstantInteractor {
     List<ContractMethod> getContractMethod(String contractTemplateUiid);
 
     BigDecimal getFeePerKb();
 
     int getMinGasPrice();
 
-    Observable<ContractFunctionInteractorImpl.CallSmartContractRespWrapper> callSmartContractObservable(String methodName,
+    Observable<ContractFunctionConstantInteractorImpl.CallSmartContractRespWrapper> callSmartContractObservable(String methodName,
                                                                                                         List<ContractMethodParameter> contractMethodParameterList,
                                                                                                         Contract contract);
 
-    Observable<List<UnspentOutput>> unspentOutputsForAddressObservable(String address);
-
-    String createTransactionHash(String abiParams, List<UnspentOutput> unspentOutputs, int gasLimit, int gasPrice, BigDecimal feePerKb, String fee, final String contractAddress);
-
-    Observable<SendRawTransactionResponse> sendRawTransactionObservable(String code);
+    String createTransactionHash(String abiParams, List<UnspentOutput> unspentOutputs, int gasLimit, int gasPrice, BigDecimal feePerKb, String fee, final String contractAddress, String sendToContract);
 
     Contract getContractByAddress(String address);
 }

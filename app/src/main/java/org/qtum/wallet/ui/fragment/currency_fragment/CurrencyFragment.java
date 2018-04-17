@@ -195,6 +195,8 @@ public abstract class CurrencyFragment extends BaseFragment implements CurrencyV
                             public void onNext(String string) {
                                 mTextViewSymbol.setVisibility(View.VISIBLE);
                                 mTextViewSymbol.setText(string);
+
+                                spinner.setVisibility(View.GONE);
                             }
                         });
 

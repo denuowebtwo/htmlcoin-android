@@ -48,26 +48,6 @@ public class ContractManagementPresenterImpl extends BaseFragmentPresenterImpl i
                 getView().setAlertDialog(R.string.error,R.string.fail_to_get_contract_methods, BaseFragment.PopUpType.error);
             }
         }
-
-//        if(contractAddress!=null && !contractAddress.isEmpty()) {
-//            getInteractor().getContractInfo(contractAddress)
-//                    .subscribeOn(Schedulers.io())
-//                    .observeOn(AndroidSchedulers.mainThread())
-//                    .subscribe(new Subscriber<SmartContractInfo>() {
-//                        @Override
-//                        public void onCompleted() {
-//                        }
-//
-//                        @Override
-//                        public void onError(Throwable e) {
-//                        }
-//
-//                        @Override
-//                        public void onNext(SmartContractInfo smartContractInfo) {
-//                            getView().setContractInfo(smartContractInfo);
-//                        }
-//                    });
-//        }
     }
 
     @Override

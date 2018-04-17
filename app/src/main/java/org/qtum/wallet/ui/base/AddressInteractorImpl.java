@@ -7,10 +7,12 @@ import org.qtum.wallet.dataprovider.rest_api.QtumService;
 import org.qtum.wallet.datastorage.KeyStorage;
 import org.qtum.wallet.datastorage.realm.RealmStorage;
 import org.qtum.wallet.model.AddressWithBalance;
+import org.qtum.wallet.model.contract.Token;
 import org.qtum.wallet.model.gson.AddressBalance;
 import org.qtum.wallet.model.gson.AddressDeviceTokenRequest;
 import org.qtum.wallet.model.gson.AddressDeviceTokenResponse;
 import org.qtum.wallet.model.gson.UnspentOutput;
+import org.qtum.wallet.model.gson.token_balance.TokenBalanceResponse;
 import org.qtum.wallet.utils.LogUtils;
 
 import java.lang.ref.WeakReference;
@@ -122,6 +124,11 @@ public class AddressInteractorImpl implements AddressInteractor {
                 }
             }
         });
+    }
+
+    @Override
+    public Observable<TokenBalanceResponse> getTokenBalance(final Token token, final List<String> addresses) {
+        return QtumService.newInstance().getTokenBalances(token.getContractAddress(), 20, 0, addresses);
     }
 
     @Override

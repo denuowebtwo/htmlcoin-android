@@ -8,7 +8,7 @@ import org.qtum.wallet.ui.base.base_fragment.BaseFragmentPresenter;
  */
 
 public interface WatchContractPresenter extends BaseFragmentPresenter {
-    void onOkClick(String name, String address, String ABIInterface, boolean isToken);
+    void onOkClick(String name, String address, String ABIInterface);
 
     void onTemplateClick(ContractTemplate contractTemplate);
 }

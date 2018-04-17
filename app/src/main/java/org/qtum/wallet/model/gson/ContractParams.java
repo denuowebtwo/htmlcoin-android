@@ -15,7 +15,7 @@ public class ContractParams {
     @SerializedName("name")
     @Expose
     private String name;
-    @SerializedName("totalSupply")
+    @SerializedName("total_supply")
     @Expose
     private String totalSupply;
 

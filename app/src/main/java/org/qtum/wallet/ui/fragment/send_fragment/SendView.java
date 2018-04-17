@@ -23,7 +23,7 @@ public interface SendView extends BaseFragmentView {
 
     void errorRecognition();
 
-    void updateBalance(String balance, String unconfirmedBalance);
+    void updateBalance(String balance, String unconfirmedBalance, String symbol);
 
     void setUpCurrencyField(Currency currency);
 

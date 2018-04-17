@@ -328,7 +328,7 @@ public class SendInteractorImpl implements SendInteractor {
     public String createTransactionHash(String abiParams, String contractAddress, List<UnspentOutput> unspentOutputs, int gasLimit, int gasPrice, String fee) {
         ContractBuilder contractBuilder = new ContractBuilder();
         Script script = contractBuilder.createMethodScript(abiParams, gasLimit, gasPrice, contractAddress);
-        return contractBuilder.createTransactionHash(script, unspentOutputs, gasLimit, gasPrice, getFeePerKb(), fee, mContext);
+        return contractBuilder.createTransactionHash(script, unspentOutputs, gasLimit, gasPrice, getFeePerKb(), fee, "", mContext);
     }
 
     @Override

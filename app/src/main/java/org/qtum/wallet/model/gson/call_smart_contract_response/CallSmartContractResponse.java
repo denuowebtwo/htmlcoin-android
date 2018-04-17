@@ -7,10 +7,6 @@ import java.util.List;
 
 
 public class CallSmartContractResponse {
-    @SerializedName("items")
-    @Expose
-    private List<Item> items = null;
-
     @SerializedName("executionResult")
     @Expose
     private Item executionResult;
@@ -26,15 +22,7 @@ public class CallSmartContractResponse {
      * Constructor for unit testing
      */
     public CallSmartContractResponse(List<Item> items) {
-        this.items = items;
-    }
 
-    public List<Item> getItems() {
-        return items;
-    }
-
-    public void setItems(List<Item> items) {
-        this.items = items;
     }
 
 

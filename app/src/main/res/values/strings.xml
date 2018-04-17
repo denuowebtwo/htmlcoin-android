@@ -123,6 +123,7 @@
     <string name="restore_contracts">Restore Contracts</string>
     <string name="backup_contracts">Backup Contracts</string>
     <string name="select_back_up_file">Select backup file</string>
+    <string name="back_up_file">Html Backup File</string>
     <string name="please_wait_a_few_seconds">Please wait</string>
     <string name="payment_completed_successfully">Payment completed successfully</string>
     <string name="default_currency">(default currency)</string>
@@ -220,6 +221,9 @@
     <string name="warning_play_services_required_user_cancelled">HTMLCOIN requires Play Services. htmlcoin has quit. Please relaunch and resolve the issue.</string>
 
     <string name="getting_info">Getting transaction receipt</string>
+    <string name="query_result">Query Result</string>
+    <string name="query">Query</string>
+    <string name="default_address">Default Address</string>
 
     <string name="english">English</string>
     <string name="french">Français</string>

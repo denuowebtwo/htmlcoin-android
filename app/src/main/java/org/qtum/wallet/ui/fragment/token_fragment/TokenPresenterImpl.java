@@ -45,8 +45,15 @@ public class TokenPresenterImpl extends BaseFragmentPresenterImpl implements Tok
 
         getInteractor().setupPropertySymbolValue(token, getView().getSymbolValueCallback());
         getInteractor().setupPropertyNameValue(token, getView().getNameValueCallback());
+        getInteractor().setupBalanceValue(token, getInteractor().getAddresses(), getView().getBalanceValueCallback());
+
         loadAndUpdateData();
         getView().updateHistory(getInteractor().getHistoryList());
+    }
+
+    @Override
+    public void onRefresh() {
+        loadAndUpdateData();
     }
 
     @Override

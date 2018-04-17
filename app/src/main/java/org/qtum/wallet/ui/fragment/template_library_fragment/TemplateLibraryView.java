@@ -9,5 +9,4 @@ import java.util.List;
 public interface TemplateLibraryView extends BaseFragmentView {
     void setUpTemplateList(List<ContractTemplate> contractTemplateList);
 
-    boolean isTokenLibrary();
 }

@@ -10,15 +10,11 @@ import java.util.List;
 public interface WatchContractView extends BaseFragmentView {
     void setABIInterface(String name, String abiInterface);
 
-    boolean isToken();
-
     void setUpTemplatesList(List<ContractTemplate> contractTemplateList, OnTemplateClickListener listener);
 
     void notifyAdapter(int adapterPosition);
 
     OnTemplateClickListener getTemplateClickListener();
-
-    void subscribeTokenBalanceChanges(String contractAddress);
 
     BaseFragment.AlertDialogCallBack getAlertCallback();
 

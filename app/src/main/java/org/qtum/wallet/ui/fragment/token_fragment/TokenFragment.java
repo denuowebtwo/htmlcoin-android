@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -28,6 +30,7 @@ import org.qtum.wallet.utils.ClipboardUtils;
 import org.qtum.wallet.utils.ContractManagementHelper;
 import org.qtum.wallet.utils.FontTextView;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import butterknife.BindView;
@@ -117,6 +120,9 @@ public abstract class TokenFragment extends BaseFragment implements TokenView, T
 
     @BindView(R.id.token_histories_placeholder)
     TextView mTextViewHistoriesPlaceholder;
+
+    @BindView(R.id.swipe_refresh)
+    protected SwipeRefreshLayout mSwipeRefreshLayout;
 
     @BindView(R.id.recycler_token_history)
     protected RecyclerView mRecyclerView;
@@ -224,6 +230,15 @@ public abstract class TokenFragment extends BaseFragment implements TokenView, T
                         }
                     }
                 }
+            }
+        });
+
+        mSwipeRefreshLayout.setColorSchemeColors(ContextCompat.getColor(getContext(), R.color.colorAccent));
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                getPresenter().onRefresh();
+                mSwipeRefreshLayout.setRefreshing(false);
             }
         });
     }
@@ -357,7 +372,7 @@ public abstract class TokenFragment extends BaseFragment implements TokenView, T
             @Override
             public void onNext(String s) {
                 onContractPropertyUpdated(TokenFragment.symbol, s);
-                mAdapter.setSymbol(" " + s);
+                mAdapter.setSymbol(s);
                 mAdapter.notifyDataSetChanged();
             }
         };
@@ -379,6 +394,27 @@ public abstract class TokenFragment extends BaseFragment implements TokenView, T
             @Override
             public void onNext(String s) {
                 onContractPropertyUpdated(TokenFragment.name, s);
+            }
+        };
+    }
+
+    @Override
+    public Subscriber<String> getBalanceValueCallback() {
+        return new Subscriber<String>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(String s) {
+                String resultamount = new BigDecimal(s).divide(new BigDecimal("10").pow(getPresenter().getToken().getDecimalUnits())).toPlainString();
+                setBalance(resultamount);
             }
         };
     }

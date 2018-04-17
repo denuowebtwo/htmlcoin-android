@@ -35,6 +35,7 @@ import org.qtum.wallet.model.gson.qstore.QstoreByteCodeResponse;
 import org.qtum.wallet.model.gson.qstore.QstoreContract;
 import org.qtum.wallet.model.gson.qstore.QstoreItem;
 import org.qtum.wallet.model.gson.qstore.QstoreSourceCodeResponse;
+import org.qtum.wallet.model.gson.token_balance.TokenBalanceResponse;
 import org.qtum.wallet.model.gson.token_history.TokenHistoryResponse;
 import org.qtum.wallet.utils.CurrentNetParams;
 
@@ -269,6 +270,10 @@ public class QtumService {
 
     public Observable<TokenHistoryResponse> getTokenHistoryList(String contractAddress, int limit, int offset, List<String> addresses){
         return mServiceApi.getTokenHistoryList(contractAddress, limit, offset, addresses);
+    }
+
+    public Observable<TokenBalanceResponse> getTokenBalances(String contractAddress, int limit, int offset, List<String> addresses){
+        return mServiceApi.getTokenBalance(contractAddress, limit, offset, addresses);
     }
 
     public Observable<List<TransactionReceipt>> getTransactionReceipt(String txHash){

@@ -308,6 +308,8 @@ public class MainActivity extends BaseActivity implements MainActivityView {
     public boolean checkAvailabilityTouchId() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             FingerprintManager fingerprintManager = (FingerprintManager) getSystemService(FINGERPRINT_SERVICE);
+            if (fingerprintManager == null) return false;
+
             return checkPermission(Manifest.permission.USE_FINGERPRINT) && fingerprintManager.isHardwareDetected();
         } else {
             return false;
