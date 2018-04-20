@@ -2,6 +2,7 @@ package org.qtum.wallet.ui.fragment.backup_contracts_fragment;
 
 import android.support.v4.content.FileProvider;
 
+import org.qtum.wallet.BuildConfig;
 import org.qtum.wallet.R;
 import org.qtum.wallet.ui.base.base_fragment.BaseFragment;
 import org.qtum.wallet.ui.base.base_fragment.BaseFragmentPresenterImpl;
@@ -97,7 +98,7 @@ public class BackupContractsPresenterImpl extends BaseFragmentPresenterImpl impl
     @Override
     public void permissionGrantedForChooseShareMethod() {
         if (mBackUpFile.exists()) {
-            String authority = "org.qtum.wallet.FileProvider";
+            String authority = BuildConfig.APPLICATION_ID + ".FileProvider";
             getView().chooseShareMethod(authority, mBackUpFile);
         } else {
             getView().setAlertDialog(R.string.error, R.string.cancel, BaseFragment.PopUpType.error);
